@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Technology",
+    "slug": "technology",
+    "description": "Technology and software related websites",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "updatedAt": "2024-01-15T10:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "name": "Business",
+    "slug": "business",
+    "description": "Business and finance related websites",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "updatedAt": "2024-01-15T10:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "name": "Education",
+    "slug": "education",
+    "description": "Educational resources and learning platforms",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "updatedAt": "2024-01-15T10:00:00.000Z"
+  },
+  {
+    "id": 4,
+    "name": "Entertainment",
+    "slug": "entertainment",
+    "description": "Entertainment and media websites",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "updatedAt": "2024-01-15T10:00:00.000Z"
+  },
+  {
+    "id": 5,
+    "name": "Health",
+    "slug": "health",
+    "description": "Health and wellness resources",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "updatedAt": "2024-01-15T10:00:00.000Z"
+  },
+  {
+    "id": 6,
+    "name": "News",
+    "slug": "news",
+    "description": "News and current affairs websites",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "updatedAt": "2024-01-15T10:00:00.000Z"
+  },
+  {
+    "id": 7,
+    "name": "Social",
+    "slug": "social",
+    "description": "Social media and networking platforms",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "updatedAt": "2024-01-15T10:00:00.000Z"
+  },
+  {
+    "id": 8,
+    "name": "Tools",
+    "slug": "tools",
+    "description": "Productivity tools and utilities",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "updatedAt": "2024-01-15T10:00:00.000Z"
+  },
+  {
+    "id": 9,
+    "name": "Finance",
+    "slug": "finance",
+    "description": "Financial services and investment platforms",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "updatedAt": "2024-01-15T10:00:00.000Z"
+  },
+  {
+    "id": 10,
+    "name": "Travel",
+    "slug": "travel",
+    "description": "Travel and tourism websites",
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "updatedAt": "2024-01-15T10:00:00.000Z"
+  }
+]

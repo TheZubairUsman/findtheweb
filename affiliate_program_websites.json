@@ -1,0 +1,614 @@
+[
+  {
+    "id": "asana",
+    "name": "Asana",
+    "url": "https://asana.com",
+    "description": "Flexible platform for task and Time Tracking with multiple views like lists, boards, and timelines.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "clickup",
+    "name": "ClickUp",
+    "url": "https://clickup.com",
+    "description": "All-in-one productivity platform with customizable views, automation, and time tracking.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "monday",
+    "name": "Monday.com",
+    "url": "https://monday.com",
+    "description": "Versatile work management solution with visual task tracking, automation, and integrations.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "proofhub",
+    "name": "ProofHub",
+    "url": "https://www.proofhub.com",
+    "description": "Time Tracking and collaboration tool with flat pricing and features like Gantt charts and Kanban boards.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "todoist",
+    "name": "Todoist",
+    "url": "https://todoist.com",
+    "description": "Simple yet powerful task manager with natural language input and cross-platform support.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "jira",
+    "name": "Jira",
+    "url": "https://www.atlassian.com/software/jira",
+    "description": "Robust tool for agile teams, offering customizable workflows and issue tracking.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "wrike",
+    "name": "Wrike",
+    "url": "https://www.wrike.com",
+    "description": "Time Tracking tool with detailed reporting, Gantt charts, and workload management.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "teamwork",
+    "name": "Teamwork",
+    "url": "https://www.teamwork.com",
+    "description": "Time Tracking software with client-focused features, time tracking, and billing.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "everhour",
+    "name": "Everhour",
+    "url": "https://everhour.com",
+    "description": "Time tracking and task management tool with seamless Time Tracking integrations.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "airtable",
+    "name": "Airtable",
+    "url": "https://airtable.com",
+    "description": "Flexible platform combining spreadsheet functionality with task management and collaboration.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "basecamp",
+    "name": "Basecamp",
+    "url": "https://basecamp.com",
+    "description": "All-in-one Time Tracking tool with task lists, schedules, and team communication.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "toggl-track",
+    "name": "Toggl Track",
+    "url": "https://toggl.com/track",
+    "description": "Simple time tracking tool with one-click timers, detailed reports, and integrations for freelancers and teams.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "clockify",
+    "name": "Clockify",
+    "url": "https://clockify.me",
+    "description": "Free time tracking software with unlimited users, projects, and detailed reporting for teams and freelancers.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "hubstaff",
+    "name": "Hubstaff",
+    "url": "https://hubstaff.com",
+    "description": "Time tracking with employee monitoring, GPS tracking, and payroll integration for remote and field teams.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "time-doctor",
+    "name": "Time Doctor",
+    "url": "https://www.timedoctor.com",
+    "description": "Time tracking with productivity analytics, screenshot monitoring, and payroll integration for remote teams.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "timecamp",
+    "name": "TimeCamp",
+    "url": "https://www.timecamp.com",
+    "description": "Automatic time tracking with app and website monitoring for productivity insights.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "webwork",
+    "name": "WebWork Time Tracker",
+    "url": "https://www.webwork-tracker.com",
+    "description": "Automatic time tracking with screenshot monitoring and productivity analytics.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "calendly",
+    "name": "Calendly",
+    "url": "https://calendly.com",
+    "description": "A leading AI scheduling tool that automates meeting bookings with customizable availability, team scheduling, and integrations with Google Calendar, Zoom, and Salesforce.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "reclaim-ai",
+    "name": "Reclaim AI",
+    "url": "https://reclaim.ai",
+    "description": "An AI-powered tool that optimizes calendars by auto-scheduling tasks, habits, and meetings while protecting focus time and integrating with Google Calendar and Slack.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "motion",
+    "name": "Motion",
+    "url": "https://www.usemotion.com",
+    "description": "An AI scheduling assistant that prioritizes tasks and meetings, dynamically adjusts schedules, and integrates with Google Calendar, Outlook, and Zoom for seamless planning.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "clockwise",
+    "name": "Clockwise",
+    "url": "https://www.getclockwise.com",
+    "description": "Optimizes team calendars by protecting focus time, resolving conflicts, and integrating with Google Calendar and Slack for efficient meeting scheduling.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "acuity-scheduling",
+    "name": "Acuity Scheduling",
+    "url": "https://acuityscheduling.com",
+    "description": "Streamlines appointment bookings with customizable forms, automated reminders, and integrations with Zoom, Google Calendar, and payment platforms like PayPal.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "simplybook-me",
+    "name": "SimplyBook.me",
+    "url": "https://simplybook.me",
+    "description": "An AI scheduling tool for service-based businesses, offering booking pages, SMS reminders, and payment integrations for seamless appointment management.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "book-like-a-boss",
+    "name": "Book Like A Boss",
+    "url": "https://booklikeaboss.com",
+    "description": "Automates appointment scheduling with customizable booking pages and integrations with Google Calendar, Zoom, and payment gateways like Stripe.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "doodle",
+    "name": "Doodle",
+    "url": "https://doodle.com",
+    "description": "Simplifies group scheduling with AI-powered polls and booking pages, integrating with Google Calendar and Outlook for efficient meeting coordination.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "notion",
+    "name": "Notion",
+    "url": "https://notion.so",
+    "description": "All-in-one workspace combining notes, tasks, databases, and wikis with powerful collaboration features and customizable templates.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "evernote",
+    "name": "Evernote",
+    "url": "https://evernote.com",
+    "description": "Cross-platform note-taking app with OCR, web clipping, and multi-device sync for capturing and organizing notes.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "otter",
+    "name": "Otter",
+    "url": "https://otter.ai",
+    "description": "AI-powered note-taking with automatic transcription for meetings, lectures, and voice notes.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "zoom",
+    "name": "Zoom",
+    "url": "https://zoom.us",
+    "description": "Video conferencing platform with HD video, screen sharing, and breakout rooms for remote meetings.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "miro",
+    "name": "Miro",
+    "url": "https://miro.com",
+    "description": "Digital whiteboard for real-time brainstorming, planning, and visual collaboration across teams.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "google-workspace",
+    "name": "Google Workspace",
+    "url": "https://workspace.google.com",
+    "description": "Suite of tools including Gmail, Docs, Drive, and Meet for real-time collaboration and communication.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "figma",
+    "name": "Figma",
+    "url": "https://www.figma.com",
+    "description": "Design collaboration tool for real-time UI/UX design, prototyping, and developer handoff.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "dropbox",
+    "name": "Dropbox",
+    "url": "https://www.dropbox.com",
+    "description": "Cloud-based file sharing with real-time document collaboration and secure storage.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "hootsuite",
+    "name": "Hootsuite",
+    "url": "https://www.hootsuite.com",
+    "description": "Social media management platform with sentiment analysis features to monitor brand mentions and customer feedback across multiple channels.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "sprout-social",
+    "name": "Sprout Social",
+    "url": "https://sproutsocial.com",
+    "description": "Comprehensive social media tool offering sentiment analysis, social listening, and engagement tracking across major platforms.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "brandwatch",
+    "name": "Brandwatch",
+    "url": "https://www.brandwatch.com",
+    "description": "AI-powered social listening platform specializing in real-time sentiment tracking and consumer intelligence across social media and online sources.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "talkwalker",
+    "name": "Talkwalker",
+    "url": "https://www.talkwalker.com",
+    "description": "Social listening and analytics tool with advanced sentiment analysis, monitoring 150M+ sources including social media, blogs, and news.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "qualtrics",
+    "name": "Qualtrics",
+    "url": "https://www.qualtrics.com",
+    "description": "Experience management platform with Text iQ for advanced sentiment analysis of surveys, social media, and customer feedback.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "sprinklr",
+    "name": "Sprinklr",
+    "url": "https://www.sprinklr.com",
+    "description": "Customer experience management platform with robust sentiment analysis for social media and digital channels.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "meltwater",
+    "name": "Meltwater",
+    "url": "https://www.meltwater.com",
+    "description": "Social listening and media monitoring tool with sentiment analysis for tracking public opinion across 6M+ sources.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "monkeylearn",
+    "name": "MonkeyLearn",
+    "url": "https://monkeylearn.com",
+    "description": "No-code text analysis platform with machine learning for sentiment analysis of social media, reviews, and surveys.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "reputation",
+    "name": "Reputation.com",
+    "url": "https://www.reputation.com",
+    "description": "Online reputation management platform with real-time sentiment analysis for multi-location businesses.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "keyhole",
+    "name": "Keyhole",
+    "url": "https://keyhole.co",
+    "description": "Social media analytics platform with sentiment analysis for tracking brand mentions and campaigns.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "awario",
+    "name": "Awario",
+    "url": "https://awario.com",
+    "description": "Social media and web monitoring tool with sentiment analysis for real-time brand tracking.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "buffer",
+    "name": "Buffer",
+    "url": "https://buffer.com",
+    "description": "Social media scheduling tool with sentiment analysis for organizing and analyzing feedback.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "agorapulse",
+    "name": "Agorapulse",
+    "url": "https://www.agorapulse.com",
+    "description": "Social media management tool with sentiment analysis and content filtering for customer support.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "digimind",
+    "name": "Digimind",
+    "url": "https://www.digimind.com",
+    "description": "Social listening platform with sentiment analysis for tracking brand reputation and trends.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "yougov",
+    "name": "YouGov",
+    "url": "https://www.yougov.com",
+    "description": "Market research platform with sentiment analysis for public opinion and consumer feedback.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "indeed",
+    "name": "Indeed",
+    "url": "https://www.indeed.com",
+    "description": "Job search engine aggregating listings from various sources with advanced filtering options.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "linkedin",
+    "name": "LinkedIn",
+    "url": "https://www.linkedin.com",
+    "description": "Professional networking platform with search capabilities for jobs and industry professionals.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "kayak",
+    "name": "Kayak",
+    "url": "https://www.kayak.com",
+    "description": "Travel search engine for flights, hotels, and car rentals with price comparison tools.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "skyscanner",
+    "name": "Skyscanner",
+    "url": "https://www.skyscanner.com",
+    "description": "Flight search engine comparing prices across airlines and travel agencies.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "momondo",
+    "name": "Momondo",
+    "url": "https://www.momondo.com",
+    "description": "Travel search engine for flights, hotels, and car rentals with a focus on affordability.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "expedia",
+    "name": "Expedia",
+    "url": "https://www.expedia.com",
+    "description": "Travel search engine for flights, hotels, and vacation packages.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "tripadvisor",
+    "name": "TripAdvisor",
+    "url": "https://www.tripadvisor.com",
+    "description": "Search engine for travel reviews, hotels, and attractions.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "booking",
+    "name": "Booking.com",
+    "url": "https://www.booking.com",
+    "description": "Travel search engine for accommodations and travel experiences.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "glassdoor",
+    "name": "Glassdoor",
+    "url": "https://www.glassdoor.com",
+    "description": "Job search engine with company reviews and salary information.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "monster",
+    "name": "Monster",
+    "url": "https://www.monster.com",
+    "description": "Job search engine with career advice and employment opportunities.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "ziprecruiter",
+    "name": "ZipRecruiter",
+    "url": "https://www.ziprecruiter.com",
+    "description": "Job search engine connecting job seekers with employers.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "hotels-com",
+    "name": "Hotels.com",
+    "url": "https://www.hotels.com",
+    "description": "Search engine for hotel bookings and travel accommodations.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "priceline",
+    "name": "Priceline",
+    "url": "https://www.priceline.com",
+    "description": "Travel search engine for flights, hotels, and car rentals with competitive pricing.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "careerbuilder",
+    "name": "CareerBuilder",
+    "url": "https://www.careerbuilder.com",
+    "description": "Job search engine with tools for job seekers and employers.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "upwork",
+    "name": "Upwork",
+    "url": "https://www.upwork.com",
+    "description": "A freelance platform connecting businesses with professionals for tasks like design, coding, and content creation, ideal for small and complex projects.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "kickstarter",
+    "name": "Kickstarter",
+    "url": "https://www.kickstarter.com",
+    "description": "A crowdfunding platform that also gathers feedback and ideas for creative projects, helping refine concepts through community input.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "indiegogo",
+    "name": "Indiegogo",
+    "url": "https://www.indiegogo.com",
+    "description": "A crowdfunding platform for creative projects, allowing idea validation and feedback from backers to refine products.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "patreon",
+    "name": "Patreon",
+    "url": "https://www.patreon.com",
+    "description": "A platform for creatives to receive ongoing support and feedback from patrons, fostering community-driven content creation.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "gofundme",
+    "name": "GoFundMe",
+    "url": "https://www.gofundme.com",
+    "description": "A crowdfunding platform for personal and community causes, enabling feedback and support from a global audience.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  },
+  {
+    "id": "airbnb",
+    "name": "Airbnb",
+    "url": "https://www.airbnb.com",
+    "description": "A platform where hosts list accommodations and guests provide feedback, driving community-based improvements in hospitality.",
+    "categoryId": "affiliate-programs",
+    "categoryName": "Affiliate Programs",
+    "regions": ["global"]
+  }
+]
