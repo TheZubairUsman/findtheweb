@@ -1,8 +1,5 @@
 # FindTheWeb
 
-<p align="center">
-  <img src="dist/logo.png" alt="FindTheWeb logo" width="150" />
-</p>
 
 <h3 align="center">Discover the best websites, tools, and hidden gems on the internet.</h3>
 
