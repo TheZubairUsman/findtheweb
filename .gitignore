@@ -104,3 +104,6 @@ dist/**/*.map
 # Temporary folders
 tmp/
 temp/
+
+# Local Hostinger upload packages
+findtheweb-dist-upload-*.zip
