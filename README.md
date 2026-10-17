@@ -19,7 +19,9 @@
   <img src="https://img.shields.io/badge/license-project--defined-64748b?style=flat-square" alt="Project defined license" />
 </p>
 
-![FindTheWeb branded preview](docs/findtheweb-preview.gif)
+![FindTheWeb website demo](docs/findtheweb-demo.gif)
+
+> A quick preview of the real FindTheWeb homepage experience.
 
 ## What is FindTheWeb?
 
