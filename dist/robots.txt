@@ -1,0 +1,40 @@
+User-agent: *
+Allow: /
+
+# Allow all search engines to crawl the site
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Disallow crawling of admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+Disallow: /.env
+Disallow: /config/
+
+# Disallow crawling of duplicate content
+Disallow: /*?utm_*
+Disallow: /*?ref=*
+Disallow: /*?source=*
+
+# Allow crawling of important assets
+Allow: /images/
+Allow: /favicon_io/
+Allow: /logo.png
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://findtheweb.com/sitemap.xml
+Sitemap: https://findtheweb.com/sitemap-categories.xml
+Sitemap: https://findtheweb.com/sitemap-blog.xml
+
+# Host directive
+Host: https://findtheweb.com

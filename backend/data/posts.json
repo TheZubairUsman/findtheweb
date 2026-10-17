@@ -1,0 +1,59 @@
+[
+  {
+    "id": "1757964292737",
+    "title": "one",
+    "slug": "one-one",
+    "excerpt": "This blog post is created to verify all input fields in the blog creation form of the admin panel.",
+    "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Test Blog Post – Admin Panel Check</title>\n  <meta name=\"description\" content=\"This is a test blog post for verifying blog creation and SEO settings.\" />\n  <meta name=\"keywords\" content=\"test, blog, admin, SEO, CMS\" />\n</head>\n<body>\n  <article>\n    <header>\n      <h1>🧪 Test Blog Post – Admin Panel Verification</h1>\n      <p><strong>Slug:</strong> test-blog-post</p>\n      <p><em>Excerpt:</em> Short summary to test the excerpt field and display behavior.</p>\n      <p><strong>Status:</strong> Published</p>\n      <p><strong>Featured:</strong> ✅</p>\n      <p><strong>Comments:</strong> Enabled 💬</p>\n      <p><strong>Categories:</strong> DevTools, Testing</p>\n      <p><strong>Tags:</strong> test, blog, cms, dashboard</p>\n      <p><strong>Featured Image:</strong></p>\n      <img src=\"https://via.placeholder.com/600x300.png?text=Test+Featured+Image\" alt=\"Test Featured Image\" width=\"600\" />\n    </header>\n\n    <section>\n      <h2>📄 Blog Content</h2>\n      <p>This blog post is created to verify all input fields in the blog creation form of the admin panel. This includes:</p>\n      <ul>\n        <li>Text inputs like title, slug, and excerpt</li>\n        <li>Content field with formatting</li>\n        <li>SEO fields</li>\n        <li>Tags and categories</li>\n        <li>Featured image handling</li>\n        <li>Post status selection</li>\n        <li>Comment toggling</li>\n      </ul>\n      <p>If everything displays and saves properly, the blog module is functional ✅.</p>\n    </section>\n\n    <footer>\n      <p><em>SEO Title:</em> Test Blog Post – Admin Panel Check</p>\n      <p><em>SEO Description:</em> Verifying blog creation fields and components.</p>\n      <p><em>SEO Keywords:</em> blog, test, admin, SEO, CMS</p>\n    </footer>\n  </article>\n</body>\n</html>\n",
+    "featuredImage": "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_original/v1/attachments/profile/photo/19866f52c57a431b3e50ca4272bb026e-1694848601280/c55ec15d-bbb6-48dc-8ed1-7fc8e770ec83.png",
+    "status": "published",
+    "categories": [
+      "test",
+      "blog",
+      "cms",
+      "dashboard"
+    ],
+    "tags": [
+      "blog",
+      "test",
+      "admin",
+      "SEO",
+      "CMS"
+    ],
+    "seoTitle": "log, test, admin, SEO, CMS",
+    "seoDescription": "erifying blog creation fields and components",
+    "seoKeywords": "log, test, admin, SEO, CMS",
+    "featured": false,
+    "allowComments": true,
+    "viewCount": 0,
+    "createdAt": "2025-09-15T19:24:52.738Z",
+    "updatedAt": "2025-09-17T18:16:30.652Z",
+    "publishedAt": "2025-09-15T19:24:52.738Z"
+  },
+  {
+    "id": "1757963233797",
+    "title": "Test Blog Post – Admin Panel Verification",
+    "slug": "Test-Blog-Post",
+    "excerpt": "Testing the admin panel blog functionality with this test blog post.",
+    "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n  <title>Test Blog Post</title>\n  <meta name=\"description\" content=\"This is a test blog post for verifying the admin panel blog functionality.\">\n  <meta name=\"keywords\" content=\"test, blog, admin panel, SEO, functionality\">\n</head>\n<body>\n  <article>\n    <header>\n      <h1>🚀 Test Blog Post – Verifying Blog Page Functionality</h1>\n      <p><strong>Slug:</strong> test-blog-post</p>\n      <p><em>Excerpt:</em> This is a short excerpt for testing purposes. It should appear wherever blog previews are shown.</p>\n      <p><strong>Status:</strong> Published</p>\n      <p><strong>Featured:</strong> Yes ✅</p>\n      <p><strong>Comments Allowed:</strong> Yes 💬</p>\n      <p><strong>Categories:</strong> Testing, Development</p>\n      <p><strong>Tags:</strong> test, blog, admin, panel</p>\n    </header>\n\n    <section>\n      <h2>📝 Blog Content</h2>\n      <p>\n        This is a <strong>test blog post</strong> created to verify all input fields and components in the \n        <em>admin panel blog page</em>. The goal is to ensure that:\n      </p>\n      <ul>\n        <li>All fields accept input and save correctly</li>\n        <li>SEO metadata is stored properly</li>\n        <li>Categories and tags appear as expected</li>\n        <li>The featured image displays correctly</li>\n      </ul>\n      <p>\n        If you’re seeing this blog post displayed correctly with the right metadata and structure, \n        then the **blog creation form is working as expected** 🎉.\n      </p>\n    </section>\n\n    <footer>\n      <p><em>SEO Title:</em> Test Blog Post – Admin Panel Verification</p>\n      <p><em>SEO Description:</em> Testing the admin panel blog functionality with this test blog post.</p>\n      <p><em>SEO Keywords:</em> test, blog, admin panel, functionality</p>\n    </footer>\n  </article>\n</body>\n</html>\n",
+    "featuredImage": "https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_original/v1/attachments/profile/photo/19866f52c57a431b3e50ca4272bb026e-1694848601280/c55ec15d-bbb6-48dc-8ed1-7fc8e770ec83.png",
+    "status": "published",
+    "categories": [
+      "tech",
+      "blog"
+    ],
+    "tags": [
+      "tech",
+      "blog"
+    ],
+    "seoTitle": "Test Blog Post – Admin Panel Verification",
+    "seoDescription": "Test Blog Post – Admin Panel Verification",
+    "seoKeywords": "tech, blog",
+    "featured": true,
+    "allowComments": true,
+    "viewCount": 0,
+    "createdAt": "2025-09-15T19:07:13.797Z",
+    "updatedAt": "2025-09-15T19:07:13.797Z",
+    "publishedAt": "2025-09-15T19:07:13.797Z"
+  }
+]

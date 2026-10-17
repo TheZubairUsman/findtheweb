@@ -1,0 +1,28 @@
+[
+  {
+    "id": "1",
+    "name": "Sample Product 1",
+    "description": "This is a sample product for testing the product management system. It includes all the necessary fields and demonstrates the functionality.",
+    "price": 29.99,
+    "category": "productivity",
+    "status": "active",
+    "features": ["Feature 1", "Feature 2", "Feature 3"],
+    "images": [],
+    "tags": ["sample", "test", "productivity"],
+    "createdAt": "2024-01-15T10:00:00.000Z",
+    "updatedAt": "2024-01-15T10:00:00.000Z"
+  },
+  {
+    "id": "2",
+    "name": "Sample Product 2",
+    "description": "Another sample product for development and testing purposes. This one has different category and status to test filtering functionality.",
+    "price": 49.99,
+    "category": "development",
+    "status": "draft",
+    "features": ["Advanced Feature 1", "Advanced Feature 2"],
+    "images": [],
+    "tags": ["sample", "development", "advanced"],
+    "createdAt": "2024-01-16T10:00:00.000Z",
+    "updatedAt": "2024-01-16T10:00:00.000Z"
+  }
+]
