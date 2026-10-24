@@ -84,6 +84,8 @@ The API exposes `/health` and `/api/v1/*`. Configure `ADMIN_EMAIL`, `ADMIN_PASSW
 
 Phase 2 also exposes a privacy-safe event endpoint at `POST /api/v1/analytics/events`. It accepts only allowlisted discovery events (`page_view`, `article_open`, `product_click`, `save_intent`, and `newsletter_interest`) and stores no raw IP, email, cookie, or user-agent data. Authenticated admin stats include bounded event counts for product and editorial decisions.
 
+The discovery MVP is available at `GET /api/v1/discover` with `newest`, `trending`, `popular`, search, tier, and category filters. Community submissions use `POST /api/v1/discover/submissions`; they are rate-limited and enter a `pending` moderation queue instead of publishing automatically.
+
 ### Frontend preview
 
 Serve the contents of `dist/` with any static HTTP server. For a production-like setup, reverse-proxy `/api/*` to the backend service.
