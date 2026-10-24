@@ -106,12 +106,16 @@ For `https://findtheweb.zus3cu.tech`:
 ## Verification checklist
 
 - [x] Local frontend smoke-tested in a browser
-- [x] Backend health endpoint verified
-- [x] Model test suite passes: 15/15
+- [x] Authentication regression suite passes: 6/6 tests
+- [x] Production health endpoint returns JSON over HTTPS
+- [x] Public blog API returns published posts with pagination
+- [x] Admin API rejects unauthenticated requests with JSON `401`
+- [x] CORS preflight allows the production frontend origin
+- [x] Products route redirects to the journal while the product surface is paused
 - [x] No tracked `.env`, database, debug files, or source maps
-- [x] Production-domain SEO metadata aligned
-- [ ] Production backend environment configured
-- [ ] HTTPS live verification completed
+- [x] Production-domain SEO metadata, robots, and sitemap are present
+
+> The full website/admin suite still needs a single source of truth for blog data: the deployed public content export and the Sequelize test models currently represent separate stores. The MVP keeps the public journal and admin editor usable while that consolidation is completed.
 
 ## Project identity
 
