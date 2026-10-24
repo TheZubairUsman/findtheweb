@@ -88,6 +88,8 @@ The discovery MVP is available at `GET /api/v1/discover` with `newest`, `trendin
 
 Authenticated moderators can review that queue through `GET /api/v1/admin/submissions` and `PATCH /api/v1/admin/submissions/:id` with `{ "decision": "approve" }` or `{ "decision": "reject" }`.
 
+The discovery-friendly SEO feeds are generated from the canonical database through `GET /api/v1/seo/sitemap.xml` and `GET /api/v1/seo/rss.xml`. They include the public journal and discovery entry points plus published articles only; set `PUBLIC_SITE_URL` on the server when deploying to another hostname.
+
 ### Frontend preview
 
 Serve the contents of `dist/` with any static HTTP server. For a production-like setup, reverse-proxy `/api/*` to the backend service.
@@ -122,6 +124,7 @@ For `https://findtheweb.zus3cu.tech`:
 - [x] Production-domain SEO metadata, robots, and sitemap are present
 - [x] Privacy-safe analytics ingestion is rate-limited and covered by tests
 - [x] Admin role detection supports authenticated draft visibility
+- [x] Canonical database-backed sitemap and RSS feeds are covered by tests
 
 > Phase 2 consolidation is complete for blog content: public blog reads and admin publishing use the canonical Sequelize `BlogPost` store. Legacy JSON exports remain only for non-blog directory compatibility and are not used as a blog fallback.
 
