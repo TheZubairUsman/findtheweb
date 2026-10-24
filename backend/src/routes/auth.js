@@ -6,7 +6,7 @@ const { body, validationResult } = require('express-validator');
 const { Op } = require('sequelize');
 const crypto = require('crypto');
 const { User, Admin } = require('../models');
-const { authenticateJWT } = require('../middleware/auth');
+const { authenticateJWT, authenticateAdmin } = require('../middleware/auth');
 const { sendEmail } = require('../services/emailService');
 const logger = require('../utils/logger');
 const { JWT_SECRET, JWT_EXPIRES_IN, NODE_ENV, CLIENT_URL } = process.env;
@@ -652,7 +652,8 @@ router.post(
 const adminLoginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 5, // limit each IP to 5 requests per windowMs
-  message: 'Too many login attempts from this IP, please try again after 15 minutes'
+  message: 'Too many login attempts from this IP, please try again after 15 minutes',
+  skip: () => process.env.NODE_ENV === 'test'
 });
 
 router.post('/admin/login', adminLoginLimiter, async (req, res) => {
@@ -729,6 +730,7 @@ router.post('/admin/login', adminLoginLimiter, async (req, res) => {
       name: admin.name,
       email: admin.email,
       role: 'admin',
+      isAdmin: true,
       lastLogin: admin.lastLogin
     };
 
@@ -738,6 +740,9 @@ router.post('/admin/login', adminLoginLimiter, async (req, res) => {
     res.json({ 
       success: true,
       token,
+      // Keep the top-level admin field for the existing frontend contract.
+      // `user` and `data.admin` remain for backwards compatibility.
+      admin: userData,
       user: userData,
       data: { token, admin: userData }
     });
@@ -864,6 +869,13 @@ router.post('/logout', (req, res) => {
   res.json({ success: true, message: 'Logged out successfully' });
 });
 
+// @route   POST /api/v1/auth/admin/logout
+// @desc    Logout an authenticated admin session
+// @access  Private/Admin
+router.post('/admin/logout', authenticateAdmin, (req, res) => {
+  res.json({ success: true, message: 'Logged out successfully' });
+});
+
 // Helper function to generate 2FA token
 function generate2FAToken(user) {
   return jwt.sign(
@@ -874,3 +886,4 @@ function generate2FAToken(user) {
 }
 
 module.exports = router;
+
