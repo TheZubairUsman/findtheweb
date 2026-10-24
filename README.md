@@ -48,7 +48,7 @@ The project combines a polished static React build with an Express/Sequelize API
 | --- | --- |
 | Frontend artifact | React, Vite, JavaScript, CSS |
 | Backend | Node.js, Express, Sequelize |
-| Data | JSON exports with SQLite-compatible local development |
+| Data | Sequelize blog store with JSON exports retained for legacy directory data |
 | Authentication | Server-side admin credentials, bcrypt, JWT |
 | Quality | Jest, Supertest, model and API tests |
 | Hosting shape | Static `dist/` frontend + persistent Node API |
@@ -119,7 +119,7 @@ For `https://findtheweb.zus3cu.tech`:
 - [x] Privacy-safe analytics ingestion is rate-limited and covered by tests
 - [x] Admin role detection supports authenticated draft visibility
 
-> The full website/admin suite still needs a single source of truth for blog data: the deployed public content export and the Sequelize test models currently represent separate stores. The MVP keeps the public journal and admin editor usable while that consolidation is completed.
+> Phase 2 consolidation is complete for blog content: public blog reads and admin publishing use the canonical Sequelize `BlogPost` store. Legacy JSON exports remain only for non-blog directory compatibility and are not used as a blog fallback.
 
 ## Project identity
 
