@@ -380,40 +380,6 @@ app.get('/api/v1/blog/posts', async (req, res) => {
       order: [['publishedAt', 'DESC']],
     });
     
-    // The first production content import is JSON-backed. Keep the public/admin
-    // contract usable while the Sequelize store is being consolidated.
-    if (rows.length === 0) {
-      let fallbackPosts = readData(postsFile);
-      fallbackPosts = fallbackPosts.filter((post) => {
-        if (whereClause.status && post.status !== whereClause.status) return false;
-        if (!whereClause.status && status !== 'all' && post.status !== status) return false;
-        if (status !== 'all' && post.publishedAt && new Date(post.publishedAt) > new Date()) return false;
-        if (category && !(post.categories || []).includes(category)) return false;
-        if (tag && !(post.tags || []).includes(tag)) return false;
-        if (featured === 'true' && post.featured !== true) return false;
-        if (search) {
-          const needle = String(search).toLowerCase();
-          const haystack = [post.title, post.excerpt, post.content].filter(Boolean).join(' ').toLowerCase();
-          if (!haystack.includes(needle)) return false;
-        }
-        return true;
-      }).sort((a, b) => new Date(b.publishedAt || b.createdAt) - new Date(a.publishedAt || a.createdAt));
-
-      const fallbackTotal = fallbackPosts.length;
-      const fallbackOffset = (parseInt(page) - 1) * parseInt(limit);
-      const fallbackRows = fallbackPosts.slice(fallbackOffset, fallbackOffset + parseInt(limit));
-      return res.json({
-        success: true,
-        data: fallbackRows,
-        pagination: {
-          page: parseInt(page),
-          limit: parseInt(limit),
-          total: fallbackTotal,
-          pages: Math.ceil(fallbackTotal / parseInt(limit)),
-        },
-      });
-    }
-
     res.json({
       success: true,
       data: rows,
@@ -443,13 +409,7 @@ app.get('/api/v1/blog/posts/:slug', async (req, res) => {
       }],
     });
     
-    if (!post) {
-      const fallbackPost = readData(postsFile).find((candidate) => candidate.slug === slug);
-      if (!fallbackPost || (!isAdminRequest(req) && (fallbackPost.status !== 'published' || (fallbackPost.publishedAt && new Date(fallbackPost.publishedAt) > new Date())))) {
-        return res.status(404).json({ success: false, message: 'Blog post not found' });
-      }
-      return res.json({ success: true, data: fallbackPost });
-    }
+    if (!post) return res.status(404).json({ success: false, message: 'Blog post not found' });
     
     // Only allow published posts for non-admin users
     if (!isAdminRequest(req) && (post.status !== 'published' || post.publishedAt > new Date())) {
@@ -462,7 +422,7 @@ app.get('/api/v1/blog/posts/:slug', async (req, res) => {
     }
     
     // Related-post helpers use PostgreSQL array operators that SQLite does not
-    // support. Keep detail pages healthy with a portable JSON-backed fallback.
+    // support. Keep detail pages healthy with a portable database-backed fallback.
     let relatedPosts = [];
     try {
       relatedPosts = await post.getRelatedPosts(3);
@@ -470,8 +430,12 @@ app.get('/api/v1/blog/posts/:slug', async (req, res) => {
       const current = post.toJSON();
       const currentCategories = current.categories || [];
       const currentTags = current.tags || [];
-      relatedPosts = readData(postsFile)
-        .filter((candidate) => candidate.slug !== slug && candidate.status === 'published')
+      const publishedPosts = await BlogPost.scope('published').findAll({
+        order: [['publishedAt', 'DESC']],
+        limit: 100,
+      });
+      relatedPosts = publishedPosts.map((candidate) => candidate.toJSON())
+        .filter((candidate) => candidate.slug !== slug)
         .filter((candidate) =>
           (candidate.categories || []).some((value) => currentCategories.includes(value)) ||
           (candidate.tags || []).some((value) => currentTags.includes(value))
