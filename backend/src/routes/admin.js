@@ -11,7 +11,7 @@ const {
 } = require('../controllers/adminController');
 
 // Import models from index.js to ensure proper initialization
-const { Admin, Settings, Website, Post } = require('../models');
+const { Admin, Settings, Website, Post, BlogPost } = require('../models');
 
 const rateLimit = require('express-rate-limit');
 const { body } = require('express-validator');
@@ -466,188 +466,78 @@ router.route('/websites/:id')
 router.route('/posts')
   .get(async (req, res) => {
     try {
-      console.log('🔵 GET /admin/posts - Query params:', req.query);
-      console.log('🔵 User:', req.user?.email);
-      
       const { page = 1, limit = 20, search, status } = req.query;
-      const posts = readData(postsFile);
-      
-      console.log('🔵 Total posts in file:', posts.length);
-      
-      let filteredPosts = posts;
-      
-      // Apply search filter
+      const where = {};
+      if (status && status !== 'all') where.status = status;
       if (search) {
-        const searchLower = search.toLowerCase();
-        filteredPosts = filteredPosts.filter(post => 
-          post.title?.toLowerCase().includes(searchLower) ||
-          post.content?.toLowerCase().includes(searchLower)
-        );
-        console.log('🔵 After search filter:', filteredPosts.length);
+        where[Op.or] = [
+          { title: { [Op.like]: `%${search}%` } },
+          { content: { [Op.like]: `%${search}%` } },
+        ];
       }
-      
-      // Apply status filter
-      if (status && status !== 'all') {
-        filteredPosts = filteredPosts.filter(post => post.status === status);
-        console.log('🔵 After status filter:', filteredPosts.length);
-      }
-      
-      // Sort by creation date (newest first)
-      filteredPosts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      
-      // Pagination
-      const startIndex = (page - 1) * limit;
-      const endIndex = startIndex + parseInt(limit);
-      const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
-      
-      const response = {
+      const result = await BlogPost.findAndCountAll({
+        where,
+        limit: parseInt(limit, 10),
+        offset: (parseInt(page, 10) - 1) * parseInt(limit, 10),
+        order: [['createdAt', 'DESC']],
+      });
+      const data = result.rows.map((post) => post.toJSON());
+      res.json({
         success: true,
-        data: paginatedPosts,
-        total: filteredPosts.length,
-        page: parseInt(page),
-        totalPages: Math.ceil(filteredPosts.length / limit)
-      };
-      
-      console.log('🔵 Sending posts response:', { 
-        postsCount: paginatedPosts.length, 
-        total: filteredPosts.length 
+        data,
+        total: result.count,
+        page: parseInt(page, 10),
+        totalPages: Math.ceil(result.count / parseInt(limit, 10)),
+        pagination: { page: parseInt(page, 10), limit: parseInt(limit, 10), total: result.count, pages: Math.ceil(result.count / parseInt(limit, 10)) },
       });
-      
-      res.json(response);
     } catch (error) {
-      console.error('❌ Error fetching posts:', error);
-      res.status(500).json({
-        success: false,
-        message: 'Failed to fetch blog posts'
-      });
+      console.error('Error fetching canonical blog posts:', error);
+      res.status(500).json({ success: false, message: 'Failed to fetch blog posts' });
     }
   })
   .post(async (req, res) => {
     try {
-      console.log('🔵 POST /admin/posts - Request body:', req.body);
-      console.log('🔵 User:', req.user?.email);
-      
-      const posts = readData(postsFile);
-      console.log('🔵 Current posts count:', posts.length);
-      
-      // Validate required fields
-      if (!req.body.title) {
-        console.log('❌ Validation failed - missing title');
-        return res.status(400).json({
-          success: false,
-          message: 'Title is required'
-        });
-      }
-      
-      // Generate slug from title if not provided
-      let slug = req.body.slug;
-      if (!slug && req.body.title) {
-        slug = req.body.title
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, '-')
-          .replace(/(^-|-$)/g, '');
-      }
-      
-      // Ensure slug is unique
-      let uniqueSlug = slug;
-      let counter = 1;
-      while (posts.some(post => post.slug === uniqueSlug)) {
-        uniqueSlug = `${slug}-${counter}`;
-        counter++;
-      }
-      
-      const newPost = {
-        id: Date.now().toString(),
-        title: req.body.title || '',
-        slug: uniqueSlug,
-        excerpt: req.body.excerpt || '',
-        content: req.body.content || '',
-        featuredImage: req.body.featuredImage || '',
-        status: req.body.status || 'draft',
+      const { title, content } = req.body;
+      if (!title || !content) return res.status(400).json({ success: false, message: 'Title and content are required' });
+      const post = await BlogPost.create({
+        ...req.body,
+        title,
+        content,
         categories: Array.isArray(req.body.categories) ? req.body.categories : [],
         tags: Array.isArray(req.body.tags) ? req.body.tags : [],
-        seoTitle: req.body.seoTitle || '',
-        seoDescription: req.body.seoDescription || '',
-        seoKeywords: req.body.seoKeywords || '',
-        featured: Boolean(req.body.featured),
-        allowComments: req.body.allowComments !== false,
-        viewCount: 0,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        publishedAt: req.body.status === 'published' ? new Date().toISOString() : null
-      };
-      
-      console.log('🔵 Creating new post:', newPost);
-      
-      posts.unshift(newPost);
-      writeData(postsFile, posts);
-      
-      console.log('✅ Post created successfully, new count:', posts.length);
-      
-      const response = {
-        success: true,
-        data: newPost,
-        message: 'Post created successfully'
-      };
-      
-      console.log('🔵 Sending response:', response);
-      res.status(201).json(response);
-    } catch (error) {
-      console.error('❌ Error creating post:', error);
-      res.status(500).json({
-        success: false,
-        message: 'Failed to create post',
-        error: error.message
+        status: req.body.status || 'draft',
+        authorId: req.user.id,
       });
+      res.status(201).json({ success: true, data: post.toJSON(), message: 'Post created successfully' });
+    } catch (error) {
+      console.error('Error creating canonical blog post:', error);
+      const message = error.name === 'SequelizeUniqueConstraintError' ? 'Slug already exists' : 'Failed to create blog post';
+      res.status(400).json({ success: false, message });
     }
   });
 
 router.route('/posts/:id')
   .put(async (req, res) => {
     try {
-      const { id } = req.params;
-      const posts = readData(postsFile);
-      const index = posts.findIndex(post => post.id === id);
-      
-      if (index === -1) {
-        return res.status(404).json({ success: false, message: 'Post not found' });
-      }
-      
-      posts[index] = { 
-        ...posts[index], 
-        ...req.body, 
-        updatedAt: new Date().toISOString() 
-      };
-      writeData(postsFile, posts);
-      
-      res.json({
-        success: true,
-        data: posts[index],
-        message: 'Post updated successfully'
-      });
+      const post = await BlogPost.findByPk(req.params.id);
+      if (!post) return res.status(404).json({ success: false, message: 'Post not found' });
+      await post.update(req.body);
+      res.json({ success: true, data: post.toJSON(), message: 'Post updated successfully' });
     } catch (error) {
-      console.error('Error updating post:', error);
-      res.status(500).json({ success: false, message: 'Failed to update post' });
+      console.error('Error updating canonical blog post:', error);
+      const message = error.name === 'SequelizeUniqueConstraintError' ? 'Slug already exists' : 'Failed to update blog post';
+      res.status(400).json({ success: false, message });
     }
   })
   .delete(async (req, res) => {
     try {
-      const { id } = req.params;
-      const posts = readData(postsFile);
-      const filtered = posts.filter(post => post.id !== id);
-      
-      if (filtered.length === posts.length) {
-        return res.status(404).json({ success: false, message: 'Post not found' });
-      }
-      
-      writeData(postsFile, filtered);
-      res.json({
-        success: true,
-        message: 'Post deleted successfully'
-      });
+      const post = await BlogPost.findByPk(req.params.id);
+      if (!post) return res.status(404).json({ success: false, message: 'Post not found' });
+      await post.destroy();
+      res.json({ success: true, message: 'Post deleted successfully' });
     } catch (error) {
-      console.error('Error deleting post:', error);
-      res.status(500).json({ success: false, message: 'Failed to delete post' });
+      console.error('Error deleting canonical blog post:', error);
+      res.status(500).json({ success: false, message: 'Failed to delete blog post' });
     }
   });
 
