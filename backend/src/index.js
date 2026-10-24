@@ -15,6 +15,7 @@ const PORT = process.env.PORT || 5000;
 const adminRouter = require('./routes/admin');
 const productRouter = require('./routes/products');
 const discoveryRouter = require('./routes/discovery');
+const seoRouter = require('./routes/seo');
 const websiteRouter = require('./routes/websites');
 
 // Security middleware
@@ -111,6 +112,7 @@ app.use((req, res, next) => {
 app.use('/api/v1/admin', adminRouter);
 app.use('/api/v1/products', productRouter);
 app.use('/api/v1/discover', discoveryRouter);
+app.use('/api/v1/seo', seoRouter);
 app.use('/api/v1/websites', websiteRouter);
 
 // Import routes
