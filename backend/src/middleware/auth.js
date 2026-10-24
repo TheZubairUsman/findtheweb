@@ -186,7 +186,7 @@ const protect = async (req, res, next) => {
       token = req.headers.authorization.split(' ')[1];
     }
     // Check for token in cookies
-    else if (req.cookies.token) {
+    else if (req.cookies?.token) {
       token = req.cookies.token;
     }
 
@@ -337,7 +337,7 @@ const optionalAuth = async (req, res, next) => {
       token = req.headers.authorization.split(' ')[1];
     }
     // Check for token in cookies
-    else if (req.cookies.token) {
+    else if (req.cookies?.token) {
       token = req.cookies.token;
     }
 
@@ -409,7 +409,7 @@ const authenticateAdmin = async (req, res, next) => {
       console.log('🔵 Token found in Authorization header');
     }
     // Check for token in cookies
-    else if (req.cookies.token) {
+    else if (req.cookies?.token) {
       token = req.cookies.token;
       console.log('🔵 Token found in cookies');
     }
@@ -499,3 +499,4 @@ module.exports = {
   optionalAuth,
   authenticateAdmin, // Export centralized admin auth middleware
 };
+
