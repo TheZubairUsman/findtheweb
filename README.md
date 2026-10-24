@@ -1,5 +1,8 @@
 # FindTheWeb
 
+<p align="center">
+  <img src="dist/logo.png" alt="FindTheWeb logo" width="150" />
+</p>
 
 <h3 align="center">Discover the best websites, tools, and hidden gems on the internet.</h3>
 
@@ -31,6 +34,8 @@ The project combines a polished static React build with an Express/Sequelize API
 - Curated discovery across productivity, AI, design, development, research, and business categories
 - Search, category browsing, regional filters, tier-based discovery, and bookmarks
 - Responsive interface with light/dark mode support
+- Editorial journal layout inspired by modern reading platforms, with featured stories and reading-time cues
+- API-resilient Products and Blog surfaces that remain useful when optional backend content is unavailable
 - Admin dashboard for managing websites, products, categories, and posts
 - Express API with JWT-based admin authentication and rate limiting
 - SEO-ready metadata, structured data, sitemap, robots rules, and social sharing tags
