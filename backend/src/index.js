@@ -11,6 +11,11 @@ const rateLimit = require('express-rate-limit');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Production is reached through one Nginx reverse proxy. Trusting exactly one
+// proxy makes rate-limit keys and request IP logging use the forwarded client
+// address without trusting arbitrary client-supplied proxy chains.
+app.set('trust proxy', process.env.TRUST_PROXY === 'false' ? false : 1);
+
 // Import routers
 const adminRouter = require('./routes/admin');
 const productRouter = require('./routes/products');
