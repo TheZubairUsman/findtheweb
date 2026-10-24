@@ -465,6 +465,61 @@ router.route('/websites/:id')
     }
   });
 
+// Community discovery moderation. Submissions remain private until reviewed.
+router.get('/submissions', async (req, res) => {
+  try {
+    const page = Math.max(1, Number.parseInt(req.query.page, 10) || 1);
+    const limit = Math.min(50, Math.max(1, Number.parseInt(req.query.limit, 10) || 20));
+    const status = ['pending', 'active', 'inactive'].includes(req.query.status) ? req.query.status : 'pending';
+    const result = await Website.findAndCountAll({
+      where: { status },
+      limit,
+      offset: (page - 1) * limit,
+      order: [['createdAt', 'ASC']],
+    });
+    res.json({
+      success: true,
+      data: result.rows,
+      pagination: { page, limit, total: result.count, pages: Math.max(1, Math.ceil(result.count / limit)) },
+    });
+  } catch (error) {
+    console.error('Error fetching discovery submissions:', error);
+    res.status(500).json({ success: false, message: 'Failed to fetch submissions' });
+  }
+});
+
+router.patch('/submissions/:id', async (req, res) => {
+  try {
+    const decision = String(req.body?.decision || '').toLowerCase();
+    if (!['approve', 'reject'].includes(decision)) {
+      return res.status(400).json({ success: false, message: 'Decision must be approve or reject' });
+    }
+    const website = await Website.findByPk(req.params.id);
+    if (!website) return res.status(404).json({ success: false, message: 'Submission not found' });
+    if (website.status !== 'pending') {
+      return res.status(409).json({ success: false, message: 'Submission has already been reviewed' });
+    }
+    const metadata = website.metadata && typeof website.metadata === 'object' ? website.metadata : {};
+    await website.update({
+      status: decision === 'approve' ? 'active' : 'inactive',
+      metadata: {
+        ...metadata,
+        moderationDecision: decision,
+        reviewedAt: new Date().toISOString(),
+        reviewedBy: req.user.id,
+      },
+    });
+    res.json({
+      success: true,
+      message: decision === 'approve' ? 'Submission approved' : 'Submission rejected',
+      data: { id: website.id, status: website.status, decision },
+    });
+  } catch (error) {
+    console.error('Error reviewing discovery submission:', error);
+    res.status(500).json({ success: false, message: 'Failed to review submission' });
+  }
+});
+
 router.route('/posts')
   .get(async (req, res) => {
     try {
