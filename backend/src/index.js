@@ -445,14 +445,14 @@ app.get('/api/v1/blog/posts/:slug', async (req, res) => {
     
     if (!post) {
       const fallbackPost = readData(postsFile).find((candidate) => candidate.slug === slug);
-      if (!fallbackPost || (!req.admin && (fallbackPost.status !== 'published' || (fallbackPost.publishedAt && new Date(fallbackPost.publishedAt) > new Date())))) {
+      if (!fallbackPost || (!isAdminRequest(req) && (fallbackPost.status !== 'published' || (fallbackPost.publishedAt && new Date(fallbackPost.publishedAt) > new Date())))) {
         return res.status(404).json({ success: false, message: 'Blog post not found' });
       }
       return res.json({ success: true, data: fallbackPost });
     }
     
     // Only allow published posts for non-admin users
-    if (!req.admin && (post.status !== 'published' || post.publishedAt > new Date())) {
+    if (!isAdminRequest(req) && (post.status !== 'published' || post.publishedAt > new Date())) {
       return res.status(404).json({ success: false, message: 'Blog post not found' });
     }
     
@@ -532,7 +532,7 @@ app.post('/api/v1/blog/posts', authenticateAdmin, async (req, res) => {
       seoKeywords,
       featured,
       allowComments,
-      authorId: req.admin.id,
+      authorId: req.user.id,
     });
     
     const createdPost = await BlogPost.findByPk(post.id, {
