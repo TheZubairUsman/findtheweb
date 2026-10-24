@@ -53,6 +53,7 @@ const authLimit = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
+  skip: () => process.env.NODE_ENV === 'test',
 });
 
 app.use(generalLimit);
@@ -710,3 +711,4 @@ if (require.main === module) {
 }
 
 module.exports = app;
+
