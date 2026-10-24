@@ -290,7 +290,6 @@ router.route('/stats').get(async (req, res) => {
     }
 
     const websites = readData(websitesFile);
-    const posts = readData(postsFile);
     const analyticsEvents = readData(analyticsFile);
     const analytics = analyticsEvents.reduce((summary, item) => {
       summary.total += 1;
@@ -299,7 +298,7 @@ router.route('/stats').get(async (req, res) => {
     }, { total: 0, byEvent: {} });
 
     const totalWebsites = websites.length;
-    const totalPosts = posts.length;
+    const totalPosts = await BlogPost.count();
 
     const websitesByTier = {};
     websites.forEach(site => {
@@ -310,7 +309,10 @@ router.route('/stats').get(async (req, res) => {
     });
 
     const recentWebsites = websites.slice(0, 5);
-    const recentPosts = posts.slice(0, 5);
+    const recentPosts = await BlogPost.findAll({
+      limit: 5,
+      order: [['createdAt', 'DESC']],
+    });
 
     res.json({
       success: true,
@@ -319,7 +321,7 @@ router.route('/stats').get(async (req, res) => {
         totalPosts,
         websitesByTier,
         recentWebsites,
-        recentPosts,
+        recentPosts: recentPosts.map((post) => post.toJSON()),
         analytics
       }
     });
