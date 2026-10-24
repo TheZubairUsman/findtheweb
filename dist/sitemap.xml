@@ -6,72 +6,72 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://findtheweb.com/</loc>
-    <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+        <loc>https://findtheweb.zus3cu.tech/</loc>
+    <lastmod>2026-10-24T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Main Pages -->
   <url>
-    <loc>https://findtheweb.com/blog</loc>
-    <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+    <loc>https://findtheweb.zus3cu.tech/blog</loc>
+    <lastmod>2026-10-24T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://findtheweb.com/about</loc>
-    <lastmod>2024-01-01T10:00:00+00:00</lastmod>
+    <loc>https://findtheweb.zus3cu.tech/about</loc>
+    <lastmod>2026-10-24T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://findtheweb.com/contact</loc>
-    <lastmod>2024-01-01T10:00:00+00:00</lastmod>
+    <loc>https://findtheweb.zus3cu.tech/contact</loc>
+    <lastmod>2026-10-24T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://findtheweb.com/bookmarks</loc>
-    <lastmod>2024-01-15T10:00:00+00:00</lastmod>
+    <loc>https://findtheweb.zus3cu.tech/bookmarks</loc>
+    <lastmod>2026-10-24T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
 
   <!-- Category Pages -->
   <url>
-    <loc>https://findtheweb.com/category/productivity-tools</loc>
+    <loc>https://findtheweb.zus3cu.tech/category/productivity-tools</loc>
     <lastmod>2024-01-10T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://findtheweb.com/category/design-tools</loc>
+    <loc>https://findtheweb.zus3cu.tech/category/design-tools</loc>
     <lastmod>2024-01-10T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://findtheweb.com/category/development-tools</loc>
+    <loc>https://findtheweb.zus3cu.tech/category/development-tools</loc>
     <lastmod>2024-01-10T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://findtheweb.com/category/ai-tools</loc>
+    <loc>https://findtheweb.zus3cu.tech/category/ai-tools</loc>
     <lastmod>2024-01-10T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://findtheweb.com/category/business-tools</loc>
+    <loc>https://findtheweb.zus3cu.tech/category/business-tools</loc>
     <lastmod>2024-01-10T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -79,35 +79,35 @@
 
   <!-- Blog Posts -->
   <url>
-    <loc>https://findtheweb.com/blog/top-productivity-tools-2024</loc>
+    <loc>https://findtheweb.zus3cu.tech/blog/top-productivity-tools-2024</loc>
     <lastmod>2024-01-15T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://findtheweb.com/blog/notion-vs-obsidian-vs-roam-comparison</loc>
+    <loc>https://findtheweb.zus3cu.tech/blog/notion-vs-obsidian-vs-roam-comparison</loc>
     <lastmod>2024-01-10T14:30:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://findtheweb.com/blog/build-personal-knowledge-management-system</loc>
+    <loc>https://findtheweb.zus3cu.tech/blog/build-personal-knowledge-management-system</loc>
     <lastmod>2024-01-05T09:15:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://findtheweb.com/blog/ai-powered-design-tools-2024</loc>
+    <loc>https://findtheweb.zus3cu.tech/blog/ai-powered-design-tools-2024</loc>
     <lastmod>2024-01-03T16:45:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://findtheweb.com/blog/best-free-software-alternatives-2024</loc>
+    <loc>https://findtheweb.zus3cu.tech/blog/best-free-software-alternatives-2024</loc>
     <lastmod>2023-12-28T11:20:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -115,21 +115,21 @@
 
   <!-- Programmatic Pages -->
   <url>
-    <loc>https://findtheweb.com/best/productivity</loc>
+    <loc>https://findtheweb.zus3cu.tech/best/productivity</loc>
     <lastmod>2024-01-10T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://findtheweb.com/tools/design</loc>
+    <loc>https://findtheweb.zus3cu.tech/tools/design</loc>
     <lastmod>2024-01-10T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://findtheweb.com/websites/development</loc>
+    <loc>https://findtheweb.zus3cu.tech/websites/development</loc>
     <lastmod>2024-01-10T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>

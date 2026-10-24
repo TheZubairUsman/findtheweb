@@ -28,13 +28,5 @@ Allow: /images/
 Allow: /favicon_io/
 Allow: /logo.png
 
-# Crawl delay for respectful crawling
-Crawl-delay: 1
-
 # Sitemap location
-Sitemap: https://findtheweb.com/sitemap.xml
-Sitemap: https://findtheweb.com/sitemap-categories.xml
-Sitemap: https://findtheweb.com/sitemap-blog.xml
-
-# Host directive
-Host: https://findtheweb.com
+Sitemap: https://findtheweb.zus3cu.tech/sitemap.xml
