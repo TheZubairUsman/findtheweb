@@ -3,7 +3,7 @@ const rateLimit = require('express-rate-limit');
 const { Op } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const { Website, Category } = require('../models');
+const { Website, Category, WebsiteFeedback } = require('../models');
 
 const router = express.Router();
 const legacyWebsitesFile = path.join(__dirname, '../../data/websites.json');
@@ -14,6 +14,14 @@ const submissionLimit = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
   message: { success: false, message: 'Too many submissions. Please try again later.' },
+});
+
+const feedbackLimit = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 8,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { success: false, message: 'Too many feedback submissions. Please try again later.' },
 });
 
 const publicFields = [
@@ -132,6 +140,48 @@ router.get('/:id', async (req, res) => {
   } catch (error) {
     console.error('Discovery item error:', error);
     res.status(500).json({ success: false, message: 'Unable to load discovery item' });
+  }
+});
+
+// Structured, privacy-safe feedback powers outcome-based discovery ranking.
+// One feedback record per visitor and listing prevents public vote farming.
+router.post('/:id/feedback', feedbackLimit, async (req, res) => {
+  try {
+    const { signal, triedIt = false, note } = req.body || {};
+    if (!['useful', 'not_useful'].includes(signal)) {
+      return res.status(400).json({ success: false, message: 'signal must be useful or not_useful' });
+    }
+    if (typeof triedIt !== 'boolean') {
+      return res.status(400).json({ success: false, message: 'triedIt must be a boolean' });
+    }
+    if (note !== undefined && (typeof note !== 'string' || note.trim().length > 500)) {
+      return res.status(400).json({ success: false, message: 'note must be 500 characters or fewer' });
+    }
+
+    const website = await Website.findOne({ where: { id: req.params.id, status: 'active' } });
+    if (!website) return res.status(404).json({ success: false, message: 'Discovery item not found' });
+
+    const ipHash = WebsiteFeedback.hashVisitor(req.ip || req.socket.remoteAddress);
+    const [feedback, created] = await WebsiteFeedback.findOrCreate({
+      where: { websiteId: website.id, ipHash },
+      defaults: { signal, triedIt, note: note ? note.trim() : null },
+    });
+    if (!created) await feedback.update({ signal, triedIt, note: note ? note.trim() : null });
+
+    const summary = await WebsiteFeedback.findAll({
+      where: { websiteId: website.id },
+      attributes: ['signal', 'triedIt'],
+    });
+    const counts = summary.reduce((result, item) => {
+      result[item.signal] += 1;
+      if (item.triedIt) result.triedIt += 1;
+      return result;
+    }, { useful: 0, not_useful: 0, triedIt: 0 });
+
+    return res.status(created ? 201 : 200).json({ success: true, data: { signal, triedIt, counts } });
+  } catch (error) {
+    console.error('Discovery feedback error:', error);
+    return res.status(400).json({ success: false, message: 'Unable to record feedback' });
   }
 });
 
