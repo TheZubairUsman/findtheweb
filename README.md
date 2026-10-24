@@ -86,6 +86,8 @@ Phase 2 also exposes a privacy-safe event endpoint at `POST /api/v1/analytics/ev
 
 The discovery MVP is available at `GET /api/v1/discover` with `newest`, `trending`, `popular`, search, tier, and category filters. Community submissions use `POST /api/v1/discover/submissions`; they are rate-limited and enter a `pending` moderation queue instead of publishing automatically.
 
+Authenticated moderators can review that queue through `GET /api/v1/admin/submissions` and `PATCH /api/v1/admin/submissions/:id` with `{ "decision": "approve" }` or `{ "decision": "reject" }`.
+
 ### Frontend preview
 
 Serve the contents of `dist/` with any static HTTP server. For a production-like setup, reverse-proxy `/api/*` to the backend service.
