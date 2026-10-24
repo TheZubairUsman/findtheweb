@@ -131,6 +131,7 @@ module.exports = (sequelize, DataTypes) => {
   // Associations
   Website.associate = function(models) {
     Website.hasMany(models.Hit, { foreignKey: 'websiteId' });
+    Website.hasMany(models.WebsiteFeedback, { foreignKey: 'websiteId', as: 'feedback' });
     Website.belongsTo(models.Category, { 
       foreignKey: 'categoryId', 
       as: 'category',
@@ -140,3 +141,4 @@ module.exports = (sequelize, DataTypes) => {
 
   return Website;
 };
+
