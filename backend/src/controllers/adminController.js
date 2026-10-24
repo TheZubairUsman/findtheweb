@@ -37,8 +37,11 @@ exports.getDashboardStats = asyncHandler(async (req, res, next) => {
     let recentWebsiteRows = [];
     try {
       if (Website && typeof Website.count === 'function') {
-        websiteCount = await Website.count();
-        recentWebsiteRows = await Website.findAll({ order: [['createdAt', 'DESC']], limit: 5 });
+        const databaseWebsiteCount = await Website.count();
+        if (databaseWebsiteCount > 0) {
+          websiteCount = databaseWebsiteCount;
+          recentWebsiteRows = await Website.findAll({ order: [['createdAt', 'DESC']], limit: 5 });
+        }
       }
     } catch (error) {
       console.log('Website model unavailable for dashboard:', error.message);
