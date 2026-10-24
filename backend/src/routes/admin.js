@@ -56,6 +56,7 @@ router.use(adminLimit);
 const dataDir = path.join(__dirname, '../../data');
 const websitesFile = path.join(dataDir, 'websites.json');
 const postsFile = path.join(dataDir, 'posts.json');
+const analyticsFile = path.join(dataDir, 'analytics-events.json');
 
 // Helper functions for JSON file operations
 const readData = (filePath) => {
@@ -290,6 +291,12 @@ router.route('/stats').get(async (req, res) => {
 
     const websites = readData(websitesFile);
     const posts = readData(postsFile);
+    const analyticsEvents = readData(analyticsFile);
+    const analytics = analyticsEvents.reduce((summary, item) => {
+      summary.total += 1;
+      summary.byEvent[item.event] = (summary.byEvent[item.event] || 0) + 1;
+      return summary;
+    }, { total: 0, byEvent: {} });
 
     const totalWebsites = websites.length;
     const totalPosts = posts.length;
@@ -312,7 +319,8 @@ router.route('/stats').get(async (req, res) => {
         totalPosts,
         websitesByTier,
         recentWebsites,
-        recentPosts
+        recentPosts,
+        analytics
       }
     });
   } catch (error) {
@@ -1277,3 +1285,4 @@ router.route('/products/:id')
   });
 
 module.exports = router;
+
