@@ -2,6 +2,8 @@ const { validationResult } = require('express-validator');
 const asyncHandler = require('express-async-handler');
 const fs = require('fs');
 const path = require('path');
+const { Op } = require('sequelize');
+const { Website, Category } = require('../models');
 const ErrorResponse = require('../utils/errorResponse');
 
 // Data storage paths
@@ -557,9 +559,9 @@ exports.searchWebsites = asyncHandler(async (req, res, next) => {
 
   const { count, rows: websites } = await Website.findAndCountAll({
     where: {
-      [Website.sequelize.Op.or]: [
-        { name: { [Website.sequelize.Op.iLike]: `%${searchTerm}%` } },
-        { description: { [Website.sequelize.Op.iLike]: `%${searchTerm}%` } },
+      [Op.or]: [
+        { name: { [Op.like]: `%${searchTerm}%` } },
+        { description: { [Op.like]: `%${searchTerm}%` } },
       ],
       status: 'active',
     },
@@ -593,3 +595,4 @@ exports.searchWebsites = asyncHandler(async (req, res, next) => {
     data: websites,
   });
 });
+
