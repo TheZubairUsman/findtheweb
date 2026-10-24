@@ -173,6 +173,7 @@ const dataDir = path.join(__dirname, '../data');
 const websitesFile = path.join(dataDir, 'websites.json');
 const postsFile = path.join(dataDir, 'posts.json');
 const categoriesFile = path.join(dataDir, 'categories.json');
+const analyticsFile = path.join(dataDir, 'analytics-events.json');
 
 // Ensure data directory exists
 if (!fs.existsSync(dataDir)) {
@@ -192,6 +193,10 @@ if (!fs.existsSync(categoriesFile)) {
   fs.writeFileSync(categoriesFile, JSON.stringify([], null, 2));
 }
 
+if (!fs.existsSync(analyticsFile)) {
+  fs.writeFileSync(analyticsFile, JSON.stringify([], null, 2));
+}
+
 // Helper functions
 const readData = (filename) => {
   try {
@@ -206,8 +211,54 @@ const writeData = (filename, data) => {
   fs.writeFileSync(filename, JSON.stringify(data, null, 2));
 };
 
+const analyticsLimit = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 240,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { success: false, message: 'Analytics event limit reached' },
+});
+
+const allowedAnalyticsEvents = new Set([
+  'page_view',
+  'article_open',
+  'product_click',
+  'save_intent',
+  'newsletter_interest',
+]);
+
+const cleanAnalyticsPath = (value) => {
+  if (typeof value !== 'string') return '/';
+  const normalized = value.trim().slice(0, 300);
+  return normalized.startsWith('/') ? normalized : '/';
+};
+
+// Privacy-safe MVP analytics: no raw IP, email, cookie, or user-agent is stored.
+app.post('/api/v1/analytics/events', analyticsLimit, (req, res) => {
+  const { event, path: eventPath, slug, referrer } = req.body || {};
+  if (!allowedAnalyticsEvents.has(event)) {
+    return res.status(400).json({ success: false, message: 'Unsupported analytics event' });
+  }
+
+  const events = readData(analyticsFile);
+  events.push({
+    event,
+    path: cleanAnalyticsPath(eventPath),
+    slug: typeof slug === 'string' ? slug.trim().slice(0, 160) : undefined,
+    referrer: typeof referrer === 'string' ? referrer.trim().slice(0, 200) : undefined,
+    day: new Date().toISOString().slice(0, 10),
+    createdAt: new Date().toISOString(),
+  });
+
+  // Keep this file bounded for the MVP; aggregate reporting happens from recent events.
+  writeData(analyticsFile, events.slice(-10000));
+  return res.status(202).json({ success: true, accepted: true });
+});
+
 // Import centralized authentication middleware
 const { authenticateAdmin } = require('./middleware/auth');
+
+const isAdminRequest = (req) => Boolean(req.admin || req.user?.role === 'admin');
 
 // Remove duplicate website routes - now handled by websiteRouter
 
@@ -235,6 +286,12 @@ app.post('/api/v1/posts', authenticateAdmin, (req, res) => {
 app.get('/api/v1/admin/stats', authenticateAdmin, (req, res) => {
   const websites = readData(websitesFile);
   const posts = readData(postsFile);
+  const analyticsEvents = readData(analyticsFile);
+  const analytics = analyticsEvents.reduce((summary, item) => {
+    summary.total += 1;
+    summary.byEvent[item.event] = (summary.byEvent[item.event] || 0) + 1;
+    return summary;
+  }, { total: 0, byEvent: {} });
   
   const stats = {
     totalWebsites: websites.length,
@@ -249,7 +306,8 @@ app.get('/api/v1/admin/stats', authenticateAdmin, (req, res) => {
       .slice(0, 5),
     recentPosts: posts
       .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-      .slice(0, 5)
+      .slice(0, 5),
+    analytics
   };
   
   res.json({ success: true, data: stats });
@@ -275,7 +333,7 @@ app.get('/api/v1/blog/posts', async (req, res) => {
     if (status === 'published') {
       whereClause.status = 'published';
       whereClause.publishedAt = { [sequelize.Sequelize.Op.lte]: new Date() };
-    } else if (req.admin) {
+    } else if (isAdminRequest(req)) {
       // Admin can see all statuses
       if (status !== 'all') {
         whereClause.status = status;
