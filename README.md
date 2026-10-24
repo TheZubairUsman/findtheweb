@@ -88,6 +88,8 @@ Phase 2 also exposes a privacy-safe event endpoint at `POST /api/v1/analytics/ev
 
 The discovery MVP is available at `GET /api/v1/discover` with `newest`, `trending`, `popular`, search, tier, and category filters. Community submissions use `POST /api/v1/discover/submissions`; they are rate-limited and enter a `pending` moderation queue instead of publishing automatically.
 
+The first engagement-loop endpoint is `POST /api/v1/discover/:id/feedback`. It accepts `useful`/`not_useful`, an optional `triedIt` signal, and a short note. Feedback is rate-limited, HMAC-hashed per visitor, and deduplicated per listing; raw IP addresses are never stored.
+
 Authenticated moderators can review that queue through `GET /api/v1/admin/submissions` and `PATCH /api/v1/admin/submissions/:id` with `{ "decision": "approve" }` or `{ "decision": "reject" }`.
 
 The discovery-friendly SEO feeds are generated from the canonical database through `GET /api/v1/seo/sitemap.xml` and `GET /api/v1/seo/rss.xml`. They include the public journal and discovery entry points plus published articles only; set `PUBLIC_SITE_URL` on the server when deploying to another hostname.
