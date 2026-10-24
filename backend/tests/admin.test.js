@@ -242,4 +242,32 @@ describe('Admin Routes', () => {
       expect(response.body.success).toBe(false);
     });
   });
+
+  describe('canonical blog content routes', () => {
+    it('reads and writes blog posts through BlogPost storage', async () => {
+      const createResponse = await request(app)
+        .post('/api/v1/admin/posts')
+        .set('Authorization', `Bearer ${authToken}`)
+        .send({
+          title: 'Canonical editorial workflow',
+          content: 'A durable draft body for the editorial workflow.',
+          excerpt: 'A durable editorial draft.',
+          status: 'draft',
+          categories: ['engineering'],
+          tags: ['workflow'],
+        });
+
+      expect(createResponse.status).toBe(201);
+      expect(createResponse.body.data.slug).toBe('canonical-editorial-workflow');
+
+      const listResponse = await request(app)
+        .get('/api/v1/admin/posts?status=draft')
+        .set('Authorization', `Bearer ${authToken}`);
+
+      expect(listResponse.status).toBe(200);
+      expect(listResponse.body.data).toHaveLength(1);
+      expect(listResponse.body.data[0].title).toBe('Canonical editorial workflow');
+    });
+  });
 });
+
