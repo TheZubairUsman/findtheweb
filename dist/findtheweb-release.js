@@ -105,28 +105,23 @@
     });
   }
 
-      var blogA11yScheduled = false;
-      function scheduleBlogA11y() {
-        if (blogA11yScheduled || !/^\/blog(?:\/|$)/.test(window.location.pathname)) return;
-        blogA11yScheduled = true;
-        window.setTimeout(function () {
-          var root = document.getElementById('root');
-          if (!root) return;
-          root.setAttribute('role', 'main');
-          var existingTarget = document.getElementById('main-content');
-          if (existingTarget && existingTarget.getAttribute('role') === 'navigation') existingTarget.removeAttribute('id');
-          var mainTarget = root.querySelector('.min-h-screen.bg-gray-50 > .max-w-7xl') || root.querySelector('.min-h-screen.bg-gray-50 .max-w-7xl');
-          if (mainTarget) {
-            mainTarget.id = 'main-content';
-            mainTarget.setAttribute('role', 'main');
-          }
-          root.querySelectorAll('input[placeholder="Search articles..."]').forEach(function (input) {
-            if (!input.getAttribute('aria-label')) input.setAttribute('aria-label', 'Search articles');
-          });
-          root.querySelectorAll('select').forEach(function (select, index) {
-            if (!select.getAttribute('aria-label')) select.setAttribute('aria-label', index === 0 ? 'Filter by category' : 'Filter by tag');
-          });
-        }, 1800);
+      function applyBlogA11y() {
+        if (!/^\/blog(?:\/|$)/.test(window.location.pathname)) return;
+        var root = document.getElementById('root');
+        if (!root) return;
+        var existingTarget = document.getElementById('main-content');
+        if (existingTarget && existingTarget.getAttribute('role') === 'navigation') existingTarget.removeAttribute('id');
+        var mainTarget = root.querySelector('.min-h-screen.bg-gray-50 > .max-w-7xl') || root.querySelector('.min-h-screen.bg-gray-50 .max-w-7xl');
+        if (mainTarget) {
+          mainTarget.id = 'main-content';
+          mainTarget.setAttribute('role', 'main');
+        }
+        root.querySelectorAll('input[placeholder="Search articles..."]').forEach(function (input) {
+          if (!input.getAttribute('aria-label')) input.setAttribute('aria-label', 'Search articles');
+        });
+        root.querySelectorAll('select').forEach(function (select, index) {
+          if (!select.getAttribute('aria-label')) select.setAttribute('aria-label', index === 0 ? 'Filter by category' : 'Filter by tag');
+        });
       }
 
   function renderRecoveryPage() {
@@ -272,7 +267,7 @@
     removeRetiredProductNavigation();
     applyAdminPolish();
         cleanAdminErrorPanel();
-        scheduleBlogA11y();
+        applyBlogA11y();
   }
 
   var scheduled = false;
