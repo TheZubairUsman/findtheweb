@@ -1,0 +1,12 @@
+Options -MultiViews
+RewriteEngine On
+
+# Keep source and operational folders out of the public document root.
+RewriteRule ^(?:backend|frontend-recovered|docs|Doc|node_modules)(?:/|$) - [F,L]
+
+# The Hostinger Git integration deploys the repository root. Serve the verified
+# frontend artifact from dist/ without exposing the repository layout.
+RewriteCond %{DOCUMENT_ROOT}/dist/$1 -f [OR]
+RewriteCond %{DOCUMENT_ROOT}/dist/$1 -d
+RewriteRule ^(.+)$ dist/$1 [L]
+RewriteRule ^ dist/index.html [L]
