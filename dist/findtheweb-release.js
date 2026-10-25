@@ -204,6 +204,48 @@
       }).catch(function () { root.innerHTML = '<main class="ftw-discovery-page"><div class="ftw-discovery-loading"><span class="ftw-kicker">FindTheWeb discovery</span><h1>We could not load this profile.</h1><p>Return to the directory and choose another resource.</p><a class="ftw-solid-button" href="/categories">Back to discovery</a></div></main>'; });
   }
 
+  function renderSubmissionPage() {
+    if (window.location.pathname !== '/submit') return;
+    var root = document.getElementById('root');
+    if (!root || root.querySelector('.ftw-submit-page')) return;
+    setPageSeo('Submit a Website | FindTheWeb', 'Share a useful website with the FindTheWeb community. Every submission is reviewed before publication.');
+    root.innerHTML = '<main class="ftw-submit-page"><header class="ftw-submit-hero"><span class="ftw-kicker">Community submissions</span><h1>Know a website worth finding?</h1><p>Share a useful resource with the FindTheWeb community. Every submission is reviewed by our team before it becomes public.</p></header><form class="ftw-submit-form" novalidate><div class="ftw-form-field"><label for="ftw-submit-name">Website name</label><input id="ftw-submit-name" name="name" required minlength="3" maxlength="100" placeholder="e.g. Linear" autocomplete="organization" /></div><div class="ftw-form-field"><label for="ftw-submit-url">Website URL</label><input id="ftw-submit-url" name="url" type="url" required maxlength="500" placeholder="https://example.com" inputmode="url" /></div><div class="ftw-form-field"><label for="ftw-submit-description">Why is it useful?</label><textarea id="ftw-submit-description" name="description" required minlength="10" maxlength="5000" rows="6" placeholder="Tell us what it helps people do and who it is for."></textarea><small>10–5000 characters. Clear, specific descriptions help us review faster.</small></div><div class="ftw-submit-two"><div class="ftw-form-field"><label for="ftw-submit-category">Category ID</label><select id="ftw-submit-category" name="categoryId" required><option value="">Loading categories…</option></select></div><div class="ftw-form-field"><label for="ftw-submit-email">Your email <span>(optional)</span></label><input id="ftw-submit-email" name="submitterEmail" type="email" maxlength="160" placeholder="you@example.com" autocomplete="email" /></div></div><div class="ftw-form-field ftw-honeypot" aria-hidden="true"><label for="ftw-submit-company">Company</label><input id="ftw-submit-company" name="company" tabindex="-1" autocomplete="off" /></div><div class="ftw-submit-actions"><button class="ftw-solid-button" type="submit">Send for review</button><a class="ftw-outline-button" href="/categories">Browse the directory</a></div><p class="ftw-submit-status" role="status" aria-live="polite"></p></form></main>';
+    var form = root.querySelector('form');
+    var status = root.querySelector('.ftw-submit-status');
+    var categorySelect = root.querySelector('#ftw-submit-category');
+    fetch(apiBase + '/api/v1/categories').then(function (response) { return response.ok ? response.json() : Promise.reject(new Error('categories')); }).then(function (payload) {
+      var categories = Array.isArray(payload && payload.data) ? payload.data : [];
+      categorySelect.innerHTML = '<option value="">Choose a category</option>' + categories.map(function (category) { return '<option value="' + escAttr(category.id) + '">' + escHtml(category.name || 'Category') + '</option>'; }).join('');
+    }).catch(function () { categorySelect.innerHTML = '<option value="">Choose a category</option>'; });
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      var data = Object.fromEntries(new FormData(form).entries());
+      if (!data.name || data.name.trim().length < 3 || !data.url || !data.description || data.description.trim().length < 10 || !data.categoryId) {
+        status.className = 'ftw-submit-status is-error'; status.textContent = 'Please complete the required fields before sending.'; return;
+      }
+      var button = form.querySelector('button[type="submit"]'); button.disabled = true; button.textContent = 'Sending…'; status.className = 'ftw-submit-status'; status.textContent = '';
+      fetch(apiBase + '/api/v1/discover/submissions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }).then(function (response) { return response.json().then(function (payload) { if (!response.ok) throw new Error(payload.message || 'Unable to send submission'); return payload; }); }).then(function () { form.reset(); status.className = 'ftw-submit-status is-success'; status.textContent = 'Thanks — your submission is queued for review. We will only publish resources that meet our quality bar.'; }).catch(function (error) { status.className = 'ftw-submit-status is-error'; status.textContent = error.message || 'Unable to send submission. Please try again.'; }).finally(function () { button.disabled = false; button.textContent = 'Send for review'; });
+    });
+  }
+
+  function escHtml(value) { return String(value == null ? '' : value).replace(/[&<>"']/g, function (ch) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]; }); }
+  function escAttr(value) { return escHtml(value).replace(/`/g, '&#96;'); }
+
+  function renderAdminSubmissions() {
+    if (window.location.pathname !== '/admin/submissions') return;
+    var root = document.getElementById('root');
+    if (!root || root.querySelector('.ftw-moderation-page')) return;
+    var token = localStorage.getItem('adminToken');
+    setPageSeo('Moderate Submissions | FindTheWeb', 'Review and moderate community website submissions.');
+    if (!token) { root.innerHTML = '<main class="ftw-moderation-page"><div class="ftw-moderation-empty"><span class="ftw-kicker">Private workspace</span><h1>Admin access required</h1><p>Sign in to review community submissions.</p><a class="ftw-solid-button" href="/admin/login">Go to admin login</a></div></main>'; return; }
+    root.innerHTML = '<main class="ftw-moderation-page"><header class="ftw-moderation-header"><div><span class="ftw-kicker">Community queue</span><h1>Review submissions</h1><p>Approve only resources that are useful, clear, safe, and relevant to FindTheWeb.</p></div><button class="ftw-outline-button" type="button" data-ftw-refresh>Refresh queue</button></header><div class="ftw-moderation-status" role="status" aria-live="polite">Loading queue…</div><section class="ftw-moderation-list" aria-live="polite"></section></main>';
+    var list = root.querySelector('.ftw-moderation-list'); var status = root.querySelector('.ftw-moderation-status');
+    function loadQueue() { status.textContent = 'Loading queue…'; fetch(apiBase + '/api/v1/admin/submissions?status=pending&limit=50', { headers: { Authorization: 'Bearer ' + token } }).then(function (response) { return response.json().then(function (payload) { if (!response.ok) throw new Error(payload.message || 'Unable to load queue'); return payload; }); }).then(function (payload) { var items = Array.isArray(payload.data) ? payload.data : []; status.textContent = items.length ? items.length + ' submission' + (items.length === 1 ? '' : 's') + ' awaiting review.' : 'No pending submissions.'; list.innerHTML = items.map(function (item) { return '<article class="ftw-moderation-card" data-submission-id="' + escAttr(item.id) + '"><div><span class="ftw-story-label">Pending review</span><h2>' + escHtml(item.name) + '</h2><a href="' + escAttr(item.url) + '" target="_blank" rel="noreferrer">' + escHtml(item.url) + '</a><p>' + escHtml(item.description) + '</p><small>Category: ' + escHtml(item.categoryId) + (item.submitterEmail ? ' · Submitter: ' + escHtml(item.submitterEmail) : '') + '</small></div><div class="ftw-moderation-actions"><button type="button" data-decision="approve">Approve</button><button type="button" data-decision="reject">Reject</button></div></article>'; }).join(''); }).catch(function (error) { status.className = 'ftw-moderation-status is-error'; status.textContent = error.message || 'Unable to load queue.'; }); }
+    root.querySelector('[data-ftw-refresh]').addEventListener('click', loadQueue);
+    root.addEventListener('click', function (event) { var button = event.target.closest('[data-decision]'); if (!button) return; var card = button.closest('[data-submission-id]'); var decision = button.getAttribute('data-decision'); button.disabled = true; fetch(apiBase + '/api/v1/admin/submissions/' + encodeURIComponent(card.getAttribute('data-submission-id')), { method: 'PATCH', headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' }, body: JSON.stringify({ decision: decision }) }).then(function (response) { return response.json().then(function (payload) { if (!response.ok) throw new Error(payload.message || 'Unable to review submission'); return payload; }); }).then(function () { card.remove(); loadQueue(); }).catch(function (error) { status.className = 'ftw-moderation-status is-error'; status.textContent = error.message || 'Unable to review submission.'; button.disabled = false; }); });
+    loadQueue();
+  }
+
   function applyAdminPolish() {
     var isAdmin = window.location.pathname.indexOf('/admin') === 0;
     document.body.classList.toggle('ftw-admin-shell', isAdmin);
@@ -267,6 +309,8 @@
 
     renderRecoveryPage();
     renderDiscoveryPage();
+    renderSubmissionPage();
+    renderAdminSubmissions();
     removeRetiredProductNavigation();
     applyAdminPolish();
         cleanAdminErrorPanel();
