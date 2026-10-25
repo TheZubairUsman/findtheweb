@@ -108,8 +108,12 @@
       function ensureAccessibilityPolish() {
         var root = document.getElementById('root');
         if (root) {
-          root.id = 'main-content';
           root.setAttribute('role', 'main');
+          var mainTarget = document.getElementById('main-content');
+          if (!mainTarget) {
+            mainTarget = root.querySelector('main') || root.firstElementChild;
+            if (mainTarget) mainTarget.id = 'main-content';
+          }
         }
         document.querySelectorAll('select').forEach(function (select, index) {
           if (!select.getAttribute('aria-label')) {
