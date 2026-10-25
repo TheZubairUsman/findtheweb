@@ -1,0 +1,15 @@
+# FindTheWeb
+
+FindTheWeb is a curated discovery platform for useful websites, AI tools, productivity resources, developer tools, and practical digital workflows.
+
+## Important pages
+
+- Homepage: https://findtheweb.zus3cu.tech/
+- Blog: https://findtheweb.zus3cu.tech/blog
+- Categories: https://findtheweb.zus3cu.tech/categories
+- About: https://findtheweb.zus3cu.tech/about
+- Sitemap: https://findtheweb.zus3cu.tech/sitemap.xml
+
+## Editorial guidance
+
+FindTheWeb articles focus on practical evaluation, privacy-aware discovery, useful workflows, and clear trade-offs. Prefer article pages and category pages over internal admin routes.

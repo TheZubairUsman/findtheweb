@@ -105,6 +105,20 @@
     });
   }
 
+      function ensureAccessibilityPolish() {
+        var root = document.getElementById('root');
+        if (root) {
+          root.id = 'main-content';
+          root.setAttribute('role', 'main');
+        }
+        document.querySelectorAll('select').forEach(function (select, index) {
+          if (!select.getAttribute('aria-label')) {
+            var first = select.options && select.options[0] ? select.options[0].textContent.trim() : '';
+            select.setAttribute('aria-label', first || ('Filter ' + (index + 1)));
+          }
+        });
+      }
+
   function renderRecoveryPage() {
     if (window.location.pathname === '/products') {
       window.location.replace('/blog');
@@ -248,6 +262,7 @@
     removeRetiredProductNavigation();
     applyAdminPolish();
     cleanAdminErrorPanel();
+        ensureAccessibilityPolish();
   }
 
   var scheduled = false;
