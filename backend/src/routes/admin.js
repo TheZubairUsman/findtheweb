@@ -11,7 +11,7 @@ const {
 } = require('../controllers/adminController');
 
 // Import models from index.js to ensure proper initialization
-const { Admin, Settings, Website, Post, BlogPost } = require('../models');
+const { Admin, Settings, Website, Post, BlogPost, Category } = require('../models');
 
 const rateLimit = require('express-rate-limit');
 const { body } = require('express-validator');
@@ -189,7 +189,13 @@ router.route('/blog/posts/:slug').get(async (req, res) => {
 router.route('/categories').get(async (req, res) => {
   try {
     const categoriesFile = path.join(dataDir, 'categories.json');
-    const categories = readData(categoriesFile);
+    const legacyCategories = readData(categoriesFile);
+    const dbCategories = await Category.findAll({ order: [['id', 'ASC']] });
+    const seen = new Set(dbCategories.map((category) => String(category.id)));
+    const categories = [
+      ...dbCategories.map((category) => category.toJSON()),
+      ...legacyCategories.filter((category) => !seen.has(String(category.id))),
+    ];
     
     res.json({
       success: true,
@@ -339,8 +345,11 @@ router.route('/websites')
     try {
       const { page = 1, limit = 10, search, tier, status } = req.query;
       
-      // Read websites from JSON file
-      const websites = readData(websitesFile);
+      const legacyWebsites = readData(websitesFile);
+      const dbWebsites = await Website.findAll({ include: [{ model: Category, as: 'category', required: false }] });
+      const dbValues = dbWebsites.map((website) => website.toJSON());
+      const seen = new Set(dbValues.map((website) => String(website.id)));
+      const websites = [...dbValues, ...legacyWebsites.filter((website) => !seen.has(String(website.id)))];
       
       let filteredWebsites = websites;
       
@@ -390,20 +399,17 @@ router.route('/websites')
   })
   .post(async (req, res) => {
     try {
-      const websites = readData(websitesFile);
-      const newWebsite = {
-        id: Date.now().toString(),
+      if (!req.body?.name || !req.body?.url || !req.body?.description) {
+        return res.status(400).json({ success: false, message: 'Name, URL, and description are required' });
+      }
+      const newWebsite = await Website.create({
         ...req.body,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
+        status: req.body.status || 'active',
         totalHits: 0,
         weeklyHits: 0,
         monthlyHits: 0,
-        dailyHits: 0
-      };
-      
-      websites.push(newWebsite);
-      writeData(websitesFile, websites);
+        dailyHits: 0,
+      });
       
       res.status(201).json({
         success: true,
@@ -420,6 +426,11 @@ router.route('/websites/:id')
   .put(async (req, res) => {
     try {
       const { id } = req.params;
+      const databaseWebsite = await Website.findByPk(id);
+      if (databaseWebsite) {
+        await databaseWebsite.update(req.body);
+        return res.json({ success: true, data: databaseWebsite.toJSON(), message: 'Website updated successfully' });
+      }
       const websites = readData(websitesFile);
       const index = websites.findIndex(site => site.id === id);
       
@@ -447,6 +458,11 @@ router.route('/websites/:id')
   .delete(async (req, res) => {
     try {
       const { id } = req.params;
+      const databaseWebsite = await Website.findByPk(id);
+      if (databaseWebsite) {
+        await databaseWebsite.destroy();
+        return res.json({ success: true, message: 'Website deleted successfully' });
+      }
       const websites = readData(websitesFile);
       const filtered = websites.filter(site => site.id !== id);
       
@@ -649,14 +665,14 @@ router.route('/posts/:id')
   });
 
 // Data management routes
-router.route('/upload').post(bulkOperationLimit, upload.single('file'), async (req, res) => {
+const handleWebsiteUpload = async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ success: false, message: 'No file uploaded' });
     }
     
     const { type } = req.body;
-    if (type !== 'websites') {
+    if (type && type !== 'websites') {
       return res.status(400).json({ success: false, message: 'Invalid upload type' });
     }
     
@@ -674,6 +690,7 @@ router.route('/upload').post(bulkOperationLimit, upload.single('file'), async (r
     }
     
     const websites = readData(websitesFile);
+    const databaseWebsites = [];
     let addedCount = 0;
     
     for (const websiteData of uploadData) {
@@ -695,29 +712,34 @@ router.route('/upload').post(bulkOperationLimit, upload.single('file'), async (r
         description: websiteData.description || '',
         tier: websiteData.tier || 'standard',
         status: websiteData.status || 'active',
-        categoryId: websiteData.categoryId || 1,
+        categoryId: websiteData.categoryId || null,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
         totalHits: 0,
         weeklyHits: 0
       };
       
-      websites.push(newWebsite);
+      databaseWebsites.push(newWebsite);
       addedCount++;
     }
     
-    writeData(websitesFile, websites);
+    if (databaseWebsites.length) await Website.bulkCreate(databaseWebsites);
     
     res.json({
       success: true,
       message: `Successfully uploaded ${addedCount} websites`,
-      count: addedCount
+      count: addedCount,
+      data: { created: addedCount }
     });
   } catch (error) {
     console.error('Error uploading websites:', error);
     res.status(500).json({ success: false, message: 'Failed to upload websites' });
   }
-});
+};
+
+router.route('/upload').post(bulkOperationLimit, upload.single('file'), handleWebsiteUpload);
+// Keep the legacy admin-panel endpoint working while the UI migrates to /upload.
+router.route('/websites/bulk-upload').post(bulkOperationLimit, upload.single('file'), handleWebsiteUpload);
 
 router.route('/export').get(exportData);
 
@@ -1282,4 +1304,3 @@ router.route('/products/:id')
   });
 
 module.exports = router;
-

@@ -3,7 +3,7 @@ const logger = require('../utils/logger');
 const jwt = require('jsonwebtoken');
 const ErrorResponse = require('../utils/errorResponse');
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET || (process.env.NODE_ENV === 'test' ? 'findtheweb-test-only-secret' : undefined);
 const JWT_ISSUER = process.env.JWT_ISSUER || 'findtheweb-admin';
 const JWT_AUDIENCE = process.env.JWT_AUDIENCE || 'findtheweb-admin-ui';
 
@@ -499,4 +499,3 @@ module.exports = {
   optionalAuth,
   authenticateAdmin, // Export centralized admin auth middleware
 };
-

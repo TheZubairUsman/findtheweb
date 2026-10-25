@@ -10,6 +10,7 @@ const { authenticateJWT, authenticateAdmin } = require('../middleware/auth');
 const { sendEmail } = require('../services/emailService');
 const logger = require('../utils/logger');
 const { JWT_SECRET, JWT_EXPIRES_IN, NODE_ENV, CLIENT_URL } = process.env;
+const EFFECTIVE_JWT_SECRET = JWT_SECRET || (process.env.NODE_ENV === 'test' ? 'findtheweb-test-only-secret' : undefined);
 const bcrypt = require('bcrypt');
 const rateLimit = require('express-rate-limit');
 
@@ -26,7 +27,7 @@ const loginLimiter = rateLimit({
 const generateToken = (user) => {
   return jwt.sign(
     { id: user.id, email: user.email, role: user.role },
-    JWT_SECRET,
+    EFFECTIVE_JWT_SECRET,
     { expiresIn: JWT_EXPIRES_IN || '7d' }
   );
 };
@@ -209,7 +210,7 @@ router.post(
       // Verify temp token
       let decoded;
       try {
-        decoded = jwt.verify(tempToken, JWT_SECRET);
+        decoded = jwt.verify(tempToken, EFFECTIVE_JWT_SECRET);
       } catch (err) {
         return res.status(400).json({ 
           success: false, 
@@ -716,7 +717,7 @@ router.post('/admin/login', adminLoginLimiter, async (req, res) => {
         email: admin.email,
         role: 'admin'
       },
-      process.env.JWT_SECRET,
+      EFFECTIVE_JWT_SECRET,
       { 
         expiresIn: process.env.JWT_EXPIRES_IN || '1d',
         issuer: 'findtheweb-admin',
@@ -780,7 +781,7 @@ router.get('/verify-token', async (req, res) => {
     }
 
     // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET, {
+    const decoded = jwt.verify(token, EFFECTIVE_JWT_SECRET, {
       issuer: 'findtheweb-admin',
       audience: 'findtheweb-admin-ui'
     });
@@ -838,7 +839,7 @@ router.get('/check-admin', async (req, res) => {
       });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, EFFECTIVE_JWT_SECRET);
     
     // Check if admin exists and is active
     const admin = await Admin.findByPk(decoded.id);
@@ -880,10 +881,9 @@ router.post('/admin/logout', authenticateAdmin, (req, res) => {
 function generate2FAToken(user) {
   return jwt.sign(
     { id: user.id, purpose: '2fa' },
-    JWT_SECRET,
+    EFFECTIVE_JWT_SECRET,
     { expiresIn: '5m' } // Short expiration for security
   );
 }
 
 module.exports = router;
-
