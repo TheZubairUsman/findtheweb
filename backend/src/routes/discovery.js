@@ -7,6 +7,7 @@ const { Website, Category, WebsiteFeedback } = require('../models');
 
 const router = express.Router();
 const legacyWebsitesFile = path.join(__dirname, '../../data/websites.json');
+const productKnowledgeFile = path.join(__dirname, '../../data/product-knowledge.json');
 
 const submissionLimit = rateLimit({
   windowMs: 60 * 60 * 1000,
@@ -38,10 +39,21 @@ const asStringList = (value, maxItems = 8, maxLength = 160) => Array.isArray(val
 // Product knowledge is stored in the existing metadata JSON column so this MVP
 // can ship without a destructive schema migration. Only the allowlisted shape
 // is exposed publicly; arbitrary metadata remains private to admins.
-const toProductKnowledge = (metadata) => {
+const readProductKnowledge = () => {
+  try {
+    const parsed = JSON.parse(fs.readFileSync(productKnowledgeFile, 'utf8'));
+    return parsed && typeof parsed === 'object' ? parsed : {};
+  } catch (_) {
+    return {};
+  }
+};
+
+const toProductKnowledge = (metadata, websiteId) => {
+  const catalog = readProductKnowledge();
+  const curated = catalog[String(websiteId)] || {};
   const product = metadata && typeof metadata === 'object' && metadata.product && typeof metadata.product === 'object'
-    ? metadata.product
-    : {};
+    ? { ...curated, ...metadata.product }
+    : curated;
   const pricing = product.pricing && typeof product.pricing === 'object' ? product.pricing : {};
   const privacy = product.privacy && typeof product.privacy === 'object' ? product.privacy : {};
   const alternatives = Array.isArray(product.alternatives)
@@ -80,7 +92,7 @@ const toPublicWebsite = (website) => {
     if (value[field] !== undefined) output[field] = value[field];
     return output;
   }, {});
-  result.product = toProductKnowledge(value.metadata);
+  result.product = toProductKnowledge(value.metadata, value.id);
   return result;
 };
 
