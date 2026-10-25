@@ -4,6 +4,7 @@ RewriteEngine On
 # Never serve repository metadata, debug helpers, backups, or internal docs.
 # The Git integration deploys the repository root, so deny these explicitly.
 RewriteRule ^(?:\.git(?:/|$)|\.env(?:\..*)?$|debug-[^/]+|.*\.(?:zip|log|md|markdown))(?:$|/) - [F,L]
+RewriteRule ^(?:debug-login\.js|findtheweb-dist-upload-[^/]+\.zip)$ - [F,L]
 
 # Keep source and operational folders out of the public document root.
 RewriteRule ^(?:backend|frontend-recovered|docs|Doc|node_modules)(?:/|$) - [F,L]
