@@ -197,11 +197,17 @@
 
   function applyReleasePolish() {
     installApiBridge();
-    document.title = title;
-    setMeta('meta[name="title"]', 'content', title);
-    setMeta('meta[name="description"]', 'content', description);
-    setMeta('meta[property="og:title"]', 'content', title);
-    setMeta('meta[property="og:description"]', 'content', description);
+    var isBlogRoute = /^\/blog(?:\/|$)/.test(window.location.pathname);
+    // Let the blog's SEO component own editorial titles and descriptions.
+    // The release observer runs repeatedly, so unconditional defaults would
+    // overwrite article-specific metadata after React renders.
+    if (!isBlogRoute) {
+      document.title = title;
+      setMeta('meta[name="title"]', 'content', title);
+      setMeta('meta[name="description"]', 'content', description);
+      setMeta('meta[property="og:title"]', 'content', title);
+      setMeta('meta[property="og:description"]', 'content', description);
+    }
     setMeta('meta[property="og:image"]', 'content', siteUrl + '/logo.png');
     setMeta('meta[name="twitter:title"]', 'content', title);
     setMeta('meta[name="twitter:description"]', 'content', description);
