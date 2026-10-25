@@ -92,6 +92,8 @@ The first engagement-loop endpoint is `POST /api/v1/discover/:id/feedback`. It a
 
 Authenticated moderators can review that queue through `GET /api/v1/admin/submissions` and `PATCH /api/v1/admin/submissions/:id` with `{ "decision": "approve" }` or `{ "decision": "reject" }`.
 
+Product knowledge MVP is available on discovery detail pages at `GET /api/v1/discover/:id`. It exposes only the curated `product` shape—problem, audience, best-for/not-for, use cases, pricing, privacy notes, alternatives, verification date/sources, and linked article slugs—while keeping arbitrary admin metadata private. Authenticated editors curate it with `PATCH /api/v1/admin/websites/:id/knowledge`.
+
 The discovery-friendly SEO feeds are generated from the canonical database through `GET /api/v1/seo/sitemap.xml` and `GET /api/v1/seo/rss.xml`. They include the public journal and discovery entry points plus published articles only; set `PUBLIC_SITE_URL` on the server when deploying to another hostname.
 
 ### Frontend preview
