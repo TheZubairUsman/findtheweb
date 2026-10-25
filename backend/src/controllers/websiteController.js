@@ -35,12 +35,26 @@ const writeData = (filePath, data) => {
   }
 };
 
+const loadWebsites = async ({ includeInactive = true } = {}) => {
+  const where = includeInactive ? {} : { status: 'active' };
+  const rows = await Website.findAll({
+    where,
+    include: [{ model: Category, as: 'category', attributes: ['id', 'name', 'slug'], required: false }],
+  });
+  const databaseWebsites = rows.map((row) => row.toJSON());
+  const seen = new Set(databaseWebsites.map((website) => String(website.id)));
+  const legacyWebsites = readData(websitesFile).filter((website) =>
+    includeInactive || !website.status || website.status === 'active'
+  );
+  return [...databaseWebsites, ...legacyWebsites.filter((website) => !seen.has(String(website.id)))];
+};
+
 // @desc    Get all websites
 // @route   GET /api/v1/websites
 // @access  Public
 exports.getWebsites = async (req, res, next) => {
   try {
-    const websites = readData(websitesFile);
+    const websites = await loadWebsites({ includeInactive: !req.query.status || req.query.status !== 'active' });
     const categories = readData(categoriesFile);
     
     let filteredWebsites = [...websites];
@@ -139,7 +153,7 @@ exports.getWebsitesByTier = async (req, res, next) => {
     const { tier } = req.params;
     const limit = parseInt(req.query.limit, 10) || 10;
     
-    const websites = readData(websitesFile);
+    const websites = (await loadWebsites({ includeInactive: false }))
     const categories = readData(categoriesFile);
     
     const tierWebsites = websites
@@ -178,7 +192,7 @@ exports.getTopHits = async (req, res, next) => {
     const period = req.query.period || 'week';
     const limit = parseInt(req.query.limit, 10) || 10;
     
-    const websites = readData(websitesFile);
+    const websites = await loadWebsites({ includeInactive: false });
     const categories = readData(categoriesFile);
     
     // Sort by hits based on period
@@ -216,10 +230,10 @@ exports.getTopHits = async (req, res, next) => {
 // @access  Public
 exports.getWebsite = async (req, res, next) => {
   try {
-    const websites = readData(websitesFile);
+    const websites = await loadWebsites({ includeInactive: true });
     const categories = readData(categoriesFile);
     
-    const website = websites.find(w => w.id == req.params.id);
+    const website = websites.find(w => String(w.id) === String(req.params.id));
     
     if (!website) {
       return res.status(404).json({
@@ -262,30 +276,17 @@ exports.createWebsite = async (req, res, next) => {
       });
     }
 
-    const websites = readData(websitesFile);
-    const newWebsite = {
-      id: Date.now().toString(),
+    const newWebsite = await Website.create({
       ...req.body,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      status: req.body.status || 'active',
       totalHits: 0,
       weeklyHits: 0,
-      status: req.body.status || 'active'
-    };
-
-    websites.push(newWebsite);
-    
-    if (!writeData(websitesFile, websites)) {
-      return res.status(500).json({
-        success: false,
-        message: 'Failed to save website'
-      });
-    }
-
-    res.status(201).json({
-      success: true,
-      data: newWebsite,
+      monthlyHits: 0,
+      dailyHits: 0,
     });
+    return res.status(201).json({ success: true, data: newWebsite.toJSON() });
+    /* Legacy JSON fallback retained below for older deployments. */
+    return res.status(500).json({ success: false, message: 'Failed to save website' });
   } catch (error) {
     console.error('Error creating website:', error);
     res.status(500).json({
@@ -309,6 +310,11 @@ exports.updateWebsite = async (req, res, next) => {
       });
     }
 
+    const databaseWebsite = await Website.findByPk(req.params.id);
+    if (databaseWebsite) {
+      await databaseWebsite.update(req.body);
+      return res.status(200).json({ success: true, data: databaseWebsite.toJSON() });
+    }
     const websites = readData(websitesFile);
     const websiteIndex = websites.findIndex(w => w.id == req.params.id);
 
@@ -352,6 +358,11 @@ exports.updateWebsite = async (req, res, next) => {
 // @access  Private/Admin
 exports.deleteWebsite = async (req, res, next) => {
   try {
+    const databaseWebsite = await Website.findByPk(req.params.id);
+    if (databaseWebsite) {
+      await databaseWebsite.destroy();
+      return res.status(200).json({ success: true, data: {} });
+    }
     const websites = readData(websitesFile);
     const websiteIndex = websites.findIndex(w => w.id == req.params.id);
 
@@ -389,6 +400,16 @@ exports.deleteWebsite = async (req, res, next) => {
 // @access  Public
 exports.trackHit = async (req, res, next) => {
   try {
+    const databaseWebsite = await Website.findByPk(req.params.id);
+    if (databaseWebsite) {
+      await databaseWebsite.increment({ totalHits: 1, weeklyHits: 1, monthlyHits: 1, dailyHits: 1 });
+      await databaseWebsite.reload();
+      return res.status(200).json({
+        success: true,
+        message: 'Hit tracked successfully',
+        data: { totalHits: databaseWebsite.totalHits, weeklyHits: databaseWebsite.weeklyHits },
+      });
+    }
     const websites = readData(websitesFile);
     const websiteIndex = websites.findIndex(w => w.id == req.params.id);
 
@@ -595,4 +616,3 @@ exports.searchWebsites = asyncHandler(async (req, res, next) => {
     data: websites,
   });
 });
-
