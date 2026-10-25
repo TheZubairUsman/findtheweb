@@ -11,6 +11,8 @@ const { sendEmail } = require('../services/emailService');
 const logger = require('../utils/logger');
 const { JWT_SECRET, JWT_EXPIRES_IN, NODE_ENV, CLIENT_URL } = process.env;
 const EFFECTIVE_JWT_SECRET = JWT_SECRET || (process.env.NODE_ENV === 'test' ? 'findtheweb-test-only-secret' : undefined);
+const JWT_ISSUER = process.env.JWT_ISSUER || 'findtheweb-admin';
+const JWT_AUDIENCE = process.env.JWT_AUDIENCE || 'findtheweb-admin-ui';
 const bcrypt = require('bcrypt');
 const rateLimit = require('express-rate-limit');
 
@@ -28,7 +30,7 @@ const generateToken = (user) => {
   return jwt.sign(
     { id: user.id, email: user.email, role: user.role },
     EFFECTIVE_JWT_SECRET,
-    { expiresIn: JWT_EXPIRES_IN || '7d' }
+    { expiresIn: JWT_EXPIRES_IN || '7d', issuer: JWT_ISSUER, audience: JWT_AUDIENCE }
   );
 };
 
@@ -210,11 +212,21 @@ router.post(
       // Verify temp token
       let decoded;
       try {
-        decoded = jwt.verify(tempToken, EFFECTIVE_JWT_SECRET);
+        decoded = jwt.verify(tempToken, EFFECTIVE_JWT_SECRET, {
+          issuer: JWT_ISSUER,
+          audience: JWT_AUDIENCE,
+        });
       } catch (err) {
         return res.status(400).json({ 
           success: false, 
           message: 'Invalid or expired verification code' 
+        });
+      }
+
+      if (decoded.purpose !== '2fa') {
+        return res.status(400).json({
+          success: false,
+          message: 'Invalid or expired verification code',
         });
       }
 
@@ -720,8 +732,8 @@ router.post('/admin/login', adminLoginLimiter, async (req, res) => {
       EFFECTIVE_JWT_SECRET,
       { 
         expiresIn: process.env.JWT_EXPIRES_IN || '1d',
-        issuer: 'findtheweb-admin',
-        audience: 'findtheweb-admin-ui'
+        issuer: JWT_ISSUER,
+        audience: JWT_AUDIENCE
       }
     );
 
@@ -782,8 +794,8 @@ router.get('/verify-token', async (req, res) => {
 
     // Verify token
     const decoded = jwt.verify(token, EFFECTIVE_JWT_SECRET, {
-      issuer: 'findtheweb-admin',
-      audience: 'findtheweb-admin-ui'
+      issuer: JWT_ISSUER,
+      audience: JWT_AUDIENCE
     });
 
     // Check if user still exists
@@ -839,11 +851,14 @@ router.get('/check-admin', async (req, res) => {
       });
     }
 
-    const decoded = jwt.verify(token, EFFECTIVE_JWT_SECRET);
+    const decoded = jwt.verify(token, EFFECTIVE_JWT_SECRET, {
+      issuer: JWT_ISSUER,
+      audience: JWT_AUDIENCE,
+    });
     
     // Check if admin exists and is active
     const admin = await Admin.findByPk(decoded.id);
-    if (!admin || !admin.isActive) {
+    if (!admin || !admin.isActive || decoded.role !== 'admin') {
       return res.status(401).json({ 
         success: false, 
         message: 'Invalid admin' 

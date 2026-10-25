@@ -1,4 +1,5 @@
 const request = require('supertest');
+const jwt = require('jsonwebtoken');
 const app = require('../src/index');
 const { Admin } = require('../src/models');
 
@@ -96,6 +97,32 @@ describe('Authentication Routes', () => {
 
       expect(response.status).toBe(401);
       expect(response.body.success).toBe(false);
+    });
+
+    it('rejects an admin token with the wrong issuer', async () => {
+      const forged = jwt.sign(
+        { id: 1, role: 'admin' },
+        process.env.JWT_SECRET,
+        { issuer: 'unexpected-issuer', audience: 'findtheweb-admin-ui' }
+      );
+      const response = await request(app)
+        .post('/api/v1/auth/admin/logout')
+        .set('Authorization', `Bearer ${forged}`);
+
+      expect(response.status).toBe(401);
+    });
+
+    it('rejects a non-admin role even when the token is otherwise valid', async () => {
+      const forged = jwt.sign(
+        { id: 1, role: 'user' },
+        process.env.JWT_SECRET,
+        { issuer: 'findtheweb-admin', audience: 'findtheweb-admin-ui' }
+      );
+      const response = await request(app)
+        .post('/api/v1/auth/admin/logout')
+        .set('Authorization', `Bearer ${forged}`);
+
+      expect(response.status).toBe(403);
     });
   });
 });

@@ -392,12 +392,6 @@ const optionalAuth = async (req, res, next) => {
  */
 const authenticateAdmin = async (req, res, next) => {
   try {
-    console.log('🔵 authenticateAdmin middleware called for:', req.method, req.path);
-    console.log('🔵 Request headers:', {
-      authorization: req.headers.authorization ? 'Bearer [REDACTED]' : 'None',
-      cookie: req.headers.cookie ? 'Present' : 'None'
-    });
-    
     let token;
 
     // Check for token in Authorization header
@@ -406,17 +400,14 @@ const authenticateAdmin = async (req, res, next) => {
       req.headers.authorization.startsWith('Bearer')
     ) {
       token = req.headers.authorization.split(' ')[1];
-      console.log('🔵 Token found in Authorization header');
     }
     // Check for token in cookies
     else if (req.cookies?.token) {
       token = req.cookies.token;
-      console.log('🔵 Token found in cookies');
     }
 
     // Make sure token exists
     if (!token) {
-      console.log('❌ No token provided');
       return res.status(401).json({
         success: false,
         message: 'Access denied. No token provided.'
@@ -425,7 +416,17 @@ const authenticateAdmin = async (req, res, next) => {
 
     try {
       // Verify token
-      const decoded = jwt.verify(token, JWT_SECRET);
+      const decoded = jwt.verify(token, JWT_SECRET, {
+        issuer: JWT_ISSUER,
+        audience: JWT_AUDIENCE,
+      });
+
+      if (decoded.role !== 'admin') {
+        return res.status(403).json({
+          success: false,
+          message: 'Admin privileges required',
+        });
+      }
       
       // Find admin by ID from token
       const admin = await Admin.findByPk(decoded.id, {

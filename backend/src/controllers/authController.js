@@ -159,9 +159,9 @@ const generateRecoveryCodes = async (req, res, next) => {
  */
 const verify2FALogin = async (req, res, next) => {
   try {
-    const { email, token } = req.body;
+    const { email, token: verificationToken } = req.body;
 
-    if (!email || !token) {
+    if (!email || !verificationToken) {
       return next(new ErrorResponse('Please provide email and token', 400));
     }
 
@@ -175,7 +175,7 @@ const verify2FALogin = async (req, res, next) => {
       return next(new ErrorResponse('2FA is not enabled for this user', 400));
     }
 
-    const isTokenValid = user.verify2FAToken(token);
+    const isTokenValid = user.verify2FAToken(verificationToken);
     
     if (!isTokenValid) {
       return next(new ErrorResponse('Invalid token', 401));
@@ -186,11 +186,11 @@ const verify2FALogin = async (req, res, next) => {
     await user.save();
 
     // Generate JWT token
-    const token = user.getSignedJwtToken();
+    const jwtToken = user.getSignedJwtToken();
 
     res.status(200).json({
       success: true,
-      token,
+      token: jwtToken,
       user: {
         id: user.id,
         name: user.name,

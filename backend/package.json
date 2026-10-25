@@ -10,7 +10,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "verify:production": "node scripts/verify-production.js",
-    "recover:frontend": "node scripts/recover-frontend-sources.js"
+    "recover:frontend": "node scripts/recover-frontend-sources.js",
+    "check:syntax": "node scripts/check-source-syntax.js"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

@@ -2,6 +2,19 @@ const { NODE_ENV } = process.env;
 const ErrorResponse = require('../utils/errorResponse');
 const { logger } = require('../utils/logger');
 
+const redact = (value) => {
+  if (!value || typeof value !== 'object') return value;
+  const copy = Array.isArray(value) ? [...value] : { ...value };
+  for (const key of Object.keys(copy)) {
+    if (/password|token|secret|authorization|cookie|api[-_]?key/i.test(key)) {
+      copy[key] = '[REDACTED]';
+    } else if (copy[key] && typeof copy[key] === 'object') {
+      copy[key] = redact(copy[key]);
+    }
+  }
+  return copy;
+};
+
 /**
  * Error handler middleware
  * @param {Error} err - Error object
@@ -16,9 +29,9 @@ const errorHandler = (err, req, res, next) => {
     stack: err.stack,
     path: req.path,
     method: req.method,
-    body: req.body,
-    params: req.params,
-    query: req.query,
+    body: redact(req.body),
+    params: redact(req.params),
+    query: redact(req.query),
     user: req.user ? req.user.id : 'unauthenticated',
   });
 
