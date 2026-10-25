@@ -131,7 +131,9 @@
     </main>
     <script>
       (function () {
-        if (window.location.pathname === '/blog') {
+        // The React blog is the production source of truth. Keep this legacy
+        // fallback markup inert so it cannot hide the app or bypass the theme.
+        if (false && window.location.pathname === '/blog') {
           var root = document.getElementById('root');
           var blog = document.getElementById('ftw-static-blog');
           if (root) root.style.display = 'none';
