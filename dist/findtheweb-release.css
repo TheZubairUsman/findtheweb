@@ -158,7 +158,7 @@ body.ftw-blog-route #root .text-gray-500 { color: #475569 !important; }
 body.ftw-blog-route #root .text-gray-600 { color: #334155 !important; }
 body.ftw-blog-route #root .bg-yellow-500 { background-color: #8a5a00 !important; }
 body.ftw-blog-route #root footer .text-gray-600,
-body.ftw-blog-route #root footer .text-gray-500 { color: #cbd5e1 !important; }
+body.ftw-blog-route #root footer .text-gray-500 { color: #334155 !important; }
 body.ftw-blog-route #root .min-h-screen.bg-gray-50 input:focus,
 body.ftw-blog-route #root .min-h-screen.bg-gray-50 select:focus { border-color: #3159df; box-shadow: 0 0 0 3px rgba(49, 89, 223, .14); }
 @media (max-width: 640px) {
@@ -176,6 +176,8 @@ html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 h3 { color: #f8fafc
 html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 p,
 html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 .text-gray-600,
 html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 .text-gray-500 { color: #b8c4d6 !important; }
+html.dark body.ftw-blog-route #root footer .text-gray-600,
+html.dark body.ftw-blog-route #root footer .text-gray-500 { color: #cbd5e1 !important; }
 html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 .border-gray-200,
 html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 .border-gray-300 { border-color: #334155 !important; }
 html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 input,
