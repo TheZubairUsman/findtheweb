@@ -105,24 +105,6 @@
     });
   }
 
-      function ensureAccessibilityPolish() {
-        var root = document.getElementById('root');
-        if (root) {
-          root.setAttribute('role', 'main');
-          var mainTarget = document.getElementById('main-content');
-          if (!mainTarget) {
-            mainTarget = root.querySelector('main') || root.firstElementChild;
-            if (mainTarget) mainTarget.id = 'main-content';
-          }
-        }
-        document.querySelectorAll('select').forEach(function (select, index) {
-          if (!select.getAttribute('aria-label')) {
-            var first = select.options && select.options[0] ? select.options[0].textContent.trim() : '';
-            select.setAttribute('aria-label', first || ('Filter ' + (index + 1)));
-          }
-        });
-      }
-
   function renderRecoveryPage() {
     if (window.location.pathname === '/products') {
       window.location.replace('/blog');
@@ -265,8 +247,7 @@
     renderDiscoveryPage();
     removeRetiredProductNavigation();
     applyAdminPolish();
-    cleanAdminErrorPanel();
-        ensureAccessibilityPolish();
+        cleanAdminErrorPanel();
   }
 
   var scheduled = false;
