@@ -48,5 +48,27 @@ describe('Discovery MVP routes', () => {
     const saved = await Website.findByPk(response.body.data.id);
     expect(saved.status).toBe('pending');
   });
+
+  it('returns a safe product knowledge shape on detail pages', async () => {
+    const website = await Website.findOne({ where: { name: 'Published Discovery Tool' } });
+    await website.update({ metadata: {
+      internalOnly: 'must not leak',
+      product: {
+        problem: 'Find a useful tool quickly',
+        bestFor: ['Researchers', 'Developers'],
+        pricing: { model: 'freemium', summary: 'Free tier available' },
+        privacy: { dataCollection: 'Minimal account data' },
+        alternatives: [{ name: 'Alternative Tool', reason: 'More focused' }],
+        lastVerifiedAt: '2026-10-25',
+      },
+    } });
+
+    const response = await request(app).get(`/api/v1/discover/${website.id}`);
+    expect(response.status).toBe(200);
+    expect(response.body.data.product.problem).toBe('Find a useful tool quickly');
+    expect(response.body.data.product.bestFor).toEqual(['Researchers', 'Developers']);
+    expect(response.body.data.product.alternatives[0].name).toBe('Alternative Tool');
+    expect(response.body.data.metadata).toBeUndefined();
+  });
 });
 
