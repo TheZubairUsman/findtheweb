@@ -1,6 +1,6 @@
 # FindTheWeb Phase 5 — Security and Reliability
 
-Status: implemented locally and awaiting release deployment.
+Status: deployed to the live backend and verified.
 
 ## Completed
 
@@ -26,9 +26,14 @@ Status: implemented locally and awaiting release deployment.
 - Dependency audit could not complete because the npm registry audit endpoint
   timed out in the current environment; package tree and lockfile remain
   locally available for the release runner.
+- Live backend was restarted from the retained Docker bind mount after a dated
+  rollback backup was created at
+  `/opt/findtheweb-backend/rollback-20261025T115135Z-phase5-security`.
+- Live security probes rejected a wrong JWT issuer with `401` and a validly
+  signed non-admin role with `403`.
+- Live public/API smoke checks passed 10/10 after restart.
 
 ## Release gate
 
-Do not call this phase production-complete until the hardened backend is
-deployed, the live health/API/admin-protection checks pass again, and the
-rollback artifact is retained.
+The phase is production-complete for the deployed backend scope. The npm
+registry audit remains an evidence gap, not a silently assumed pass.
