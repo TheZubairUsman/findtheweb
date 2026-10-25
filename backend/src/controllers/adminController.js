@@ -1,6 +1,6 @@
 const { validationResult } = require('express-validator');
 const models = require('../models');
-const { Admin, BlogPost } = models;
+const { Admin, BlogPost, Website } = models;
 const asyncHandler = require('../middleware/async');
 const ErrorResponse = require('../utils/errorResponse');
 const fs = require('fs');
@@ -32,18 +32,29 @@ exports.getDashboardStats = asyncHandler(async (req, res, next) => {
   try {
     const { period = 'week' } = req.query;
     
-    // For now, use JSON files as primary source since database models may not be properly set up
     const websites = readData(websitesFile);
-    const posts = readData(postsFile);
-    
-    // Try to get blog posts from database if available
+    let websiteCount = websites.length;
+    let recentWebsiteRows = [];
+    try {
+      if (Website && typeof Website.count === 'function') {
+        const databaseWebsiteCount = await Website.count();
+        if (databaseWebsiteCount > 0) {
+          websiteCount = databaseWebsiteCount;
+          recentWebsiteRows = await Website.findAll({ order: [['createdAt', 'DESC']], limit: 5 });
+        }
+      }
+    } catch (error) {
+      console.log('Website model unavailable for dashboard:', error.message);
+    }
     let blogPosts = [];
+    let blogPostsCount = 0;
     try {
       if (BlogPost && typeof BlogPost.findAll === 'function') {
         blogPosts = await BlogPost.findAll({
           order: [['createdAt', 'DESC']],
           limit: 10
         });
+        blogPostsCount = await BlogPost.count();
       }
     } catch (error) {
       console.log('BlogPost model not available:', error.message);
@@ -51,7 +62,7 @@ exports.getDashboardStats = asyncHandler(async (req, res, next) => {
     
     console.log('📊 Dashboard Data:', {
       websitesCount: websites.length,
-      postsCount: posts.length,
+      postsCount: blogPostsCount,
       blogPostsCount: blogPosts.length,
       source: 'json_files'
     });
@@ -78,7 +89,7 @@ exports.getDashboardStats = asyncHandler(async (req, res, next) => {
     }
 
     // Filter recent items by period
-    const recentWebsites = websites
+    const recentWebsites = recentWebsiteRows.length ? recentWebsiteRows.map(site => site.toJSON()) : websites
       .filter(site => {
         if (!site.createdAt) return false;
         const siteDate = new Date(site.createdAt);
@@ -87,13 +98,8 @@ exports.getDashboardStats = asyncHandler(async (req, res, next) => {
       .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
       .slice(0, 5);
 
-    const recentPosts = posts
-      .filter(post => {
-        if (!post.createdAt) return false;
-        const postDate = new Date(post.createdAt);
-        return postDate >= startDate;
-      })
-      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+    const recentPosts = blogPosts
+      .filter(post => !post.createdAt || new Date(post.createdAt) >= startDate)
       .slice(0, 5);
 
     // Count websites by tier
@@ -105,8 +111,8 @@ exports.getDashboardStats = asyncHandler(async (req, res, next) => {
 
     // Response data structure
     const responseData = {
-      totalWebsites: websites.length,
-      totalPosts: posts.length + blogPosts.length,
+      totalWebsites: websiteCount,
+      totalPosts: blogPostsCount,
       websitesByTier,
       recentWebsites: recentWebsites.map(site => ({
         id: site.id,
@@ -119,20 +125,14 @@ exports.getDashboardStats = asyncHandler(async (req, res, next) => {
         ...recentPosts.map(post => ({
           id: post.id,
           title: post.title,
-          status: post.status || 'published',
-          createdAt: post.createdAt
-        })),
-        ...blogPosts.slice(0, 5 - recentPosts.length).map(post => ({
-          id: post.id,
-          title: post.title,
           status: post.status,
           createdAt: post.createdAt
         }))
       ].slice(0, 5),
       stats: {
         current: {
-          totalWebsites: websites.length,
-          totalPosts: posts.length + blogPosts.length,
+          totalWebsites: websiteCount,
+          totalPosts: blogPostsCount,
           websitesByTier
         },
         previous: {

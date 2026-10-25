@@ -11,7 +11,7 @@ const {
 } = require('../controllers/adminController');
 
 // Import models from index.js to ensure proper initialization
-const { Admin, Settings, Website, Post } = require('../models');
+const { Admin, Settings, Website, Post, BlogPost, Category } = require('../models');
 
 const rateLimit = require('express-rate-limit');
 const { body } = require('express-validator');
@@ -56,6 +56,7 @@ router.use(adminLimit);
 const dataDir = path.join(__dirname, '../../data');
 const websitesFile = path.join(dataDir, 'websites.json');
 const postsFile = path.join(dataDir, 'posts.json');
+const analyticsFile = path.join(dataDir, 'analytics-events.json');
 
 // Helper functions for JSON file operations
 const readData = (filePath) => {
@@ -188,7 +189,13 @@ router.route('/blog/posts/:slug').get(async (req, res) => {
 router.route('/categories').get(async (req, res) => {
   try {
     const categoriesFile = path.join(dataDir, 'categories.json');
-    const categories = readData(categoriesFile);
+    const legacyCategories = readData(categoriesFile);
+    const dbCategories = await Category.findAll({ order: [['id', 'ASC']] });
+    const seen = new Set(dbCategories.map((category) => String(category.id)));
+    const categories = [
+      ...dbCategories.map((category) => category.toJSON()),
+      ...legacyCategories.filter((category) => !seen.has(String(category.id))),
+    ];
     
     res.json({
       success: true,
@@ -289,10 +296,15 @@ router.route('/stats').get(async (req, res) => {
     }
 
     const websites = readData(websitesFile);
-    const posts = readData(postsFile);
+    const analyticsEvents = readData(analyticsFile);
+    const analytics = analyticsEvents.reduce((summary, item) => {
+      summary.total += 1;
+      summary.byEvent[item.event] = (summary.byEvent[item.event] || 0) + 1;
+      return summary;
+    }, { total: 0, byEvent: {} });
 
     const totalWebsites = websites.length;
-    const totalPosts = posts.length;
+    const totalPosts = await BlogPost.count();
 
     const websitesByTier = {};
     websites.forEach(site => {
@@ -303,7 +315,10 @@ router.route('/stats').get(async (req, res) => {
     });
 
     const recentWebsites = websites.slice(0, 5);
-    const recentPosts = posts.slice(0, 5);
+    const recentPosts = await BlogPost.findAll({
+      limit: 5,
+      order: [['createdAt', 'DESC']],
+    });
 
     res.json({
       success: true,
@@ -312,7 +327,8 @@ router.route('/stats').get(async (req, res) => {
         totalPosts,
         websitesByTier,
         recentWebsites,
-        recentPosts
+        recentPosts: recentPosts.map((post) => post.toJSON()),
+        analytics
       }
     });
   } catch (error) {
@@ -329,8 +345,11 @@ router.route('/websites')
     try {
       const { page = 1, limit = 10, search, tier, status } = req.query;
       
-      // Read websites from JSON file
-      const websites = readData(websitesFile);
+      const legacyWebsites = readData(websitesFile);
+      const dbWebsites = await Website.findAll({ include: [{ model: Category, as: 'category', required: false }] });
+      const dbValues = dbWebsites.map((website) => website.toJSON());
+      const seen = new Set(dbValues.map((website) => String(website.id)));
+      const websites = [...dbValues, ...legacyWebsites.filter((website) => !seen.has(String(website.id)))];
       
       let filteredWebsites = websites;
       
@@ -380,20 +399,17 @@ router.route('/websites')
   })
   .post(async (req, res) => {
     try {
-      const websites = readData(websitesFile);
-      const newWebsite = {
-        id: Date.now().toString(),
+      if (!req.body?.name || !req.body?.url || !req.body?.description) {
+        return res.status(400).json({ success: false, message: 'Name, URL, and description are required' });
+      }
+      const newWebsite = await Website.create({
         ...req.body,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
+        status: req.body.status || 'active',
         totalHits: 0,
         weeklyHits: 0,
         monthlyHits: 0,
-        dailyHits: 0
-      };
-      
-      websites.push(newWebsite);
-      writeData(websitesFile, websites);
+        dailyHits: 0,
+      });
       
       res.status(201).json({
         success: true,
@@ -410,6 +426,11 @@ router.route('/websites/:id')
   .put(async (req, res) => {
     try {
       const { id } = req.params;
+      const databaseWebsite = await Website.findByPk(id);
+      if (databaseWebsite) {
+        await databaseWebsite.update(req.body);
+        return res.json({ success: true, data: databaseWebsite.toJSON(), message: 'Website updated successfully' });
+      }
       const websites = readData(websitesFile);
       const index = websites.findIndex(site => site.id === id);
       
@@ -437,6 +458,11 @@ router.route('/websites/:id')
   .delete(async (req, res) => {
     try {
       const { id } = req.params;
+      const databaseWebsite = await Website.findByPk(id);
+      if (databaseWebsite) {
+        await databaseWebsite.destroy();
+        return res.json({ success: true, message: 'Website deleted successfully' });
+      }
       const websites = readData(websitesFile);
       const filtered = websites.filter(site => site.id !== id);
       
@@ -455,203 +481,198 @@ router.route('/websites/:id')
     }
   });
 
+// Community discovery moderation. Submissions remain private until reviewed.
+router.get('/submissions', async (req, res) => {
+  try {
+    const page = Math.max(1, Number.parseInt(req.query.page, 10) || 1);
+    const limit = Math.min(50, Math.max(1, Number.parseInt(req.query.limit, 10) || 20));
+    const status = ['pending', 'active', 'inactive'].includes(req.query.status) ? req.query.status : 'pending';
+    const result = await Website.findAndCountAll({
+      where: { status },
+      limit,
+      offset: (page - 1) * limit,
+      order: [['createdAt', 'ASC']],
+    });
+    res.json({
+      success: true,
+      data: result.rows,
+      pagination: { page, limit, total: result.count, pages: Math.max(1, Math.ceil(result.count / limit)) },
+    });
+  } catch (error) {
+    console.error('Error fetching discovery submissions:', error);
+    res.status(500).json({ success: false, message: 'Failed to fetch submissions' });
+  }
+});
+
+router.patch('/submissions/:id', async (req, res) => {
+  try {
+    const decision = String(req.body?.decision || '').toLowerCase();
+    if (!['approve', 'reject'].includes(decision)) {
+      return res.status(400).json({ success: false, message: 'Decision must be approve or reject' });
+    }
+    const website = await Website.findByPk(req.params.id);
+    if (!website) return res.status(404).json({ success: false, message: 'Submission not found' });
+    if (website.status !== 'pending') {
+      return res.status(409).json({ success: false, message: 'Submission has already been reviewed' });
+    }
+    const metadata = website.metadata && typeof website.metadata === 'object' ? website.metadata : {};
+    await website.update({
+      status: decision === 'approve' ? 'active' : 'inactive',
+      metadata: {
+        ...metadata,
+        moderationDecision: decision,
+        reviewedAt: new Date().toISOString(),
+        reviewedBy: req.user.id,
+      },
+    });
+    res.json({
+      success: true,
+      message: decision === 'approve' ? 'Submission approved' : 'Submission rejected',
+      data: { id: website.id, status: website.status, decision },
+    });
+  } catch (error) {
+    console.error('Error reviewing discovery submission:', error);
+    res.status(500).json({ success: false, message: 'Failed to review submission' });
+  }
+});
+
+// Curate the structured product knowledge shown on public discovery pages.
+// This stays behind admin auth and writes only to the Website metadata JSON
+// column, keeping the MVP migration-free and easy to roll back.
+router.patch('/websites/:id/knowledge', async (req, res) => {
+  try {
+    const website = await Website.findByPk(req.params.id);
+    if (!website) return res.status(404).json({ success: false, message: 'Website not found' });
+
+    const input = req.body?.product && typeof req.body.product === 'object' ? req.body.product : req.body;
+    const list = (value, maxItems, maxLength) => Array.isArray(value)
+      ? value.map((item) => typeof item === 'string' ? item.trim().slice(0, maxLength) : item)
+        .filter((item) => typeof item === 'string' && item.length > 0).slice(0, maxItems)
+      : undefined;
+    const text = (value, max) => typeof value === 'string' ? value.trim().slice(0, max) : undefined;
+    const alternatives = Array.isArray(input.alternatives)
+      ? input.alternatives.slice(0, 6).map((item) => ({
+        name: text(item?.name, 120),
+        reason: text(item?.reason, 240),
+        url: text(item?.url, 500),
+      })).filter((item) => item.name)
+      : undefined;
+    const product = {
+      problem: text(input.problem, 500),
+      audience: text(input.audience, 240),
+      bestFor: list(input.bestFor, 8, 160),
+      notFor: list(input.notFor, 8, 160),
+      useCases: list(input.useCases, 10, 200),
+      pricing: {
+        model: text(input.pricing?.model, 80),
+        summary: text(input.pricing?.summary, 240),
+        startingAt: text(input.pricing?.startingAt, 80),
+      },
+      privacy: {
+        dataCollection: text(input.privacy?.dataCollection, 240),
+        securityNotes: text(input.privacy?.securityNotes, 500),
+      },
+      alternatives,
+      lastVerifiedAt: text(input.lastVerifiedAt, 40),
+      verificationSources: list(input.verificationSources, 5, 500),
+      articleSlugs: list(input.articleSlugs, 8, 160),
+    };
+    const metadata = website.metadata && typeof website.metadata === 'object' ? website.metadata : {};
+    await website.update({ metadata: { ...metadata, product } });
+    res.json({ success: true, data: { id: website.id, product } });
+  } catch (error) {
+    console.error('Error updating product knowledge:', error);
+    res.status(400).json({ success: false, message: 'Unable to update product knowledge' });
+  }
+});
+
 router.route('/posts')
   .get(async (req, res) => {
     try {
-      console.log('🔵 GET /admin/posts - Query params:', req.query);
-      console.log('🔵 User:', req.user?.email);
-      
       const { page = 1, limit = 20, search, status } = req.query;
-      const posts = readData(postsFile);
-      
-      console.log('🔵 Total posts in file:', posts.length);
-      
-      let filteredPosts = posts;
-      
-      // Apply search filter
+      const where = {};
+      if (status && status !== 'all') where.status = status;
       if (search) {
-        const searchLower = search.toLowerCase();
-        filteredPosts = filteredPosts.filter(post => 
-          post.title?.toLowerCase().includes(searchLower) ||
-          post.content?.toLowerCase().includes(searchLower)
-        );
-        console.log('🔵 After search filter:', filteredPosts.length);
+        where[Op.or] = [
+          { title: { [Op.like]: `%${search}%` } },
+          { content: { [Op.like]: `%${search}%` } },
+        ];
       }
-      
-      // Apply status filter
-      if (status && status !== 'all') {
-        filteredPosts = filteredPosts.filter(post => post.status === status);
-        console.log('🔵 After status filter:', filteredPosts.length);
-      }
-      
-      // Sort by creation date (newest first)
-      filteredPosts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      
-      // Pagination
-      const startIndex = (page - 1) * limit;
-      const endIndex = startIndex + parseInt(limit);
-      const paginatedPosts = filteredPosts.slice(startIndex, endIndex);
-      
-      const response = {
+      const result = await BlogPost.findAndCountAll({
+        where,
+        limit: parseInt(limit, 10),
+        offset: (parseInt(page, 10) - 1) * parseInt(limit, 10),
+        order: [['createdAt', 'DESC']],
+      });
+      const data = result.rows.map((post) => post.toJSON());
+      res.json({
         success: true,
-        data: paginatedPosts,
-        total: filteredPosts.length,
-        page: parseInt(page),
-        totalPages: Math.ceil(filteredPosts.length / limit)
-      };
-      
-      console.log('🔵 Sending posts response:', { 
-        postsCount: paginatedPosts.length, 
-        total: filteredPosts.length 
+        data,
+        total: result.count,
+        page: parseInt(page, 10),
+        totalPages: Math.ceil(result.count / parseInt(limit, 10)),
+        pagination: { page: parseInt(page, 10), limit: parseInt(limit, 10), total: result.count, pages: Math.ceil(result.count / parseInt(limit, 10)) },
       });
-      
-      res.json(response);
     } catch (error) {
-      console.error('❌ Error fetching posts:', error);
-      res.status(500).json({
-        success: false,
-        message: 'Failed to fetch blog posts'
-      });
+      console.error('Error fetching canonical blog posts:', error);
+      res.status(500).json({ success: false, message: 'Failed to fetch blog posts' });
     }
   })
   .post(async (req, res) => {
     try {
-      console.log('🔵 POST /admin/posts - Request body:', req.body);
-      console.log('🔵 User:', req.user?.email);
-      
-      const posts = readData(postsFile);
-      console.log('🔵 Current posts count:', posts.length);
-      
-      // Validate required fields
-      if (!req.body.title) {
-        console.log('❌ Validation failed - missing title');
-        return res.status(400).json({
-          success: false,
-          message: 'Title is required'
-        });
-      }
-      
-      // Generate slug from title if not provided
-      let slug = req.body.slug;
-      if (!slug && req.body.title) {
-        slug = req.body.title
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, '-')
-          .replace(/(^-|-$)/g, '');
-      }
-      
-      // Ensure slug is unique
-      let uniqueSlug = slug;
-      let counter = 1;
-      while (posts.some(post => post.slug === uniqueSlug)) {
-        uniqueSlug = `${slug}-${counter}`;
-        counter++;
-      }
-      
-      const newPost = {
-        id: Date.now().toString(),
-        title: req.body.title || '',
-        slug: uniqueSlug,
-        excerpt: req.body.excerpt || '',
-        content: req.body.content || '',
-        featuredImage: req.body.featuredImage || '',
-        status: req.body.status || 'draft',
+      const { title, content } = req.body;
+      if (!title || !content) return res.status(400).json({ success: false, message: 'Title and content are required' });
+      const post = await BlogPost.create({
+        ...req.body,
+        title,
+        content,
         categories: Array.isArray(req.body.categories) ? req.body.categories : [],
         tags: Array.isArray(req.body.tags) ? req.body.tags : [],
-        seoTitle: req.body.seoTitle || '',
-        seoDescription: req.body.seoDescription || '',
-        seoKeywords: req.body.seoKeywords || '',
-        featured: Boolean(req.body.featured),
-        allowComments: req.body.allowComments !== false,
-        viewCount: 0,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-        publishedAt: req.body.status === 'published' ? new Date().toISOString() : null
-      };
-      
-      console.log('🔵 Creating new post:', newPost);
-      
-      posts.unshift(newPost);
-      writeData(postsFile, posts);
-      
-      console.log('✅ Post created successfully, new count:', posts.length);
-      
-      const response = {
-        success: true,
-        data: newPost,
-        message: 'Post created successfully'
-      };
-      
-      console.log('🔵 Sending response:', response);
-      res.status(201).json(response);
-    } catch (error) {
-      console.error('❌ Error creating post:', error);
-      res.status(500).json({
-        success: false,
-        message: 'Failed to create post',
-        error: error.message
+        status: req.body.status || 'draft',
+        authorId: req.user.id,
       });
+      res.status(201).json({ success: true, data: post.toJSON(), message: 'Post created successfully' });
+    } catch (error) {
+      console.error('Error creating canonical blog post:', error);
+      const message = error.name === 'SequelizeUniqueConstraintError' ? 'Slug already exists' : 'Failed to create blog post';
+      res.status(400).json({ success: false, message });
     }
   });
 
 router.route('/posts/:id')
   .put(async (req, res) => {
     try {
-      const { id } = req.params;
-      const posts = readData(postsFile);
-      const index = posts.findIndex(post => post.id === id);
-      
-      if (index === -1) {
-        return res.status(404).json({ success: false, message: 'Post not found' });
-      }
-      
-      posts[index] = { 
-        ...posts[index], 
-        ...req.body, 
-        updatedAt: new Date().toISOString() 
-      };
-      writeData(postsFile, posts);
-      
-      res.json({
-        success: true,
-        data: posts[index],
-        message: 'Post updated successfully'
-      });
+      const post = await BlogPost.findByPk(req.params.id);
+      if (!post) return res.status(404).json({ success: false, message: 'Post not found' });
+      await post.update(req.body);
+      res.json({ success: true, data: post.toJSON(), message: 'Post updated successfully' });
     } catch (error) {
-      console.error('Error updating post:', error);
-      res.status(500).json({ success: false, message: 'Failed to update post' });
+      console.error('Error updating canonical blog post:', error);
+      const message = error.name === 'SequelizeUniqueConstraintError' ? 'Slug already exists' : 'Failed to update blog post';
+      res.status(400).json({ success: false, message });
     }
   })
   .delete(async (req, res) => {
     try {
-      const { id } = req.params;
-      const posts = readData(postsFile);
-      const filtered = posts.filter(post => post.id !== id);
-      
-      if (filtered.length === posts.length) {
-        return res.status(404).json({ success: false, message: 'Post not found' });
-      }
-      
-      writeData(postsFile, filtered);
-      res.json({
-        success: true,
-        message: 'Post deleted successfully'
-      });
+      const post = await BlogPost.findByPk(req.params.id);
+      if (!post) return res.status(404).json({ success: false, message: 'Post not found' });
+      await post.destroy();
+      res.json({ success: true, message: 'Post deleted successfully' });
     } catch (error) {
-      console.error('Error deleting post:', error);
-      res.status(500).json({ success: false, message: 'Failed to delete post' });
+      console.error('Error deleting canonical blog post:', error);
+      res.status(500).json({ success: false, message: 'Failed to delete blog post' });
     }
   });
 
 // Data management routes
-router.route('/upload').post(bulkOperationLimit, upload.single('file'), async (req, res) => {
+const handleWebsiteUpload = async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ success: false, message: 'No file uploaded' });
     }
     
     const { type } = req.body;
-    if (type !== 'websites') {
+    if (type && type !== 'websites') {
       return res.status(400).json({ success: false, message: 'Invalid upload type' });
     }
     
@@ -669,6 +690,7 @@ router.route('/upload').post(bulkOperationLimit, upload.single('file'), async (r
     }
     
     const websites = readData(websitesFile);
+    const databaseWebsites = [];
     let addedCount = 0;
     
     for (const websiteData of uploadData) {
@@ -690,29 +712,34 @@ router.route('/upload').post(bulkOperationLimit, upload.single('file'), async (r
         description: websiteData.description || '',
         tier: websiteData.tier || 'standard',
         status: websiteData.status || 'active',
-        categoryId: websiteData.categoryId || 1,
+        categoryId: websiteData.categoryId || null,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
         totalHits: 0,
         weeklyHits: 0
       };
       
-      websites.push(newWebsite);
+      databaseWebsites.push(newWebsite);
       addedCount++;
     }
     
-    writeData(websitesFile, websites);
+    if (databaseWebsites.length) await Website.bulkCreate(databaseWebsites);
     
     res.json({
       success: true,
       message: `Successfully uploaded ${addedCount} websites`,
-      count: addedCount
+      count: addedCount,
+      data: { created: addedCount }
     });
   } catch (error) {
     console.error('Error uploading websites:', error);
     res.status(500).json({ success: false, message: 'Failed to upload websites' });
   }
-});
+};
+
+router.route('/upload').post(bulkOperationLimit, upload.single('file'), handleWebsiteUpload);
+// Keep the legacy admin-panel endpoint working while the UI migrates to /upload.
+router.route('/websites/bulk-upload').post(bulkOperationLimit, upload.single('file'), handleWebsiteUpload);
 
 router.route('/export').get(exportData);
 

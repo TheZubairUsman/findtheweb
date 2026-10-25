@@ -1,0 +1,12 @@
+{
+  "release": "phase4-2026-10-25",
+  "generatedAt": "2026-10-25",
+  "files": {
+    "index.html": { "sha256": "4d5f701e561d1b00b0e86f2b170c83921093e3d0875bdbb09d9af2536f9bc9f4", "bytes": 10883 },
+    "findtheweb-release.js": { "sha256": "1b05ac8a77bb20d0f86ffbfaf01f0b89cb309962a69ad3dbb1822ac76fa40bc3", "bytes": 16581 },
+    "findtheweb-release.css": { "sha256": "f78e400ec4e55b81ff934402205d34228c8f9482c4dbad0da753aa20ae567e5a", "bytes": 7092 },
+    "robots.txt": { "sha256": "15091a1a8d9bf87faa53e100fa795e809638b2616c3020098e7ca300610ce02c", "bytes": 592 },
+    "sitemap.xml": { "sha256": "55a7c8c477a659097d4fa52fbcda35377130e3765002ab6f82b1b138f88f5313", "bytes": 4182 }
+  },
+  "rollback": "Restore the Hostinger backup findtheweb-release.backup-20261025.js, then clear cache and re-run the public smoke checks."
+}

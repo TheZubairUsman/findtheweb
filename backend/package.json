@@ -8,7 +8,9 @@
     "dev": "nodemon src/index.js",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "verify:production": "node scripts/verify-production.js",
+    "recover:frontend": "node scripts/recover-frontend-sources.js"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",

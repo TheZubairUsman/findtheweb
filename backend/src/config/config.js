@@ -16,7 +16,7 @@ const baseConfig = {
   rateLimitMax: process.env.RATE_LIMIT_MAX || 100,
   
   // Email
-  emailFrom: process.env.EMAIL_FROM || 'noreply@findtheweb.com',
+  emailFrom: process.env.EMAIL_FROM || 'noreply@findtheweb.zus3cu.tech',
   sendgridApiKey: process.env.SENDGRID_API_KEY,
   
   // File uploads

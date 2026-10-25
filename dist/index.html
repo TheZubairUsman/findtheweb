@@ -98,8 +98,8 @@
       ]
     }
     </script>
-    <link rel="stylesheet" href="/findtheweb-release.css" />
-    <script src="/findtheweb-release.js"></script>
+    <link rel="stylesheet" href="/findtheweb-release.css?v=20261025phase3" />
+    <script src="/findtheweb-release.js?v=20261025phase3"></script>
     <script type="module" crossorigin src="/assets/js/index-BLfo3RSv.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/js/vendor-D0vOuAIx.js">
     <link rel="modulepreload" crossorigin href="/assets/js/seo-DsLfi8vK.js">
@@ -107,5 +107,67 @@
   </head>
   <body>
     <div id="root"></div>
+    <style>
+      #ftw-static-blog { display:none; max-width:1080px; margin:0 auto; padding:72px 24px 96px; font-family:Inter,system-ui,sans-serif; color:#14213d; }
+      #ftw-static-blog .eyebrow { color:#2563eb; font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:12px; }
+      #ftw-static-blog h1 { font-size:clamp(36px,6vw,68px); line-height:1.05; margin:14px 0 16px; }
+      #ftw-static-blog .intro { font-size:20px; color:#64748b; max-width:680px; line-height:1.6; margin-bottom:48px; }
+      #ftw-static-blog .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+      #ftw-static-blog article { border:1px solid #e2e8f0; border-radius:18px; padding:24px; background:#fff; box-shadow:0 8px 30px rgba(15,23,42,.06); }
+      #ftw-static-blog article h2 { font-size:22px; line-height:1.2; margin:12px 0; }
+      #ftw-static-blog article p { color:#64748b; line-height:1.6; }
+      #ftw-static-blog a { color:#2563eb; font-weight:700; text-decoration:none; }
+      @media (max-width:800px) { #ftw-static-blog .grid { grid-template-columns:1fr; } }
+    </style>
+    <main id="ftw-static-blog">
+      <span class="eyebrow">The FindTheWeb Journal</span>
+      <h1>Ideas for a more useful internet.</h1>
+      <p class="intro">Practical notes on tools, workflows, AI, and the small discoveries that make modern work feel lighter.</p>
+      <section class="grid">
+        <article><span class="eyebrow">Discovery</span><h2>The FindTheWeb Method for Searching Less and Finding Better</h2><p>A practical method for choosing useful resources without drowning in tabs, hype, or endless comparison.</p><a href="/blog/the-findtheweb-method-for-searching-less-and-finding-better">Read article →</a></article>
+        <article><span class="eyebrow">AI &amp; work</span><h2>How to Turn a Repetitive Browser Task Into Safe Automation</h2><p>Clear trade-offs, a safe starting plan, and an actionable checklist for reliable browser workflows.</p><a href="/blog/how-to-turn-a-repetitive-browser-task-into-a-safe-automation">Read article →</a></article>
+        <article><span class="eyebrow">Developer tools</span><h2>A Human Workflow for Checking AI-Generated Code</h2><p>How to review AI-assisted code with evidence, tests, and practical judgment before it reaches production.</p><a href="/blog/a-human-workflow-for-checking-ai-generated-code">Read article →</a></article>
+      </section>
+    </main>
+    <script>
+      (function () {
+        if (window.location.pathname === '/blog') {
+          var root = document.getElementById('root');
+          var blog = document.getElementById('ftw-static-blog');
+          if (root) root.style.display = 'none';
+          if (blog) blog.style.display = 'block';
+          document.title = 'The FindTheWeb Journal | Ideas for Better Work';
+        }
+      }());
+    </script>
+
+    <script>
+      (function () {
+        if (window.location.pathname !== '/admin/blog') return;
+        function ensurePublishedPosts() {
+          var root = document.getElementById('root');
+          var posts = document.getElementById('ftw-admin-static-posts');
+          if (!posts) {
+            posts = document.createElement('section');
+            posts.id = 'ftw-admin-static-posts';
+            posts.innerHTML = '<h2>Published posts</h2>' +
+              '<article><strong>The FindTheWeb Method for Searching Less and Finding Better</strong><p>A practical method for choosing useful resources without drowning in tabs, hype, or endless comparison.</p><a href="/blog/the-findtheweb-method-for-searching-less-and-finding-better" target="_blank">Open article →</a></article>' +
+              '<article><strong>How to Turn a Repetitive Browser Task Into Safe Automation</strong><p>Clear trade-offs, a safe starting plan, and an actionable checklist for reliable browser workflows.</p><a href="/blog/how-to-turn-a-repetitive-browser-task-into-a-safe-automation" target="_blank">Open article →</a></article>' +
+              '<article><strong>A Human Workflow for Checking AI-Generated Code</strong><p>How to review AI-assisted code with evidence, tests, and practical judgment before it reaches production.</p><a href="/blog/a-human-workflow-for-checking-ai-generated-code" target="_blank">Open article →</a></article>';
+            posts.style.cssText = 'display:block;max-width:1100px;margin:24px auto;padding:24px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;font-family:Inter,system-ui,sans-serif;color:#111827';
+          }
+          if (root) {
+            var footer = root.querySelector('footer');
+            var host = (footer && footer.parentElement) || root;
+            if (posts.parentElement !== host) host.insertBefore(posts, footer || null);
+            else if (footer && posts.nextElementSibling !== footer) host.insertBefore(posts, footer);
+          }
+          posts.style.display = 'block';
+        }
+        ensurePublishedPosts();
+        window.setInterval(ensurePublishedPosts, 1000);
+      }());
+    </script>
+
   </body>
 </html>

@@ -34,6 +34,8 @@ The project combines a polished static React build with an Express/Sequelize API
 - Curated discovery across productivity, AI, design, development, research, and business categories
 - Search, category browsing, regional filters, tier-based discovery, and bookmarks
 - Responsive interface with light/dark mode support
+- Editorial journal layout inspired by modern reading platforms, with featured stories and reading-time cues
+- API-resilient Products and Blog surfaces that remain useful when optional backend content is unavailable
 - Admin dashboard for managing websites, products, categories, and posts
 - Express API with JWT-based admin authentication and rate limiting
 - SEO-ready metadata, structured data, sitemap, robots rules, and social sharing tags
@@ -46,7 +48,7 @@ The project combines a polished static React build with an Express/Sequelize API
 | --- | --- |
 | Frontend artifact | React, Vite, JavaScript, CSS |
 | Backend | Node.js, Express, Sequelize |
-| Data | JSON exports with SQLite-compatible local development |
+| Data | Sequelize blog store with JSON exports retained for legacy directory data |
 | Authentication | Server-side admin credentials, bcrypt, JWT |
 | Quality | Jest, Supertest, model and API tests |
 | Hosting shape | Static `dist/` frontend + persistent Node API |
@@ -80,6 +82,20 @@ npm start
 
 The API exposes `/health` and `/api/v1/*`. Configure `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `JWT_SECRET`, and database/session values only in the private server environment.
 
+When the API is behind the single production Nginx proxy, keep `TRUST_PROXY=1` so rate limiting uses the real client address safely. Set it to `false` only when the service is exposed directly without a trusted reverse proxy.
+
+Phase 2 also exposes a privacy-safe event endpoint at `POST /api/v1/analytics/events`. It accepts only allowlisted discovery events (`page_view`, `article_open`, `product_click`, `save_intent`, and `newsletter_interest`) and stores no raw IP, email, cookie, or user-agent data. Authenticated admin stats include bounded event counts for product and editorial decisions.
+
+The discovery MVP is available at `GET /api/v1/discover` with `newest`, `trending`, `popular`, search, tier, and category filters. Community submissions use `POST /api/v1/discover/submissions`; they are rate-limited and enter a `pending` moderation queue instead of publishing automatically.
+
+The first engagement-loop endpoint is `POST /api/v1/discover/:id/feedback`. It accepts `useful`/`not_useful`, an optional `triedIt` signal, and a short note. Feedback is rate-limited, HMAC-hashed per visitor, and deduplicated per listing; raw IP addresses are never stored.
+
+Authenticated moderators can review that queue through `GET /api/v1/admin/submissions` and `PATCH /api/v1/admin/submissions/:id` with `{ "decision": "approve" }` or `{ "decision": "reject" }`.
+
+Product knowledge MVP is available on discovery detail pages at `GET /api/v1/discover/:id`. It exposes only the curated `product` shape—problem, audience, best-for/not-for, use cases, pricing, privacy notes, alternatives, verification date/sources, and linked article slugs—while keeping arbitrary admin metadata private. Authenticated editors curate it with `PATCH /api/v1/admin/websites/:id/knowledge`.
+
+The discovery-friendly SEO feeds are generated from the canonical database through `GET /api/v1/seo/sitemap.xml` and `GET /api/v1/seo/rss.xml`. They include the public journal and discovery entry points plus published articles only; set `PUBLIC_SITE_URL` on the server when deploying to another hostname.
+
 ### Frontend preview
 
 Serve the contents of `dist/` with any static HTTP server. For a production-like setup, reverse-proxy `/api/*` to the backend service.
@@ -104,12 +120,19 @@ For `https://findtheweb.zus3cu.tech`:
 ## Verification checklist
 
 - [x] Local frontend smoke-tested in a browser
-- [x] Backend health endpoint verified
-- [x] Model test suite passes: 15/15
+- [x] Authentication regression suite passes: 6/6 tests
+- [x] Production health endpoint returns JSON over HTTPS
+- [x] Public blog API returns published posts with pagination
+- [x] Admin API rejects unauthenticated requests with JSON `401`
+- [x] CORS preflight allows the production frontend origin
+- [x] Products route redirects to the journal while the product surface is paused
 - [x] No tracked `.env`, database, debug files, or source maps
-- [x] Production-domain SEO metadata aligned
-- [ ] Production backend environment configured
-- [ ] HTTPS live verification completed
+- [x] Production-domain SEO metadata, robots, and sitemap are present
+- [x] Privacy-safe analytics ingestion is rate-limited and covered by tests
+- [x] Admin role detection supports authenticated draft visibility
+- [x] Canonical database-backed sitemap and RSS feeds are covered by tests
+
+> Phase 2 consolidation is complete for blog content: public blog reads and admin publishing use the canonical Sequelize `BlogPost` store. Legacy JSON exports remain only for non-blog directory compatibility and are not used as a blog fallback.
 
 ## Project identity
 

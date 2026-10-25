@@ -20,4 +20,5 @@ jobs:
           cache: npm
           cache-dependency-path: backend/package-lock.json
       - run: npm ci
+      - run: node --check ../dist/findtheweb-release.js
       - run: npm test -- --runInBand

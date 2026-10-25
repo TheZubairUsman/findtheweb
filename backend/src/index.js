@@ -11,9 +11,16 @@ const rateLimit = require('express-rate-limit');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Production is reached through one Nginx reverse proxy. Trusting exactly one
+// proxy makes rate-limit keys and request IP logging use the forwarded client
+// address without trusting arbitrary client-supplied proxy chains.
+app.set('trust proxy', process.env.TRUST_PROXY === 'false' ? false : 1);
+
 // Import routers
 const adminRouter = require('./routes/admin');
 const productRouter = require('./routes/products');
+const discoveryRouter = require('./routes/discovery');
+const seoRouter = require('./routes/seo');
 const websiteRouter = require('./routes/websites');
 
 // Security middleware
@@ -53,6 +60,7 @@ const authLimit = rateLimit({
   },
   standardHeaders: true,
   legacyHeaders: false,
+  skip: () => process.env.NODE_ENV === 'test',
 });
 
 app.use(generalLimit);
@@ -108,6 +116,8 @@ app.use((req, res, next) => {
 // Mount routes
 app.use('/api/v1/admin', adminRouter);
 app.use('/api/v1/products', productRouter);
+app.use('/api/v1/discover', discoveryRouter);
+app.use('/api/v1/seo', seoRouter);
 app.use('/api/v1/websites', websiteRouter);
 
 // Import routes
@@ -172,6 +182,7 @@ const dataDir = path.join(__dirname, '../data');
 const websitesFile = path.join(dataDir, 'websites.json');
 const postsFile = path.join(dataDir, 'posts.json');
 const categoriesFile = path.join(dataDir, 'categories.json');
+const analyticsFile = path.join(dataDir, 'analytics-events.json');
 
 // Ensure data directory exists
 if (!fs.existsSync(dataDir)) {
@@ -191,6 +202,10 @@ if (!fs.existsSync(categoriesFile)) {
   fs.writeFileSync(categoriesFile, JSON.stringify([], null, 2));
 }
 
+if (!fs.existsSync(analyticsFile)) {
+  fs.writeFileSync(analyticsFile, JSON.stringify([], null, 2));
+}
+
 // Helper functions
 const readData = (filename) => {
   try {
@@ -205,8 +220,54 @@ const writeData = (filename, data) => {
   fs.writeFileSync(filename, JSON.stringify(data, null, 2));
 };
 
+const analyticsLimit = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  max: 240,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { success: false, message: 'Analytics event limit reached' },
+});
+
+const allowedAnalyticsEvents = new Set([
+  'page_view',
+  'article_open',
+  'product_click',
+  'save_intent',
+  'newsletter_interest',
+]);
+
+const cleanAnalyticsPath = (value) => {
+  if (typeof value !== 'string') return '/';
+  const normalized = value.trim().slice(0, 300);
+  return normalized.startsWith('/') ? normalized : '/';
+};
+
+// Privacy-safe MVP analytics: no raw IP, email, cookie, or user-agent is stored.
+app.post('/api/v1/analytics/events', analyticsLimit, (req, res) => {
+  const { event, path: eventPath, slug, referrer } = req.body || {};
+  if (!allowedAnalyticsEvents.has(event)) {
+    return res.status(400).json({ success: false, message: 'Unsupported analytics event' });
+  }
+
+  const events = readData(analyticsFile);
+  events.push({
+    event,
+    path: cleanAnalyticsPath(eventPath),
+    slug: typeof slug === 'string' ? slug.trim().slice(0, 160) : undefined,
+    referrer: typeof referrer === 'string' ? referrer.trim().slice(0, 200) : undefined,
+    day: new Date().toISOString().slice(0, 10),
+    createdAt: new Date().toISOString(),
+  });
+
+  // Keep this file bounded for the MVP; aggregate reporting happens from recent events.
+  writeData(analyticsFile, events.slice(-10000));
+  return res.status(202).json({ success: true, accepted: true });
+});
+
 // Import centralized authentication middleware
 const { authenticateAdmin } = require('./middleware/auth');
+
+const isAdminRequest = (req) => Boolean(req.admin || req.user?.role === 'admin');
 
 // Remove duplicate website routes - now handled by websiteRouter
 
@@ -234,6 +295,12 @@ app.post('/api/v1/posts', authenticateAdmin, (req, res) => {
 app.get('/api/v1/admin/stats', authenticateAdmin, (req, res) => {
   const websites = readData(websitesFile);
   const posts = readData(postsFile);
+  const analyticsEvents = readData(analyticsFile);
+  const analytics = analyticsEvents.reduce((summary, item) => {
+    summary.total += 1;
+    summary.byEvent[item.event] = (summary.byEvent[item.event] || 0) + 1;
+    return summary;
+  }, { total: 0, byEvent: {} });
   
   const stats = {
     totalWebsites: websites.length,
@@ -248,7 +315,8 @@ app.get('/api/v1/admin/stats', authenticateAdmin, (req, res) => {
       .slice(0, 5),
     recentPosts: posts
       .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-      .slice(0, 5)
+      .slice(0, 5),
+    analytics
   };
   
   res.json({ success: true, data: stats });
@@ -274,7 +342,7 @@ app.get('/api/v1/blog/posts', async (req, res) => {
     if (status === 'published') {
       whereClause.status = 'published';
       whereClause.publishedAt = { [sequelize.Sequelize.Op.lte]: new Date() };
-    } else if (req.admin) {
+    } else if (isAdminRequest(req)) {
       // Admin can see all statuses
       if (status !== 'all') {
         whereClause.status = status;
@@ -350,12 +418,10 @@ app.get('/api/v1/blog/posts/:slug', async (req, res) => {
       }],
     });
     
-    if (!post) {
-      return res.status(404).json({ success: false, message: 'Blog post not found' });
-    }
+    if (!post) return res.status(404).json({ success: false, message: 'Blog post not found' });
     
     // Only allow published posts for non-admin users
-    if (!req.admin && (post.status !== 'published' || post.publishedAt > new Date())) {
+    if (!isAdminRequest(req) && (post.status !== 'published' || post.publishedAt > new Date())) {
       return res.status(404).json({ success: false, message: 'Blog post not found' });
     }
     
@@ -364,8 +430,28 @@ app.get('/api/v1/blog/posts/:slug', async (req, res) => {
       await post.incrementViewCount();
     }
     
-    // Get related posts
-    const relatedPosts = await post.getRelatedPosts(3);
+    // Related-post helpers use PostgreSQL array operators that SQLite does not
+    // support. Keep detail pages healthy with a portable database-backed fallback.
+    let relatedPosts = [];
+    try {
+      relatedPosts = await post.getRelatedPosts(3);
+    } catch (relatedError) {
+      const current = post.toJSON();
+      const currentCategories = current.categories || [];
+      const currentTags = current.tags || [];
+      const publishedPosts = await BlogPost.scope('published').findAll({
+        order: [['publishedAt', 'DESC']],
+        limit: 100,
+      });
+      relatedPosts = publishedPosts.map((candidate) => candidate.toJSON())
+        .filter((candidate) => candidate.slug !== slug)
+        .filter((candidate) =>
+          (candidate.categories || []).some((value) => currentCategories.includes(value)) ||
+          (candidate.tags || []).some((value) => currentTags.includes(value))
+        )
+        .sort((a, b) => new Date(b.publishedAt || b.createdAt) - new Date(a.publishedAt || a.createdAt))
+        .slice(0, 3);
+    }
     
     res.json({
       success: true,
@@ -419,7 +505,7 @@ app.post('/api/v1/blog/posts', authenticateAdmin, async (req, res) => {
       seoKeywords,
       featured,
       allowComments,
-      authorId: req.admin.id,
+      authorId: req.user.id,
     });
     
     const createdPost = await BlogPost.findByPk(post.id, {

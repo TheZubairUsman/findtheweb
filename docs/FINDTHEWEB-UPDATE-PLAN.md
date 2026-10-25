@@ -20,6 +20,15 @@ Position FindTheWeb as a focused discovery product: useful websites, AI tools, p
 - Add curated collections such as AI tools, productivity, design, developer tools, research, and security.
 - Improve empty states, trust signals, submission flow, bookmarks, and mobile navigation.
 - Keep the visual identity calm, editorial, and distinct from generic directory templates.
+- Products page: use outcome-led collections instead of sample/test product cards, with clear routes into AI, productivity, and developer categories.
+- Blog page: use a Medium-inspired editorial hierarchy—publication header, featured essay, story list, reading-time labels, and a restrained serif/sans typography pairing.
+- Admin panel: present it as FindTheWeb Studio with consistent spacing, focus states, table/form hierarchy, and clear separation between content management and public discovery.
+
+### API resilience
+
+- Public Products and Blog routes must not collapse into a generic error screen when the optional API is unavailable.
+- Show a useful, clearly branded fallback surface with truthful editorial/product guidance and links back to live directory categories.
+- Keep admin authentication and API-backed management unchanged; the public fallback must never expose admin data or bypass authentication.
 
 ### Phase 3 — Search growth
 

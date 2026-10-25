@@ -6,10 +6,11 @@ const { body, validationResult } = require('express-validator');
 const { Op } = require('sequelize');
 const crypto = require('crypto');
 const { User, Admin } = require('../models');
-const { authenticateJWT } = require('../middleware/auth');
+const { authenticateJWT, authenticateAdmin } = require('../middleware/auth');
 const { sendEmail } = require('../services/emailService');
 const logger = require('../utils/logger');
 const { JWT_SECRET, JWT_EXPIRES_IN, NODE_ENV, CLIENT_URL } = process.env;
+const EFFECTIVE_JWT_SECRET = JWT_SECRET || (process.env.NODE_ENV === 'test' ? 'findtheweb-test-only-secret' : undefined);
 const bcrypt = require('bcrypt');
 const rateLimit = require('express-rate-limit');
 
@@ -26,7 +27,7 @@ const loginLimiter = rateLimit({
 const generateToken = (user) => {
   return jwt.sign(
     { id: user.id, email: user.email, role: user.role },
-    JWT_SECRET,
+    EFFECTIVE_JWT_SECRET,
     { expiresIn: JWT_EXPIRES_IN || '7d' }
   );
 };
@@ -209,7 +210,7 @@ router.post(
       // Verify temp token
       let decoded;
       try {
-        decoded = jwt.verify(tempToken, JWT_SECRET);
+        decoded = jwt.verify(tempToken, EFFECTIVE_JWT_SECRET);
       } catch (err) {
         return res.status(400).json({ 
           success: false, 
@@ -652,7 +653,8 @@ router.post(
 const adminLoginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
   max: 5, // limit each IP to 5 requests per windowMs
-  message: 'Too many login attempts from this IP, please try again after 15 minutes'
+  message: 'Too many login attempts from this IP, please try again after 15 minutes',
+  skip: () => process.env.NODE_ENV === 'test'
 });
 
 router.post('/admin/login', adminLoginLimiter, async (req, res) => {
@@ -715,7 +717,7 @@ router.post('/admin/login', adminLoginLimiter, async (req, res) => {
         email: admin.email,
         role: 'admin'
       },
-      process.env.JWT_SECRET,
+      EFFECTIVE_JWT_SECRET,
       { 
         expiresIn: process.env.JWT_EXPIRES_IN || '1d',
         issuer: 'findtheweb-admin',
@@ -729,6 +731,7 @@ router.post('/admin/login', adminLoginLimiter, async (req, res) => {
       name: admin.name,
       email: admin.email,
       role: 'admin',
+      isAdmin: true,
       lastLogin: admin.lastLogin
     };
 
@@ -738,6 +741,9 @@ router.post('/admin/login', adminLoginLimiter, async (req, res) => {
     res.json({ 
       success: true,
       token,
+      // Keep the top-level admin field for the existing frontend contract.
+      // `user` and `data.admin` remain for backwards compatibility.
+      admin: userData,
       user: userData,
       data: { token, admin: userData }
     });
@@ -775,7 +781,7 @@ router.get('/verify-token', async (req, res) => {
     }
 
     // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET, {
+    const decoded = jwt.verify(token, EFFECTIVE_JWT_SECRET, {
       issuer: 'findtheweb-admin',
       audience: 'findtheweb-admin-ui'
     });
@@ -833,7 +839,7 @@ router.get('/check-admin', async (req, res) => {
       });
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, EFFECTIVE_JWT_SECRET);
     
     // Check if admin exists and is active
     const admin = await Admin.findByPk(decoded.id);
@@ -864,11 +870,18 @@ router.post('/logout', (req, res) => {
   res.json({ success: true, message: 'Logged out successfully' });
 });
 
+// @route   POST /api/v1/auth/admin/logout
+// @desc    Logout an authenticated admin session
+// @access  Private/Admin
+router.post('/admin/logout', authenticateAdmin, (req, res) => {
+  res.json({ success: true, message: 'Logged out successfully' });
+});
+
 // Helper function to generate 2FA token
 function generate2FAToken(user) {
   return jwt.sign(
     { id: user.id, purpose: '2fa' },
-    JWT_SECRET,
+    EFFECTIVE_JWT_SECRET,
     { expiresIn: '5m' } // Short expiration for security
   );
 }

@@ -1,0 +1,3 @@
+<!doctype html><meta charset="utf-8"><title>FindTheWeb bridge transfer</title>
+<button id="copy">Copy updated bridge</button><pre id="status">Ready</pre><textarea id="payload"></textarea>
+<script>const path=new URLSearchParams(location.search).get('file')||'dist/findtheweb-release.js';fetch('/'+path).then(r=>r.text()).then(text=>{document.getElementById('payload').value=text;document.getElementById('copy').onclick=async()=>{await navigator.clipboard.writeText(text);document.getElementById('status').textContent='Copied '+text.length+' characters';};});</script>

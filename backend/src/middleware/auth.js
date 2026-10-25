@@ -3,7 +3,7 @@ const logger = require('../utils/logger');
 const jwt = require('jsonwebtoken');
 const ErrorResponse = require('../utils/errorResponse');
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET || (process.env.NODE_ENV === 'test' ? 'findtheweb-test-only-secret' : undefined);
 const JWT_ISSUER = process.env.JWT_ISSUER || 'findtheweb-admin';
 const JWT_AUDIENCE = process.env.JWT_AUDIENCE || 'findtheweb-admin-ui';
 
@@ -186,7 +186,7 @@ const protect = async (req, res, next) => {
       token = req.headers.authorization.split(' ')[1];
     }
     // Check for token in cookies
-    else if (req.cookies.token) {
+    else if (req.cookies?.token) {
       token = req.cookies.token;
     }
 
@@ -337,7 +337,7 @@ const optionalAuth = async (req, res, next) => {
       token = req.headers.authorization.split(' ')[1];
     }
     // Check for token in cookies
-    else if (req.cookies.token) {
+    else if (req.cookies?.token) {
       token = req.cookies.token;
     }
 
@@ -409,7 +409,7 @@ const authenticateAdmin = async (req, res, next) => {
       console.log('🔵 Token found in Authorization header');
     }
     // Check for token in cookies
-    else if (req.cookies.token) {
+    else if (req.cookies?.token) {
       token = req.cookies.token;
       console.log('🔵 Token found in cookies');
     }

@@ -42,7 +42,7 @@ module.exports = {
 
   down: async (queryInterface, Sequelize) => {
     await queryInterface.bulkDelete('Admins', {
-      email: 'admin@findtheweb.com'
+      email: process.env.ADMIN_EMAIL || 'admin@findtheweb.zus3cu.tech'
     }, {});
   }
 };
