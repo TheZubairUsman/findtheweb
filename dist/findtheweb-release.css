@@ -162,6 +162,7 @@ body.ftw-blog-route #root footer .text-gray-500 { color: #cbd5e1 !important; }
 body.ftw-blog-route #root .min-h-screen.bg-gray-50 input:focus,
 body.ftw-blog-route #root .min-h-screen.bg-gray-50 select:focus { border-color: #3159df; box-shadow: 0 0 0 3px rgba(49, 89, 223, .14); }
 @media (max-width: 640px) {
+  body.ftw-blog-route #root .min-h-screen.bg-gray-50 section.mb-12 { min-height: 1960px; }
   body.ftw-blog-route #root .min-h-screen.bg-gray-50 > .max-w-7xl > header.text-center { margin-left: -.5rem; margin-right: -.5rem; padding: 3.5rem 1.25rem 3rem; }
 }
 

@@ -194,7 +194,7 @@ const BlogPage = () => {
   );
 
   const FeaturedSection = () => (
-    <section className="mb-12">
+    <section className="mb-12 ftw-featured-section">
       <div className="flex items-center mb-6">
         <FiStar className="w-6 h-6 text-yellow-500 mr-2" />
         <h2 className="text-2xl font-bold text-gray-900">Featured Posts</h2>
