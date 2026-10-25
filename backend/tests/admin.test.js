@@ -161,6 +161,35 @@ describe('Admin Routes', () => {
     });
   });
 
+  describe('PATCH /api/v1/admin/websites/:id/knowledge', () => {
+    it('stores structured product knowledge without replacing existing metadata', async () => {
+      const website = await Website.create({
+        name: 'Knowledge Test Tool',
+        url: 'https://knowledge.example.com',
+        description: 'A tool used to verify structured product knowledge.',
+        metadata: { existingFlag: true },
+      });
+
+      const response = await request(app)
+        .patch(`/api/v1/admin/websites/${website.id}/knowledge`)
+        .set('Authorization', `Bearer ${authToken}`)
+        .send({
+          product: {
+            problem: 'Reduce research time',
+            bestFor: ['Small technical teams'],
+            notFor: ['Offline-only workflows'],
+            lastVerifiedAt: '2026-10-25',
+          },
+        });
+
+      expect(response.status).toBe(200);
+      const saved = await Website.findByPk(website.id);
+      expect(saved.metadata.existingFlag).toBe(true);
+      expect(saved.metadata.product.problem).toBe('Reduce research time');
+      expect(saved.metadata.product.bestFor).toEqual(['Small technical teams']);
+    });
+  });
+
   describe('GET /api/v1/admin/categories', () => {
     beforeEach(async () => {
       await Category.bulkCreate([
