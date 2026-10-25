@@ -30,12 +30,58 @@ const publicFields = [
   'status', 'createdAt', 'updatedAt',
 ];
 
+const asCleanString = (value, max = 240) => typeof value === 'string' ? value.trim().slice(0, max) : '';
+const asStringList = (value, maxItems = 8, maxLength = 160) => Array.isArray(value)
+  ? value.map((item) => asCleanString(item, maxLength)).filter(Boolean).slice(0, maxItems)
+  : [];
+
+// Product knowledge is stored in the existing metadata JSON column so this MVP
+// can ship without a destructive schema migration. Only the allowlisted shape
+// is exposed publicly; arbitrary metadata remains private to admins.
+const toProductKnowledge = (metadata) => {
+  const product = metadata && typeof metadata === 'object' && metadata.product && typeof metadata.product === 'object'
+    ? metadata.product
+    : {};
+  const pricing = product.pricing && typeof product.pricing === 'object' ? product.pricing : {};
+  const privacy = product.privacy && typeof product.privacy === 'object' ? product.privacy : {};
+  const alternatives = Array.isArray(product.alternatives)
+    ? product.alternatives.slice(0, 6).map((item) => ({
+      name: asCleanString(item?.name, 120),
+      reason: asCleanString(item?.reason, 240),
+      url: asCleanString(item?.url, 500),
+    })).filter((item) => item.name)
+    : [];
+
+  return {
+    problem: asCleanString(product.problem, 500),
+    audience: asCleanString(product.audience, 240),
+    bestFor: asStringList(product.bestFor),
+    notFor: asStringList(product.notFor),
+    useCases: asStringList(product.useCases, 10, 200),
+    pricing: {
+      model: asCleanString(pricing.model, 80),
+      summary: asCleanString(pricing.summary, 240),
+      startingAt: asCleanString(pricing.startingAt, 80),
+    },
+    privacy: {
+      dataCollection: asCleanString(privacy.dataCollection, 240),
+      securityNotes: asCleanString(privacy.securityNotes, 500),
+    },
+    alternatives,
+    lastVerifiedAt: asCleanString(product.lastVerifiedAt, 40),
+    verificationSources: asStringList(product.verificationSources, 5, 500),
+    articleSlugs: asStringList(product.articleSlugs, 8, 160),
+  };
+};
+
 const toPublicWebsite = (website) => {
   const value = website.toJSON ? website.toJSON() : website;
-  return publicFields.reduce((result, field) => {
-    if (value[field] !== undefined) result[field] = value[field];
-    return result;
+  const result = publicFields.reduce((output, field) => {
+    if (value[field] !== undefined) output[field] = value[field];
+    return output;
   }, {});
+  result.product = toProductKnowledge(value.metadata);
+  return result;
 };
 
 const readLegacyWebsites = () => {
@@ -131,10 +177,20 @@ router.get('/:id', async (req, res) => {
   try {
     const website = await Website.findOne({
       where: { id: req.params.id, status: 'active' },
-      attributes: publicFields,
+      // Metadata is read only to build the allowlisted product shape below;
+      // it is never returned as a raw public field.
+      attributes: [...publicFields, 'metadata'],
       include: [{ model: Category, as: 'category', attributes: ['id', 'name', 'slug'], required: false }],
     });
-    if (!website) return res.status(404).json({ success: false, message: 'Discovery item not found' });
+    if (!website) {
+      // The directory is still being migrated from the legacy export. Keep
+      // detail links working for those public IDs until the DB backfill lands.
+      const legacy = readLegacyWebsites().find((item) => String(item.id) === String(req.params.id));
+      if (!legacy || (legacy.status && legacy.status !== 'active')) {
+        return res.status(404).json({ success: false, message: 'Discovery item not found' });
+      }
+      return res.json({ success: true, data: toPublicWebsite(legacy), discovery: { source: 'legacy-directory-export' } });
+    }
     await website.incrementHits();
     res.json({ success: true, data: toPublicWebsite(website) });
   } catch (error) {
