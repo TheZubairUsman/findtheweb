@@ -156,6 +156,9 @@ body.ftw-blog-route #root .min-h-screen.bg-gray-50 article { border: 1px solid #
 body.ftw-blog-route #root .min-h-screen.bg-gray-50 article:hover { box-shadow: 0 16px 32px rgba(37, 56, 104, .14); transform: translateY(-2px); }
 body.ftw-blog-route #root .text-gray-500 { color: #475569 !important; }
 body.ftw-blog-route #root .text-gray-600 { color: #334155 !important; }
+body.ftw-blog-route #root .bg-yellow-500 { background-color: #8a5a00 !important; }
+body.ftw-blog-route #root footer .text-gray-600,
+body.ftw-blog-route #root footer .text-gray-500 { color: #cbd5e1 !important; }
 body.ftw-blog-route #root .min-h-screen.bg-gray-50 input:focus,
 body.ftw-blog-route #root .min-h-screen.bg-gray-50 select:focus { border-color: #3159df; box-shadow: 0 0 0 3px rgba(49, 89, 223, .14); }
 @media (max-width: 640px) {

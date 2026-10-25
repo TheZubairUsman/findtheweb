@@ -122,6 +122,9 @@
         root.querySelectorAll('select').forEach(function (select, index) {
           if (!select.getAttribute('aria-label')) select.setAttribute('aria-label', index === 0 ? 'Filter by category' : 'Filter by tag');
         });
+        root.querySelectorAll('a[aria-label="Visit SCOLTECH GROUP website"]').forEach(function (link) {
+          link.setAttribute('aria-label', link.textContent.trim());
+        });
       }
 
   function renderRecoveryPage() {

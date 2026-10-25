@@ -219,7 +219,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="text-xs font-medium text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors duration-200 focus-visible:focus"
                   onClick={() => handleLinkClick('developer_link', { url: 'https://scoltech.com' })}
-                  aria-label="Visit SCOLTECH GROUP website"
+                  aria-label="Developed by SCOLTECH GROUP"
                 >
                   Developed by SCOLTECH GROUP
                 </a>
