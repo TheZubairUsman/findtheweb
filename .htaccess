@@ -1,5 +1,6 @@
 Options -MultiViews
 RewriteEngine On
+AddType application/manifest+json .webmanifest
 
 # Never serve repository metadata, debug helpers, backups, or internal docs.
 # The Git integration deploys the repository root, so deny these explicitly.
