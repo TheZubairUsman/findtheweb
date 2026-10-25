@@ -250,7 +250,7 @@ const BlogPage = () => {
       <div className="min-h-screen bg-gray-50">
         <Header />
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div id="main-content" role="main" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Header */}
           <header className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -274,6 +274,7 @@ const BlogPage = () => {
                   <input
                     type="text"
                     placeholder="Search articles..."
+                    aria-label="Search articles"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -285,6 +286,7 @@ const BlogPage = () => {
               <div className="flex flex-wrap gap-4 items-center">
                 {/* Category Filter */}
                 <select
+                  aria-label="Filter by category"
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
                   className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
@@ -299,6 +301,7 @@ const BlogPage = () => {
 
                 {/* Tag Filter */}
                 <select
+                  aria-label="Filter by tag"
                   value={selectedTag}
                   onChange={(e) => setSelectedTag(e.target.value)}
                   className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
