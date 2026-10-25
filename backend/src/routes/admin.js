@@ -520,6 +520,56 @@ router.patch('/submissions/:id', async (req, res) => {
   }
 });
 
+// Curate the structured product knowledge shown on public discovery pages.
+// This stays behind admin auth and writes only to the Website metadata JSON
+// column, keeping the MVP migration-free and easy to roll back.
+router.patch('/websites/:id/knowledge', async (req, res) => {
+  try {
+    const website = await Website.findByPk(req.params.id);
+    if (!website) return res.status(404).json({ success: false, message: 'Website not found' });
+
+    const input = req.body?.product && typeof req.body.product === 'object' ? req.body.product : req.body;
+    const list = (value, maxItems, maxLength) => Array.isArray(value)
+      ? value.map((item) => typeof item === 'string' ? item.trim().slice(0, maxLength) : item)
+        .filter((item) => typeof item === 'string' && item.length > 0).slice(0, maxItems)
+      : undefined;
+    const text = (value, max) => typeof value === 'string' ? value.trim().slice(0, max) : undefined;
+    const alternatives = Array.isArray(input.alternatives)
+      ? input.alternatives.slice(0, 6).map((item) => ({
+        name: text(item?.name, 120),
+        reason: text(item?.reason, 240),
+        url: text(item?.url, 500),
+      })).filter((item) => item.name)
+      : undefined;
+    const product = {
+      problem: text(input.problem, 500),
+      audience: text(input.audience, 240),
+      bestFor: list(input.bestFor, 8, 160),
+      notFor: list(input.notFor, 8, 160),
+      useCases: list(input.useCases, 10, 200),
+      pricing: {
+        model: text(input.pricing?.model, 80),
+        summary: text(input.pricing?.summary, 240),
+        startingAt: text(input.pricing?.startingAt, 80),
+      },
+      privacy: {
+        dataCollection: text(input.privacy?.dataCollection, 240),
+        securityNotes: text(input.privacy?.securityNotes, 500),
+      },
+      alternatives,
+      lastVerifiedAt: text(input.lastVerifiedAt, 40),
+      verificationSources: list(input.verificationSources, 5, 500),
+      articleSlugs: list(input.articleSlugs, 8, 160),
+    };
+    const metadata = website.metadata && typeof website.metadata === 'object' ? website.metadata : {};
+    await website.update({ metadata: { ...metadata, product } });
+    res.json({ success: true, data: { id: website.id, product } });
+  } catch (error) {
+    console.error('Error updating product knowledge:', error);
+    res.status(400).json({ success: false, message: 'Unable to update product knowledge' });
+  }
+});
+
 router.route('/posts')
   .get(async (req, res) => {
     try {
