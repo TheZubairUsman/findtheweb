@@ -649,14 +649,14 @@ router.route('/posts/:id')
   });
 
 // Data management routes
-router.route('/upload').post(bulkOperationLimit, upload.single('file'), async (req, res) => {
+const handleWebsiteUpload = async (req, res) => {
   try {
     if (!req.file) {
       return res.status(400).json({ success: false, message: 'No file uploaded' });
     }
     
     const { type } = req.body;
-    if (type !== 'websites') {
+    if (type && type !== 'websites') {
       return res.status(400).json({ success: false, message: 'Invalid upload type' });
     }
     
@@ -711,13 +711,18 @@ router.route('/upload').post(bulkOperationLimit, upload.single('file'), async (r
     res.json({
       success: true,
       message: `Successfully uploaded ${addedCount} websites`,
-      count: addedCount
+      count: addedCount,
+      data: { created: addedCount }
     });
   } catch (error) {
     console.error('Error uploading websites:', error);
     res.status(500).json({ success: false, message: 'Failed to upload websites' });
   }
-});
+};
+
+router.route('/upload').post(bulkOperationLimit, upload.single('file'), handleWebsiteUpload);
+// Keep the legacy admin-panel endpoint working while the UI migrates to /upload.
+router.route('/websites/bulk-upload').post(bulkOperationLimit, upload.single('file'), handleWebsiteUpload);
 
 router.route('/export').get(exportData);
 
