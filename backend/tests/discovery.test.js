@@ -49,6 +49,31 @@ describe('Discovery MVP routes', () => {
     expect(saved.status).toBe('pending');
   });
 
+  it('rejects malformed URLs and honeypot submissions', async () => {
+    const malformed = await request(app)
+      .post('/api/v1/discover/submissions')
+      .send({
+        name: 'Malformed Tool',
+        url: 'javascript:alert(1)',
+        description: 'This must not enter the moderation queue.',
+        categoryId: category.id,
+      });
+    expect(malformed.status).toBe(400);
+    expect(malformed.body.message).toMatch(/valid http or https URL/i);
+
+    const bot = await request(app)
+      .post('/api/v1/discover/submissions')
+      .send({
+        name: 'Bot Tool',
+        url: 'https://bot.example.com',
+        description: 'This must be rejected by the hidden honeypot.',
+        categoryId: category.id,
+        company: 'Automated Publisher',
+      });
+    expect(bot.status).toBe(400);
+    expect(bot.body.message).toBe('Unable to receive submission');
+  });
+
   it('returns a safe product knowledge shape on detail pages', async () => {
     const website = await Website.findOne({ where: { name: 'Published Discovery Tool' } });
     await website.update({ metadata: {

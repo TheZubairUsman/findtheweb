@@ -256,12 +256,27 @@ router.post('/:id/feedback', feedbackLimit, async (req, res) => {
 // Community submissions enter moderation; they never become public automatically.
 router.post('/submissions', submissionLimit, async (req, res) => {
   try {
-    const { name, url, description, categoryId, submitterEmail } = req.body || {};
+    const { name, url, description, categoryId, submitterEmail, company } = req.body || {};
+    // Keep the public form bot-resistant without exposing whether a request
+    // was rejected by the honeypot. Legitimate clients never fill `company`.
+    if (typeof company === 'string' && company.trim()) {
+      return res.status(400).json({ success: false, message: 'Unable to receive submission' });
+    }
     if (!name || String(name).trim().length < 3 || String(name).trim().length > 100) {
       return res.status(400).json({ success: false, message: 'Name must be between 3 and 100 characters' });
     }
     if (!description || String(description).trim().length < 10 || String(description).trim().length > 5000) {
       return res.status(400).json({ success: false, message: 'Description must be between 10 and 5000 characters' });
+    }
+    const websiteUrl = String(url || '').trim();
+    let parsedUrl;
+    try {
+      parsedUrl = new URL(websiteUrl);
+    } catch (_) {
+      parsedUrl = null;
+    }
+    if (!parsedUrl || !['http:', 'https:'].includes(parsedUrl.protocol) || !parsedUrl.hostname || websiteUrl.length > 500) {
+      return res.status(400).json({ success: false, message: 'A valid http or https URL is required' });
     }
     if (!categoryId || !String(categoryId).trim()) {
       return res.status(400).json({ success: false, message: 'A valid categoryId is required' });
@@ -272,7 +287,7 @@ router.post('/submissions', submissionLimit, async (req, res) => {
 
     const website = await Website.create({
       name: String(name).trim(),
-      url: String(url || '').trim(),
+      url: websiteUrl,
       description: String(description).trim(),
       categoryId: String(categoryId).trim(),
       status: 'pending',
