@@ -609,12 +609,14 @@ app.delete('/api/v1/blog/posts/:id', authenticateAdmin, async (req, res) => {
 // Blog categories and tags endpoints
 app.get('/api/v1/blog/categories', async (req, res) => {
   try {
-    // SQLite-compatible approach: fetch all posts and extract categories
+    // Fetch published posts and extract categories in application code. JSON
+    // columns may be returned as arrays or JSON strings depending on the
+    // database dialect/configuration, so do not filter on a dialect-specific
+    // serialized value here.
     const posts = await BlogPost.findAll({
       attributes: ['categories'],
       where: {
         status: 'published',
-        categories: { [sequelize.Sequelize.Op.ne]: '[]' },
       },
       raw: true,
     });
@@ -622,8 +624,13 @@ app.get('/api/v1/blog/categories', async (req, res) => {
     // Extract unique categories from all posts
     const categoriesSet = new Set();
     posts.forEach(post => {
-      if (post.categories && Array.isArray(post.categories)) {
-        post.categories.forEach(cat => {
+      const values = Array.isArray(post.categories)
+        ? post.categories
+        : (typeof post.categories === 'string' ? (() => {
+            try { return JSON.parse(post.categories); } catch { return [post.categories]; }
+          })() : []);
+      if (Array.isArray(values)) {
+        values.forEach(cat => {
           if (cat && cat.trim()) {
             categoriesSet.add(cat.trim());
           }
@@ -643,12 +650,12 @@ app.get('/api/v1/blog/categories', async (req, res) => {
 
 app.get('/api/v1/blog/tags', async (req, res) => {
   try {
-    // SQLite-compatible approach: fetch all posts and extract tags
+    // See the categories endpoint above: normalize JSON columns in code so
+    // this works consistently across SQLite/Postgres/MySQL deployments.
     const posts = await BlogPost.findAll({
       attributes: ['tags'],
       where: {
         status: 'published',
-        tags: { [sequelize.Sequelize.Op.ne]: '[]' },
       },
       raw: true,
     });
@@ -656,8 +663,13 @@ app.get('/api/v1/blog/tags', async (req, res) => {
     // Extract unique tags from all posts
     const tagsSet = new Set();
     posts.forEach(post => {
-      if (post.tags && Array.isArray(post.tags)) {
-        post.tags.forEach(tag => {
+      const values = Array.isArray(post.tags)
+        ? post.tags
+        : (typeof post.tags === 'string' ? (() => {
+            try { return JSON.parse(post.tags); } catch { return [post.tags]; }
+          })() : []);
+      if (Array.isArray(values)) {
+        values.forEach(tag => {
           if (tag && tag.trim()) {
             tagsSet.add(tag.trim());
           }
