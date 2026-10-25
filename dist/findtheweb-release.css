@@ -159,3 +159,21 @@ body.ftw-blog-route #root .min-h-screen.bg-gray-50 select:focus { border-color: 
 @media (max-width: 640px) {
   body.ftw-blog-route #root .min-h-screen.bg-gray-50 > .max-w-7xl > header.text-center { margin-left: -.5rem; margin-right: -.5rem; padding: 3.5rem 1.25rem 3rem; }
 }
+
+/* The blog cards predate the shared dark-mode utility classes; give the route a complete dark surface. */
+html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 { background: #0f172a !important; color: #e5e7eb; }
+html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 article,
+html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 .bg-white { background: #172033 !important; border-color: #2c3a52 !important; color: #e5e7eb; }
+html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 h1,
+html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 h2,
+html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 h3 { color: #f8fafc !important; }
+html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 p,
+html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 .text-gray-600,
+html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 .text-gray-500 { color: #b8c4d6 !important; }
+html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 .border-gray-200,
+html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 .border-gray-300 { border-color: #334155 !important; }
+html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 input,
+html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 select { background: #111827 !important; color: #f8fafc !important; border-color: #475569 !important; }
+html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 input::placeholder { color: #94a3b8; }
+html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 .bg-blue-100 { background: #1e3a5f !important; color: #bfdbfe !important; }
+html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 .hover\:bg-gray-50:hover { background: #25324a !important; }
