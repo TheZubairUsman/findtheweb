@@ -206,7 +206,10 @@ const protect = async (req, res, next) => {
       });
       
       // Check if this is an admin token
-      if (decoded.isAdmin) {
+      // Admin login tokens historically used either `isAdmin: true` or
+      // `role: 'admin'`. Accept both forms so protected community/admin
+      // routes do not misclassify a valid admin token as a regular user.
+      if (decoded.isAdmin || decoded.role === 'admin') {
         const admin = await Admin.findByPk(decoded.id, {
           attributes: { exclude: ['password'] },
         });

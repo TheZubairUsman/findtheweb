@@ -22,6 +22,7 @@ const productRouter = require('./routes/products');
 const discoveryRouter = require('./routes/discovery');
 const seoRouter = require('./routes/seo');
 const websiteRouter = require('./routes/websites');
+const communityRouter = require('./routes/community');
 
 // Security middleware
 app.use(helmet({
@@ -119,6 +120,7 @@ app.use('/api/v1/products', productRouter);
 app.use('/api/v1/discover', discoveryRouter);
 app.use('/api/v1/seo', seoRouter);
 app.use('/api/v1/websites', websiteRouter);
+app.use('/api/v1/community', communityRouter);
 
 // Import routes
 const authRoutes = require('./routes/auth');
