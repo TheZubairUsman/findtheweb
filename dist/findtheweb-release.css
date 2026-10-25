@@ -138,3 +138,24 @@
   .ftw-story-list { margin-top: 3rem; }
   .ftw-journal-footer a { display: block; margin-top: .75rem; }
 }
+
+/* Blog route alignment: keep the journal content, but make it unmistakably FindTheWeb. */
+body.ftw-blog-route #root .min-h-screen.bg-gray-50 { background: #f7f9fc !important; }
+body.ftw-blog-route #root .min-h-screen.bg-gray-50 > .max-w-7xl { max-width: 1280px; padding-top: 0; }
+body.ftw-blog-route #root .min-h-screen.bg-gray-50 > .max-w-7xl > header.text-center {
+  margin: 0 -1rem 3rem;
+  padding: 4.5rem 1.5rem 4rem;
+  border-radius: 0 0 1.5rem 1.5rem;
+  background: linear-gradient(120deg, #1d4ed8 0%, #3159df 52%, #4338a8 100%);
+  color: #fff;
+  box-shadow: 0 18px 35px rgba(30, 64, 175, .16);
+}
+body.ftw-blog-route #root .min-h-screen.bg-gray-50 > .max-w-7xl > header.text-center h1 { color: #fff; letter-spacing: -.045em; }
+body.ftw-blog-route #root .min-h-screen.bg-gray-50 > .max-w-7xl > header.text-center p { color: rgba(255,255,255,.86); }
+body.ftw-blog-route #root .min-h-screen.bg-gray-50 article { border: 1px solid #e3e9f4; border-radius: 1rem; box-shadow: 0 8px 24px rgba(15, 23, 42, .07); }
+body.ftw-blog-route #root .min-h-screen.bg-gray-50 article:hover { box-shadow: 0 16px 32px rgba(37, 56, 104, .14); transform: translateY(-2px); }
+body.ftw-blog-route #root .min-h-screen.bg-gray-50 input:focus,
+body.ftw-blog-route #root .min-h-screen.bg-gray-50 select:focus { border-color: #3159df; box-shadow: 0 0 0 3px rgba(49, 89, 223, .14); }
+@media (max-width: 640px) {
+  body.ftw-blog-route #root .min-h-screen.bg-gray-50 > .max-w-7xl > header.text-center { margin-left: -.5rem; margin-right: -.5rem; padding: 3.5rem 1.25rem 3rem; }
+}

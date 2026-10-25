@@ -143,6 +143,17 @@
 
     <script>
       (function () {
+        function syncBlogRoute() {
+          var isBlog = /^\/blog(?:\/|$)/.test(window.location.pathname);
+          if (document.body) document.body.classList.toggle('ftw-blog-route', isBlog);
+        }
+        syncBlogRoute();
+        window.setInterval(syncBlogRoute, 500);
+      }());
+    </script>
+
+    <script>
+      (function () {
         if (window.location.pathname !== '/admin/blog') return;
         function ensurePublishedPosts() {
           var root = document.getElementById('root');
