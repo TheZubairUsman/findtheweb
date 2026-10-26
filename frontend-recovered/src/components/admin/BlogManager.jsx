@@ -40,6 +40,9 @@ const BlogManager = () => {
   useEffect(() => {
     if (!showEditor && !editorTrigger.current) return;
     const frame = requestAnimationFrame(() => {
+      // A delayed frame must not steal focus after the user has already
+      // selected another field or started typing in the editor.
+      if (showEditor && document.activeElement !== document.body && document.activeElement !== editorTrigger.current) return;
       const target = showEditor ? document.getElementById('editor-title')
         : editorTrigger.current?.isConnected ? editorTrigger.current : document.getElementById('editor-new-post');
       target?.focus();

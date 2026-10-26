@@ -33,6 +33,7 @@ configuration remains unavailable.
 | Retired Products navigation | Removed from source navigation; router redirects to Blog |
 | Corrupt/persisted bookmarks caused refresh issues | Validate and initialize stored bookmarks before saving state |
 | Duplicate footer on cookie/sitemap pages | Shared application footer only |
+| Delayed editor autofocus could interrupt input | Preserve an already selected field; controlled slow-frame regression |
 | Mobile featured section reserved 1,960 pixels | Content-sized layout; hide empty featured section |
 | Blog hero text contrast | Explicit readable hero text in both themes |
 | Broken category aliases and `/discover` | Redirect to real catalog/category pages rather than placeholder results |
@@ -76,6 +77,12 @@ and match rollback commit `0abcdba` exactly. A local archive is retained at
 `tmp/frontend-rollback-0abcdba.zip`; its contents are public frontend files only.
 `node tools/verify-frontend-release.cjs` records a machine-readable live receipt.
 
+Follow-up CI captured client-side empty-field validation during a rapid editor
+save, with no rejected HTTP write. A controlled delayed-frame probe reproduced
+focus moving from Content back to Title. The focus guard preserves the selected
+field, and the focused browser run now passes 23 interactions including that
+regression, draft save, publication and inbox persistence.
+
 ## Limits and release safety
 
 - New screenshots establish a baseline; a historical pixel regression comparison
@@ -85,6 +92,9 @@ and match rollback commit `0abcdba` exactly. A local archive is retained at
 - Community/discovery compatibility screens remain in the maintained release
   script; migrating them into React is a separate architectural cleanup.
 - SMTP delivery and production password entry are not tested by local fixtures.
+- Article metadata is client-rendered. Crawler/social-preview HTML that works
+  without JavaScript still requires prerendering/server-generated metadata in
+  the next SEO phase; unique browser metadata alone does not establish it.
 - Preserve old hashed files for open/cached clients. The new entry imports only
   the new frontend graph. Restore `dist/` from `0abcdba` to roll back this release;
   no backend restart or database restore is needed.
