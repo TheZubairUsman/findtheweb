@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
-candidate=/opt/findtheweb-deps-20261026-criticalfix1
-test "$(readlink -f "$candidate")" = /opt/findtheweb-deps-20261026-criticalfix1
+candidate=/opt/findtheweb-deps-20261027-highfix1
+test "$(readlink -f "$candidate")" = /opt/findtheweb-deps-20261027-highfix1
 test -f "$candidate/package-lock.json"
 # Compile native SQLite for Debian Bookworm (GLIBC 2.36), rather than using a
 # downloaded SQLite 6 binary that currently requires a newer GLIBC runtime.

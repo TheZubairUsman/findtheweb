@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 app=/opt/findtheweb-backend
-candidate=/opt/findtheweb-deps-20261026-criticalfix1
-backup="$app/rollback-security-20261026-criticalfix1"
+candidate=/opt/findtheweb-deps-20261027-highfix1
+backup="$app/rollback-security-20261027-highfix1"
 service=findtheweb-backend
 test "$(readlink -f "$app")" = /opt/findtheweb-backend
-test "$(readlink -f "$candidate")" = /opt/findtheweb-deps-20261026-criticalfix1
+test "$(readlink -f "$candidate")" = /opt/findtheweb-deps-20261027-highfix1
 test -d "$app/node_modules" && test ! -L "$app/node_modules"
 test -d "$candidate/node_modules" && test ! -L "$candidate/node_modules"
 test -f "$backup/database.sqlite" && test -f "$backup/baseline.json"

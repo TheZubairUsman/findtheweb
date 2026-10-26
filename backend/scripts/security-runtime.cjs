@@ -3,7 +3,7 @@ const path = require('path');
 const models = require('../src/models');
 const { sequelize } = models;
 const root = path.resolve(__dirname, '..');
-const backup = path.join(root, 'rollback-security-20261026-criticalfix1');
+const backup = path.join(root, 'rollback-security-20261027-highfix1');
 const keys = ['Admin','User','BlogPost','Website','CommunityProfile','Collection','ContactMessage'];
 async function counts() {
   const result = {};
@@ -33,7 +33,7 @@ async function counts() {
     const baseline=JSON.parse(fs.readFileSync(path.join(backup,'baseline.json'),'utf8'));
     const current=await counts();
     for(const [key,value] of Object.entries(baseline.counts)) if(current[key]<value)throw new Error('Data count decreased: '+key);
-    const expected={handlebars:'4.7.10','proxy-addr':'2.0.8',tar:'7.5.22',sqlite3:'6.0.1',bcrypt:'6.0.0'};
+    const expected={handlebars:'4.7.10','proxy-addr':'2.0.8',tar:'7.5.22',sqlite3:'6.0.1',bcrypt:'6.0.0',nodemailer:'10.2.1',sequelize:'6.37.8',uuid:'11.1.1'};
     const installed={};
     for(const [name,version] of Object.entries(expected)) {
       installed[name]=JSON.parse(fs.readFileSync(path.join(root,'node_modules',name,'package.json'),'utf8')).version;

@@ -8,6 +8,25 @@ const { Sequelize, DataTypes } = require('sequelize');
 const proxyaddr = require(require.resolve('proxy-addr', { paths: [path.dirname(require.resolve('express'))] }));
 
 describe('Security dependency compatibility', () => {
+  it('composes email locally with the upgraded mail transport', async () => {
+    const transport = require('nodemailer').createTransport({ jsonTransport: true, disableFileAccess: true, disableUrlAccess: true });
+    const info = await transport.sendMail({ from: 'FindTheWeb <sender@example.test>', to: 'reader@example.test', subject: 'Article update', text: 'Your reading list is ready.', html: '<p>Your reading list is ready.</p>' });
+    const message = JSON.parse(info.message);
+    expect(message.subject).toBe('Article update');
+    expect(message.to[0].address).toBe('reader@example.test');
+    expect(message.html).toContain('reading list');
+  });
+
+  it('preserves Sequelize UUID default generation after the UUID upgrade', async () => {
+    const db = new Sequelize({ dialect: 'sqlite', storage: ':memory:', logging: false });
+    try {
+      const Row = db.define('UuidCompatibility', { id: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4, primaryKey: true } });
+      await db.sync();
+      const row = await Row.create({});
+      expect(require('uuid').validate(row.id)).toBe(true);
+      expect(require('uuid').version(row.id)).toBe(4);
+    } finally { await db.close(); }
+  });
   it('verifies existing bcrypt hashes without a password reset', async () => {
     const hash = await legacyBcrypt.hash('test-only-password', 4);
     expect(await bcrypt.compare('test-only-password', hash)).toBe(true);
