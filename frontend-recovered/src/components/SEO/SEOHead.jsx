@@ -51,8 +51,6 @@ const SEOHead = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={fullImageUrl} />
-      <meta name="twitter:creator" content="@findtheweb" />
-      <meta name="twitter:site" content="@findtheweb" />
 
       {/* Article specific tags */}
       {type === 'article' && (

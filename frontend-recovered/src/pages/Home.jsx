@@ -81,11 +81,7 @@ const Home = () => {
         url={seoData.site.url}
         description={seoData.site.description}
         author={seoData.site.author}
-        sameAs={[
-          `https://twitter.com/${seoData.site.twitter}`,
-          `https://facebook.com/${seoData.site.facebook}`,
-          `https://linkedin.com/${seoData.site.linkedin}`
-        ]}
+        sameAs={seoData.site.sameAs}
       />
 
       <OrganizationSchema 
@@ -93,11 +89,7 @@ const Home = () => {
         url={seoData.site.url}
         logo={seoData.site.logo}
         description={seoData.site.description}
-        sameAs={[
-          `https://twitter.com/${seoData.site.twitter}`,
-          `https://facebook.com/${seoData.site.facebook}`,
-          `https://linkedin.com/${seoData.site.linkedin}`
-        ]}
+        sameAs={seoData.site.sameAs}
       />
 
       <ItemListSchema 
