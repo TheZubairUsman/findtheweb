@@ -91,8 +91,6 @@ removal, mobile navigation, footer-link and three-card-grid checks. All 30 focus
 checks pass locally, with zero uncaught exceptions or rejected writes. External
 profile navigation is intercepted with a test page; no external message is sent.
 
-## Limits and release safety
-
 ## Final verified release
 
 Implementation commit: `4f7fd2113e866f27544c4726df40484d838e483e`.
