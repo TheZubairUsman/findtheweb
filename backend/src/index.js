@@ -3,7 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const fs = require('fs');
 const path = require('path');
-const { sequelize, Admin, BlogPost } = require('./models');
+const { sequelize, Admin, BlogPost, User } = require('./models');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const rateLimit = require('express-rate-limit');
@@ -757,6 +757,16 @@ const initializeDatabase = async () => {
   try {
     // Sync database
     await sequelize.sync({ force: false });
+    // Additive compatibility guard for existing production databases. This is
+    // intentionally limited to the new nullable verification-expiry column.
+    const userTable = User.getTableName();
+    const userColumns = await sequelize.getQueryInterface().describeTable(userTable);
+    if (!userColumns.emailVerificationExpires) {
+      await sequelize.getQueryInterface().addColumn(userTable, 'emailVerificationExpires', {
+        type: require('sequelize').DataTypes.DATE,
+        allowNull: true,
+      });
+    }
     console.log('Database synchronized successfully');
 
     // Bootstrap the first admin only from server-side environment variables.

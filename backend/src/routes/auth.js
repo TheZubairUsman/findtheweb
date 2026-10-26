@@ -7,7 +7,7 @@ const { Op } = require('sequelize');
 const crypto = require('crypto');
 const { User, Admin } = require('../models');
 const { authenticateJWT, authenticateAdmin } = require('../middleware/auth');
-const { sendEmail } = require('../services/emailService');
+const { sendEmail, sendVerificationEmail, sendPasswordResetEmail } = require('../services/emailService');
 const logger = require('../utils/logger');
 const { JWT_SECRET, JWT_EXPIRES_IN, NODE_ENV, CLIENT_URL } = process.env;
 const EFFECTIVE_JWT_SECRET = JWT_SECRET || (process.env.NODE_ENV === 'test' ? 'findtheweb-test-only-secret' : undefined);
@@ -15,6 +15,18 @@ const JWT_ISSUER = process.env.JWT_ISSUER || 'findtheweb-admin';
 const JWT_AUDIENCE = process.env.JWT_AUDIENCE || 'findtheweb-admin-ui';
 const bcrypt = require('bcrypt');
 const rateLimit = require('express-rate-limit');
+
+const hashToken = (token) => crypto.createHash('sha256').update(token).digest('hex');
+const createToken = () => crypto.randomBytes(32).toString('hex');
+const safeUser = (user) => {
+  const data = user.get({ plain: true });
+  delete data.password;
+  delete data.emailVerificationToken;
+  delete data.emailVerificationExpires;
+  delete data.resetPasswordToken;
+  delete data.resetPasswordExpires;
+  return data;
+};
 
 // Brute-force protection for login
 const loginLimiter = rateLimit({
@@ -75,21 +87,15 @@ router.post(
         name: displayName,
         role: 'user',
         isActive: true,
-        emailVerified: true,
+        emailVerified: false,
       });
-
-      // Generate JWT token
-      const token = generateToken(user);
-      const userData = user.get({ plain: true });
-      delete userData.password;
-      delete userData.emailVerificationToken;
-      delete userData.resetPasswordToken;
-
-      res.status(201).json({
-        success: true,
-        token,
-        user: userData,
-      });
+      const verificationToken = createToken();
+      user.emailVerificationToken = hashToken(verificationToken);
+      user.emailVerificationExpires = new Date(Date.now() + 24 * 60 * 60 * 1000);
+      await user.save();
+      const verificationUrl = `${CLIENT_URL || 'https://findtheweb.zus3cu.tech'}/member/verify?token=${encodeURIComponent(verificationToken)}`;
+      await sendVerificationEmail(user, verificationUrl);
+      res.status(201).json({ success: true, message: 'Account created. Check your email to verify your account.', user: safeUser(user) });
     } catch (err) {
       logger.error('Registration error:', err);
       next(err);
@@ -141,15 +147,16 @@ router.post(
         return res.status(403).json({ success: false, message: 'Account is not active' });
       }
 
+      if (!user.emailVerified) {
+        return res.status(403).json({ success: false, message: 'Please verify your email before signing in.', code: 'EMAIL_NOT_VERIFIED' });
+      }
+
       user.lastLoginAt = new Date();
       await user.save();
 
       // Generate JWT token
       const token = generateToken(user);
-      const userData = user.get({ plain: true });
-      delete userData.password;
-      delete userData.emailVerificationToken;
-      delete userData.resetPasswordToken;
+      const userData = safeUser(user);
 
       res.json({
         success: true,
@@ -271,30 +278,21 @@ router.post(
       const { email } = req.body;
 
       // Find user
-      const user = await User.findOne({ where: { email } });
+      const user = await User.findOne({ where: { email: email.toLowerCase().trim() } });
       if (!user) {
         // For security, don't reveal if the email exists or not
         return res.json({ success: true, message: 'If your email exists in our system, you will receive a password reset link' });
       }
 
-      // Generate reset token
-      const resetToken = user.generatePasswordResetToken();
+      const resetToken = createToken();
+      user.resetPasswordToken = hashToken(resetToken);
+      user.resetPasswordExpires = new Date(Date.now() + 60 * 60 * 1000);
       await user.save();
 
       // Send reset email
-      const resetUrl = `${CLIENT_URL}/reset-password?token=${resetToken}`;
-      await sendEmail({
-        to: user.email,
-        subject: 'Password Reset Request',
-        template: 'reset-password',
-        context: {
-          name: user.firstName,
-          resetUrl,
-          expiresIn: '1 hour',
-        },
-      });
-
-      res.json({ success: true, message: 'Password reset email sent' });
+      const resetUrl = `${CLIENT_URL || 'https://findtheweb.zus3cu.tech'}/member/reset-password?token=${encodeURIComponent(resetToken)}`;
+      await sendPasswordResetEmail(user, resetUrl);
+      res.json({ success: true, message: 'If your email exists in our system, you will receive a password reset link.' });
     } catch (err) {
       logger.error('Forgot password error:', err);
       next(err);
@@ -327,7 +325,7 @@ router.post(
       // Find user by reset token
       const user = await User.findOne({
         where: {
-          resetPasswordToken: token,
+          resetPasswordToken: hashToken(token),
           resetPasswordExpires: { [Op.gt]: Date.now() },
         },
       });
@@ -351,7 +349,7 @@ router.post(
         subject: 'Password Changed Successfully',
         template: 'password-changed',
         context: {
-          name: user.firstName,
+          name: user.name,
         },
       });
 
@@ -362,6 +360,20 @@ router.post(
     }
   }
 );
+
+router.post('/verify-email', [body('token', 'Verification token is required').not().isEmpty()], async (req, res, next) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return res.status(400).json({ success: false, message: 'Validation failed', data: { errors: errors.array() } });
+    const user = await User.findOne({ where: { emailVerificationToken: hashToken(req.body.token), emailVerificationExpires: { [Op.gt]: new Date() } } });
+    if (!user) return res.status(400).json({ success: false, message: 'Invalid or expired verification link.' });
+    user.emailVerified = true;
+    user.emailVerificationToken = null;
+    user.emailVerificationExpires = null;
+    await user.save();
+    res.json({ success: true, message: 'Email verified. You can now sign in.' });
+  } catch (err) { logger.error('Email verification error:', err); next(err); }
+});
 
 // @route   GET /api/v1/auth/me
 // @desc    Get current user

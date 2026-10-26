@@ -145,7 +145,7 @@ async function sendVerificationEmail(user, verificationUrl) {
     subject: 'Verify Your Email Address',
     template: 'verify-email',
     context: {
-      name: user.firstName,
+      name: user.name || user.firstName || 'FindTheWeb member',
       verificationUrl,
     },
   });
@@ -163,7 +163,7 @@ async function sendPasswordResetEmail(user, resetUrl) {
     subject: 'Password Reset Request',
     template: 'reset-password',
     context: {
-      name: user.firstName,
+      name: user.name || user.firstName || 'FindTheWeb member',
       resetUrl,
       expiresIn: '1 hour',
     },
@@ -181,7 +181,7 @@ async function sendWelcomeEmail(user) {
     subject: 'Welcome to FindTheWeb!',
     template: 'welcome',
     context: {
-      name: user.firstName,
+      name: user.name || user.firstName || 'FindTheWeb member',
       loginUrl: `${process.env.CLIENT_URL}/login`,
     },
   });
