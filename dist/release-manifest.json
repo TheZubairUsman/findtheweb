@@ -2,8 +2,8 @@
   "release": "frontend-source-20261027",
   "files": {
     "index.html": {
-      "sha256": "38c1c0785c0c38be948e458083f1622bcff37d39bebcd99350f62ec413e6351d",
-      "bytes": 8930
+      "sha256": "3030e22911332e5a096864f030f66d958b647cf3fb5f40dd20f542fac1f9b04c",
+      "bytes": 8929
     },
     "frontend-build.json": {
       "sha256": "e04726ebdb64d4653cf2e69bbeb3ba4a586fef8b52bbf36f0856f7b618243559",
@@ -22,12 +22,12 @@
       "bytes": 5886
     },
     "robots.txt": {
-      "sha256": "15091a1a8d9bf87faa53e100fa795e809638b2616c3020098e7ca300610ce02c",
-      "bytes": 592
+      "sha256": "732328e9565b1cc5f09452e9e566dca34f308093f6c00001528f788a3cc2034c",
+      "bytes": 560
     },
     "sitemap.xml": {
-      "sha256": "55a7c8c477a659097d4fa52fbcda35377130e3765002ab6f82b1b138f88f5313",
-      "bytes": 4182
+      "sha256": "2e54f479e2f0a3894f6af74fea0c1c26f4f06f12630b36b8da8fa9e6a336d6be",
+      "bytes": 4044
     },
     "assets/frontend/app-FKLB6AR2.js": {
       "sha256": "a4ea9a7ae161ec342107652a027ad2992d567ef0103664dbeb88103bedb0a878",

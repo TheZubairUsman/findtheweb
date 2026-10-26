@@ -13,11 +13,17 @@ const output = path.join(repo, 'dist/assets/frontend');
     if(!entry) throw Error('Frontend entry missing');
     const entryFile = '/' + path.relative(path.join(repo,'dist'),path.resolve(root,entry[0])).replaceAll('\\','/');
     const css = entry[1].cssBundle && '/' + path.relative(path.join(repo,'dist'),path.resolve(root,entry[1].cssBundle)).replaceAll('\\','/');
-    let html = fs.readFileSync(path.join(root,'index.html'),'utf8').replace('<!-- FRONTEND_ENTRY -->',`<script type="module" src="${entryFile}"></script>${css ? `<link rel="stylesheet" href="${css}">` : ''}`);
+    let html = fs.readFileSync(path.join(root,'index.html'),'utf8').replace(/\r\n/g,'\n').replace('<!-- FRONTEND_ENTRY -->',`<script type="module" src="${entryFile}"></script>${css ? `<link rel="stylesheet" href="${css}">` : ''}`);
     fs.writeFileSync(path.join(repo,'dist/index.html'),html);
     const assets = Object.keys(result.metafile.outputs).map(file => '/'+path.relative(path.join(repo,'dist'),path.resolve(root,file)).replaceAll('\\','/')).sort();
     fs.writeFileSync(path.join(repo,'dist/frontend-build.json'),JSON.stringify({entry:entryFile,css,assets,dependencies:require('../package.json').dependencies},null,2)+'\n');
     const files = {};
+    // Git can check text out as CRLF on Windows. Publish canonical LF bytes so
+    // production manifests match clean Linux CI builds exactly.
+    for(const file of ['findtheweb-release.js','findtheweb-release.css','contact-inbox.js','robots.txt','sitemap.xml']) {
+      const target=path.join(repo,'dist',file);
+      fs.writeFileSync(target,fs.readFileSync(target,'utf8').replace(/\r\n/g,'\n'));
+    }
     for(const file of ['index.html','frontend-build.json','findtheweb-release.js','findtheweb-release.css','contact-inbox.js','robots.txt','sitemap.xml',...assets.map(a=>a.slice(1))]) {
       const bytes = fs.readFileSync(path.join(repo,'dist',file));
       files[file] = {sha256:crypto.createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length};
