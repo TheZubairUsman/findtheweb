@@ -38,6 +38,7 @@
     "pg-hstore": "^2.3.4",
     "qrcode": "^1.5.3",
     "react-router-dom": "^7.8.2",
+    "sanitize-html": "2.18.1",
     "sequelize": "^6.35.2",
     "slugify": "^1.6.6",
     "speakeasy": "^2.0.0",
@@ -54,7 +55,7 @@
     "supertest": "^6.3.3"
   },
   "engines": {
-    "node": ">=20.17.0"
+    "node": ">=20.19.0"
   },
   "overrides": {
     "uuid": "11.1.1"

@@ -398,7 +398,7 @@ app.get('/api/v1/blog/posts', async (req, res) => {
       include: [{
         model: Admin,
         as: 'author',
-        attributes: ['id', 'name', 'email'],
+        attributes: ['id', 'name'],
       }],
       limit: parseInt(limit),
       offset: parseInt(offset),
@@ -430,7 +430,7 @@ app.get('/api/v1/blog/posts/:slug', async (req, res) => {
       include: [{
         model: Admin,
         as: 'author',
-        attributes: ['id', 'name', 'email'],
+        attributes: ['id', 'name'],
       }],
     });
     
@@ -473,6 +473,7 @@ app.get('/api/v1/blog/posts/:slug', async (req, res) => {
       success: true,
       data: {
         ...post.toJSON(),
+        socialImage: require('./services/editorialSeo').socialImageFor(post.slug, post.featuredImage),
         relatedPosts,
       },
     });

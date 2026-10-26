@@ -13,12 +13,7 @@ export const WebsiteSchema = ({ name, url, description, author, sameAs = [] }) =
       "@type": "Organization",
       "name": author
     },
-    "sameAs": sameAs,
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": `${url}/search?q={search_term_string}`,
-      "query-input": "required name=search_term_string"
-    }
+    "sameAs": sameAs
   };
 
   return (

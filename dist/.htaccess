@@ -1,6 +1,14 @@
 Options -MultiViews
 RewriteEngine On
 
+# Two-stage rollout: enable only after the PHP renderer passes a live probe.
+RewriteCond %{DOCUMENT_ROOT}/seo-ready.flag -f
+RewriteRule ^blog/([A-Za-z0-9][A-Za-z0-9_-]{0,254})/?$ seo.php?kind=article&slug=$1 [L]
+RewriteCond %{DOCUMENT_ROOT}/seo-ready.flag -f
+RewriteRule ^sitemap\.xml$ seo.php?kind=sitemap [L]
+RewriteCond %{DOCUMENT_ROOT}/seo-ready.flag -f
+RewriteRule ^rss\.xml$ seo.php?kind=rss [L]
+
 # Serve existing files/directories directly
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d

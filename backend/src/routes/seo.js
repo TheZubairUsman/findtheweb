@@ -1,7 +1,17 @@
 const express = require('express');
-const { BlogPost } = require('../models');
+const { BlogPost, Admin, sequelize } = require('../models');
+const { publicArticle } = require('../services/editorialSeo');
 
 const router = express.Router();
+router.get('/articles/:slug', async (req,res) => {
+  res.set('Cache-Control','no-store');
+  if(!/^[A-Za-z0-9][A-Za-z0-9_-]{0,254}$/.test(req.params.slug))return res.status(404).json({success:false,message:'Article not found'});
+  try {
+    const post=await BlogPost.findOne({where:{slug:req.params.slug,status:'published',publishedAt:{[sequelize.Sequelize.Op.lte]:new Date()}},include:[{model:Admin,as:'author',attributes:['name']}]});
+    if(!post)return res.status(404).json({success:false,message:'Article not found'});
+    return res.json({success:true,data:publicArticle(post)});
+  }catch(error){console.error('SEO article unavailable');return res.status(503).json({success:false,message:'Article temporarily unavailable'});}
+});
 const siteUrl = (process.env.PUBLIC_SITE_URL || 'https://findtheweb.zus3cu.tech').replace(/\/$/, '');
 
 const escapeXml = (value) => String(value || '')
@@ -14,6 +24,7 @@ const escapeXml = (value) => String(value || '')
 router.get('/sitemap.xml', async (req, res) => {
   try {
     const posts = await BlogPost.scope('published').findAll({
+      where: { publishedAt: { [sequelize.Sequelize.Op.lte]: new Date() } },
       attributes: ['slug', 'updatedAt', 'publishedAt'],
       order: [['publishedAt', 'DESC']],
       limit: 2000,
@@ -21,7 +32,8 @@ router.get('/sitemap.xml', async (req, res) => {
     const urls = [
       { loc: `${siteUrl}/`, changefreq: 'weekly', priority: '1.0' },
       { loc: `${siteUrl}/blog`, changefreq: 'daily', priority: '0.9' },
-      { loc: `${siteUrl}/discover`, changefreq: 'daily', priority: '0.8' },
+      { loc: `${siteUrl}/categories`, changefreq: 'weekly', priority: '0.8' },
+      { loc: `${siteUrl}/about`, changefreq: 'monthly', priority: '0.5' },
       ...posts.map((post) => ({
         loc: `${siteUrl}/blog/${encodeURIComponent(post.slug)}`,
         lastmod: post.updatedAt || post.publishedAt,
@@ -52,6 +64,7 @@ router.get('/sitemap.xml', async (req, res) => {
 router.get('/rss.xml', async (req, res) => {
   try {
     const posts = await BlogPost.scope('published').findAll({
+      where: { publishedAt: { [sequelize.Sequelize.Op.lte]: new Date() } },
       attributes: ['title', 'slug', 'excerpt', 'publishedAt', 'updatedAt'],
       order: [['publishedAt', 'DESC']],
       limit: 50,

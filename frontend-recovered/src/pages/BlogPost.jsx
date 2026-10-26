@@ -185,7 +185,7 @@ const BlogPost = () => {
         title={post.seoTitle || `${post.title} - FindTheWeb Blog`}
         description={post.seoDescription || post.excerpt}
         keywords={post.seoKeywords || post.tags?.join(', ')}
-        image={post.featuredImage}
+        image={post.socialImage || post.featuredImage}
         url={`/blog/${post.slug}`}
         type="article"
       />
@@ -197,7 +197,7 @@ const BlogPost = () => {
         author={post.author?.name || 'FindTheWeb'}
         datePublished={post.publishedAt}
         dateModified={post.updatedAt}
-        image={post.featuredImage}
+        image={post.socialImage || post.featuredImage}
         url={`https://findtheweb.zus3cu.tech/blog/${post.slug}`}
         publisher="FindTheWeb"
       />

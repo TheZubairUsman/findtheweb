@@ -50,12 +50,7 @@ const WebsiteCard = ({ website }) => {
     "name": website.name,
     "description": website.description,
     "url": website.url,
-    "category": website.categoryName,
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": `${website.url}?q={search_term_string}`,
-      "query-input": "required name=search_term_string"
-    }
+    "category": website.categoryName
   };
 
   return (

@@ -9,6 +9,8 @@ const output = path.join(repo, 'dist/assets/frontend');
 // New entry points never import the legacy vendor tree.
 (async () => {
   await esbuild.build({absWorkingDir:root,entryPoints:['src/main.jsx'],outdir:output,bundle:true,splitting:true,format:'esm',platform:'browser',target:'es2020',jsx:'automatic',minify:true,entryNames:'app-[hash]',chunkNames:'chunk-[hash]',assetNames:'asset-[hash]',sourcemap:false,metafile:true,define:{'process.env.NODE_ENV':'"production"'}}).then(result => {
+    for(const file of ['seo.php','seo-render.css']) fs.writeFileSync(path.join(repo,'dist',file),fs.readFileSync(path.join(root,'server',file),'utf8').replace(/\r\n/g,'\n'));
+    if(fs.existsSync(path.join(root,'server/seo-ready.flag'))) fs.copyFileSync(path.join(root,'server/seo-ready.flag'),path.join(repo,'dist/seo-ready.flag'));
     const entry = Object.entries(result.metafile.outputs).find(([,v]) => v.entryPoint === 'src/main.jsx');
     if(!entry) throw Error('Frontend entry missing');
     const entryFile = '/' + path.relative(path.join(repo,'dist'),path.resolve(root,entry[0])).replaceAll('\\','/');
@@ -20,15 +22,17 @@ const output = path.join(repo, 'dist/assets/frontend');
     const files = {};
     // Git can check text out as CRLF on Windows. Publish canonical LF bytes so
     // production manifests match clean Linux CI builds exactly.
-    for(const file of ['findtheweb-release.js','findtheweb-release.css','contact-inbox.js','robots.txt','sitemap.xml']) {
+    for(const file of ['findtheweb-release.js','findtheweb-release.css','contact-inbox.js','robots.txt','sitemap.xml','.htaccess']) {
       const target=path.join(repo,'dist',file);
       fs.writeFileSync(target,fs.readFileSync(target,'utf8').replace(/\r\n/g,'\n'));
     }
-    for(const file of ['index.html','frontend-build.json','findtheweb-release.js','findtheweb-release.css','contact-inbox.js','robots.txt','sitemap.xml',...assets.map(a=>a.slice(1))]) {
+    const social=fs.readdirSync(path.join(repo,'dist/social-covers')).filter(f=>f.endsWith('.png')).sort().map(f=>'social-covers/'+f);
+    for(const file of ['index.html','frontend-build.json','findtheweb-release.js','findtheweb-release.css','contact-inbox.js','robots.txt','seo-render.css',...assets.map(a=>a.slice(1)),...social]) {
       const bytes = fs.readFileSync(path.join(repo,'dist',file));
       files[file] = {sha256:crypto.createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length};
     }
-    fs.writeFileSync(path.join(repo,'dist/release-manifest.json'),JSON.stringify({release:'frontend-source-20261027',files,rollback:'Restore dist from Git commit 0abcdba; new hashed assets can remain. Re-run public and browser smoke checks. No database rollback is required.'},null,2)+'\n');
+    const serverFiles={};for(const file of ['seo.php','.htaccess']){const bytes=fs.readFileSync(path.join(repo,'dist',file));serverFiles[file]={sha256:crypto.createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length};}
+    fs.writeFileSync(path.join(repo,'dist/release-manifest.json'),JSON.stringify({release:'seo-content-20261027',files,serverFiles,rollback:'Restore dist from Git commit 24c148e to disable server rendering; retain code/dependency/content rollback receipts separately. Do not restore the entire database over concurrent user data.'},null,2)+'\n');
   });
   console.log('Frontend rebuilt from source.');
 })().catch(error => {console.error(error.message);process.exitCode=1;});

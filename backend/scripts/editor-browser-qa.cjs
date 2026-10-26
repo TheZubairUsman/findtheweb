@@ -2,7 +2,7 @@
 process.env.NODE_ENV = 'test';
 process.env.JWT_SECRET = require('crypto').randomBytes(32).toString('hex');
 process.env.TRUST_PROXY = 'false';
-process.env.CORS_ORIGINS = 'http://127.0.0.1:5097';
+process.env.CORS_ORIGINS = 'http://127.0.0.1:5097,http://127.0.0.1:5098';
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -37,5 +37,6 @@ host.get('*', (req, res) => res.type('html').send(localHtml(fs.readFileSync(path
     {title:'Cybersecurity QA checklist',slug:'cybersecurity-qa-checklist',content:'<h2>Security review</h2><p>Verify authorization and protect data.</p>',excerpt:'Local QA fixture for security readers.',status:'published',publishedAt:new Date(),featured:true,categories:['Cybersecurity'],tags:['security'],authorName:'QA Editor',featuredImage:'/logo.png'}
   ]);
   await BlogPost.bulkCreate(Array.from({length:12},(_,i)=>({title:`Pagination QA article ${i+1}`,slug:`pagination-qa-article-${i+1}`,content:'<p>Isolated pagination fixture.</p>',status:'published',publishedAt:new Date(Date.now()-60000*(i+1)),featured:i===0,categories:['Web Discovery'],tags:['discovery']})));
+  await BlogPost.bulkCreate([{title:'Renderer private draft',slug:'seo-private-draft',content:'PrivateMarker',status:'draft'},{title:'Renderer future article',slug:'seo-future-article',content:'FutureMarker',status:'published',publishedAt:new Date(Date.now()+86400000)}]);
   host.listen(5097, '127.0.0.1', () => console.log('Ephemeral browser QA ready at http://127.0.0.1:5097/admin/login'));
 })();

@@ -24,7 +24,7 @@ jobs:
       - run: npm ci --prefix ../frontend-recovered
       - run: npm audit --prefix ../frontend-recovered --audit-level=low
       - run: npm run build --prefix ../frontend-recovered
-      - run: git diff --exit-code -- ../dist/index.html ../dist/assets/frontend ../dist/frontend-build.json ../dist/release-manifest.json
+      - run: git diff --exit-code -- ../dist/index.html ../dist/assets/frontend ../dist/frontend-build.json ../dist/release-manifest.json ../dist/seo.php ../dist/seo-render.css
       - run: npm run build:editor
       - run: git diff --exit-code -- ../dist/assets/js/BlogManager-CgU_iRbw.js ../dist/assets/js/index-BLfo3RSv.js
       - run: node --experimental-vm-modules ../tools/check-bundle-syntax.cjs
@@ -45,11 +45,13 @@ jobs:
       - run: npx --prefix frontend-recovered playwright install --with-deps chromium
       - run: node backend/scripts/editor-browser-qa.cjs > /tmp/findtheweb-qa.log 2>&1 &
       - run: node frontend-recovered/scripts/browser-qa.cjs
+      - run: docker build -t findtheweb-seo-qa -f tools/seo-qa.Dockerfile tools
+      - run: node frontend-recovered/scripts/seo-browser-qa.cjs
       - run: cp /tmp/findtheweb-qa.log docs/qa/frontend-20261027/server.log
         if: failure()
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: frontend-browser-qa
-          path: docs/qa/frontend-20261027
+          path: docs/qa/
           retention-days: 7
