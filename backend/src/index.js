@@ -121,6 +121,7 @@ app.use('/api/v1/discover', discoveryRouter);
 app.use('/api/v1/seo', seoRouter);
 app.use('/api/v1/websites', websiteRouter);
 app.use('/api/v1/community', communityRouter);
+app.use('/api/v1/contact', require('./routes/contact'));
 
 // Import routes
 const authRoutes = require('./routes/auth');

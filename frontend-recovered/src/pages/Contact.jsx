@@ -20,6 +20,7 @@ const Contact = () => {
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +30,7 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = 'Name is required';
@@ -43,8 +44,20 @@ const Contact = () => {
     }
 
     setIsSubmitting(true);
-    const form = e.target;
-    form.submit();
+    setSubmissionStatus('Saving your message…');
+    try {
+      const response = await fetch('/api/v1/contact', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, _honey: new FormData(e.target).get('_honey') || '' }),
+      });
+      const result = await response.json();
+      if (!response.ok || !result.success) throw new Error(result.message || 'Unable to save your message.');
+      setSubmissionStatus(`Message saved. Reference: ${result.reference}. Our team can review it in the support inbox.`);
+    } catch (error) {
+      setSubmissionStatus(`${error.message} Your message remains in the form so you can retry.`);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -137,7 +150,6 @@ const Contact = () => {
             <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send us a message</h2>
               <form 
-                action="https://formsubmit.co/support@findtheweb.site" 
                 method="POST"
                 onSubmit={handleSubmit}
                 className="space-y-6"
@@ -146,6 +158,7 @@ const Contact = () => {
                 <input type="hidden" name="_next" value="https://findtheweb.zus3cu.tech/thank-you" />
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="text" name="_honey" className="hidden" />
+                <p role="status" aria-live="polite">{submissionStatus || 'Messages are saved privately in our support inbox.'}</p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
