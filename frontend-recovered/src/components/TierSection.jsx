@@ -239,10 +239,10 @@ const TierSection = () => {
         {activeWebsites.length > 0 && (
           <div className="text-center">
             <Link
-              to={`/websites?tier=${activeTab}`}
+              to="/categories"
               className={`inline-flex items-center px-6 py-3 rounded-lg font-medium text-white bg-gradient-to-r ${activeConfig.gradient} hover:shadow-lg transition-all duration-200`}
             >
-              View All {activeConfig.name} Websites
+              Browse All Categories
               <FiExternalLink className="w-4 h-4 ml-2" />
             </Link>
           </div>
