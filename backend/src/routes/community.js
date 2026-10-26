@@ -2,7 +2,7 @@ const express = require('express');
 const rateLimit = require('express-rate-limit');
 const { Op } = require('sequelize');
 const { CommunityProfile, Collection, CollectionItem, ProfileFollow, Website } = require('../models');
-const { protect } = require('../middleware/auth');
+const { protect, optionalAuth } = require('../middleware/auth');
 
 const router = express.Router();
 const mutationLimit = rateLimit({ windowMs: 15 * 60 * 1000, max: 60, standardHeaders: true, legacyHeaders: false });
@@ -29,13 +29,16 @@ router.get('/profiles/:handle', async (req, res, next) => {
   } catch (error) { next(error); }
 });
 
-router.get('/collections/:id', async (req, res, next) => {
+router.get('/collections/:id', optionalAuth, async (req, res, next) => {
   try {
     const collection = await Collection.findByPk(req.params.id, {
       include: [{ model: CollectionItem, as: 'items', include: [{ model: Website, as: 'website', attributes: ['id', 'name', 'url', 'description', 'logo', 'screenshot', 'categoryId', 'tags'] }] }],
     });
-    if (!collection || !collection.isPublic) return res.status(404).json({ success: false, message: 'Public collection not found' });
-    res.json({ success: true, data: collection });
+    if (!collection) return res.status(404).json({ success: false, message: 'Public collection not found' });
+    const key = req.user ? { ownerId: req.user.id, ownerType: req.user.role === 'admin' ? 'admin' : 'user' } : null;
+    const canManage = Boolean(key && collection.ownerId === key.ownerId && collection.ownerType === key.ownerType);
+    if (!collection.isPublic && !canManage) return res.status(404).json({ success: false, message: 'Public collection not found' });
+    res.json({ success: true, data: { ...collection.toJSON(), canManage } });
   } catch (error) { next(error); }
 });
 

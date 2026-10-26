@@ -230,6 +230,15 @@ html.dark .ftw-member-auth-card input { background: #111827; color: #f8fafc; bor
 .ftw-journal-footer { display: flex; justify-content: space-between; gap: 1rem; max-width: 1120px; margin: 0 auto; padding: 1.5rem; border-top: 1px solid #deddd8; color: #687386; }
 .ftw-journal-footer a { color: #304ed8; }
 
+.ftw-collection-entry-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; }
+.ftw-collection-manager { margin-top: 2rem; padding: 1.5rem; border: 1px solid #dbe3f0; border-radius: 1rem; background: #f8fafc; }
+.ftw-collection-manager h2 { margin: .4rem 0 1rem; font-family: Georgia, serif; }
+.ftw-collection-manager label { display: grid; gap: .4rem; margin: .8rem 0; color: #334155; font-weight: 700; }
+.ftw-collection-manager select, .ftw-collection-manager textarea { width: 100%; padding: .75rem .85rem; border: 1px solid #cbd5e1; border-radius: .65rem; background: #fff; color: #172033; font: inherit; }
+html.dark .ftw-collection-manager { background: #172033; border-color: #334155; }
+html.dark .ftw-collection-manager label { color: #dbeafe; }
+html.dark .ftw-collection-manager select, html.dark .ftw-collection-manager textarea { background: #0f172a; border-color: #475569; color: #f8fafc; }
+
 .ftw-admin-shell { background: #f5f7fb; }
 .ftw-admin-shell #root > div { min-height: 100vh; }
 .ftw-admin-shell button { transition: transform .18s ease, box-shadow .18s ease; }
