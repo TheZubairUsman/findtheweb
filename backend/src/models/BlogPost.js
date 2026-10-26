@@ -163,19 +163,26 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   BlogPost.prototype.getRelatedPosts = async function(limit = 3) {
-    const relatedPosts = await BlogPost.scope('published').findAll({
+    const { Op } = sequelize.Sequelize;
+    const relatedPosts = await BlogPost.findAll({
       where: {
-        id: { [sequelize.Sequelize.Op.ne]: this.id },
-        [sequelize.Sequelize.Op.or]: [
-          { categories: { [sequelize.Sequelize.Op.overlap]: this.categories } },
-          { tags: { [sequelize.Sequelize.Op.overlap]: this.tags } },
-        ],
+        id: { [Op.ne]: this.id },
+        status: 'published',
+        publishedAt: { [Op.lte]: new Date() },
       },
-      limit,
-      order: [['publishedAt', 'DESC']],
+      attributes: ['id', 'title', 'slug', 'excerpt', 'featuredImage', 'publishedAt', 'readingTime', 'categories', 'tags'],
+      order: [['publishedAt', 'DESC'], ['id', 'ASC']],
     });
-    
-    return relatedPosts;
+    const categories = new Set(Array.isArray(this.categories) ? this.categories : []);
+    const tags = new Set(Array.isArray(this.tags) ? this.tags : []);
+    return relatedPosts.map((post) => ({
+      post,
+      score: (Array.isArray(post.categories) ? post.categories : []).filter(value => categories.has(value)).length * 3
+        + (Array.isArray(post.tags) ? post.tags : []).filter(value => tags.has(value)).length,
+    })).filter(candidate => candidate.score > 0)
+      .sort((a, b) => b.score - a.score || new Date(b.post.publishedAt) - new Date(a.post.publishedAt))
+      .slice(0, Math.min(12, Math.max(0, Number.parseInt(limit, 10) || 0)))
+      .map(candidate => candidate.post);
   };
 
   // Static methods
