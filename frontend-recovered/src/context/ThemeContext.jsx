@@ -2,9 +2,20 @@ import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
 const ThemeContext = createContext();
 
-const initialState = {
-  theme: 'light',
-  isDark: false
+const getInitialState = () => {
+  try {
+    const savedTheme = localStorage.getItem('webgem-theme');
+    if (savedTheme === 'light' || savedTheme === 'dark') {
+      return { theme: savedTheme, isDark: savedTheme === 'dark' };
+    }
+
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const theme = prefersDark ? 'dark' : 'light';
+    return { theme, isDark: prefersDark };
+  } catch (error) {
+    console.error('Error initializing theme:', error);
+    return { theme: 'light', isDark: false };
+  }
 };
 
 const themeReducer = (state, action) => {
@@ -30,27 +41,7 @@ const themeReducer = (state, action) => {
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(themeReducer, initialState);
-
-  // Initialize theme on mount
-  useEffect(() => {
-    try {
-      // Check localStorage first
-      const savedTheme = localStorage.getItem('webgem-theme');
-      if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
-        dispatch({ type: 'SET_THEME', payload: savedTheme });
-      } else {
-        // Check OS preference
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const defaultTheme = prefersDark ? 'dark' : 'light';
-        dispatch({ type: 'SET_THEME', payload: defaultTheme });
-      }
-    } catch (error) {
-      console.error('Error initializing theme:', error);
-      // Fallback to light theme
-      dispatch({ type: 'SET_THEME', payload: 'light' });
-    }
-  }, []);
+  const [state, dispatch] = useReducer(themeReducer, undefined, getInitialState);
 
   // Apply theme class to document root
   useEffect(() => {
