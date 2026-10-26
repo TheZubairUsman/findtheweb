@@ -1,0 +1,1602 @@
+[
+  {
+    "title": "How to Build a Reliable AI Agent Workflow in 2026",
+    "slug": "how-to-build-a-reliable-ai-agent-workflow-in-2026",
+    "category": "AI & Automation",
+    "index": 0,
+    "sources": [
+      [
+        "Gartner 2026 technology trends",
+        "https://www.gartner.com/en/articles/top-technology-trends-2026"
+      ],
+      [
+        "GitHub AI developer research",
+        "https://github.blog/news-insights/octoverse/the-new-identity-of-a-developer-what-changes-and-what-doesnt-in-the-ai-era/"
+      ]
+    ]
+  },
+  {
+    "title": "AI Automation vs AI Agents: Choosing the Right Architecture",
+    "slug": "ai-automation-vs-ai-agents-choosing-the-right-architecture",
+    "category": "AI & Automation",
+    "index": 1,
+    "sources": [
+      [
+        "Gartner 2026 technology trends",
+        "https://www.gartner.com/en/articles/top-technology-trends-2026"
+      ],
+      [
+        "GitHub AI developer research",
+        "https://github.blog/news-insights/octoverse/the-new-identity-of-a-developer-what-changes-and-what-doesnt-in-the-ai-era/"
+      ]
+    ]
+  },
+  {
+    "title": "A Practical Evaluation Checklist for LLM Features",
+    "slug": "a-practical-evaluation-checklist-for-llm-features",
+    "category": "AI & Automation",
+    "index": 2,
+    "sources": [
+      [
+        "Gartner 2026 technology trends",
+        "https://www.gartner.com/en/articles/top-technology-trends-2026"
+      ],
+      [
+        "GitHub AI developer research",
+        "https://github.blog/news-insights/octoverse/the-new-identity-of-a-developer-what-changes-and-what-doesnt-in-the-ai-era/"
+      ]
+    ]
+  },
+  {
+    "title": "How to Add Human Review to Automated Decisions",
+    "slug": "how-to-add-human-review-to-automated-decisions",
+    "category": "AI & Automation",
+    "index": 3,
+    "sources": [
+      [
+        "Gartner 2026 technology trends",
+        "https://www.gartner.com/en/articles/top-technology-trends-2026"
+      ],
+      [
+        "GitHub AI developer research",
+        "https://github.blog/news-insights/octoverse/the-new-identity-of-a-developer-what-changes-and-what-doesnt-in-the-ai-era/"
+      ]
+    ]
+  },
+  {
+    "title": "RAG Systems Explained: Retrieval That Actually Helps",
+    "slug": "rag-systems-explained-retrieval-that-actually-helps",
+    "category": "AI & Automation",
+    "index": 4,
+    "sources": [
+      [
+        "Gartner 2026 technology trends",
+        "https://www.gartner.com/en/articles/top-technology-trends-2026"
+      ],
+      [
+        "GitHub AI developer research",
+        "https://github.blog/news-insights/octoverse/the-new-identity-of-a-developer-what-changes-and-what-doesnt-in-the-ai-era/"
+      ]
+    ]
+  },
+  {
+    "title": "Prompt Engineering for Repeatable Technical Work",
+    "slug": "prompt-engineering-for-repeatable-technical-work",
+    "category": "AI & Automation",
+    "index": 5,
+    "sources": [
+      [
+        "Gartner 2026 technology trends",
+        "https://www.gartner.com/en/articles/top-technology-trends-2026"
+      ],
+      [
+        "GitHub AI developer research",
+        "https://github.blog/news-insights/octoverse/the-new-identity-of-a-developer-what-changes-and-what-doesnt-in-the-ai-era/"
+      ]
+    ]
+  },
+  {
+    "title": "How to Monitor AI Costs, Latency, and Quality",
+    "slug": "how-to-monitor-ai-costs-latency-and-quality",
+    "category": "AI & Automation",
+    "index": 6,
+    "sources": [
+      [
+        "Gartner 2026 technology trends",
+        "https://www.gartner.com/en/articles/top-technology-trends-2026"
+      ],
+      [
+        "GitHub AI developer research",
+        "https://github.blog/news-insights/octoverse/the-new-identity-of-a-developer-what-changes-and-what-doesnt-in-the-ai-era/"
+      ]
+    ]
+  },
+  {
+    "title": "Designing Safe Browser Automation for Real Work",
+    "slug": "designing-safe-browser-automation-for-real-work",
+    "category": "AI & Automation",
+    "index": 7,
+    "sources": [
+      [
+        "Gartner 2026 technology trends",
+        "https://www.gartner.com/en/articles/top-technology-trends-2026"
+      ],
+      [
+        "GitHub AI developer research",
+        "https://github.blog/news-insights/octoverse/the-new-identity-of-a-developer-what-changes-and-what-doesnt-in-the-ai-era/"
+      ]
+    ]
+  },
+  {
+    "title": "Multi-Agent Systems: Where Coordination Helps and Hurts",
+    "slug": "multi-agent-systems-where-coordination-helps-and-hurts",
+    "category": "AI & Automation",
+    "index": 8,
+    "sources": [
+      [
+        "Gartner 2026 technology trends",
+        "https://www.gartner.com/en/articles/top-technology-trends-2026"
+      ],
+      [
+        "GitHub AI developer research",
+        "https://github.blog/news-insights/octoverse/the-new-identity-of-a-developer-what-changes-and-what-doesnt-in-the-ai-era/"
+      ]
+    ]
+  },
+  {
+    "title": "A Small-Team Playbook for Shipping AI Features",
+    "slug": "a-small-team-playbook-for-shipping-ai-features",
+    "category": "AI & Automation",
+    "index": 9,
+    "sources": [
+      [
+        "Gartner 2026 technology trends",
+        "https://www.gartner.com/en/articles/top-technology-trends-2026"
+      ],
+      [
+        "GitHub AI developer research",
+        "https://github.blog/news-insights/octoverse/the-new-identity-of-a-developer-what-changes-and-what-doesnt-in-the-ai-era/"
+      ]
+    ]
+  },
+  {
+    "title": "The No-Code Automation Stack for a One-Person Team",
+    "slug": "the-no-code-automation-stack-for-a-one-person-team",
+    "category": "Automation & No-Code",
+    "index": 0,
+    "sources": [
+      [
+        "MDN Web APIs",
+        "https://developer.mozilla.org/en-US/docs/Web/API"
+      ],
+      [
+        "OWASP API Security",
+        "https://owasp.org/API-Security/"
+      ]
+    ]
+  },
+  {
+    "title": "How to Map a Workflow Before Automating It",
+    "slug": "how-to-map-a-workflow-before-automating-it",
+    "category": "Automation & No-Code",
+    "index": 1,
+    "sources": [
+      [
+        "MDN Web APIs",
+        "https://developer.mozilla.org/en-US/docs/Web/API"
+      ],
+      [
+        "OWASP API Security",
+        "https://owasp.org/API-Security/"
+      ]
+    ]
+  },
+  {
+    "title": "Webhooks, APIs, and Triggers: A Clear Beginner Guide",
+    "slug": "webhooks-apis-and-triggers-a-clear-beginner-guide",
+    "category": "Automation & No-Code",
+    "index": 2,
+    "sources": [
+      [
+        "MDN Web APIs",
+        "https://developer.mozilla.org/en-US/docs/Web/API"
+      ],
+      [
+        "OWASP API Security",
+        "https://owasp.org/API-Security/"
+      ]
+    ]
+  },
+  {
+    "title": "When No-Code Automation Becomes Technical Debt",
+    "slug": "when-no-code-automation-becomes-technical-debt",
+    "category": "Automation & No-Code",
+    "index": 3,
+    "sources": [
+      [
+        "MDN Web APIs",
+        "https://developer.mozilla.org/en-US/docs/Web/API"
+      ],
+      [
+        "OWASP API Security",
+        "https://owasp.org/API-Security/"
+      ]
+    ]
+  },
+  {
+    "title": "How to Build Approval Steps into Business Automations",
+    "slug": "how-to-build-approval-steps-into-business-automations",
+    "category": "Automation & No-Code",
+    "index": 4,
+    "sources": [
+      [
+        "MDN Web APIs",
+        "https://developer.mozilla.org/en-US/docs/Web/API"
+      ],
+      [
+        "OWASP API Security",
+        "https://owasp.org/API-Security/"
+      ]
+    ]
+  },
+  {
+    "title": "Reliable Spreadsheet Automation Without Data Chaos",
+    "slug": "reliable-spreadsheet-automation-without-data-chaos",
+    "category": "Automation & No-Code",
+    "index": 5,
+    "sources": [
+      [
+        "MDN Web APIs",
+        "https://developer.mozilla.org/en-US/docs/Web/API"
+      ],
+      [
+        "OWASP API Security",
+        "https://owasp.org/API-Security/"
+      ]
+    ]
+  },
+  {
+    "title": "Automation Testing for Non-Developers",
+    "slug": "automation-testing-for-non-developers",
+    "category": "Automation & No-Code",
+    "index": 6,
+    "sources": [
+      [
+        "MDN Web APIs",
+        "https://developer.mozilla.org/en-US/docs/Web/API"
+      ],
+      [
+        "OWASP API Security",
+        "https://owasp.org/API-Security/"
+      ]
+    ]
+  },
+  {
+    "title": "How to Connect SaaS Tools Without Leaking Secrets",
+    "slug": "how-to-connect-saas-tools-without-leaking-secrets",
+    "category": "Automation & No-Code",
+    "index": 7,
+    "sources": [
+      [
+        "MDN Web APIs",
+        "https://developer.mozilla.org/en-US/docs/Web/API"
+      ],
+      [
+        "OWASP API Security",
+        "https://owasp.org/API-Security/"
+      ]
+    ]
+  },
+  {
+    "title": "A Practical Comparison of Workflow Orchestration Patterns",
+    "slug": "a-practical-comparison-of-workflow-orchestration-patterns",
+    "category": "Automation & No-Code",
+    "index": 8,
+    "sources": [
+      [
+        "MDN Web APIs",
+        "https://developer.mozilla.org/en-US/docs/Web/API"
+      ],
+      [
+        "OWASP API Security",
+        "https://owasp.org/API-Security/"
+      ]
+    ]
+  },
+  {
+    "title": "From Manual Task to Measurable Automation in Seven Days",
+    "slug": "from-manual-task-to-measurable-automation-in-seven-days",
+    "category": "Automation & No-Code",
+    "index": 9,
+    "sources": [
+      [
+        "MDN Web APIs",
+        "https://developer.mozilla.org/en-US/docs/Web/API"
+      ],
+      [
+        "OWASP API Security",
+        "https://owasp.org/API-Security/"
+      ]
+    ]
+  },
+  {
+    "title": "A Production-Ready Cloud Deployment Checklist",
+    "slug": "a-production-ready-cloud-deployment-checklist",
+    "category": "Cloud & DevOps",
+    "index": 0,
+    "sources": [
+      [
+        "Google SRE workbook",
+        "https://sre.google/workbook/monitoring/"
+      ],
+      [
+        "AWS Well-Architected",
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"
+      ]
+    ]
+  },
+  {
+    "title": "Containers Explained for Teams Shipping Their First Service",
+    "slug": "containers-explained-for-teams-shipping-their-first-service",
+    "category": "Cloud & DevOps",
+    "index": 1,
+    "sources": [
+      [
+        "Google SRE workbook",
+        "https://sre.google/workbook/monitoring/"
+      ],
+      [
+        "AWS Well-Architected",
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"
+      ]
+    ]
+  },
+  {
+    "title": "How to Design Health Checks That Find Real Failures",
+    "slug": "how-to-design-health-checks-that-find-real-failures",
+    "category": "Cloud & DevOps",
+    "index": 2,
+    "sources": [
+      [
+        "Google SRE workbook",
+        "https://sre.google/workbook/monitoring/"
+      ],
+      [
+        "AWS Well-Architected",
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"
+      ]
+    ]
+  },
+  {
+    "title": "CI/CD Pipelines: Fast Feedback Without Unsafe Releases",
+    "slug": "ci-cd-pipelines-fast-feedback-without-unsafe-releases",
+    "category": "Cloud & DevOps",
+    "index": 3,
+    "sources": [
+      [
+        "Google SRE workbook",
+        "https://sre.google/workbook/monitoring/"
+      ],
+      [
+        "AWS Well-Architected",
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"
+      ]
+    ]
+  },
+  {
+    "title": "Blue-Green vs Canary Deployments for Small Teams",
+    "slug": "blue-green-vs-canary-deployments-for-small-teams",
+    "category": "Cloud & DevOps",
+    "index": 4,
+    "sources": [
+      [
+        "Google SRE workbook",
+        "https://sre.google/workbook/monitoring/"
+      ],
+      [
+        "AWS Well-Architected",
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"
+      ]
+    ]
+  },
+  {
+    "title": "Secrets Management Without Putting Keys in Git",
+    "slug": "secrets-management-without-putting-keys-in-git",
+    "category": "Cloud & DevOps",
+    "index": 5,
+    "sources": [
+      [
+        "Google SRE workbook",
+        "https://sre.google/workbook/monitoring/"
+      ],
+      [
+        "AWS Well-Architected",
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"
+      ]
+    ]
+  },
+  {
+    "title": "How to Cut Cloud Waste Without Cutting Reliability",
+    "slug": "how-to-cut-cloud-waste-without-cutting-reliability",
+    "category": "Cloud & DevOps",
+    "index": 6,
+    "sources": [
+      [
+        "Google SRE workbook",
+        "https://sre.google/workbook/monitoring/"
+      ],
+      [
+        "AWS Well-Architected",
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"
+      ]
+    ]
+  },
+  {
+    "title": "Observability Basics: Logs, Metrics, and Traces Together",
+    "slug": "observability-basics-logs-metrics-and-traces-together",
+    "category": "Cloud & DevOps",
+    "index": 7,
+    "sources": [
+      [
+        "Google SRE workbook",
+        "https://sre.google/workbook/monitoring/"
+      ],
+      [
+        "AWS Well-Architected",
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"
+      ]
+    ]
+  },
+  {
+    "title": "Backups and Rollbacks for Stateful Web Applications",
+    "slug": "backups-and-rollbacks-for-stateful-web-applications",
+    "category": "Cloud & DevOps",
+    "index": 8,
+    "sources": [
+      [
+        "Google SRE workbook",
+        "https://sre.google/workbook/monitoring/"
+      ],
+      [
+        "AWS Well-Architected",
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"
+      ]
+    ]
+  },
+  {
+    "title": "Infrastructure as Code: A Safer Path from Laptop to Cloud",
+    "slug": "infrastructure-as-code-a-safer-path-from-laptop-to-cloud",
+    "category": "Cloud & DevOps",
+    "index": 9,
+    "sources": [
+      [
+        "Google SRE workbook",
+        "https://sre.google/workbook/monitoring/"
+      ],
+      [
+        "AWS Well-Architected",
+        "https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html"
+      ]
+    ]
+  },
+  {
+    "title": "OWASP Top 10 2025: A Developer-Friendly Action Plan",
+    "slug": "owasp-top-10-2025-a-developer-friendly-action-plan",
+    "category": "Cybersecurity",
+    "index": 0,
+    "sources": [
+      [
+        "OWASP Top 10 2025",
+        "https://owasp.org/Top10/2025/"
+      ],
+      [
+        "NIST Cybersecurity Framework",
+        "https://www.nist.gov/cyberframework"
+      ]
+    ]
+  },
+  {
+    "title": "Threat Modeling a Modern Web Application",
+    "slug": "threat-modeling-a-modern-web-application",
+    "category": "Cybersecurity",
+    "index": 1,
+    "sources": [
+      [
+        "OWASP Top 10 2025",
+        "https://owasp.org/Top10/2025/"
+      ],
+      [
+        "NIST Cybersecurity Framework",
+        "https://www.nist.gov/cyberframework"
+      ]
+    ]
+  },
+  {
+    "title": "How to Secure Admin Panels and Privileged Routes",
+    "slug": "how-to-secure-admin-panels-and-privileged-routes",
+    "category": "Cybersecurity",
+    "index": 2,
+    "sources": [
+      [
+        "OWASP Top 10 2025",
+        "https://owasp.org/Top10/2025/"
+      ],
+      [
+        "NIST Cybersecurity Framework",
+        "https://www.nist.gov/cyberframework"
+      ]
+    ]
+  },
+  {
+    "title": "Password Reset and Email Verification Done Safely",
+    "slug": "password-reset-and-email-verification-done-safely",
+    "category": "Cybersecurity",
+    "index": 3,
+    "sources": [
+      [
+        "OWASP Top 10 2025",
+        "https://owasp.org/Top10/2025/"
+      ],
+      [
+        "NIST Cybersecurity Framework",
+        "https://www.nist.gov/cyberframework"
+      ]
+    ]
+  },
+  {
+    "title": "API Rate Limiting That Protects Users Without Breaking UX",
+    "slug": "api-rate-limiting-that-protects-users-without-breaking-ux",
+    "category": "Cybersecurity",
+    "index": 4,
+    "sources": [
+      [
+        "OWASP Top 10 2025",
+        "https://owasp.org/Top10/2025/"
+      ],
+      [
+        "NIST Cybersecurity Framework",
+        "https://www.nist.gov/cyberframework"
+      ]
+    ]
+  },
+  {
+    "title": "Practical Session and Token Security for JavaScript Apps",
+    "slug": "practical-session-and-token-security-for-javascript-apps",
+    "category": "Cybersecurity",
+    "index": 5,
+    "sources": [
+      [
+        "OWASP Top 10 2025",
+        "https://owasp.org/Top10/2025/"
+      ],
+      [
+        "NIST Cybersecurity Framework",
+        "https://www.nist.gov/cyberframework"
+      ]
+    ]
+  },
+  {
+    "title": "Supply-Chain Security for Open-Source Dependencies",
+    "slug": "supply-chain-security-for-open-source-dependencies",
+    "category": "Cybersecurity",
+    "index": 6,
+    "sources": [
+      [
+        "OWASP Top 10 2025",
+        "https://owasp.org/Top10/2025/"
+      ],
+      [
+        "NIST Cybersecurity Framework",
+        "https://www.nist.gov/cyberframework"
+      ]
+    ]
+  },
+  {
+    "title": "How to Read a Security Finding and Fix the Root Cause",
+    "slug": "how-to-read-a-security-finding-and-fix-the-root-cause",
+    "category": "Cybersecurity",
+    "index": 7,
+    "sources": [
+      [
+        "OWASP Top 10 2025",
+        "https://owasp.org/Top10/2025/"
+      ],
+      [
+        "NIST Cybersecurity Framework",
+        "https://www.nist.gov/cyberframework"
+      ]
+    ]
+  },
+  {
+    "title": "Privacy-Safe Analytics for Product Teams",
+    "slug": "privacy-safe-analytics-for-product-teams",
+    "category": "Cybersecurity",
+    "index": 8,
+    "sources": [
+      [
+        "OWASP Top 10 2025",
+        "https://owasp.org/Top10/2025/"
+      ],
+      [
+        "NIST Cybersecurity Framework",
+        "https://www.nist.gov/cyberframework"
+      ]
+    ]
+  },
+  {
+    "title": "A Small Business Incident Response Runbook",
+    "slug": "a-small-business-incident-response-runbook",
+    "category": "Cybersecurity",
+    "index": 9,
+    "sources": [
+      [
+        "OWASP Top 10 2025",
+        "https://owasp.org/Top10/2025/"
+      ],
+      [
+        "NIST Cybersecurity Framework",
+        "https://www.nist.gov/cyberframework"
+      ]
+    ]
+  },
+  {
+    "title": "TypeScript in 2026: Why Types Help AI-Assisted Development",
+    "slug": "typescript-in-2026-why-types-help-ai-assisted-development",
+    "category": "Developer Tools",
+    "index": 0,
+    "sources": [
+      [
+        "GitHub Octoverse",
+        "https://octoverse.github.com/"
+      ],
+      [
+        "TypeScript handbook",
+        "https://www.typescriptlang.org/docs/handbook/intro.html"
+      ]
+    ]
+  },
+  {
+    "title": "A Practical Guide to AI Coding Assistants and Code Review",
+    "slug": "a-practical-guide-to-ai-coding-assistants-and-code-review",
+    "category": "Developer Tools",
+    "index": 1,
+    "sources": [
+      [
+        "GitHub Octoverse",
+        "https://octoverse.github.com/"
+      ],
+      [
+        "TypeScript handbook",
+        "https://www.typescriptlang.org/docs/handbook/intro.html"
+      ]
+    ]
+  },
+  {
+    "title": "Fast Python Tooling: Reproducible Environments with uv",
+    "slug": "fast-python-tooling-reproducible-environments-with-uv",
+    "category": "Developer Tools",
+    "index": 2,
+    "sources": [
+      [
+        "GitHub Octoverse",
+        "https://octoverse.github.com/"
+      ],
+      [
+        "TypeScript handbook",
+        "https://www.typescriptlang.org/docs/handbook/intro.html"
+      ]
+    ]
+  },
+  {
+    "title": "How to Choose a Code Editor for Large Projects",
+    "slug": "how-to-choose-a-code-editor-for-large-projects",
+    "category": "Developer Tools",
+    "index": 3,
+    "sources": [
+      [
+        "GitHub Octoverse",
+        "https://octoverse.github.com/"
+      ],
+      [
+        "TypeScript handbook",
+        "https://www.typescriptlang.org/docs/handbook/intro.html"
+      ]
+    ]
+  },
+  {
+    "title": "Testing Generated Code Before It Reaches Production",
+    "slug": "testing-generated-code-before-it-reaches-production",
+    "category": "Developer Tools",
+    "index": 4,
+    "sources": [
+      [
+        "GitHub Octoverse",
+        "https://octoverse.github.com/"
+      ],
+      [
+        "TypeScript handbook",
+        "https://www.typescriptlang.org/docs/handbook/intro.html"
+      ]
+    ]
+  },
+  {
+    "title": "Git Workflows That Keep Small Teams Moving",
+    "slug": "git-workflows-that-keep-small-teams-moving",
+    "category": "Developer Tools",
+    "index": 5,
+    "sources": [
+      [
+        "GitHub Octoverse",
+        "https://octoverse.github.com/"
+      ],
+      [
+        "TypeScript handbook",
+        "https://www.typescriptlang.org/docs/handbook/intro.html"
+      ]
+    ]
+  },
+  {
+    "title": "API Documentation That Developers Actually Use",
+    "slug": "api-documentation-that-developers-actually-use",
+    "category": "Developer Tools",
+    "index": 6,
+    "sources": [
+      [
+        "GitHub Octoverse",
+        "https://octoverse.github.com/"
+      ],
+      [
+        "TypeScript handbook",
+        "https://www.typescriptlang.org/docs/handbook/intro.html"
+      ]
+    ]
+  },
+  {
+    "title": "Debugging JavaScript Across Browser and Server",
+    "slug": "debugging-javascript-across-browser-and-server",
+    "category": "Developer Tools",
+    "index": 7,
+    "sources": [
+      [
+        "GitHub Octoverse",
+        "https://octoverse.github.com/"
+      ],
+      [
+        "TypeScript handbook",
+        "https://www.typescriptlang.org/docs/handbook/intro.html"
+      ]
+    ]
+  },
+  {
+    "title": "Monorepo or Multi-Repo: A Decision Guide",
+    "slug": "monorepo-or-multi-repo-a-decision-guide",
+    "category": "Developer Tools",
+    "index": 8,
+    "sources": [
+      [
+        "GitHub Octoverse",
+        "https://octoverse.github.com/"
+      ],
+      [
+        "TypeScript handbook",
+        "https://www.typescriptlang.org/docs/handbook/intro.html"
+      ]
+    ]
+  },
+  {
+    "title": "How to Turn a Script into a Maintainable Tool",
+    "slug": "how-to-turn-a-script-into-a-maintainable-tool",
+    "category": "Developer Tools",
+    "index": 9,
+    "sources": [
+      [
+        "GitHub Octoverse",
+        "https://octoverse.github.com/"
+      ],
+      [
+        "TypeScript handbook",
+        "https://www.typescriptlang.org/docs/handbook/intro.html"
+      ]
+    ]
+  },
+  {
+    "title": "How to Learn a Technical Skill with Deliberate Practice",
+    "slug": "how-to-learn-a-technical-skill-with-deliberate-practice",
+    "category": "Learning & Research",
+    "index": 0,
+    "sources": [
+      [
+        "Google Scholar search help",
+        "https://scholar.google.com/intl/en/scholar/help.html"
+      ],
+      [
+        "ACM Code of Professional Ethics",
+        "https://www.acm.org/code-of-ethics"
+      ]
+    ]
+  },
+  {
+    "title": "A Research Workflow for Finding Trustworthy Technical Sources",
+    "slug": "a-research-workflow-for-finding-trustworthy-technical-sources",
+    "category": "Learning & Research",
+    "index": 1,
+    "sources": [
+      [
+        "Google Scholar search help",
+        "https://scholar.google.com/intl/en/scholar/help.html"
+      ],
+      [
+        "ACM Code of Professional Ethics",
+        "https://www.acm.org/code-of-ethics"
+      ]
+    ]
+  },
+  {
+    "title": "How to Read a Technical Paper Without Getting Lost",
+    "slug": "how-to-read-a-technical-paper-without-getting-lost",
+    "category": "Learning & Research",
+    "index": 2,
+    "sources": [
+      [
+        "Google Scholar search help",
+        "https://scholar.google.com/intl/en/scholar/help.html"
+      ],
+      [
+        "ACM Code of Professional Ethics",
+        "https://www.acm.org/code-of-ethics"
+      ]
+    ]
+  },
+  {
+    "title": "Building a Personal Knowledge Base That Stays Findable",
+    "slug": "building-a-personal-knowledge-base-that-stays-findable",
+    "category": "Learning & Research",
+    "index": 3,
+    "sources": [
+      [
+        "Google Scholar search help",
+        "https://scholar.google.com/intl/en/scholar/help.html"
+      ],
+      [
+        "ACM Code of Professional Ethics",
+        "https://www.acm.org/code-of-ethics"
+      ]
+    ]
+  },
+  {
+    "title": "Evidence, Inference, and Opinion: A Better Research Habit",
+    "slug": "evidence-inference-and-opinion-a-better-research-habit",
+    "category": "Learning & Research",
+    "index": 4,
+    "sources": [
+      [
+        "Google Scholar search help",
+        "https://scholar.google.com/intl/en/scholar/help.html"
+      ],
+      [
+        "ACM Code of Professional Ethics",
+        "https://www.acm.org/code-of-ethics"
+      ]
+    ]
+  },
+  {
+    "title": "How to Compare Tools Without Falling for Marketing Claims",
+    "slug": "how-to-compare-tools-without-falling-for-marketing-claims",
+    "category": "Learning & Research",
+    "index": 5,
+    "sources": [
+      [
+        "Google Scholar search help",
+        "https://scholar.google.com/intl/en/scholar/help.html"
+      ],
+      [
+        "ACM Code of Professional Ethics",
+        "https://www.acm.org/code-of-ethics"
+      ]
+    ]
+  },
+  {
+    "title": "A Practical Note-Taking System for Developers",
+    "slug": "a-practical-note-taking-system-for-developers",
+    "category": "Learning & Research",
+    "index": 6,
+    "sources": [
+      [
+        "Google Scholar search help",
+        "https://scholar.google.com/intl/en/scholar/help.html"
+      ],
+      [
+        "ACM Code of Professional Ethics",
+        "https://www.acm.org/code-of-ethics"
+      ]
+    ]
+  },
+  {
+    "title": "How to Turn a Tutorial into Real Working Skill",
+    "slug": "how-to-turn-a-tutorial-into-real-working-skill",
+    "category": "Learning & Research",
+    "index": 7,
+    "sources": [
+      [
+        "Google Scholar search help",
+        "https://scholar.google.com/intl/en/scholar/help.html"
+      ],
+      [
+        "ACM Code of Professional Ethics",
+        "https://www.acm.org/code-of-ethics"
+      ]
+    ]
+  },
+  {
+    "title": "Research Reproducibility for Small Engineering Projects",
+    "slug": "research-reproducibility-for-small-engineering-projects",
+    "category": "Learning & Research",
+    "index": 8,
+    "sources": [
+      [
+        "Google Scholar search help",
+        "https://scholar.google.com/intl/en/scholar/help.html"
+      ],
+      [
+        "ACM Code of Professional Ethics",
+        "https://www.acm.org/code-of-ethics"
+      ]
+    ]
+  },
+  {
+    "title": "The 30-Day Plan for Becoming Better at Technical Writing",
+    "slug": "the-30-day-plan-for-becoming-better-at-technical-writing",
+    "category": "Learning & Research",
+    "index": 9,
+    "sources": [
+      [
+        "Google Scholar search help",
+        "https://scholar.google.com/intl/en/scholar/help.html"
+      ],
+      [
+        "ACM Code of Professional Ethics",
+        "https://www.acm.org/code-of-ethics"
+      ]
+    ]
+  },
+  {
+    "title": "Privacy by Design for Small Web Products",
+    "slug": "privacy-by-design-for-small-web-products",
+    "category": "Privacy & Data",
+    "index": 0,
+    "sources": [
+      [
+        "NIST Privacy Framework",
+        "https://www.nist.gov/privacy-framework"
+      ],
+      [
+        "ICO data protection principles",
+        "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles-a-guide-to-the-data-protection-principles/"
+      ]
+    ]
+  },
+  {
+    "title": "What Data Should Your Analytics Actually Collect?",
+    "slug": "what-data-should-your-analytics-actually-collect",
+    "category": "Privacy & Data",
+    "index": 1,
+    "sources": [
+      [
+        "NIST Privacy Framework",
+        "https://www.nist.gov/privacy-framework"
+      ],
+      [
+        "ICO data protection principles",
+        "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles-a-guide-to-the-data-protection-principles/"
+      ]
+    ]
+  },
+  {
+    "title": "A Practical Guide to Data Minimization",
+    "slug": "a-practical-guide-to-data-minimization",
+    "category": "Privacy & Data",
+    "index": 2,
+    "sources": [
+      [
+        "NIST Privacy Framework",
+        "https://www.nist.gov/privacy-framework"
+      ],
+      [
+        "ICO data protection principles",
+        "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles-a-guide-to-the-data-protection-principles/"
+      ]
+    ]
+  },
+  {
+    "title": "Cookies, Consent, and Honest Product UX",
+    "slug": "cookies-consent-and-honest-product-ux",
+    "category": "Privacy & Data",
+    "index": 3,
+    "sources": [
+      [
+        "NIST Privacy Framework",
+        "https://www.nist.gov/privacy-framework"
+      ],
+      [
+        "ICO data protection principles",
+        "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles-a-guide-to-the-data-protection-principles/"
+      ]
+    ]
+  },
+  {
+    "title": "How to Review a SaaS Tool’s Data Practices",
+    "slug": "how-to-review-a-saas-tool-s-data-practices",
+    "category": "Privacy & Data",
+    "index": 4,
+    "sources": [
+      [
+        "NIST Privacy Framework",
+        "https://www.nist.gov/privacy-framework"
+      ],
+      [
+        "ICO data protection principles",
+        "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles-a-guide-to-the-data-protection-principles/"
+      ]
+    ]
+  },
+  {
+    "title": "Encryption at Rest and in Transit Explained",
+    "slug": "encryption-at-rest-and-in-transit-explained",
+    "category": "Privacy & Data",
+    "index": 5,
+    "sources": [
+      [
+        "NIST Privacy Framework",
+        "https://www.nist.gov/privacy-framework"
+      ],
+      [
+        "ICO data protection principles",
+        "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles-a-guide-to-the-data-protection-principles/"
+      ]
+    ]
+  },
+  {
+    "title": "Designing Deletion and Export Workflows Users Can Trust",
+    "slug": "designing-deletion-and-export-workflows-users-can-trust",
+    "category": "Privacy & Data",
+    "index": 6,
+    "sources": [
+      [
+        "NIST Privacy Framework",
+        "https://www.nist.gov/privacy-framework"
+      ],
+      [
+        "ICO data protection principles",
+        "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles-a-guide-to-the-data-protection-principles/"
+      ]
+    ]
+  },
+  {
+    "title": "Privacy Risks in AI Features and RAG Pipelines",
+    "slug": "privacy-risks-in-ai-features-and-rag-pipelines",
+    "category": "Privacy & Data",
+    "index": 7,
+    "sources": [
+      [
+        "NIST Privacy Framework",
+        "https://www.nist.gov/privacy-framework"
+      ],
+      [
+        "ICO data protection principles",
+        "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles-a-guide-to-the-data-protection-principles/"
+      ]
+    ]
+  },
+  {
+    "title": "Pseudonymization vs Anonymization: What Changes?",
+    "slug": "pseudonymization-vs-anonymization-what-changes",
+    "category": "Privacy & Data",
+    "index": 8,
+    "sources": [
+      [
+        "NIST Privacy Framework",
+        "https://www.nist.gov/privacy-framework"
+      ],
+      [
+        "ICO data protection principles",
+        "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles-a-guide-to-the-data-protection-principles/"
+      ]
+    ]
+  },
+  {
+    "title": "A Developer Checklist for Responsible Data Handling",
+    "slug": "a-developer-checklist-for-responsible-data-handling",
+    "category": "Privacy & Data",
+    "index": 9,
+    "sources": [
+      [
+        "NIST Privacy Framework",
+        "https://www.nist.gov/privacy-framework"
+      ],
+      [
+        "ICO data protection principles",
+        "https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/data-protection-principles-a-guide-to-the-data-protection-principles/"
+      ]
+    ]
+  },
+  {
+    "title": "Designing a Remote Workspace That Reduces Context Switching",
+    "slug": "designing-a-remote-workspace-that-reduces-context-switching",
+    "category": "Remote Work",
+    "index": 0,
+    "sources": [
+      [
+        "GitLab remote handbook",
+        "https://handbook.gitlab.com/handbook/company/culture/all-remote/"
+      ],
+      [
+        "Microsoft Work Trend Index",
+        "https://www.microsoft.com/en-us/worklab/work-trend-index"
+      ]
+    ]
+  },
+  {
+    "title": "Async Communication: What to Write Down and What to Meet About",
+    "slug": "async-communication-what-to-write-down-and-what-to-meet-about",
+    "category": "Remote Work",
+    "index": 1,
+    "sources": [
+      [
+        "GitLab remote handbook",
+        "https://handbook.gitlab.com/handbook/company/culture/all-remote/"
+      ],
+      [
+        "Microsoft Work Trend Index",
+        "https://www.microsoft.com/en-us/worklab/work-trend-index"
+      ]
+    ]
+  },
+  {
+    "title": "A Practical Remote Team Operating Manual",
+    "slug": "a-practical-remote-team-operating-manual",
+    "category": "Remote Work",
+    "index": 2,
+    "sources": [
+      [
+        "GitLab remote handbook",
+        "https://handbook.gitlab.com/handbook/company/culture/all-remote/"
+      ],
+      [
+        "Microsoft Work Trend Index",
+        "https://www.microsoft.com/en-us/worklab/work-trend-index"
+      ]
+    ]
+  },
+  {
+    "title": "How to Run Better Technical Meetings",
+    "slug": "how-to-run-better-technical-meetings",
+    "category": "Remote Work",
+    "index": 3,
+    "sources": [
+      [
+        "GitLab remote handbook",
+        "https://handbook.gitlab.com/handbook/company/culture/all-remote/"
+      ],
+      [
+        "Microsoft Work Trend Index",
+        "https://www.microsoft.com/en-us/worklab/work-trend-index"
+      ]
+    ]
+  },
+  {
+    "title": "Remote Onboarding That Does Not Depend on Tribal Knowledge",
+    "slug": "remote-onboarding-that-does-not-depend-on-tribal-knowledge",
+    "category": "Remote Work",
+    "index": 4,
+    "sources": [
+      [
+        "GitLab remote handbook",
+        "https://handbook.gitlab.com/handbook/company/culture/all-remote/"
+      ],
+      [
+        "Microsoft Work Trend Index",
+        "https://www.microsoft.com/en-us/worklab/work-trend-index"
+      ]
+    ]
+  },
+  {
+    "title": "Managing Deep Work Across Time Zones",
+    "slug": "managing-deep-work-across-time-zones",
+    "category": "Remote Work",
+    "index": 5,
+    "sources": [
+      [
+        "GitLab remote handbook",
+        "https://handbook.gitlab.com/handbook/company/culture/all-remote/"
+      ],
+      [
+        "Microsoft Work Trend Index",
+        "https://www.microsoft.com/en-us/worklab/work-trend-index"
+      ]
+    ]
+  },
+  {
+    "title": "Documentation as a Remote Team Superpower",
+    "slug": "documentation-as-a-remote-team-superpower",
+    "category": "Remote Work",
+    "index": 6,
+    "sources": [
+      [
+        "GitLab remote handbook",
+        "https://handbook.gitlab.com/handbook/company/culture/all-remote/"
+      ],
+      [
+        "Microsoft Work Trend Index",
+        "https://www.microsoft.com/en-us/worklab/work-trend-index"
+      ]
+    ]
+  },
+  {
+    "title": "How to Measure Remote Work Without Surveillance",
+    "slug": "how-to-measure-remote-work-without-surveillance",
+    "category": "Remote Work",
+    "index": 7,
+    "sources": [
+      [
+        "GitLab remote handbook",
+        "https://handbook.gitlab.com/handbook/company/culture/all-remote/"
+      ],
+      [
+        "Microsoft Work Trend Index",
+        "https://www.microsoft.com/en-us/worklab/work-trend-index"
+      ]
+    ]
+  },
+  {
+    "title": "Building Trust When the Team Rarely Meets Live",
+    "slug": "building-trust-when-the-team-rarely-meets-live",
+    "category": "Remote Work",
+    "index": 8,
+    "sources": [
+      [
+        "GitLab remote handbook",
+        "https://handbook.gitlab.com/handbook/company/culture/all-remote/"
+      ],
+      [
+        "Microsoft Work Trend Index",
+        "https://www.microsoft.com/en-us/worklab/work-trend-index"
+      ]
+    ]
+  },
+  {
+    "title": "The Small-Team Toolkit for Calm Distributed Delivery",
+    "slug": "the-small-team-toolkit-for-calm-distributed-delivery",
+    "category": "Remote Work",
+    "index": 9,
+    "sources": [
+      [
+        "GitLab remote handbook",
+        "https://handbook.gitlab.com/handbook/company/culture/all-remote/"
+      ],
+      [
+        "Microsoft Work Trend Index",
+        "https://www.microsoft.com/en-us/worklab/work-trend-index"
+      ]
+    ]
+  },
+  {
+    "title": "The FindTheWeb Method for Searching Less and Finding Better",
+    "slug": "the-findtheweb-method-for-searching-less-and-finding-better",
+    "category": "Web Discovery",
+    "index": 0,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "Mozilla web literacy",
+        "https://foundation.mozilla.org/en/initiatives/web-literacy/"
+      ]
+    ]
+  },
+  {
+    "title": "How to Evaluate a Website Before You Bookmark It",
+    "slug": "how-to-evaluate-a-website-before-you-bookmark-it",
+    "category": "Web Discovery",
+    "index": 1,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "Mozilla web literacy",
+        "https://foundation.mozilla.org/en/initiatives/web-literacy/"
+      ]
+    ]
+  },
+  {
+    "title": "A Better Way to Organize Useful Links",
+    "slug": "a-better-way-to-organize-useful-links",
+    "category": "Web Discovery",
+    "index": 2,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "Mozilla web literacy",
+        "https://foundation.mozilla.org/en/initiatives/web-literacy/"
+      ]
+    ]
+  },
+  {
+    "title": "Search Intent: Turning a Question into a Better Result",
+    "slug": "search-intent-turning-a-question-into-a-better-result",
+    "category": "Web Discovery",
+    "index": 3,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "Mozilla web literacy",
+        "https://foundation.mozilla.org/en/initiatives/web-literacy/"
+      ]
+    ]
+  },
+  {
+    "title": "How to Build a Personal Start Here Page",
+    "slug": "how-to-build-a-personal-start-here-page",
+    "category": "Web Discovery",
+    "index": 4,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "Mozilla web literacy",
+        "https://foundation.mozilla.org/en/initiatives/web-literacy/"
+      ]
+    ]
+  },
+  {
+    "title": "Curating Resources Without Creating Another Link Dump",
+    "slug": "curating-resources-without-creating-another-link-dump",
+    "category": "Web Discovery",
+    "index": 5,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "Mozilla web literacy",
+        "https://foundation.mozilla.org/en/initiatives/web-literacy/"
+      ]
+    ]
+  },
+  {
+    "title": "A Practical Guide to Comparing Similar Websites",
+    "slug": "a-practical-guide-to-comparing-similar-websites",
+    "category": "Web Discovery",
+    "index": 6,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "Mozilla web literacy",
+        "https://foundation.mozilla.org/en/initiatives/web-literacy/"
+      ]
+    ]
+  },
+  {
+    "title": "How to Discover Small Tools That Solve Specific Problems",
+    "slug": "how-to-discover-small-tools-that-solve-specific-problems",
+    "category": "Web Discovery",
+    "index": 7,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "Mozilla web literacy",
+        "https://foundation.mozilla.org/en/initiatives/web-literacy/"
+      ]
+    ]
+  },
+  {
+    "title": "Bookmarking for Teams: From Links to Shared Knowledge",
+    "slug": "bookmarking-for-teams-from-links-to-shared-knowledge",
+    "category": "Web Discovery",
+    "index": 8,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "Mozilla web literacy",
+        "https://foundation.mozilla.org/en/initiatives/web-literacy/"
+      ]
+    ]
+  },
+  {
+    "title": "The Anatomy of a Trustworthy Online Resource",
+    "slug": "the-anatomy-of-a-trustworthy-online-resource",
+    "category": "Web Discovery",
+    "index": 9,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "Mozilla web literacy",
+        "https://foundation.mozilla.org/en/initiatives/web-literacy/"
+      ]
+    ]
+  },
+  {
+    "title": "Core Web Vitals in Practice: LCP, INP, and CLS",
+    "slug": "core-web-vitals-in-practice-lcp-inp-and-cls",
+    "category": "Web Performance & SEO",
+    "index": 0,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "web.dev performance",
+        "https://web.dev/learn/performance/"
+      ]
+    ]
+  },
+  {
+    "title": "Technical SEO for a JavaScript Website",
+    "slug": "technical-seo-for-a-javascript-website",
+    "category": "Web Performance & SEO",
+    "index": 1,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "web.dev performance",
+        "https://web.dev/learn/performance/"
+      ]
+    ]
+  },
+  {
+    "title": "How to Write Search Snippets People Want to Click",
+    "slug": "how-to-write-search-snippets-people-want-to-click",
+    "category": "Web Performance & SEO",
+    "index": 2,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "web.dev performance",
+        "https://web.dev/learn/performance/"
+      ]
+    ]
+  },
+  {
+    "title": "Structured Data for Articles, Breadcrumbs, and Organizations",
+    "slug": "structured-data-for-articles-breadcrumbs-and-organizations",
+    "category": "Web Performance & SEO",
+    "index": 3,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "web.dev performance",
+        "https://web.dev/learn/performance/"
+      ]
+    ]
+  },
+  {
+    "title": "A Practical Internal Linking Strategy for Growing Blogs",
+    "slug": "a-practical-internal-linking-strategy-for-growing-blogs",
+    "category": "Web Performance & SEO",
+    "index": 4,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "web.dev performance",
+        "https://web.dev/learn/performance/"
+      ]
+    ]
+  },
+  {
+    "title": "Image Optimization Without Sacrificing Editorial Quality",
+    "slug": "image-optimization-without-sacrificing-editorial-quality",
+    "category": "Web Performance & SEO",
+    "index": 5,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "web.dev performance",
+        "https://web.dev/learn/performance/"
+      ]
+    ]
+  },
+  {
+    "title": "How to Audit a Sitemap and Robots File",
+    "slug": "how-to-audit-a-sitemap-and-robots-file",
+    "category": "Web Performance & SEO",
+    "index": 6,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "web.dev performance",
+        "https://web.dev/learn/performance/"
+      ]
+    ]
+  },
+  {
+    "title": "Search Intent Mapping for a New Content Library",
+    "slug": "search-intent-mapping-for-a-new-content-library",
+    "category": "Web Performance & SEO",
+    "index": 7,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "web.dev performance",
+        "https://web.dev/learn/performance/"
+      ]
+    ]
+  },
+  {
+    "title": "Page Experience: Performance, Accessibility, and Trust",
+    "slug": "page-experience-performance-accessibility-and-trust",
+    "category": "Web Performance & SEO",
+    "index": 8,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "web.dev performance",
+        "https://web.dev/learn/performance/"
+      ]
+    ]
+  },
+  {
+    "title": "How to Update Old Articles Without Losing Their Value",
+    "slug": "how-to-update-old-articles-without-losing-their-value",
+    "category": "Web Performance & SEO",
+    "index": 9,
+    "sources": [
+      [
+        "Google Search Central helpful content",
+        "https://developers.google.com/search/docs/fundamentals/creating-helpful-content"
+      ],
+      [
+        "web.dev performance",
+        "https://web.dev/learn/performance/"
+      ]
+    ]
+  }
+]
