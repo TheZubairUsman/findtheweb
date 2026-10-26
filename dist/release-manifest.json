@@ -2,8 +2,8 @@
   "release": "frontend-source-20261027",
   "files": {
     "index.html": {
-      "sha256": "3030e22911332e5a096864f030f66d958b647cf3fb5f40dd20f542fac1f9b04c",
-      "bytes": 8929
+      "sha256": "dcdef389c1401349c079e9138f1b1c510fe225dbf86bcde668e95a7216b02a2d",
+      "bytes": 8927
     },
     "frontend-build.json": {
       "sha256": "e04726ebdb64d4653cf2e69bbeb3ba4a586fef8b52bbf36f0856f7b618243559",
