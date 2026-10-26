@@ -72,6 +72,7 @@ fs.mkdirSync(output,{recursive:true});
   await page.reload({waitUntil:'domcontentloaded'});
   await page.getByText('Build a reliable workflow',{exact:true}).waitFor();
   check('article refresh loads content',await page.getByText('Build a reliable workflow',{exact:true}).count()>0);
+  check('article preview metadata is unique',await page.locator('meta[property="og:image"]').count()===1 && await page.locator('link[rel="canonical"]').count()===1);
   await go('http://127.0.0.1:5097/admin/blog');
   await page.waitForURL('**/admin/login'); check('anonymous editor redirects',page.url().endsWith('/admin/login'));
   await page.getByLabel('Admin Email').fill('browser-qa@example.test');

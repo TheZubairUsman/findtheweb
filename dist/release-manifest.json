@@ -2,11 +2,11 @@
   "release": "frontend-source-20261027",
   "files": {
     "index.html": {
-      "sha256": "dcdef389c1401349c079e9138f1b1c510fe225dbf86bcde668e95a7216b02a2d",
+      "sha256": "badefc69d187c37ed6826346abfa7d6ad6d8c552b33c1556198b232ce875d0a1",
       "bytes": 8927
     },
     "frontend-build.json": {
-      "sha256": "e04726ebdb64d4653cf2e69bbeb3ba4a586fef8b52bbf36f0856f7b618243559",
+      "sha256": "b87a17563e61e36c000dc7e71113b77e2f4a1ca592989cea0e456fd42f0cfcb8",
       "bytes": 1461
     },
     "findtheweb-release.js": {
@@ -29,9 +29,9 @@
       "sha256": "2e54f479e2f0a3894f6af74fea0c1c26f4f06f12630b36b8da8fa9e6a336d6be",
       "bytes": 4044
     },
-    "assets/frontend/app-FKLB6AR2.js": {
-      "sha256": "a4ea9a7ae161ec342107652a027ad2992d567ef0103664dbeb88103bedb0a878",
-      "bytes": 72773
+    "assets/frontend/app-SAJRTD4Z.js": {
+      "sha256": "b2aa3e7718be4282026276901b88a47efa3f8ec6b212d9231b7d185c4d7d23b7",
+      "bytes": 73039
     },
     "assets/frontend/app-V6FE7CTM.css": {
       "sha256": "fdf98b1c1e04b840d9105bb1db5592e6ee17034053e1606a13dda2057fb4bef2",

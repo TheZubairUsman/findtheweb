@@ -29,6 +29,7 @@ configuration remains unavailable.
 | Filter pagination and tag navigation | Reset pages when criteria change; tag links preserve context |
 | Theme/metadata observer constantly observed its own writes | Observer pauses around compatibility updates; removed polling |
 | Page metadata overwritten with homepage defaults | Route owns metadata and canonical path; null cover uses logo fallback |
+| Static fallback tags duplicated route metadata | Helmet adopts fallback tags before mount; article preview and canonical remain unique |
 | Retired Products navigation | Removed from source navigation; router redirects to Blog |
 | Corrupt/persisted bookmarks caused refresh issues | Validate and initialize stored bookmarks before saving state |
 | Duplicate footer on cookie/sitemap pages | Shared application footer only |
@@ -55,6 +56,25 @@ The backend regression run passes 16 suites and 88 tests. The frontend package
 audit reports zero known vulnerabilities. See machine-readable browser reports
 for final pass/fail evidence; a route smoke check is not an exhaustive claim
 that every possible state or external link was manually verified.
+
+Initial implementation CI run `40390337749` passed both jobs on Linux. Local
+browser QA completed 60 route/viewport checks and 21 interactions with zero
+uncaught exceptions; a subsequent focused run includes the unique-metadata
+regression and passes 22 interactions. Axe reported zero violations on the
+three tested surfaces. A separate idle probe observed two head mutations in
+one second rather than a continuous per-frame loop. Actual card paint changed
+from RGB(255,255,255) to RGB(23,32,51) when toggling theme.
+
+The first live promotion verified all 32 release files against their SHA-256
+manifest, plus public/API/SEO smoke checks. Direct browser checks confirmed
+the live new module graph, article covers, category/search results, theme
+persistence and article refresh. Production forms and accounts were not mutated.
+The metadata follow-up remains subject to the same CI and live hash verification.
+
+The prior public HTML and compatibility JS/CSS were downloaded before promotion
+and match rollback commit `0abcdba` exactly. A local archive is retained at
+`tmp/frontend-rollback-0abcdba.zip`; its contents are public frontend files only.
+`node tools/verify-frontend-release.cjs` records a machine-readable live receipt.
 
 ## Limits and release safety
 

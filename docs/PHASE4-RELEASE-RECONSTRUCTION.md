@@ -1,6 +1,8 @@
 # FindTheWeb Phase 4 — Release Reconstruction
 
-Status: in progress; the highest-risk release gaps are now covered by tests and recovery tooling.
+Status: historical reconstruction plan; the full source build is now restored.
+See `PHASE-FRONTEND-STABILITY.md` for the maintained build, browser QA, release
+hash verification and remaining limitations as of 2026-10-27.
 
 ## Why this phase is open
 
