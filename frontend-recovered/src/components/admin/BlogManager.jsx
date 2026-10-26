@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { 
   FiPlus, FiEdit, FiTrash2, FiEye, FiSave, FiX,
   FiSearch, FiFilter, FiCalendar, FiTag, FiImage
-} from 'react-icons/fi';
+} from './editorIcons';
 
 const BlogManager = () => {
   const { adminToken } = useAuth();
@@ -13,6 +13,14 @@ const BlogManager = () => {
   const [editingPost, setEditingPost] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
+  const [saving, setSaving] = useState(false);
+  const [notice, setNotice] = useState('');
+  const saveLock = useRef(false);
+  const requestVersion = useRef(0);
+  const editorTrigger = useRef(null);
+  const [categoryText, setCategoryText] = useState('');
+  const [tagText, setTagText] = useState('');
+  const updateField = (field, value) => setFormData(previous => ({ ...previous, [field]: value }));
   const [formData, setFormData] = useState({
     title: '',
     slug: '',
@@ -30,10 +38,22 @@ const BlogManager = () => {
   });
 
   useEffect(() => {
+    if (!showEditor && !editorTrigger.current) return;
+    const frame = requestAnimationFrame(() => {
+      const target = showEditor ? document.getElementById('editor-title')
+        : editorTrigger.current?.isConnected ? editorTrigger.current : document.getElementById('editor-new-post');
+      target?.focus();
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [showEditor]);
+
+  useEffect(() => {
     fetchPosts();
   }, [statusFilter, searchTerm]);
 
   const fetchPosts = async () => {
+    const version = ++requestVersion.current;
+    setLoading(true);
     try {
       const params = new URLSearchParams({
         status: statusFilter === 'all' ? 'all' : statusFilter,
@@ -49,17 +69,22 @@ const BlogManager = () => {
       });
 
       const data = await response.json();
-      if (data.success) {
+      if (!response.ok || !data.success) throw new Error(data.message || 'Unable to load posts.');
+      if (version === requestVersion.current) {
         setPosts(data.data);
       }
     } catch (error) {
-      console.error('Error fetching posts:', error);
+      if (version === requestVersion.current) setNotice(error.message || 'Unable to load posts. Try again.');
     } finally {
-      setLoading(false);
+      if (version === requestVersion.current) setLoading(false);
     }
   };
 
   const handleCreatePost = () => {
+    editorTrigger.current = document.activeElement;
+    setNotice('');
+    setCategoryText('');
+    setTagText('');
     setEditingPost(null);
     setFormData({
       title: '',
@@ -80,6 +105,10 @@ const BlogManager = () => {
   };
 
   const handleEditPost = (post) => {
+    editorTrigger.current = document.activeElement;
+    setNotice('');
+    setCategoryText((post.categories || []).join(', '));
+    setTagText((post.tags || []).join(', '));
     setEditingPost(post);
     setFormData({
       title: post.title || '',
@@ -100,6 +129,14 @@ const BlogManager = () => {
   };
 
   const handleSavePost = async () => {
+    if (saveLock.current) return;
+    if (!formData.title.trim() || !formData.content.trim()) {
+      setNotice('Title and content are required. Your draft has not been saved.');
+      return;
+    }
+    saveLock.current = true;
+    setSaving(true);
+    setNotice('Saving post…');
     try {
       const url = editingPost 
         ? `/api/v1/blog/posts/${editingPost.id}`
@@ -117,15 +154,17 @@ const BlogManager = () => {
       });
 
       const data = await response.json();
+      if (!response.ok || !data.success) throw new Error(data.message || 'Unable to save post.');
       if (data.success) {
         setShowEditor(false);
+        setNotice('Post saved successfully.');
         fetchPosts();
-      } else {
-        alert(data.message || 'Error saving post');
       }
     } catch (error) {
-      console.error('Error saving post:', error);
-      alert('Error saving post');
+      setNotice((error.message || 'Unable to save post.') + ' Your content is still in the editor.');
+    } finally {
+      saveLock.current = false;
+      setSaving(false);
     }
   };
 
@@ -177,26 +216,29 @@ const BlogManager = () => {
             {editingPost ? 'Edit Post' : 'Create New Post'}
           </h2>
           <button
+            aria-label="Close editor"
+            disabled={saving}
             onClick={() => setShowEditor(false)}
             className="text-gray-500 hover:text-gray-700"
           >
             <FiX className="w-6 h-6" />
           </button>
         </div>
-
+        <p id="editor-status" role="status" aria-live="polite">{notice}</p>
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Main Content */}
             <div className="lg:col-span-2 space-y-6">
               {/* Title */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="editor-title" className="block text-sm font-medium text-gray-700 mb-2">
                   Title *
                 </label>
                 <input
                   type="text"
                   value={formData.title}
-                  onChange={(e) => setFormData({...formData, title: e.target.value})}
+                  id="editor-title" required aria-required="true" aria-describedby="editor-status"
+                  onChange={(e) => updateField('title', e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   placeholder="Enter post title..."
                 />
@@ -204,13 +246,14 @@ const BlogManager = () => {
 
               {/* Slug */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="editor-slug" className="block text-sm font-medium text-gray-700 mb-2">
                   Slug
                 </label>
                 <input
                   type="text"
                   value={formData.slug}
-                  onChange={(e) => setFormData({...formData, slug: e.target.value})}
+                  id="editor-slug"
+                  onChange={(e) => updateField('slug', e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   placeholder="auto-generated-from-title"
                 />
@@ -218,12 +261,13 @@ const BlogManager = () => {
 
               {/* Excerpt */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="editor-excerpt" className="block text-sm font-medium text-gray-700 mb-2">
                   Excerpt
                 </label>
                 <textarea
                   value={formData.excerpt}
-                  onChange={(e) => setFormData({...formData, excerpt: e.target.value})}
+                  id="editor-excerpt"
+                  onChange={(e) => updateField('excerpt', e.target.value)}
                   rows={3}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   placeholder="Brief description of the post..."
@@ -232,12 +276,13 @@ const BlogManager = () => {
 
               {/* Content */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="editor-content" className="block text-sm font-medium text-gray-700 mb-2">
                   Content *
                 </label>
                 <textarea
                   value={formData.content}
-                  onChange={(e) => setFormData({...formData, content: e.target.value})}
+                  id="editor-content" required aria-required="true" aria-describedby="editor-status"
+                  onChange={(e) => updateField('content', e.target.value)}
                   rows={15}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 font-mono text-sm"
                   placeholder="Write your blog post content here... (HTML supported)"
@@ -253,12 +298,13 @@ const BlogManager = () => {
                 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="editor-status-select" className="block text-sm font-medium text-gray-700 mb-2">
                       Status
                     </label>
                     <select
                       value={formData.status}
-                      onChange={(e) => setFormData({...formData, status: e.target.value})}
+                      id="editor-status-select"
+                      onChange={(e) => updateField('status', e.target.value)}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                     >
                       <option value="draft">Draft</option>
@@ -272,7 +318,7 @@ const BlogManager = () => {
                       type="checkbox"
                       id="featured"
                       checked={formData.featured}
-                      onChange={(e) => setFormData({...formData, featured: e.target.checked})}
+                      onChange={(e) => updateField('featured', e.target.checked)}
                       className="mr-2"
                     />
                     <label htmlFor="featured" className="text-sm text-gray-700">
@@ -285,7 +331,7 @@ const BlogManager = () => {
                       type="checkbox"
                       id="allowComments"
                       checked={formData.allowComments}
-                      onChange={(e) => setFormData({...formData, allowComments: e.target.checked})}
+                      onChange={(e) => updateField('allowComments', e.target.checked)}
                       className="mr-2"
                     />
                     <label htmlFor="allowComments" className="text-sm text-gray-700">
@@ -297,13 +343,14 @@ const BlogManager = () => {
 
               {/* Featured Image */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="editor-image" className="block text-sm font-medium text-gray-700 mb-2">
                   Featured Image URL
                 </label>
                 <input
                   type="url"
                   value={formData.featuredImage}
-                  onChange={(e) => setFormData({...formData, featuredImage: e.target.value})}
+                  id="editor-image"
+                  onChange={(e) => updateField('featuredImage', e.target.value)}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   placeholder="https://example.com/image.jpg"
                 />
@@ -311,13 +358,13 @@ const BlogManager = () => {
 
               {/* Categories */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="editor-categories" className="block text-sm font-medium text-gray-700 mb-2">
                   Categories (comma-separated)
                 </label>
                 <input
                   type="text"
-                  value={formData.categories.join(', ')}
-                  onChange={(e) => setFormData({...formData, categories: e.target.value.split(',').map(c => c.trim()).filter(Boolean)})}
+                  id="editor-categories" value={categoryText}
+                  onChange={(e) => { setCategoryText(e.target.value); updateField('categories', e.target.value.split(',').map(c => c.trim()).filter(Boolean)); }}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   placeholder="Technology, Design, Business"
                 />
@@ -325,13 +372,13 @@ const BlogManager = () => {
 
               {/* Tags */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="editor-tags" className="block text-sm font-medium text-gray-700 mb-2">
                   Tags (comma-separated)
                 </label>
                 <input
                   type="text"
-                  value={formData.tags.join(', ')}
-                  onChange={(e) => setFormData({...formData, tags: e.target.value.split(',').map(t => t.trim()).filter(Boolean)})}
+                  id="editor-tags" value={tagText}
+                  onChange={(e) => { setTagText(e.target.value); updateField('tags', e.target.value.split(',').map(t => t.trim()).filter(Boolean)); }}
                   className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                   placeholder="react, javascript, tutorial"
                 />
@@ -343,25 +390,27 @@ const BlogManager = () => {
                 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="editor-seo-title" className="block text-sm font-medium text-gray-700 mb-2">
                       SEO Title
                     </label>
                     <input
                       type="text"
                       value={formData.seoTitle}
-                      onChange={(e) => setFormData({...formData, seoTitle: e.target.value})}
+                      id="editor-seo-title"
+                      onChange={(e) => updateField('seoTitle', e.target.value)}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                       placeholder="Custom SEO title"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="editor-seo-description" className="block text-sm font-medium text-gray-700 mb-2">
                       SEO Description
                     </label>
                     <textarea
                       value={formData.seoDescription}
-                      onChange={(e) => setFormData({...formData, seoDescription: e.target.value})}
+                      id="editor-seo-description"
+                      onChange={(e) => updateField('seoDescription', e.target.value)}
                       rows={3}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                       placeholder="Meta description for search engines"
@@ -369,13 +418,14 @@ const BlogManager = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="editor-seo-keywords" className="block text-sm font-medium text-gray-700 mb-2">
                       SEO Keywords
                     </label>
                     <input
                       type="text"
                       value={formData.seoKeywords}
-                      onChange={(e) => setFormData({...formData, seoKeywords: e.target.value})}
+                      id="editor-seo-keywords"
+                      onChange={(e) => updateField('seoKeywords', e.target.value)}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                       placeholder="keyword1, keyword2, keyword3"
                     />
@@ -387,12 +437,16 @@ const BlogManager = () => {
               <div className="flex space-x-3">
                 <button
                   onClick={handleSavePost}
+                  disabled={saving}
+                  aria-busy={saving}
+                  aria-describedby="editor-status"
                   className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center"
                 >
                   <FiSave className="w-4 h-4 mr-2" />
-                  {editingPost ? 'Update' : 'Create'}
+                  {saving ? 'Saving…' : editingPost ? 'Update' : 'Create'}
                 </button>
                 <button
+                  disabled={saving}
                   onClick={() => setShowEditor(false)}
                   className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
                 >
@@ -411,6 +465,7 @@ const BlogManager = () => {
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-gray-900">Blog Management</h1>
         <button
+          id="editor-new-post"
           onClick={handleCreatePost}
           className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center"
         >
@@ -420,12 +475,14 @@ const BlogManager = () => {
       </div>
 
       {/* Filters */}
+      <p role="status" aria-live="polite">{notice}</p>
       <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1">
             <div className="relative">
               <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input
+                aria-label="Search posts"
                 type="text"
                 placeholder="Search posts..."
                 value={searchTerm}
@@ -435,6 +492,7 @@ const BlogManager = () => {
             </div>
           </div>
           <select
+            aria-label="Filter posts by status"
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
             className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
@@ -521,6 +579,7 @@ const BlogManager = () => {
                       <div className="flex items-center space-x-2">
                         {post.status === 'published' && (
                           <a
+                            aria-label={`View ${post.title}`}
                             href={`/blog/${post.slug}`}
                             target="_blank"
                             rel="noopener noreferrer"
@@ -530,12 +589,14 @@ const BlogManager = () => {
                           </a>
                         )}
                         <button
+                          aria-label={`Edit ${post.title}`}
                           onClick={() => handleEditPost(post)}
                           className="text-indigo-600 hover:text-indigo-900"
                         >
                           <FiEdit className="w-4 h-4" />
                         </button>
                         <button
+                          aria-label={`Delete ${post.title}`}
                           onClick={() => handleDeletePost(post.id)}
                           className="text-red-600 hover:text-red-900"
                         >

@@ -1,0 +1,13 @@
+import React from 'react';
+const icon = (path) => (props) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" focusable="false" {...props}><path d={path} /></svg>;
+export const FiPlus = icon('M12 5v14M5 12h14');
+export const FiEdit = icon('M15 5l4 4M4 20l4-1L20 7l-4-4L4 15v5Z');
+export const FiTrash2 = icon('M3 6h18M9 6V3h6v3M6 6l1 15h10l1-15M10 10v7M14 10v7');
+export const FiEye = icon('M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z');
+export const FiSave = icon('M4 3h13l4 4v14H3V3ZM7 3v6h10V3M7 21v-8h10v8');
+export const FiX = icon('M6 6l12 12M6 18 18 6');
+export const FiSearch = icon('M21 21l-6-6M17 10A7 7 0 1 1 3 10a7 7 0 0 1 14 0Z');
+export const FiFilter = icon('M3 3h18l-7 8v8l-4 2V11Z');
+export const FiCalendar = icon('M3 5h18v16H3ZM3 10h18M7 2v6M17 2v6');
+export const FiTag = icon('M3 3h8l10 10-8 8L3 11ZM7 7h.01');
+export const FiImage = icon('M3 3h18v18H3ZM3 17l6-6 4 4 3-3 5 5');

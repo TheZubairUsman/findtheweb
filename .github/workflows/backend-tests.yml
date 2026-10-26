@@ -2,9 +2,9 @@ name: Backend tests
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   pull_request:
-    branches: [main]
+    branches: [main, master]
 
 jobs:
   test:
@@ -20,6 +20,10 @@ jobs:
           cache: npm
           cache-dependency-path: backend/package-lock.json
       - run: npm ci
+      - run: npm run build:editor
+      - run: git diff --exit-code -- ../dist/assets/js/BlogManager-CgU_iRbw.js ../dist/assets/js/index-BLfo3RSv.js
+      - run: node --experimental-vm-modules ../tools/check-bundle-syntax.cjs
+      - run: node --check ../dist/contact-inbox.js
       - run: node --check ../dist/findtheweb-release.js
       - run: npm run check:syntax
       - run: npm test -- --runInBand
