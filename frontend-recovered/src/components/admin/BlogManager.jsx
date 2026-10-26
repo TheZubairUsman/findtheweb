@@ -41,7 +41,7 @@ const BlogManager = () => {
         limit: 50
       });
 
-      const response = await fetch(`/api/v1/blog/posts?${params}`, {
+      const response = await fetch(`/api/v1/admin/posts?${params}`, {
         headers: {
           'Authorization': `Bearer ${adminToken}`,
           'Content-Type': 'application/json'

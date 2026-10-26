@@ -143,7 +143,7 @@ const Contact = () => {
                 className="space-y-6"
               >
                 <input type="hidden" name="_subject" value="New Contact Form Submission" />
-                <input type="hidden" name="_next" value="https://findtheweb.site/thank-you" />
+                <input type="hidden" name="_next" value="https://findtheweb.zus3cu.tech/thank-you" />
                 <input type="hidden" name="_captcha" value="false" />
                 <input type="text" name="_honey" className="hidden" />
                 

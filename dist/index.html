@@ -100,7 +100,7 @@
     </script>
     <link rel="stylesheet" href="/findtheweb-release.css?v=20261026responsive2" />
     <script src="/findtheweb-release.js?v=20261026phase17"></script>
-    <script type="module" crossorigin src="/assets/js/index-BLfo3RSv.js?v=20261025blogfix1"></script>
+    <script type="module" crossorigin src="/assets/js/index-BLfo3RSv.js?v=20261026editorqa1"></script>
     <link rel="modulepreload" crossorigin href="/assets/js/vendor-D0vOuAIx.js">
     <link rel="modulepreload" crossorigin href="/assets/js/seo-DsLfi8vK.js">
     <link rel="stylesheet" crossorigin href="/assets/css/index-CURD_Zn6.css">
@@ -154,33 +154,7 @@
       }());
     </script>
 
-    <script>
-      (function () {
-        if (window.location.pathname !== '/admin/blog') return;
-        function ensurePublishedPosts() {
-          var root = document.getElementById('root');
-          var posts = document.getElementById('ftw-admin-static-posts');
-          if (!posts) {
-            posts = document.createElement('section');
-            posts.id = 'ftw-admin-static-posts';
-            posts.innerHTML = '<h2>Published posts</h2>' +
-              '<article><strong>The FindTheWeb Method for Searching Less and Finding Better</strong><p>A practical method for choosing useful resources without drowning in tabs, hype, or endless comparison.</p><a href="/blog/the-findtheweb-method-for-searching-less-and-finding-better" target="_blank">Open article →</a></article>' +
-              '<article><strong>How to Turn a Repetitive Browser Task Into Safe Automation</strong><p>Clear trade-offs, a safe starting plan, and an actionable checklist for reliable browser workflows.</p><a href="/blog/how-to-turn-a-repetitive-browser-task-into-a-safe-automation" target="_blank">Open article →</a></article>' +
-              '<article><strong>A Human Workflow for Checking AI-Generated Code</strong><p>How to review AI-assisted code with evidence, tests, and practical judgment before it reaches production.</p><a href="/blog/a-human-workflow-for-checking-ai-generated-code" target="_blank">Open article →</a></article>';
-            posts.style.cssText = 'display:block;max-width:1100px;margin:24px auto;padding:24px;background:#fff;border:1px solid #e5e7eb;border-radius:14px;font-family:Inter,system-ui,sans-serif;color:#111827';
-          }
-          if (root) {
-            var footer = root.querySelector('footer');
-            var host = (footer && footer.parentElement) || root;
-            if (posts.parentElement !== host) host.insertBefore(posts, footer || null);
-            else if (footer && posts.nextElementSibling !== footer) host.insertBefore(posts, footer);
-          }
-          posts.style.display = 'block';
-        }
-        ensurePublishedPosts();
-        window.setInterval(ensurePublishedPosts, 1000);
-      }());
-    </script>
+    
 
   </body>
 </html>
