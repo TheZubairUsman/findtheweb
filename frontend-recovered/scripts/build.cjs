@@ -11,7 +11,7 @@ const output = path.join(repo, 'dist/assets/frontend');
   await esbuild.build({absWorkingDir:root,entryPoints:['src/main.jsx'],outdir:output,bundle:true,splitting:true,format:'esm',platform:'browser',target:'es2020',jsx:'automatic',minify:true,entryNames:'app-[hash]',chunkNames:'chunk-[hash]',assetNames:'asset-[hash]',sourcemap:false,metafile:true,define:{'process.env.NODE_ENV':'"production"'}}).then(result => {
     for(const file of ['seo.php','seo-render.css']) fs.writeFileSync(path.join(repo,'dist',file),fs.readFileSync(path.join(root,'server',file),'utf8').replace(/\r\n/g,'\n'));
     const enabled=fs.existsSync(path.join(root,'server/seo-ready.flag'));
-    if(enabled) fs.copyFileSync(path.join(root,'server/seo-ready.flag'),path.join(repo,'dist/seo-ready.flag'));
+    if(enabled) fs.writeFileSync(path.join(repo,'dist/seo-ready.flag'),fs.readFileSync(path.join(root,'server/seo-ready.flag'),'utf8').replace(/\r\n/g,'\n'));
     else if(fs.existsSync(path.join(repo,'dist/seo-ready.flag'))) fs.unlinkSync(path.join(repo,'dist/seo-ready.flag'));
     const entry = Object.entries(result.metafile.outputs).find(([,v]) => v.entryPoint === 'src/main.jsx');
     if(!entry) throw Error('Frontend entry missing');
