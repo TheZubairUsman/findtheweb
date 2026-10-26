@@ -93,6 +93,36 @@ profile navigation is intercepted with a test page; no external message is sent.
 
 ## Limits and release safety
 
+## Final verified release
+
+Implementation commit: `4f7fd2113e866f27544c4726df40484d838e483e`.
+[CI run 40397058581](https://github.com/TheZubairUsman/findtheweb/actions/runs/40397058581)
+passed both jobs: reproducible build/audit/backend checks and the complete
+Chromium browser run. The final browser result is 60 route/viewport checks,
+30 UI checks, zero uncaught exceptions, zero rejected test writes, and zero
+axe violations across blog, contact and editor. Backend: 16 suites, 88 tests.
+Both locked dependency audits report zero known vulnerabilities.
+
+The exact implementation was fast-forwarded to master and deployed. All 33
+current release files match their manifest hashes on the public domain.
+Public/API/SEO smoke checks pass; anonymous administrator API access returns
+401 and the browser editor entry redirects to `/admin/login`. All 198 published
+articles remain available. No production account, article or contact message
+was created or edited by the QA journeys.
+
+Manual live browser checks confirm three equal-width featured cards on one
+desktop row, uncropped covers, working saved-websites empty state, theme
+persistence, filter/search results, article refresh and one article-specific
+preview image/canonical tag. The current entry is approximately 74 KB before
+compression. The schema now uses the verified project repository, removing
+unverified social identity placeholders introduced during recovery.
+
+Local ignored receipts are `docs/qa/frontend-20261027/ci-report.json` and
+`live-release.json`; screenshots and the full browser report are also attached
+to the CI workflow artifact. The temporary loopback QA host has been stopped.
+
+## Remaining scope
+
 - New screenshots establish a baseline; a historical pixel regression comparison
   is inconclusive because no comparable fixture baseline existed.
 - Automated accessibility checks do not certify WCAG conformance. A complete
