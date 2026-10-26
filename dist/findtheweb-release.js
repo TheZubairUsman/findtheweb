@@ -13,7 +13,7 @@
     window.fetch = function (input, init) {
       var url = typeof input === 'string' ? input : input && input.url;
       if (url && /^\/api\/v1\//.test(url)) {
-        var rewritten = apiBase + url.replace('/api/v1', '');
+        var rewritten = apiBase + url;
         if (typeof input === 'string') input = rewritten;
         else input = new Request(rewritten, input);
       }
@@ -21,6 +21,9 @@
     };
     window.__findthewebApiBridgeInstalled = true;
   }
+
+  // Install before the application module can make its first API request.
+  installApiBridge();
 
   function setMeta(selector, attribute, value) {
     var node = document.querySelector(selector);
@@ -397,17 +400,8 @@
     // Let the blog's SEO component own editorial titles and descriptions.
     // The release observer runs repeatedly, so unconditional defaults would
     // overwrite article-specific metadata after React renders.
-    if (!isBlogRoute) {
-      document.title = title;
-      setMeta('meta[name="title"]', 'content', title);
-      setMeta('meta[name="description"]', 'content', description);
-      setMeta('meta[property="og:title"]', 'content', title);
-      setMeta('meta[property="og:description"]', 'content', description);
-    }
-    setMeta('meta[property="og:image"]', 'content', siteUrl + '/logo.png');
-    setMeta('meta[name="twitter:title"]', 'content', title);
-    setMeta('meta[name="twitter:description"]', 'content', description);
-    setMeta('meta[name="twitter:image"]', 'content', siteUrl + '/logo.png');
+    // React route metadata (and compatibility-page metadata) owns its title,
+    // description and preview image. Never replace these with home defaults.
 
     var canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) canonical.href = siteUrl + window.location.pathname;
@@ -451,7 +445,6 @@
     enhancePublicFollow();
     removeRetiredProductNavigation();
     applyAdminPolish();
-        cleanAdminErrorPanel();
         applyBlogA11y();
   }
 
@@ -461,11 +454,16 @@
     scheduled = true;
     window.requestAnimationFrame(function () {
       scheduled = false;
-      applyReleasePolish();
+      // Do not observe our own writes: otherwise metadata/attribute updates
+      // schedule another animation frame forever, even on an idle page.
+      observer.disconnect();
+      try { applyReleasePolish(); }
+      finally { observer.observe(document.documentElement, { childList: true, subtree: true, attributes: true }); }
     });
   }
 
   document.addEventListener('DOMContentLoaded', schedule);
-  new MutationObserver(schedule).observe(document.documentElement, { childList: true, subtree: true, attributes: true });
+  var observer = new MutationObserver(schedule);
+  observer.observe(document.documentElement, { childList: true, subtree: true, attributes: true });
   schedule();
 }());

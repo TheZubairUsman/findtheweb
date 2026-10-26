@@ -1,12 +1,134 @@
 {
-  "release": "phase4-2026-10-25",
-  "generatedAt": "2026-10-25",
+  "release": "frontend-source-20261027",
   "files": {
-    "index.html": { "sha256": "4d5f701e561d1b00b0e86f2b170c83921093e3d0875bdbb09d9af2536f9bc9f4", "bytes": 10883 },
-    "findtheweb-release.js": { "sha256": "1b05ac8a77bb20d0f86ffbfaf01f0b89cb309962a69ad3dbb1822ac76fa40bc3", "bytes": 16581 },
-    "findtheweb-release.css": { "sha256": "f78e400ec4e55b81ff934402205d34228c8f9482c4dbad0da753aa20ae567e5a", "bytes": 7092 },
-    "robots.txt": { "sha256": "15091a1a8d9bf87faa53e100fa795e809638b2616c3020098e7ca300610ce02c", "bytes": 592 },
-    "sitemap.xml": { "sha256": "55a7c8c477a659097d4fa52fbcda35377130e3765002ab6f82b1b138f88f5313", "bytes": 4182 }
+    "index.html": {
+      "sha256": "38c1c0785c0c38be948e458083f1622bcff37d39bebcd99350f62ec413e6351d",
+      "bytes": 8930
+    },
+    "frontend-build.json": {
+      "sha256": "e04726ebdb64d4653cf2e69bbeb3ba4a586fef8b52bbf36f0856f7b618243559",
+      "bytes": 1461
+    },
+    "findtheweb-release.js": {
+      "sha256": "2220f3a1dd220b734e631df73d047f5c1a230950293f2f7511c8a0a11604ca7b",
+      "bytes": 50614
+    },
+    "findtheweb-release.css": {
+      "sha256": "5854ad396f0bda3216e65b8ef8ffb2877b8376086bddacdf477dd41a70cef1f6",
+      "bytes": 26332
+    },
+    "contact-inbox.js": {
+      "sha256": "90fd8d398c46cffa79eb45b54e03a81bb7538cd5b121216bf289289291771777",
+      "bytes": 5886
+    },
+    "robots.txt": {
+      "sha256": "15091a1a8d9bf87faa53e100fa795e809638b2616c3020098e7ca300610ce02c",
+      "bytes": 592
+    },
+    "sitemap.xml": {
+      "sha256": "55a7c8c477a659097d4fa52fbcda35377130e3765002ab6f82b1b138f88f5313",
+      "bytes": 4182
+    },
+    "assets/frontend/app-FKLB6AR2.js": {
+      "sha256": "a4ea9a7ae161ec342107652a027ad2992d567ef0103664dbeb88103bedb0a878",
+      "bytes": 72773
+    },
+    "assets/frontend/app-V6FE7CTM.css": {
+      "sha256": "fdf98b1c1e04b840d9105bb1db5592e6ee17034053e1606a13dda2057fb4bef2",
+      "bytes": 57346
+    },
+    "assets/frontend/chunk-2VOEZ2LJ.js": {
+      "sha256": "35c8bdb7f67dfb99a7cff8669da95076e17fd1e348020f385da04768ef56ca01",
+      "bytes": 195689
+    },
+    "assets/frontend/chunk-42CSJ7R7.js": {
+      "sha256": "d499af88fd7f79e627faf7cdf7aa0797e136a39f162800c861d45dc3f27c1dba",
+      "bytes": 2753
+    },
+    "assets/frontend/chunk-5YGVPDPG.js": {
+      "sha256": "0634e9effcdc2ddbcc94465201a6d073365dbbbec6b1dceabc7b6591c74c17ee",
+      "bytes": 8141
+    },
+    "assets/frontend/chunk-B6WUULR4.js": {
+      "sha256": "7b2511f5842abbc5b8bc630584e8aaffe7922c9f86b253970684cb0ff7184b16",
+      "bytes": 28264
+    },
+    "assets/frontend/chunk-BDIG6XWP.js": {
+      "sha256": "8f23994fb4e9753c49ef4ba0bb748d638e5387f35fb04c22e16edb009fcaf030",
+      "bytes": 3658
+    },
+    "assets/frontend/chunk-CD3R3SST.js": {
+      "sha256": "dbddf4d8739d41ebc9c17710d3d167bbaedc4b077ba1ad5d95c40793913f49ab",
+      "bytes": 39641
+    },
+    "assets/frontend/chunk-CUVJRMBO.js": {
+      "sha256": "282880786fbc3e92f11551cb6e7984e30ac9c9b385fb8f3c0a88d3ceb63da28f",
+      "bytes": 8795
+    },
+    "assets/frontend/chunk-EW5CLT4W.js": {
+      "sha256": "204f63f29acbea01d73f19f3d6a5b75095af936ca42bde1f10986533e6cd87a8",
+      "bytes": 9095
+    },
+    "assets/frontend/chunk-G5R4IHXA.js": {
+      "sha256": "3e52532fd81fd135072c52b441d8e28686d5205ea79ea646fbc32ed033d06496",
+      "bytes": 43278
+    },
+    "assets/frontend/chunk-GMOBM47W.js": {
+      "sha256": "4d38c52d29721c818660314cddd8a8806645856c54a992399104852796758e46",
+      "bytes": 17496
+    },
+    "assets/frontend/chunk-HWBKFTPQ.js": {
+      "sha256": "da978b28bb3109055008bedbab9c17c92bf5bf7e19ae870b558bc6ebc5f7cb1b",
+      "bytes": 566
+    },
+    "assets/frontend/chunk-JVFVFRQZ.js": {
+      "sha256": "580982383a52395d014e5138c085202785be6f89270e2bda652107456651c9ff",
+      "bytes": 8550
+    },
+    "assets/frontend/chunk-JZQYMIH3.js": {
+      "sha256": "13a003de481c72d1cb8aed8e3ad7f8096445b359773f037557e80e86b5d590fc",
+      "bytes": 16152
+    },
+    "assets/frontend/chunk-MJXSN36L.js": {
+      "sha256": "6eab3842966e30d357993df5bdbf52d3a9be12ce9e9aaa8c49b84ec85c18891c",
+      "bytes": 8749
+    },
+    "assets/frontend/chunk-PJRAJYI3.js": {
+      "sha256": "69ee25108f49868cb1ff00577fba256fe0f8fcd1436a0c67a607cf530192ac63",
+      "bytes": 5662
+    },
+    "assets/frontend/chunk-QALMJ76J.js": {
+      "sha256": "d3e64c5e9f99c3ffd13effeabb04d376b4e67bfc0513b000ebedf57a2242d371",
+      "bytes": 12207
+    },
+    "assets/frontend/chunk-S5QP7W6P.js": {
+      "sha256": "8a0215a408f9a20c7d83fa3a3b2a2cbf516d523f14e258ffe0259a97122799e9",
+      "bytes": 136187
+    },
+    "assets/frontend/chunk-S6KKUILW.js": {
+      "sha256": "5963844c513de5ac105572338ed3c8dbe5576d2f9ca2aa9757d919b67d7c6ebc",
+      "bytes": 4893
+    },
+    "assets/frontend/chunk-SQDLX3DJ.js": {
+      "sha256": "06a65b55ee90bdd68e995d0e7180fff045124f542e203f63310fcb241b7c773d",
+      "bytes": 15888
+    },
+    "assets/frontend/chunk-SSG3UGHY.js": {
+      "sha256": "12b2a1003bec322f2f14255d81b4efb92de080f89a1769b14e27227c02e28756",
+      "bytes": 1411723
+    },
+    "assets/frontend/chunk-TSNJOIXE.js": {
+      "sha256": "87ef82bd1a42ba09c913705b2e8de90d762c788c011d139111034152deb90c3e",
+      "bytes": 17061
+    },
+    "assets/frontend/chunk-VM5US7VP.js": {
+      "sha256": "62df2004d32cc48cfca1585b8f19554ba5584ce2a8c96780a5cca50c11662a65",
+      "bytes": 9445
+    },
+    "assets/frontend/chunk-WTOTOQHJ.js": {
+      "sha256": "a3147b3e0bcd5d81ca0ee4d886960fab73bf6068ac1291acefa17d2eaf4cef63",
+      "bytes": 15385
+    }
   },
-  "rollback": "Restore the Hostinger backup findtheweb-release.backup-20261025.js, then clear cache and re-run the public smoke checks."
+  "rollback": "Restore dist from Git commit 0abcdba; new hashed assets can remain. Re-run public and browser smoke checks. No database rollback is required."
 }

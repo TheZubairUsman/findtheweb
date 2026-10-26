@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback, createContext, useContext } from 'react';
 
+const readStorage = key => { try { return window.localStorage.getItem(key); } catch (_) { return null; } };
+
 // Auth Context
 const AuthContext = createContext();
 
@@ -19,8 +21,8 @@ export const AuthProvider = ({ children }) => {
 
   // Check if admin is logged in on mount
   useEffect(() => {
-    const token = localStorage.getItem('adminToken');
-    const adminData = localStorage.getItem('adminData');
+    const token = readStorage('adminToken');
+    const adminData = readStorage('adminData');
     
     if (token && adminData) {
       try {
@@ -94,17 +96,18 @@ export const AuthProvider = ({ children }) => {
         throw new Error(data.message || 'Login failed');
       }
 
-      // Validate response data
-      if (!data.token || !data.admin) {
+      // Accept the backend's nested response and its legacy top-level alias.
+      const { token, admin } = data.data || data;
+      if (typeof token !== 'string' || !token || !admin || typeof admin !== 'object' || Array.isArray(admin)) {
         throw new Error('Invalid response from server');
       }
 
       // Store token and admin data securely
-      localStorage.setItem('adminToken', data.token);
-      localStorage.setItem('adminData', JSON.stringify(data.admin));
+      localStorage.setItem('adminToken', token);
+      localStorage.setItem('adminData', JSON.stringify(admin));
       
-      setUser(data.admin);
-      return data;
+      setUser(admin);
+      return { ...data, token, admin };
     } catch (err) {
       console.error('Login error:', err);
       
@@ -123,7 +126,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = useCallback(async () => {
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = readStorage('adminToken');
       
       // Call logout endpoint if token exists
       if (token) {
@@ -147,7 +150,7 @@ export const AuthProvider = ({ children }) => {
 
   const refreshToken = useCallback(async () => {
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = readStorage('adminToken');
       
       if (!token) {
         logout();
@@ -190,7 +193,7 @@ export const AuthProvider = ({ children }) => {
 
   const changePassword = useCallback(async (currentPassword, newPassword) => {
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = readStorage('adminToken');
       
       if (!token) {
         throw new Error('Not authenticated');
@@ -231,19 +234,12 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   // Helper functions
-  const isAuthenticated = Boolean(user && localStorage.getItem('adminToken'));
-  const isAdmin = Boolean(user && user.isAdmin);
+  const isAuthenticated = Boolean(user && readStorage('adminToken'));
+  // UI state only; API authorization remains enforced by the server.
+  const isAdmin = Boolean(user && (user.role === 'admin' || user.isAdmin === true));
 
-  // Auto-refresh token periodically
-  useEffect(() => {
-    if (isAuthenticated) {
-      const interval = setInterval(() => {
-        refreshToken();
-      }, 30 * 60 * 1000); // Refresh every 30 minutes
-
-      return () => clearInterval(interval);
-    }
-  }, [isAuthenticated, refreshToken]);
+  // The API does not expose a refresh endpoint. Keep the server-issued session
+  // until it expires instead of logging an editor out on a periodic 404.
 
   const value = {
     user,
@@ -255,7 +251,7 @@ export const AuthProvider = ({ children }) => {
     logout,
     refreshToken,
     changePassword,
-    adminToken: localStorage.getItem('adminToken'),
+    adminToken: readStorage('adminToken'),
     adminData: user,
   };
 

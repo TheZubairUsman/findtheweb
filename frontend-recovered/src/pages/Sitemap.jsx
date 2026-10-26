@@ -171,7 +171,6 @@ const Sitemap = () => {
 
         </div>
         
-        <Footer />
       </div>
     </>
   );

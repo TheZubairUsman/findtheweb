@@ -66,7 +66,19 @@ The project combines a polished static React build with an Express/Sequelize API
 └── .github/workflows/       # Automated backend test workflow
 ```
 
-> The original frontend source tree is not included in this snapshot. `dist/` is the verified build artifact currently available for deployment.
+The maintained frontend source and locked build dependencies are in
+`frontend-recovered/`. From that directory run `npm ci` and `npm run build` to
+generate the application modules, entry HTML and hashed release manifest in
+`dist/`. The recovered catalog contains 103 categories and 5,317 existing entries.
+The stylesheet is preserved as a source snapshot in `src/styles/index.css`;
+the original Tailwind configuration was unavailable. Community/discovery
+compatibility screens still use the maintained release script.
+
+For isolated browser QA, start `node backend/scripts/editor-browser-qa.cjs`,
+then run `npm run test:browser` inside `frontend-recovered/`. The QA server uses
+an ephemeral database and test identity on 127.0.0.1:5097. The browser runner
+uses installed Chrome (`CHROME_PATH` can override its location). No real
+production credentials or messages are needed.
 
 ## Run locally
 

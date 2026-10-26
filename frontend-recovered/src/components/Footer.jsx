@@ -4,14 +4,14 @@ import { useGitHubUser } from '../hooks/useGitHub';
 import { useAnalytics } from '../hooks/useAnalytics';
 import GitHubStarsChip from './GitHubStarsChip';
 import SocialShare from './SocialShare';
-import websites from '../data/websites.json';
+import catalog from '../data/catalog-stats.json';
 import { scrollToTop } from '../utils/scrollToTop';
 
 const Footer = () => {
   const { userData } = useGitHubUser('TheZubairUsman');
   const { trackClick } = useAnalytics();
   const location = useLocation();
-  const totalWebsites = websites.length;
+  const totalWebsites = catalog.websites;
 
   const handleLinkClick = (linkType, linkData, e) => {
     e.preventDefault();

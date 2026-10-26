@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <!-- Primary Meta Tags -->
     <title>FindTheWeb | Curated Websites, Tools &amp; Hidden Gems</title>
     <meta name="title" content="FindTheWeb | Curated Websites, Tools &amp; Hidden Gems" />
@@ -12,7 +12,7 @@
     <meta name="author" content="FindTheWeb by ZUS3CU" />
     <meta name="robots" content="index, follow" />
                  <link rel="canonical" href="https://findtheweb.zus3cu.tech/" />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
                  <meta property="og:url" content="https://findtheweb.zus3cu.tech/" />
@@ -40,17 +40,17 @@
       gtag('js', new Date());
       gtag('config', 'G-KZKSFZSQW7');
     </script>
-    
+
     <!-- Google AdSense -->
     <meta name="google-adsense-account" content="ca-pub-4991641664200006" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4991641664200006" crossorigin="anonymous"></script>
-    
+
     <!-- Favicon and App Icons -->
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png" />
     <link rel="manifest" href="/favicon_io/site.webmanifest" />
-    
+
     <!-- Theme and App Configuration -->
     <meta name="theme-color" content="#0f172a" />
     <meta name="msapplication-TileColor" content="#0f172a" />
@@ -58,16 +58,16 @@
     <meta name="apple-mobile-web-app-title" content="FindTheWeb" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    
+
     <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://www.google-analytics.com" />
     <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -83,7 +83,7 @@
       }
     }
     </script>
-    
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -99,15 +99,15 @@
     }
     </script>
     <link rel="stylesheet" href="/findtheweb-release.css?v=20261026responsive2" />
-    <script src="/findtheweb-release.js?v=20261026phase17"></script>
+    <script src="/findtheweb-release.js?v=20261027frontend1"></script>
     <script defer src="/contact-inbox.js?v=20261026inbox1"></script>
-    <script type="module" crossorigin src="/assets/js/index-BLfo3RSv.js?v=20261026editorux1"></script>
-    <link rel="modulepreload" crossorigin href="/assets/js/vendor-D0vOuAIx.js">
-    <link rel="modulepreload" crossorigin href="/assets/js/seo-DsLfi8vK.js">
-    <link rel="stylesheet" crossorigin href="/assets/css/index-CURD_Zn6.css">
+    <script type="module" src="/assets/frontend/app-FKLB6AR2.js"></script><link rel="stylesheet" href="/assets/frontend/app-V6FE7CTM.css">
+
+
+
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"></div>
     <style>
       #ftw-static-blog { display:none; max-width:1080px; margin:0 auto; padding:72px 24px 96px; font-family:Inter,system-ui,sans-serif; color:#14213d; }
       #ftw-static-blog .eyebrow { color:#2563eb; font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:12px; }
@@ -151,11 +151,11 @@
           if (document.body) document.body.classList.toggle('ftw-blog-route', isBlog);
         }
         syncBlogRoute();
-        window.setInterval(syncBlogRoute, 500);
+        window.addEventListener('popstate', syncBlogRoute);
       }());
     </script>
 
-    
+
 
   </body>
 </html>

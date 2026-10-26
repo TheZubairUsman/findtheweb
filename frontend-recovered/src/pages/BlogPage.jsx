@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import Header from '../components/Header';
 import SEOHead from '../components/SEO/SEOHead';
 import { CollectionPageSchema } from '../components/SEO/StructuredData';
@@ -9,86 +9,79 @@ import {
 } from 'react-icons/fi';
 
 const BlogPage = () => {
+  const [searchParams] = useSearchParams();
+  const [error, setError] = useState(null);
   const [posts, setPosts] = useState([]);
   const [featuredPosts, setFeaturedPosts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [selectedTag, setSelectedTag] = useState('');
+  const [selectedTag, setSelectedTag] = useState(() => searchParams.get('tag') || '');
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
+    setSelectedTag(searchParams.get('tag') || '');
+    setCurrentPage(1);
+  }, [searchParams]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const fetchPosts = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const params = new URLSearchParams({
+          page: currentPage,
+          limit: 9,
+          ...(selectedCategory && { category: selectedCategory }),
+          ...(selectedTag && { tag: selectedTag }),
+          ...(searchTerm && { search: searchTerm }),
+        });
+        const response = await fetch(`/api/v1/blog/posts?${params}`, { signal: controller.signal });
+        const data = await response.json();
+        if (!response.ok || !data.success || !Array.isArray(data.data)) {
+          throw new Error(data.message || 'Failed to load blog posts');
+        }
+        if (controller.signal.aborted) return;
+        const pages = Math.max(1, Number(data.pagination?.pages) || 1);
+        setPosts(data.data);
+        setTotalPages(pages);
+        if (currentPage > pages) setCurrentPage(pages);
+      } catch (error) {
+        if (controller.signal.aborted) return;
+        setPosts([]);
+        setTotalPages(1);
+        setError(error.message || 'Failed to load blog posts');
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
+      }
+    };
     fetchPosts();
-    fetchFeaturedPosts();
-    fetchCategories();
-    fetchTags();
+    return () => controller.abort();
   }, [currentPage, selectedCategory, selectedTag, searchTerm]);
 
-  const fetchPosts = async () => {
-    try {
-      const params = new URLSearchParams({
-        page: currentPage,
-        limit: 9,
-        ...(selectedCategory && { category: selectedCategory }),
-        ...(selectedTag && { tag: selectedTag }),
-        ...(searchTerm && { search: searchTerm }),
-      });
-
-      const response = await fetch(`/api/v1/blog/posts?${params}`);
-      const data = await response.json();
-      
-      if (data.success) {
-        setPosts(data.data);
-        setTotalPages(data.pagination.pages);
+  useEffect(() => {
+    const controller = new AbortController();
+    const fetchList = async (url, setter) => {
+      try {
+        const response = await fetch(url, { signal: controller.signal });
+        const data = await response.json();
+        if (!response.ok || !data.success || !Array.isArray(data.data)) {
+          throw new Error(data.message || 'Failed to load blog metadata');
+        }
+        if (!controller.signal.aborted) setter(data.data);
+      } catch (error) {
+        if (!controller.signal.aborted) console.error('Error fetching blog metadata:', error);
       }
-    } catch (error) {
-      console.error('Error fetching blog posts:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const fetchFeaturedPosts = async () => {
-    try {
-      const response = await fetch('/api/v1/blog/posts?featured=true&limit=3');
-      const data = await response.json();
-      
-      if (data.success) {
-        setFeaturedPosts(data.data);
-      }
-    } catch (error) {
-      console.error('Error fetching featured posts:', error);
-    }
-  };
-
-  const fetchCategories = async () => {
-    try {
-      const response = await fetch('/api/v1/blog/categories');
-      const data = await response.json();
-      
-      if (data.success) {
-        setCategories(data.data);
-      }
-    } catch (error) {
-      console.error('Error fetching categories:', error);
-    }
-  };
-
-  const fetchTags = async () => {
-    try {
-      const response = await fetch('/api/v1/blog/tags');
-      const data = await response.json();
-      
-      if (data.success) {
-        setTags(data.data);
-      }
-    } catch (error) {
-      console.error('Error fetching tags:', error);
-    }
-  };
+    };
+    fetchList('/api/v1/blog/posts?featured=true&limit=3', setFeaturedPosts);
+    fetchList('/api/v1/blog/categories', setCategories);
+    fetchList('/api/v1/blog/tags', setTags);
+    return () => controller.abort();
+  }, []);
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -99,7 +92,8 @@ const BlogPage = () => {
   };
 
   const getReadingTime = (readingTime) => {
-    return readingTime === 1 ? '1 min read' : `${readingTime} min read`;
+    const minutes = Math.max(1, Number(readingTime) || 1);
+    return `${minutes} min read`;
   };
 
   const BlogCard = ({ post, featured = false }) => (
@@ -180,7 +174,7 @@ const BlogPage = () => {
             {post.tags.slice(0, 3).map(tag => (
               <button
                 key={tag}
-                onClick={() => setSelectedTag(tag)}
+                onClick={() => { setSelectedTag(tag); setCurrentPage(1); }}
                 className="text-gray-500 hover:text-blue-600 text-xs flex items-center"
               >
                 <FiTag className="w-3 h-3 mr-1" />
@@ -230,7 +224,7 @@ const BlogPage = () => {
         title="Blog - FindTheWeb"
         description="Read our latest articles about web development, design, technology trends, and digital insights."
         keywords="blog, articles, web development, design, technology, insights"
-        image="/images/blog-hero.png"
+        image="/logo.png"
         url="/blog"
         type="website"
       />
@@ -262,7 +256,7 @@ const BlogPage = () => {
           </header>
 
           {/* Featured Posts */}
-          <FeaturedSection />
+          {featuredPosts.length > 0 && <FeaturedSection />}
 
           {/* Filters and Search */}
           <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8">
@@ -276,7 +270,7 @@ const BlogPage = () => {
                     placeholder="Search articles..."
                     aria-label="Search articles"
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
                     className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
@@ -288,7 +282,7 @@ const BlogPage = () => {
                 <select
                   aria-label="Filter by category"
                   value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  onChange={(e) => { setSelectedCategory(e.target.value); setCurrentPage(1); }}
                   className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="">All Categories</option>
@@ -303,7 +297,7 @@ const BlogPage = () => {
                 <select
                   aria-label="Filter by tag"
                   value={selectedTag}
-                  onChange={(e) => setSelectedTag(e.target.value)}
+                  onChange={(e) => { setSelectedTag(e.target.value); setCurrentPage(1); }}
                   className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                 >
                   <option value="">All Tags</option>
@@ -338,6 +332,8 @@ const BlogPage = () => {
               <div className="flex items-center justify-center py-12">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
               </div>
+            ) : error ? (
+              <p role="alert" className="text-center py-12 text-red-600">{error}</p>
             ) : posts.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {posts.map(post => (
@@ -369,7 +365,7 @@ const BlogPage = () => {
           </div>
 
           {/* Pagination */}
-          {totalPages > 1 && (
+          {!loading && !error && totalPages > 1 && (
             <div className="flex justify-center items-center space-x-2">
               <button
                 onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
@@ -381,7 +377,7 @@ const BlogPage = () => {
               
               <div className="flex space-x-1">
                 {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
-                  const page = i + 1;
+                  const page = Math.max(1, Math.min(currentPage - 2, totalPages - 4)) + i;
                   return (
                     <button
                       key={page}

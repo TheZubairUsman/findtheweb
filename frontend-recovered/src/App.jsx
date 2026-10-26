@@ -1,18 +1,14 @@
 import React, { useEffect, lazy } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useParams, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { BookmarkProvider } from './context/BookmarkContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './hooks/useAuth';
 import ProtectedRoute from './components/ProtectedRoute';
-import Categories from './pages/Categories';
-import Category from './pages/Category';
 import Bookmarks from './pages/Bookmarks';
-import About from './pages/About';
 import Contact from './pages/Contact';
 import Support from './pages/Support';
 import ThankYou from './pages/ThankYou';
-import ProgrammaticPages from './pages/ProgrammaticPages';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import CookiePolicy from './pages/CookiePolicy';
@@ -23,6 +19,9 @@ import { Analytics } from './components/SEO/Analytics';
 
 // Lazy load components
 const Home = lazy(() => import('./pages/Home'));
+const Categories = lazy(() => import('./pages/Categories'));
+const Category = lazy(() => import('./pages/Category'));
+const About = lazy(() => import('./pages/About'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
@@ -80,7 +79,16 @@ class ErrorBoundary extends React.Component {
   }
 }
 
+function CategoryAlias() {
+  const { category } = useParams();
+  return <Navigate to={`/category/${encodeURIComponent(category)}`} replace />;
+}
+
 function App() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    document.body.classList.toggle('ftw-blog-route', /^\/blog(?:\/|$)/.test(pathname));
+  }, [pathname]);
   return (
     <HelmetProvider>
       <ErrorBoundary>
@@ -96,10 +104,11 @@ function App() {
 
                       {/* Categories Routes */}
                       <Route path="/categories" element={<Categories />} />
+                      <Route path="/discover" element={<Navigate to="/categories" replace />} />
                       <Route path="/category/:slug" element={<Category />} />
 
                       {/* Blog Routes */}
-                      <Route path="/products" element={<Blog />} />
+                      <Route path="/products" element={<Navigate to="/blog" replace />} />
                       <Route path="/blog" element={<BlogPage />} />
                       <Route path="/blog/:slug" element={<BlogPost />} />
 
@@ -119,9 +128,9 @@ function App() {
                       <Route path="/thank-you" element={<ThankYou />} />
 
                       {/* Programmatic Pages */}
-                      <Route path="/best/:category" element={<ProgrammaticPages />} />
-                      <Route path="/tools/:category" element={<ProgrammaticPages />} />
-                      <Route path="/websites/:category" element={<ProgrammaticPages />} />
+                      <Route path="/best/:category" element={<CategoryAlias />} />
+                      <Route path="/tools/:category" element={<CategoryAlias />} />
+                      <Route path="/websites/:category" element={<CategoryAlias />} />
 
                       {/* Legal Pages */}
                       <Route path="/privacy-policy" element={<PrivacyPolicy />} />

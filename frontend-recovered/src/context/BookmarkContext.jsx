@@ -21,7 +21,7 @@ const bookmarkReducer = (state, action) => {
         ...state,
         bookmarks: [...state.bookmarks, action.payload]
       };
-    
+
     case 'REMOVE_BOOKMARK':
       return {
         ...state,
@@ -29,48 +29,45 @@ const bookmarkReducer = (state, action) => {
           bookmark => bookmark.id !== action.payload
         )
       };
-    
+
     case 'LOAD_BOOKMARKS':
       return {
         ...state,
         bookmarks: action.payload,
         isLoading: false
       };
-    
+
     case 'SET_LOADING':
       return {
         ...state,
         isLoading: action.payload
       };
-    
+
     case 'SET_ERROR':
       return {
         ...state,
         error: action.payload,
         isLoading: false
       };
-    
+
     default:
       return state;
   }
 };
 
 export const BookmarkProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(bookmarkReducer, initialState);
-
-  // Load bookmarks from localStorage on mount
-  useEffect(() => {
+  const [state, dispatch] = useReducer(bookmarkReducer, initialState, defaults => {
     try {
       const savedBookmarks = localStorage.getItem('webgem-bookmarks');
       if (savedBookmarks) {
         const bookmarks = JSON.parse(savedBookmarks);
-        dispatch({ type: 'LOAD_BOOKMARKS', payload: bookmarks });
+        if (Array.isArray(bookmarks)) return { ...defaults, bookmarks: bookmarks.filter(item => item && typeof item === 'object' && typeof item.id === 'string') };
       }
     } catch (error) {
       console.error('Error loading bookmarks:', error);
-      dispatch({ type: 'SET_ERROR', payload: 'Failed to load bookmarks' });
     }
-  }, []);
+    return defaults;
+  });
 
   // Save bookmarks to localStorage whenever they change
   useEffect(() => {
@@ -118,4 +115,4 @@ export const useBookmarks = () => {
     throw new Error('useBookmarks must be used within a BookmarkProvider');
   }
   return context;
-}; 
+};

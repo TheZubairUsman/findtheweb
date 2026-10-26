@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import DOMPurify from 'dompurify';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import SEOHead from '../components/SEO/SEOHead';
@@ -17,32 +18,35 @@ const BlogPost = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (slug) {
-      fetchPost();
-    }
-  }, [slug]);
-
-  const fetchPost = async () => {
-    try {
+    const controller = new AbortController();
+    const fetchPost = async () => {
       setLoading(true);
       setError(null);
-      
-      const response = await fetch(`/api/v1/blog/posts/${slug}`);
-      const data = await response.json();
-      
-      if (data.success) {
+      setPost(null);
+      setRelatedPosts([]);
+      try {
+        if (!slug) throw new Error('Post not found');
+        const response = await fetch(`/api/v1/blog/posts/${encodeURIComponent(slug)}`, {
+          signal: controller.signal,
+        });
+        const data = await response.json();
+        if (!response.ok || !data.success || !data.data) {
+          throw new Error(data.message || 'Post not found');
+        }
+        if (controller.signal.aborted) return;
         setPost(data.data);
-        setRelatedPosts(data.data.relatedPosts || []);
-      } else {
-        setError(data.message || 'Post not found');
+        setRelatedPosts(Array.isArray(data.data.relatedPosts) ? data.data.relatedPosts : []);
+      } catch (error) {
+        if (controller.signal.aborted) return;
+        console.error('Error fetching blog post:', error);
+        setError(error.message || 'Failed to load blog post');
+      } finally {
+        if (!controller.signal.aborted) setLoading(false);
       }
-    } catch (error) {
-      console.error('Error fetching blog post:', error);
-      setError('Failed to load blog post');
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
+    fetchPost();
+    return () => controller.abort();
+  }, [slug]);
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -53,7 +57,8 @@ const BlogPost = () => {
   };
 
   const getReadingTime = (readingTime) => {
-    return readingTime === 1 ? '1 min read' : `${readingTime} min read`;
+    const minutes = Math.max(1, Number(readingTime) || 1);
+    return `${minutes} min read`;
   };
 
   const handleShare = async () => {
@@ -69,7 +74,11 @@ const BlogPost = () => {
       }
     } else {
       // Fallback: copy to clipboard
-      navigator.clipboard.writeText(window.location.href);
+      try {
+        await navigator.clipboard?.writeText(window.location.href);
+      } catch (error) {
+        console.error('Unable to copy share link:', error);
+      }
       // Could add a toast notification here
     }
   };
@@ -290,7 +299,7 @@ const BlogPost = () => {
           <article className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 md:p-8 mb-8">
             <div 
               className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 prose-strong:text-gray-900"
-              dangerouslySetInnerHTML={{ __html: post.content }}
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content || '', { USE_PROFILES: { html: true } }) }}
             />
           </article>
 

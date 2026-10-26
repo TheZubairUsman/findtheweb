@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 const SEOHead = ({
@@ -19,8 +20,10 @@ const SEOHead = ({
   structuredData = null
 }) => {
   const siteUrl = 'https://findtheweb.zus3cu.tech'; // Replace with actual domain
-  const fullUrl = url ? `${siteUrl}${url}` : siteUrl;
-  const fullImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+  const location = useLocation();
+  const fullUrl = `${siteUrl}${url || location.pathname}`;
+  const imageValue = typeof image === 'string' && image ? image : '/logo.png';
+  const fullImageUrl = imageValue.startsWith('http') ? imageValue : `${siteUrl}${imageValue}`;
   const canonicalUrl = canonical || fullUrl;
 
   const robotsContent = `${noindex ? 'noindex' : 'index'},${nofollow ? 'nofollow' : 'follow'}`;

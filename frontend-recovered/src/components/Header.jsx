@@ -34,7 +34,6 @@ const Header = () => {
   const navigationItems = [
     { name: 'Home', href: '/', current: location.pathname === '/' },
     { name: 'Categories', href: '/categories', current: location.pathname === '/categories' },
-    { name: 'Products', href: '/products', current: location.pathname.startsWith('/products') },
     { name: 'Blog', href: '/blog', current: location.pathname.startsWith('/blog') },
     { name: 'About', href: '/about', current: location.pathname === '/about' },
     { name: 'Contact', href: '/contact', current: location.pathname === '/contact' }
@@ -81,6 +80,10 @@ const Header = () => {
       {/* Skip Navigation Link for Accessibility */}
       <a 
         href="#main-content" 
+        onClick={event => {
+          const target = document.querySelector('#root main, #root [role="main"]') || document.querySelector('#root h1');
+          if (target) { event.preventDefault(); target.tabIndex = -1; target.focus(); target.scrollIntoView({block:'start'}); }
+        }}
         className="skip-nav sr-only focus:not-sr-only focus:absolute focus:top-6 focus:left-6 focus:z-50"
       >
         Skip to main content
@@ -141,14 +144,6 @@ const Header = () => {
                 }`}
               >
                 Categories
-              </Link>
-              <Link
-                to="/products"
-                className={`text-gray-700 hover:text-blue-600 transition-colors ${
-                  location.pathname.startsWith('/products') ? 'text-blue-600 font-medium' : ''
-                }`}
-              >
-                Products
               </Link>
               <Link
                 to="/blog"
