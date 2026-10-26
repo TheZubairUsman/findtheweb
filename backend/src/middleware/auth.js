@@ -100,7 +100,7 @@ const checkEmailVerified = (req, res, next) => {
     });
   }
 
-  if (!req.user.isVerified) {
+  if (!req.user.emailVerified) {
     return res.status(403).json({
       success: false,
       message: 'Please verify your email address before performing this action',
@@ -253,7 +253,7 @@ const protect = async (req, res, next) => {
         }
 
         // Check if user account is active
-        if (user.status !== 'active') {
+        if (!user.isActive) {
           return res.status(403).json({
             success: false,
             message: 'Account is not active'
@@ -373,7 +373,7 @@ const optionalAuth = async (req, res, next) => {
         });
 
         // If user is found and active, proceed
-        if (user && user.status === 'active') {
+        if (user && user.isActive) {
           req.user = user;
           req.isAuthenticated = true;
         }

@@ -95,6 +95,11 @@
 .ftw-community-status { min-height: 1.4rem; color: #53627a; line-height: 1.5; }
 .ftw-community-status.is-success { color: #17653e; font-weight: 700; }
 .ftw-community-status.is-error { color: #a12828; font-weight: 700; }
+.ftw-community-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; max-width: 1120px; margin: 0 auto 1.25rem; }
+.ftw-community-metrics div { padding: 1.1rem 1.25rem; border: 1px solid #dfe3ea; border-radius: .9rem; background: #fff; }
+.ftw-community-metrics strong, .ftw-community-metrics span { display: block; }
+.ftw-community-metrics strong { color: #304ed8; font-size: 1.8rem; letter-spacing: -.04em; }
+.ftw-community-metrics span { margin-top: .2rem; color: #53627a; font-size: .84rem; font-weight: 750; }
 .ftw-profile-link { display: inline-block; margin-top: .5rem; color: #304ed8; font-weight: 800; text-decoration: none; }
 .ftw-collection-list { display: grid; gap: .8rem; margin-top: 1.5rem; }
 .ftw-collection-item { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem; border: 1px solid #e1e6ef; border-radius: .9rem; background: #f8fafc; }
@@ -115,17 +120,34 @@
 .ftw-public-collection-card p { min-height: 48px; color: #53627a; line-height: 1.55; }
 .ftw-public-collection-card > span:last-child { color: #304ed8; font-weight: 800; }
 .ftw-public-profile-loading { max-width: 900px; margin: 7rem auto; }
+.ftw-follow-button { border: 0; cursor: pointer; font: inherit; }
+.ftw-member-auth-page { display: grid; place-items: center; min-height: 100vh; padding: 2rem 1.25rem; background: #f4f7ff; color: #172033; font-family: Inter, ui-sans-serif, system-ui, sans-serif; }
+.ftw-member-auth-card { width: min(100%, 520px); padding: clamp(1.5rem, 5vw, 3rem); border: 1px solid #dfe3ea; border-radius: 1.25rem; background: #fff; box-shadow: 0 20px 50px rgba(23, 32, 51, .1); }
+.ftw-member-auth-card h1 { margin: .8rem 0; font-family: Georgia, serif; font-size: clamp(2.4rem, 7vw, 4.5rem); line-height: .98; letter-spacing: -.055em; }
+.ftw-member-auth-card > p { color: #53627a; line-height: 1.6; }
+.ftw-member-auth-card label { display: block; margin: 1rem 0; font-weight: 750; }
+.ftw-member-auth-card input { box-sizing: border-box; display: block; width: 100%; margin-top: .45rem; border: 1px solid #b9c2d1; border-radius: .65rem; padding: .85rem .9rem; font: inherit; }
+.ftw-member-auth-card input:focus { outline: 3px solid rgba(49, 89, 223, .18); border-color: #3451c7; }
+.ftw-member-auth-card button { border: 0; cursor: pointer; font: inherit; }
+.ftw-member-auth-status { min-height: 1.4rem; color: #53627a; }
+.ftw-member-auth-status.is-error { color: #a12828; font-weight: 700; }
+.ftw-member-auth-switch { margin: 1.2rem 0; }
+.ftw-member-auth-switch a { color: #304ed8; font-weight: 800; }
 .ftw-public-website-list { display: grid; gap: 1rem; max-width: 900px; }
 .ftw-public-website-list article { display: flex; align-items: center; justify-content: space-between; gap: 2rem; padding: 1.6rem; border: 1px solid #dfe3ea; border-radius: 1rem; background: #fff; box-shadow: 0 12px 28px rgba(16, 24, 39, .06); }
 .ftw-public-website-list h2 { margin: .5rem 0; font-family: Georgia, serif; font-size: 1.8rem; }
 .ftw-public-website-list p { margin: 0; color: #53627a; line-height: 1.6; }
 .ftw-public-website-list small { display: block; margin-top: .6rem; color: #53627a; }
-@media (max-width: 760px) { .ftw-community-page, .ftw-public-profile-page, .ftw-public-collection-page { padding-top: 2.5rem; } .ftw-community-header { display: block; } .ftw-community-header .ftw-outline-button { margin-top: 1.25rem; } .ftw-community-grid, .ftw-public-collection-grid { grid-template-columns: 1fr; } .ftw-collection-item, .ftw-public-website-list article { display: block; } .ftw-collection-item .ftw-outline-button, .ftw-public-website-list article .ftw-solid-button { margin-top: 1rem; } }
+@media (max-width: 760px) { .ftw-community-page, .ftw-public-profile-page, .ftw-public-collection-page { padding-top: 2.5rem; } .ftw-community-header { display: block; } .ftw-community-header .ftw-outline-button { margin-top: 1.25rem; } .ftw-community-grid, .ftw-public-collection-grid, .ftw-community-metrics { grid-template-columns: 1fr; } .ftw-collection-item, .ftw-public-website-list article { display: block; } .ftw-collection-item .ftw-outline-button, .ftw-public-website-list article .ftw-solid-button { margin-top: 1rem; } }
 html.dark .ftw-community-page, html.dark .ftw-public-profile-page, html.dark .ftw-public-collection-page { background: #0f172a; color: #e5e7eb; }
 html.dark .ftw-community-card, html.dark .ftw-community-empty, html.dark .ftw-public-collection-card, html.dark .ftw-public-website-list article { background: #172033; border-color: #2c3a52; color: #f8fafc; }
 html.dark .ftw-community-card input:not([type="checkbox"]), html.dark .ftw-community-card textarea { background: #111827; color: #f8fafc; border-color: #475569; }
 html.dark .ftw-community-header p, html.dark .ftw-public-profile-header p, html.dark .ftw-community-card p, html.dark .ftw-collection-item p, html.dark .ftw-public-collection-card p, html.dark .ftw-public-website-list p, html.dark .ftw-public-website-list small, html.dark .ftw-community-empty p, html.dark .ftw-profile-stat { color: #b8c4d6; }
 html.dark .ftw-collection-item { background: #111827; border-color: #334155; }
+html.dark .ftw-community-metrics div, html.dark .ftw-member-auth-card { background: #172033; border-color: #2c3a52; color: #f8fafc; }
+html.dark .ftw-community-metrics span, html.dark .ftw-member-auth-card > p { color: #b8c4d6; }
+html.dark .ftw-member-auth-page { background: #0f172a; color: #e5e7eb; }
+html.dark .ftw-member-auth-card input { background: #111827; color: #f8fafc; border-color: #475569; }
 .ftw-discovery-grid aside dt { color: #c7f36b; font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .ftw-discovery-section { max-width: 820px; padding: 2rem 0 3rem; border-top: 1px solid #dfe3ea; }
 .ftw-discovery-loading { max-width: 760px; padding: 10rem 0; }

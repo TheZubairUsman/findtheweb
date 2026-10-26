@@ -41,6 +41,16 @@ router.get('/collections/:id', async (req, res, next) => {
 
 router.use(protect);
 
+router.get('/profiles/:handle/following', async (req, res, next) => {
+  try {
+    const target = await CommunityProfile.findOne({ where: { handle: clean(req.params.handle, 40).toLowerCase(), isPublic: true } });
+    if (!target) return res.status(404).json({ success: false, message: 'Public profile not found' });
+    const me = owner(req);
+    const following = Boolean(await ProfileFollow.findOne({ where: { followerId: me.ownerId, followerType: me.ownerType, followingId: target.ownerId, followingType: target.ownerType } }));
+    res.json({ success: true, data: { following } });
+  } catch (error) { next(error); }
+});
+
 router.get('/me', async (req, res, next) => {
   try {
     const key = owner(req);
@@ -80,6 +90,19 @@ router.get('/collections', async (req, res, next) => {
   try {
     const collections = await Collection.findAll({ where: owner(req), order: [['updatedAt', 'DESC']] });
     res.json({ success: true, data: collections });
+  } catch (error) { next(error); }
+});
+
+router.get('/analytics', async (req, res, next) => {
+  try {
+    const key = owner(req);
+    const profile = await CommunityProfile.findOne({ where: key });
+    const collections = await Collection.count({ where: key });
+    const followers = profile ? await ProfileFollow.count({ where: { followingId: key.ownerId, followingType: key.ownerType } }) : 0;
+    const collectionRows = await Collection.findAll({ where: key, attributes: ['id'] });
+    const collectionIds = collectionRows.map((item) => item.id);
+    const savedWebsites = collectionIds.length ? await CollectionItem.count({ where: { collectionId: { [Op.in]: collectionIds } } }) : 0;
+    res.json({ success: true, data: { followers, collections, savedWebsites } });
   } catch (error) { next(error); }
 });
 

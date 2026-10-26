@@ -250,13 +250,14 @@
     if (window.location.pathname !== '/community') return;
     var root = document.getElementById('root');
     if (!root || root.querySelector('.ftw-community-page')) return;
-    var token = localStorage.getItem('adminToken');
+    var token = localStorage.getItem('adminToken') || localStorage.getItem('memberToken');
     setPageSeo('Community Workspace | FindTheWeb', 'Build your public FindTheWeb profile and curate collections of useful websites.');
     if (!token) {
       root.innerHTML = '<main class="ftw-community-page"><div class="ftw-community-empty"><span class="ftw-kicker">Creator workspace</span><h1>Build your FindTheWeb profile.</h1><p>Sign in to manage your profile and publish curated collections.</p><a class="ftw-solid-button" href="/admin/login">Sign in to continue</a></div></main>';
       return;
     }
     root.innerHTML = '<main class="ftw-community-page"><header class="ftw-community-header"><div><span class="ftw-kicker">Creator workspace</span><h1>Your corner of the useful web.</h1><p>Shape a public profile, save the tools you trust, and share focused collections with other curious builders.</p></div><a class="ftw-outline-button" href="/submit">Suggest a website</a></header><section class="ftw-community-grid"><form class="ftw-community-card ftw-profile-form"><span class="ftw-kicker">Public profile</span><h2>Tell people what you find useful.</h2><label>Handle<input name="handle" maxlength="40" required /></label><label>Display name<input name="displayName" maxlength="100" required /></label><label>Short bio<textarea name="bio" maxlength="280" rows="4"></textarea></label><label class="ftw-checkbox"><input name="isPublic" type="checkbox" checked /> Make my profile public</label><button class="ftw-solid-button" type="submit">Save profile</button><p class="ftw-community-status" role="status" aria-live="polite"></p><a class="ftw-profile-link" hidden></a></form><section class="ftw-community-card"><span class="ftw-kicker">Collections</span><h2>Curate with intent.</h2><form class="ftw-collection-create"><label>Collection name<input name="name" maxlength="120" required placeholder="e.g. Calm productivity stack" /></label><label>Description<textarea name="description" maxlength="500" rows="3" placeholder="What makes this collection useful?"></textarea></label><label class="ftw-checkbox"><input name="isPublic" type="checkbox" checked /> Publish publicly</label><button class="ftw-solid-button" type="submit">Create collection</button></form><p class="ftw-community-status ftw-collection-status" role="status" aria-live="polite"></p><div class="ftw-collection-list" aria-live="polite">Loading collections…</div></section></section></main>';
+    root.querySelector('.ftw-community-header').insertAdjacentHTML('afterend', '<section class="ftw-community-metrics" aria-label="Creator analytics"><div><strong data-metric="followers">—</strong><span>Followers</span></div><div><strong data-metric="collections">—</strong><span>Collections</span></div><div><strong data-metric="savedWebsites">—</strong><span>Saved websites</span></div></section>');
     var headers = { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' };
     var profileForm = root.querySelector('.ftw-profile-form');
     var profileStatus = root.querySelector('.ftw-profile-form .ftw-community-status');
@@ -278,6 +279,7 @@
       profileForm.isPublic.checked = profile.isPublic !== false;
       profileLink.hidden = false; profileLink.href = '/profile/' + encodeURIComponent(profile.handle); profileLink.textContent = 'View public profile →';
     }).catch(function (error) { profileStatus.className = 'ftw-community-status is-error'; profileStatus.textContent = error.message; });
+    getJson('/api/v1/community/analytics', { headers: headers }).then(function (payload) { Object.keys(payload.data || {}).forEach(function (key) { var metric = root.querySelector('[data-metric="' + key + '"]'); if (metric) metric.textContent = payload.data[key]; }); }).catch(function () {});
     profileForm.addEventListener('submit', function (event) {
       event.preventDefault(); profileStatus.textContent = 'Saving…';
       getJson('/api/v1/community/me', { method: 'PATCH', headers: headers, body: JSON.stringify({ handle: profileForm.handle.value, displayName: profileForm.displayName.value, bio: profileForm.bio.value, isPublic: profileForm.isPublic.checked }) }).then(function (payload) { profileStatus.className = 'ftw-community-status is-success'; profileStatus.textContent = 'Profile saved.'; profileLink.hidden = false; profileLink.href = '/profile/' + encodeURIComponent(payload.data.handle); profileLink.textContent = 'View public profile →'; }).catch(function (error) { profileStatus.className = 'ftw-community-status is-error'; profileStatus.textContent = error.message; });
@@ -317,6 +319,39 @@
       setPageSeo(item.name + ' | FindTheWeb', item.description || 'A focused collection of useful websites.');
       root.innerHTML = '<main class="ftw-public-collection-page"><header class="ftw-public-profile-header"><a class="ftw-discovery-back" href="/blog">← Back to FindTheWeb</a><span class="ftw-kicker">Curated collection</span><h1>' + escHtml(item.name) + '</h1><p>' + escHtml(item.description || 'A focused list of useful websites.') + '</p></header><section class="ftw-public-collection-content"><div class="ftw-public-website-list">' + (entries.length ? entries.map(function (entry) { var website = entry.website || {}; return '<article><div><span class="ftw-story-label">Website</span><h2>' + escHtml(website.name || 'Website') + '</h2><p>' + escHtml(website.description || entry.note || 'Explore this resource.') + '</p>' + (entry.note ? '<small>' + escHtml(entry.note) + '</small>' : '') + '</div><a class="ftw-solid-button" href="' + escAttr(website.url || '#') + '" target="_blank" rel="noreferrer">Visit ↗</a></article>'; }).join('') : '<div class="ftw-community-note">This collection is empty so far.</div>') + '</div></section></main>';
     }).catch(function () { root.innerHTML = '<main class="ftw-public-collection-page"><div class="ftw-community-empty"><h1>Collection not found.</h1><p>This collection may be private or no longer available.</p><a class="ftw-solid-button" href="/blog">Back to FindTheWeb</a></div></main>'; });
+  }
+
+  function renderMemberAuthPage() {
+    var path = window.location.pathname;
+    if (path !== '/member/login' && path !== '/member/register') return;
+    var root = document.getElementById('root');
+    if (!root || root.querySelector('.ftw-member-auth-page')) return;
+    var register = path === '/member/register';
+    setPageSeo(register ? 'Join FindTheWeb' : 'Member sign in | FindTheWeb', 'Join FindTheWeb to follow contributors and curate useful website collections.');
+    root.innerHTML = '<main class="ftw-member-auth-page"><section class="ftw-member-auth-card"><span class="ftw-kicker">FindTheWeb community</span><h1>' + (register ? 'Create your curator account.' : 'Welcome back, curator.') + '</h1><p>' + (register ? 'Build a profile, follow thoughtful contributors, and save useful discoveries.' : 'Sign in to manage your profile and collections.') + '</p><form novalidate>' + (register ? '<label>First name<input name="firstName" required maxlength="60" autocomplete="given-name" /></label><label>Last name<input name="lastName" maxlength="60" autocomplete="family-name" /></label>' : '') + '<label>Email<input name="email" type="email" required autocomplete="email" /></label><label>Password<input name="password" type="password" required minlength="8" autocomplete="' + (register ? 'new-password' : 'current-password') + '" /></label><button class="ftw-solid-button" type="submit">' + (register ? 'Create account' : 'Sign in') + '</button><p class="ftw-member-auth-status" role="status" aria-live="polite"></p></form><p class="ftw-member-auth-switch">' + (register ? 'Already have an account? <a href="/member/login">Sign in</a>' : 'New to FindTheWeb? <a href="/member/register">Create an account</a>') + '</p><a class="ftw-outline-button" href="/blog">Back to FindTheWeb</a></section></main>';
+    var form = root.querySelector('form'); var status = root.querySelector('.ftw-member-auth-status');
+    form.addEventListener('submit', function (event) {
+      event.preventDefault(); var data = Object.fromEntries(new FormData(form).entries()); var button = form.querySelector('button'); button.disabled = true; status.textContent = register ? 'Creating account…' : 'Signing in…';
+      fetch(apiBase + '/api/v1/auth/' + (register ? 'register' : 'login'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }).then(function (response) { return response.json().then(function (payload) { if (!response.ok) throw new Error(payload.message || 'Unable to authenticate'); return payload; }); }).then(function (payload) { localStorage.setItem('memberToken', payload.token); window.location.href = '/community'; }).catch(function (error) { status.className = 'ftw-member-auth-status is-error'; status.textContent = error.message || 'Unable to authenticate.'; button.disabled = false; });
+    });
+  }
+
+  function enhancePublicFollow() {
+    if (!/^\/profile\/[^/]+/.test(window.location.pathname)) return;
+    var page = document.querySelector('.ftw-public-profile-page');
+    var header = page && page.querySelector('.ftw-public-profile-header');
+    if (!header || header.querySelector('[data-ftw-follow]')) return;
+    var handle = decodeURIComponent(window.location.pathname.split('/')[2] || '');
+    var token = localStorage.getItem('adminToken') || localStorage.getItem('memberToken');
+    var button = document.createElement('button'); button.type = 'button'; button.className = 'ftw-solid-button ftw-follow-button'; button.setAttribute('data-ftw-follow', ''); button.textContent = token ? 'Follow' : 'Sign in to follow';
+    header.appendChild(button);
+    if (!token) { button.addEventListener('click', function () { window.location.href = '/member/login'; }); return; }
+    var authHeaders = { Authorization: 'Bearer ' + token };
+    fetch(apiBase + '/api/v1/community/profiles/' + encodeURIComponent(handle) + '/following', { headers: authHeaders }).then(function (response) { return response.ok ? response.json() : null; }).then(function (payload) { if (payload && payload.data.following) { button.textContent = 'Following'; button.setAttribute('data-following', 'true'); } }).catch(function () {});
+    button.addEventListener('click', function () {
+      var following = button.getAttribute('data-following') === 'true'; button.disabled = true;
+      fetch(apiBase + '/api/v1/community/profiles/' + encodeURIComponent(handle) + '/follow', { method: following ? 'DELETE' : 'POST', headers: authHeaders }).then(function (response) { if (!response.ok) throw new Error('Unable to update follow'); button.setAttribute('data-following', following ? 'false' : 'true'); button.textContent = following ? 'Follow' : 'Following'; }).catch(function () { button.textContent = 'Try again'; }).finally(function () { button.disabled = false; });
+    });
   }
 
   function applyAdminPolish() {
@@ -385,8 +420,10 @@
     renderSubmissionPage();
     renderAdminSubmissions();
     renderCommunityWorkspace();
+    renderMemberAuthPage();
     renderPublicProfilePage();
     renderPublicCollectionPage();
+    enhancePublicFollow();
     removeRetiredProductNavigation();
     applyAdminPolish();
         cleanAdminErrorPanel();

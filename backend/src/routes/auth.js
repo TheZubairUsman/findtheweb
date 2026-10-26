@@ -56,9 +56,11 @@ router.post(
       }
 
       const { email, password, firstName, lastName } = req.body;
+      const normalizedEmail = email.toLowerCase().trim();
+      const displayName = `${firstName.trim()}${lastName ? ` ${lastName.trim()}` : ''}`.slice(0, 100);
 
       // Check if user already exists
-      let user = await User.findOne({ where: { email } });
+      let user = await User.findOne({ where: { email: normalizedEmail } });
       if (user) {
         return res.status(400).json({ 
           success: false, 
@@ -68,33 +70,20 @@ router.post(
 
       // Create new user
       user = await User.create({
-        email,
+        email: normalizedEmail,
         password,
-        firstName,
-        lastName,
+        name: displayName,
         role: 'user',
-      });
-
-      // Generate email verification token
-      const verificationToken = user.generateEmailVerificationToken();
-      await user.save();
-
-      // Send verification email
-      const verificationUrl = `${CLIENT_URL}/verify-email?token=${verificationToken}`;
-      await sendEmail({
-        to: user.email,
-        subject: 'Verify Your Email Address',
-        template: 'verify-email',
-        context: {
-          name: user.firstName,
-          verificationUrl,
-        },
+        isActive: true,
+        emailVerified: true,
       });
 
       // Generate JWT token
       const token = generateToken(user);
       const userData = user.get({ plain: true });
       delete userData.password;
+      delete userData.emailVerificationToken;
+      delete userData.resetPasswordToken;
 
       res.status(201).json({
         success: true,
@@ -131,7 +120,7 @@ router.post(
       const { email, password } = req.body;
 
       // Check if user exists
-      const user = await User.findOne({ where: { email } });
+      const user = await User.findOne({ where: { email: email.toLowerCase().trim() } });
       if (!user) {
         return res.status(401).json({ 
           success: false, 
@@ -140,7 +129,7 @@ router.post(
       }
 
       // Check password
-      const isMatch = await user.validPassword(password);
+      const isMatch = await user.comparePassword(password);
       if (!isMatch) {
         return res.status(401).json({ 
           success: false, 
@@ -148,32 +137,19 @@ router.post(
         });
       }
 
-      // Check if user is verified
-      if (!user.isVerified) {
-        return res.status(403).json({ 
-          success: false, 
-          message: 'Please verify your email address before logging in',
-          data: { code: 'EMAIL_NOT_VERIFIED' }
-        });
+      if (!user.isActive) {
+        return res.status(403).json({ success: false, message: 'Account is not active' });
       }
 
-      // If 2FA is enabled, return a different response
-      if (user.twoFAEnabled) {
-        return res.status(200).json({
-          success: true,
-          requires2FA: true,
-          tempToken: generate2FAToken(user),
-        });
-      }
-
-      // Update last login
-      user.lastLogin = new Date();
+      user.lastLoginAt = new Date();
       await user.save();
 
       // Generate JWT token
       const token = generateToken(user);
       const userData = user.get({ plain: true });
       delete userData.password;
+      delete userData.emailVerificationToken;
+      delete userData.resetPasswordToken;
 
       res.json({
         success: true,
