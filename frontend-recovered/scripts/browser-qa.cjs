@@ -19,6 +19,13 @@ fs.mkdirSync(output,{recursive:true});
  };
  const errors=[]; page.on('pageerror',e=>errors.push(e.message));
  const report={routes:[],interactions:[],accessibility:[],errors};
+ report.failedWrites=[];
+ page.on('response',async response=>{
+   const request=response.request();
+   if(response.status()>=400 && /\/api\/v1\/(blog\/posts|contact)/.test(response.url()) && ['POST','PUT'].includes(request.method())) {
+     report.failedWrites.push({path:new URL(response.url()).pathname,status:response.status(),body:(await response.text()).slice(0,1200)});
+   }
+ });
  const suffix=Date.now().toString();
  const draftTitle='QA source rebuild '+suffix;
  const draftSlug='qa-source-rebuild-'+suffix;
@@ -114,6 +121,11 @@ fs.mkdirSync(output,{recursive:true});
   }
   check('no uncaught browser exceptions',errors.length===0);
   check('all responsive routes avoid crashes, missing pages and overflow',report.routes.every(r=>!r.error&&!r.notFound&&!r.overflow));
- } catch(e){ report.failure=e.message;process.exitCode=1; }
- finally{fs.writeFileSync(path.join(output,process.argv.includes('--interactions-only')?'interactions.json':'report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify({routes:report.routes.length,interactions:report.interactions,accessibility:report.accessibility,errors,failure:report.failure}));await browser.close();}
+ } catch(e){
+   report.failure=e.message;
+   report.failurePage={url:page.url(),text:(await page.locator('body').innerText().catch(()=>'' )).slice(-6500)};
+   await page.screenshot({path:path.join(output,'failure.png'),fullPage:true}).catch(()=>{});
+   process.exitCode=1;
+ }
+ finally{fs.writeFileSync(path.join(output,process.argv.includes('--interactions-only')?'interactions.json':'report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify({routes:report.routes.length,interactions:report.interactions,accessibility:report.accessibility,errors,failedWrites:report.failedWrites,failure:report.failure,failurePage:report.failurePage}));await browser.close();}
 })().catch(e=>{console.error(e.message);process.exitCode=1;});

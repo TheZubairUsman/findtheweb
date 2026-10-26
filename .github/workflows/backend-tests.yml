@@ -45,6 +45,8 @@ jobs:
       - run: npx --prefix frontend-recovered playwright install --with-deps chromium
       - run: node backend/scripts/editor-browser-qa.cjs > /tmp/findtheweb-qa.log 2>&1 &
       - run: node frontend-recovered/scripts/browser-qa.cjs
+      - run: cp /tmp/findtheweb-qa.log docs/qa/frontend-20261027/server.log
+        if: failure()
       - uses: actions/upload-artifact@v4
         if: always()
         with:
