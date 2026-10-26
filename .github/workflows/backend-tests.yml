@@ -20,6 +20,7 @@ jobs:
           cache: npm
           cache-dependency-path: backend/package-lock.json
       - run: npm ci
+      - run: npm audit --omit=dev --audit-level=critical
       - run: npm run build:editor
       - run: git diff --exit-code -- ../dist/assets/js/BlogManager-CgU_iRbw.js ../dist/assets/js/index-BLfo3RSv.js
       - run: node --experimental-vm-modules ../tools/check-bundle-syntax.cjs
