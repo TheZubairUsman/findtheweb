@@ -14,12 +14,14 @@ const Footer = () => {
   const totalWebsites = catalog.websites;
 
   const handleLinkClick = (linkType, linkData, e) => {
-    e.preventDefault();
     trackClick('footer_link_click', {
       linkType,
       ...linkData,
       source: 'footer'
     });
+    // External anchors only need tracking; let their native target/URL work.
+    if (!linkData.href || !e) return;
+    e.preventDefault();
     
     // Scroll to top before navigation
     scrollToTop();

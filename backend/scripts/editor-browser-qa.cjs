@@ -34,8 +34,8 @@ host.get('*', (req, res) => res.type('html').send(localHtml(fs.readFileSync(path
   await Admin.create({email:'browser-qa@example.test',password:'Local-QA-only-2026!',name:'Browser QA Editor',isActive:true});
   await BlogPost.bulkCreate([
     {title:'Safe automation QA guide',slug:'safe-automation-qa-guide',content:'<h2>Build a reliable workflow</h2><p>Keep useful steps, verify results and protect user data.</p><img src="x" onerror="window.__unsafeArticle=true"><script>window.__unsafeArticle=true</script>',excerpt:'Local QA fixture for automation readers.',status:'published',publishedAt:new Date(),featured:true,categories:['AI & Automation'],tags:['automation'],authorName:'QA Editor',featuredImage:'/logo.png'},
-    {title:'Cybersecurity QA checklist',slug:'cybersecurity-qa-checklist',content:'<h2>Security review</h2><p>Verify authorization and protect data.</p>',excerpt:'Local QA fixture for security readers.',status:'published',publishedAt:new Date(),categories:['Cybersecurity'],tags:['security'],authorName:'QA Editor',featuredImage:'/logo.png'}
+    {title:'Cybersecurity QA checklist',slug:'cybersecurity-qa-checklist',content:'<h2>Security review</h2><p>Verify authorization and protect data.</p>',excerpt:'Local QA fixture for security readers.',status:'published',publishedAt:new Date(),featured:true,categories:['Cybersecurity'],tags:['security'],authorName:'QA Editor',featuredImage:'/logo.png'}
   ]);
-  await BlogPost.bulkCreate(Array.from({length:12},(_,i)=>({title:`Pagination QA article ${i+1}`,slug:`pagination-qa-article-${i+1}`,content:'<p>Isolated pagination fixture.</p>',status:'published',publishedAt:new Date(Date.now()-60000*(i+1)),categories:['Web Discovery'],tags:['discovery']})));
+  await BlogPost.bulkCreate(Array.from({length:12},(_,i)=>({title:`Pagination QA article ${i+1}`,slug:`pagination-qa-article-${i+1}`,content:'<p>Isolated pagination fixture.</p>',status:'published',publishedAt:new Date(Date.now()-60000*(i+1)),featured:i===0,categories:['Web Discovery'],tags:['discovery']})));
   host.listen(5097, '127.0.0.1', () => console.log('Ephemeral browser QA ready at http://127.0.0.1:5097/admin/login'));
 })();

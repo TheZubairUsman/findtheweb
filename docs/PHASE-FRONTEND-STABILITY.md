@@ -35,6 +35,9 @@ configuration remains unavailable.
 | Duplicate footer on cookie/sitemap pages | Shared application footer only |
 | Delayed editor autofocus could interrupt input | Preserve an already selected field; controlled slow-frame regression |
 | Mobile featured section reserved 1,960 pixels | Content-sized layout; hide empty featured section |
+| Featured cards left an unused desktop column | Equal-width three-card row; covers retain their full aspect ratio |
+| Dedicated bookmarks page was a placeholder | Browser-local saved list, search, removal and shared navigation |
+| Footer external-link tracking called a missing event | Track external links without preventing native navigation |
 | Blog hero text contrast | Explicit readable hero text in both themes |
 | Broken category aliases and `/discover` | Redirect to real catalog/category pages rather than placeholder results |
 
@@ -82,6 +85,11 @@ save, with no rejected HTTP write. A controlled delayed-frame probe reproduced
 focus moving from Content back to Title. The focus guard preserves the selected
 field, and the focused browser run now passes 23 interactions including that
 regression, draft save, publication and inbox persistence.
+
+The final visual/navigation pass adds bookmark sidebar, persistence, search and
+removal, mobile navigation, footer-link and three-card-grid checks. All 30 focused
+checks pass locally, with zero uncaught exceptions or rejected writes. External
+profile navigation is intercepted with a test page; no external message is sent.
 
 ## Limits and release safety
 

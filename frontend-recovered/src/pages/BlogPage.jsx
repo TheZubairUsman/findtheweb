@@ -97,12 +97,13 @@ const BlogPage = () => {
   };
 
   const BlogCard = ({ post, featured = false }) => (
-    <article className={`bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 ${featured ? 'md:col-span-2' : ''}`}>
+    <article className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
       {post.featuredImage && (
-        <div className={`relative ${featured ? 'h-64' : 'h-48'} overflow-hidden`}>
+        <div className="relative overflow-hidden bg-gray-100" style={{aspectRatio:'1200 / 630'}}>
           <img
             src={post.featuredImage}
             alt={post.title}
+            style={{objectFit:'contain'}}
             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
           />
           {post.featured && (
