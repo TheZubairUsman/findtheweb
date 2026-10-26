@@ -355,14 +355,23 @@ app.get('/api/v1/blog/posts', async (req, res) => {
       whereClause.publishedAt = { [sequelize.Sequelize.Op.lte]: new Date() };
     }
     
-    // Filter by category
+    // Categories and tags are stored as JSON arrays. The production database is
+    // SQLite, where PostgreSQL's JSONB `contains` operator is not supported.
+    // Match the quoted JSON value so category/tag filters work across SQLite and
+    // avoid false positives such as `ai` matching `email`.
+    const jsonValuePattern = (value) => `%"${String(value).replace(/[\\%_]/g, '\\$&').slice(0, 100)}"%`;
+    const jsonContains = (field, value) => sequelize.where(
+      sequelize.cast(sequelize.col(field), 'TEXT'),
+      { [sequelize.Sequelize.Op.like]: jsonValuePattern(value) },
+    );
     if (category) {
-      whereClause.categories = { [sequelize.Sequelize.Op.contains]: [category] };
+      whereClause[sequelize.Sequelize.Op.and] = [jsonContains('categories', category)];
     }
-    
-    // Filter by tag
     if (tag) {
-      whereClause.tags = { [sequelize.Sequelize.Op.contains]: [tag] };
+      whereClause[sequelize.Sequelize.Op.and] = [
+        ...(whereClause[sequelize.Sequelize.Op.and] || []),
+        jsonContains('tags', tag),
+      ];
     }
     
     // Filter by featured
@@ -370,12 +379,16 @@ app.get('/api/v1/blog/posts', async (req, res) => {
       whereClause.featured = true;
     }
     
-    // Search functionality
+    // Search functionality. SQLite does not implement PostgreSQL's iLike.
     if (search) {
+      const searchPattern = `%${String(search).replace(/[\\%_]/g, '\\$&').slice(0, 100)}%`;
+      const textOperator = sequelize.getDialect() === 'sqlite'
+        ? sequelize.Sequelize.Op.like
+        : sequelize.Sequelize.Op.iLike;
       whereClause[sequelize.Sequelize.Op.or] = [
-        { title: { [sequelize.Sequelize.Op.iLike]: `%${search}%` } },
-        { excerpt: { [sequelize.Sequelize.Op.iLike]: `%${search}%` } },
-        { content: { [sequelize.Sequelize.Op.iLike]: `%${search}%` } },
+        { title: { [textOperator]: searchPattern } },
+        { excerpt: { [textOperator]: searchPattern } },
+        { content: { [textOperator]: searchPattern } },
       ];
     }
     
