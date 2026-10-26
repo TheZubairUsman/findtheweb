@@ -303,6 +303,12 @@ html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 .bg-blue-100 { back
 html.dark body.ftw-blog-route #root .min-h-screen.bg-gray-50 .hover\:bg-gray-50:hover { background: #25324a !important; }
 .skip-nav:focus { position: absolute !important; top: 1.5rem !important; left: 1.5rem !important; width: auto !important; height: auto !important; padding: .75rem 1rem !important; clip: auto !important; overflow: visible !important; z-index: 9999 !important; background: #1d4ed8 !important; color: #fff !important; border-radius: .5rem !important; }
 
+/* Allow the creator column to shrink inside the tablet footer grid. */
+#root footer .flex-1 { min-width: 0; overflow-wrap: anywhere; }
+
+/* Preserve the complete article cover at narrow aspect ratios. */
+body.ftw-blog-route #root .max-w-4xl > .mb-8 > img { height: auto; }
+
 /* Keep article and card metadata readable on narrow screens. */
 @media (max-width: 767px) {
   body.ftw-blog-route #root .flex.items-center.space-x-6.text-sm,
