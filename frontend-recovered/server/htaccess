@@ -1,0 +1,17 @@
+Options -MultiViews
+RewriteEngine On
+
+# BEGIN_SEO
+# These rules are included only after the renderer passes a live PHP probe.
+RewriteRule ^blog/([A-Za-z0-9][A-Za-z0-9_-]{0,254})/?$ seo.php?kind=article&slug=$1 [L]
+RewriteRule ^sitemap\.xml$ seo.php?kind=sitemap [L]
+RewriteRule ^rss\.xml$ seo.php?kind=rss [L]
+# END_SEO
+
+# Serve existing files/directories directly
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Redirect everything else to index.html (SPA routing)
+RewriteRule ^ index.html [L]
