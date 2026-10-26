@@ -10,7 +10,9 @@ const output = path.join(repo, 'dist/assets/frontend');
 (async () => {
   await esbuild.build({absWorkingDir:root,entryPoints:['src/main.jsx'],outdir:output,bundle:true,splitting:true,format:'esm',platform:'browser',target:'es2020',jsx:'automatic',minify:true,entryNames:'app-[hash]',chunkNames:'chunk-[hash]',assetNames:'asset-[hash]',sourcemap:false,metafile:true,define:{'process.env.NODE_ENV':'"production"'}}).then(result => {
     for(const file of ['seo.php','seo-render.css']) fs.writeFileSync(path.join(repo,'dist',file),fs.readFileSync(path.join(root,'server',file),'utf8').replace(/\r\n/g,'\n'));
-    if(fs.existsSync(path.join(root,'server/seo-ready.flag'))) fs.copyFileSync(path.join(root,'server/seo-ready.flag'),path.join(repo,'dist/seo-ready.flag'));
+    const enabled=fs.existsSync(path.join(root,'server/seo-ready.flag'));
+    if(enabled) fs.copyFileSync(path.join(root,'server/seo-ready.flag'),path.join(repo,'dist/seo-ready.flag'));
+    else if(fs.existsSync(path.join(repo,'dist/seo-ready.flag'))) fs.unlinkSync(path.join(repo,'dist/seo-ready.flag'));
     const entry = Object.entries(result.metafile.outputs).find(([,v]) => v.entryPoint === 'src/main.jsx');
     if(!entry) throw Error('Frontend entry missing');
     const entryFile = '/' + path.relative(path.join(repo,'dist'),path.resolve(root,entry[0])).replaceAll('\\','/');
@@ -31,7 +33,7 @@ const output = path.join(repo, 'dist/assets/frontend');
       const bytes = fs.readFileSync(path.join(repo,'dist',file));
       files[file] = {sha256:crypto.createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length};
     }
-    const serverFiles={};for(const file of ['seo.php','.htaccess']){const bytes=fs.readFileSync(path.join(repo,'dist',file));serverFiles[file]={sha256:crypto.createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length};}
+    const serverFiles={};for(const file of ['seo.php','.htaccess',...(enabled?['seo-ready.flag']:[])]){const bytes=fs.readFileSync(path.join(repo,'dist',file));serverFiles[file]={sha256:crypto.createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length};}
     fs.writeFileSync(path.join(repo,'dist/release-manifest.json'),JSON.stringify({release:'seo-content-20261027',files,serverFiles,rollback:'Restore dist from Git commit 24c148e to disable server rendering; retain code/dependency/content rollback receipts separately. Do not restore the entire database over concurrent user data.'},null,2)+'\n');
   });
   console.log('Frontend rebuilt from source.');

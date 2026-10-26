@@ -934,6 +934,10 @@
     ".htaccess": {
       "sha256": "a02f9901b9487c727936c4101ecca216320029b5e3a7937ba2c24a9a4a41ccbb",
       "bytes": 665
+    },
+    "seo-ready.flag": {
+      "sha256": "e056a35db086947e2f5969d747f0a7517bff00c7ffff1f9e7b47b72bfac9d948",
+      "bytes": 8
     }
   },
   "rollback": "Restore dist from Git commit 24c148e to disable server rendering; retain code/dependency/content rollback receipts separately. Do not restore the entire database over concurrent user data."
