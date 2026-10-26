@@ -246,6 +246,79 @@
     loadQueue();
   }
 
+  function renderCommunityWorkspace() {
+    if (window.location.pathname !== '/community') return;
+    var root = document.getElementById('root');
+    if (!root || root.querySelector('.ftw-community-page')) return;
+    var token = localStorage.getItem('adminToken');
+    setPageSeo('Community Workspace | FindTheWeb', 'Build your public FindTheWeb profile and curate collections of useful websites.');
+    if (!token) {
+      root.innerHTML = '<main class="ftw-community-page"><div class="ftw-community-empty"><span class="ftw-kicker">Creator workspace</span><h1>Build your FindTheWeb profile.</h1><p>Sign in to manage your profile and publish curated collections.</p><a class="ftw-solid-button" href="/admin/login">Sign in to continue</a></div></main>';
+      return;
+    }
+    root.innerHTML = '<main class="ftw-community-page"><header class="ftw-community-header"><div><span class="ftw-kicker">Creator workspace</span><h1>Your corner of the useful web.</h1><p>Shape a public profile, save the tools you trust, and share focused collections with other curious builders.</p></div><a class="ftw-outline-button" href="/submit">Suggest a website</a></header><section class="ftw-community-grid"><form class="ftw-community-card ftw-profile-form"><span class="ftw-kicker">Public profile</span><h2>Tell people what you find useful.</h2><label>Handle<input name="handle" maxlength="40" required /></label><label>Display name<input name="displayName" maxlength="100" required /></label><label>Short bio<textarea name="bio" maxlength="280" rows="4"></textarea></label><label class="ftw-checkbox"><input name="isPublic" type="checkbox" checked /> Make my profile public</label><button class="ftw-solid-button" type="submit">Save profile</button><p class="ftw-community-status" role="status" aria-live="polite"></p><a class="ftw-profile-link" hidden></a></form><section class="ftw-community-card"><span class="ftw-kicker">Collections</span><h2>Curate with intent.</h2><form class="ftw-collection-create"><label>Collection name<input name="name" maxlength="120" required placeholder="e.g. Calm productivity stack" /></label><label>Description<textarea name="description" maxlength="500" rows="3" placeholder="What makes this collection useful?"></textarea></label><label class="ftw-checkbox"><input name="isPublic" type="checkbox" checked /> Publish publicly</label><button class="ftw-solid-button" type="submit">Create collection</button></form><p class="ftw-community-status ftw-collection-status" role="status" aria-live="polite"></p><div class="ftw-collection-list" aria-live="polite">Loading collections…</div></section></section></main>';
+    var headers = { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' };
+    var profileForm = root.querySelector('.ftw-profile-form');
+    var profileStatus = root.querySelector('.ftw-profile-form .ftw-community-status');
+    var profileLink = root.querySelector('.ftw-profile-link');
+    var collections = root.querySelector('.ftw-collection-list');
+    var collectionStatus = root.querySelector('.ftw-collection-status');
+    var getJson = function (url, options) { return fetch(apiBase + url, options).then(function (response) { return response.json().then(function (payload) { if (!response.ok) throw new Error(payload.message || 'Unable to complete request'); return payload; }); }); };
+    function loadCollections() {
+      getJson('/api/v1/community/collections', { headers: headers }).then(function (payload) {
+        var items = Array.isArray(payload.data) ? payload.data : [];
+        collections.innerHTML = items.length ? items.map(function (item) { return '<article class="ftw-collection-item"><div><span class="ftw-story-label">' + (item.isPublic ? 'Public collection' : 'Private collection') + '</span><h3>' + escHtml(item.name) + '</h3><p>' + escHtml(item.description || 'No description yet.') + '</p></div><a class="ftw-outline-button" href="/collections/' + encodeURIComponent(item.id) + '">Open collection →</a></article>'; }).join('') : '<div class="ftw-community-note">No collections yet. Start with one focused list.</div>';
+      }).catch(function (error) { collections.textContent = error.message; });
+    }
+    getJson('/api/v1/community/me', { headers: headers }).then(function (payload) {
+      var profile = payload.data.profile;
+      profileForm.handle.value = profile.handle || '';
+      profileForm.displayName.value = profile.displayName || '';
+      profileForm.bio.value = profile.bio || '';
+      profileForm.isPublic.checked = profile.isPublic !== false;
+      profileLink.hidden = false; profileLink.href = '/profile/' + encodeURIComponent(profile.handle); profileLink.textContent = 'View public profile →';
+    }).catch(function (error) { profileStatus.className = 'ftw-community-status is-error'; profileStatus.textContent = error.message; });
+    profileForm.addEventListener('submit', function (event) {
+      event.preventDefault(); profileStatus.textContent = 'Saving…';
+      getJson('/api/v1/community/me', { method: 'PATCH', headers: headers, body: JSON.stringify({ handle: profileForm.handle.value, displayName: profileForm.displayName.value, bio: profileForm.bio.value, isPublic: profileForm.isPublic.checked }) }).then(function (payload) { profileStatus.className = 'ftw-community-status is-success'; profileStatus.textContent = 'Profile saved.'; profileLink.hidden = false; profileLink.href = '/profile/' + encodeURIComponent(payload.data.handle); profileLink.textContent = 'View public profile →'; }).catch(function (error) { profileStatus.className = 'ftw-community-status is-error'; profileStatus.textContent = error.message; });
+    });
+    root.querySelector('.ftw-collection-create').addEventListener('submit', function (event) {
+      event.preventDefault(); var form = event.currentTarget; collectionStatus.textContent = 'Creating…';
+      getJson('/api/v1/community/collections', { method: 'POST', headers: headers, body: JSON.stringify({ name: form.name.value, description: form.description.value, isPublic: form.isPublic.checked }) }).then(function () { form.reset(); form.isPublic.checked = true; collectionStatus.className = 'ftw-community-status is-success'; collectionStatus.textContent = 'Collection created.'; loadCollections(); }).catch(function (error) { collectionStatus.className = 'ftw-community-status is-error'; collectionStatus.textContent = error.message; });
+    });
+    loadCollections();
+  }
+
+  function renderPublicProfilePage() {
+    var match = window.location.pathname.match(/^\/profile\/([^/]+)/);
+    if (!match) return;
+    var root = document.getElementById('root');
+    if (!root || root.querySelector('.ftw-public-profile-page')) return;
+    var handle = decodeURIComponent(match[1]);
+    setPageSeo('Profile | FindTheWeb', 'Explore a FindTheWeb contributor profile and their curated collections.');
+    root.innerHTML = '<main class="ftw-public-profile-page"><div class="ftw-public-profile-loading"><span class="ftw-kicker">FindTheWeb contributor</span><h1>Loading profile…</h1></div></main>';
+    fetch(apiBase + '/api/v1/community/profiles/' + encodeURIComponent(handle)).then(function (response) { if (!response.ok) throw new Error('Profile not found'); return response.json(); }).then(function (payload) {
+      var profile = payload.data.profile; var collections = payload.data.collections || [];
+      setPageSeo(profile.displayName + ' (@' + profile.handle + ') | FindTheWeb', profile.bio || 'A curated FindTheWeb contributor profile.');
+      root.innerHTML = '<main class="ftw-public-profile-page"><header class="ftw-public-profile-header"><a class="ftw-discovery-back" href="/blog">← Back to FindTheWeb</a><span class="ftw-profile-avatar">' + escHtml((profile.displayName || 'F').slice(0, 1).toUpperCase()) + '</span><span class="ftw-kicker">@' + escHtml(profile.handle) + '</span><h1>' + escHtml(profile.displayName) + '</h1><p>' + escHtml(profile.bio || 'Curating useful corners of the web.') + '</p><span class="ftw-profile-stat">' + escHtml(profile.followerCount || 0) + ' followers</span></header><section class="ftw-public-collections"><div class="ftw-section-heading"><span class="ftw-kicker">Curated collections</span><h2>Useful lists, thoughtfully organized.</h2></div>' + (collections.length ? '<div class="ftw-public-collection-grid">' + collections.map(function (item) { return '<a class="ftw-public-collection-card" href="/collections/' + encodeURIComponent(item.id) + '"><span class="ftw-story-label">Collection</span><h3>' + escHtml(item.name) + '</h3><p>' + escHtml(item.description || 'Explore this focused collection.') + '</p><span>Open collection →</span></a>'; }).join('') + '</div>' : '<div class="ftw-community-note">This contributor has not published a collection yet.</div>') + '</section></main>';
+    }).catch(function () { root.innerHTML = '<main class="ftw-public-profile-page"><div class="ftw-community-empty"><h1>Profile not found.</h1><p>This profile may be private or no longer available.</p><a class="ftw-solid-button" href="/blog">Back to FindTheWeb</a></div></main>'; });
+  }
+
+  function renderPublicCollectionPage() {
+    var match = window.location.pathname.match(/^\/collections\/([^/]+)/);
+    if (!match) return;
+    var root = document.getElementById('root');
+    if (!root || root.querySelector('.ftw-public-collection-page')) return;
+    var id = decodeURIComponent(match[1]);
+    setPageSeo('Collection | FindTheWeb', 'A focused collection of useful websites curated on FindTheWeb.');
+    root.innerHTML = '<main class="ftw-public-collection-page"><div class="ftw-public-profile-loading"><span class="ftw-kicker">FindTheWeb collection</span><h1>Loading collection…</h1></div></main>';
+    fetch(apiBase + '/api/v1/community/collections/' + encodeURIComponent(id)).then(function (response) { if (!response.ok) throw new Error('Collection not found'); return response.json(); }).then(function (payload) {
+      var item = payload.data; var entries = item.items || [];
+      setPageSeo(item.name + ' | FindTheWeb', item.description || 'A focused collection of useful websites.');
+      root.innerHTML = '<main class="ftw-public-collection-page"><header class="ftw-public-profile-header"><a class="ftw-discovery-back" href="/blog">← Back to FindTheWeb</a><span class="ftw-kicker">Curated collection</span><h1>' + escHtml(item.name) + '</h1><p>' + escHtml(item.description || 'A focused list of useful websites.') + '</p></header><section class="ftw-public-collection-content"><div class="ftw-public-website-list">' + (entries.length ? entries.map(function (entry) { var website = entry.website || {}; return '<article><div><span class="ftw-story-label">Website</span><h2>' + escHtml(website.name || 'Website') + '</h2><p>' + escHtml(website.description || entry.note || 'Explore this resource.') + '</p>' + (entry.note ? '<small>' + escHtml(entry.note) + '</small>' : '') + '</div><a class="ftw-solid-button" href="' + escAttr(website.url || '#') + '" target="_blank" rel="noreferrer">Visit ↗</a></article>'; }).join('') : '<div class="ftw-community-note">This collection is empty so far.</div>') + '</div></section></main>';
+    }).catch(function () { root.innerHTML = '<main class="ftw-public-collection-page"><div class="ftw-community-empty"><h1>Collection not found.</h1><p>This collection may be private or no longer available.</p><a class="ftw-solid-button" href="/blog">Back to FindTheWeb</a></div></main>'; });
+  }
+
   function applyAdminPolish() {
     var isAdmin = window.location.pathname.indexOf('/admin') === 0;
     document.body.classList.toggle('ftw-admin-shell', isAdmin);
@@ -311,6 +384,9 @@
     renderDiscoveryPage();
     renderSubmissionPage();
     renderAdminSubmissions();
+    renderCommunityWorkspace();
+    renderPublicProfilePage();
+    renderPublicCollectionPage();
     removeRetiredProductNavigation();
     applyAdminPolish();
         cleanAdminErrorPanel();
