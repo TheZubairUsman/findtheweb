@@ -2,6 +2,12 @@ const request=require('supertest');
 const app=require('../src/index');
 const {BlogPost,Admin}=require('../src/models');
 describe('Published HTML renderer data',()=>{
+ it('counts readership without changing the editorial modification date',async()=>{
+  const post=await BlogPost.create({title:'Stable modification date',slug:'stable-editorial-date',content:'Editorial text',status:'published',updatedAt:new Date('2025-01-01T00:00:00Z')});
+  await post.reload();const modified=+post.updatedAt,before=post.viewCount;
+  await post.incrementViewCount();await post.reload();
+  expect(post.viewCount).toBe(before+1);expect(+post.updatedAt).toBe(modified);
+ });
  it('sanitizes rich content, excludes identity fields and does not count a reader view',async()=>{
   const author=await Admin.create({name:'Editorial author',email:'seo-author@example.test',password:'Local-SEO-test-only!',isActive:true});
   const post=await BlogPost.create({title:'Safe <title> example',slug:'renderer-safe-example',authorId:author.id,status:'published',content:'<h1>Heading</h1><script>window.unsafe=1</script><p onclick="bad()">Useful text</p><a href="javascript:alert(1)">unsafe link</a><img src="/logo.png" onerror="bad()"><form action="https://example.test">Submit</form>'});

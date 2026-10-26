@@ -42,7 +42,12 @@ jobs:
           node-version: 22
       - run: npm ci --prefix backend
       - run: npm ci --prefix frontend-recovered
-      - run: npx --prefix frontend-recovered playwright install --with-deps chromium
+      - name: Use the runner's installed Chrome
+        run: |
+          chrome_path=$(command -v google-chrome)
+          test -x "$chrome_path"
+          echo "CHROME_PATH=$chrome_path" >> "$GITHUB_ENV"
+          "$chrome_path" --version
       - run: |
           node backend/scripts/editor-browser-qa.cjs > /tmp/findtheweb-qa.log 2>&1 &
           for attempt in $(seq 1 60); do

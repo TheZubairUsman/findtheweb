@@ -157,7 +157,8 @@ module.exports = (sequelize, DataTypes) => {
 
   // Instance methods
   BlogPost.prototype.incrementViewCount = async function() {
-    await this.increment('viewCount');
+    // A reader visit must not masquerade as an editorial modification in feeds.
+    await this.increment('viewCount', { silent: true });
     this.viewCount += 1;
     return this;
   };
