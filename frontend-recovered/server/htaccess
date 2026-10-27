@@ -13,5 +13,8 @@ RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
+# A missing static asset must never become a cacheable 200 HTML application.
+RewriteRule \.(?:avif|css|gif|ico|jpe?g|js|json|map|png|svg|ttf|webmanifest|webp|woff2?)$ - [R=404,L]
+
 # Redirect everything else to index.html (SPA routing)
 RewriteRule ^ index.html [L]

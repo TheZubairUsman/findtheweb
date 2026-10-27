@@ -1582,16 +1582,16 @@
       "bytes": 6625
     },
     ".htaccess": {
-      "sha256": "feff8120e8b47a1d35c2678e95167a5e2ce40c4ed9b90d43be75c9aa8742095e",
-      "bytes": 545
+      "sha256": "06cef0144bbafd773ea4a88d8b419b653d3c9e7f547937a4b8f2932a9eabc20a",
+      "bytes": 725
     },
     "seo-ready.flag": {
       "sha256": "e056a35db086947e2f5969d747f0a7517bff00c7ffff1f9e7b47b72bfac9d948",
       "bytes": 8
     },
     "repository-root/.htaccess": {
-      "sha256": "6511a44cfa11ce5b45f14be8caa5a57f6d11b0cc7c656051a88921d5c54078f4",
-      "bytes": 1161
+      "sha256": "12135f9b25391a7e109a39124f3be581be81127804ed7742acd6f11ef6a48ec3",
+      "bytes": 1263
     }
   },
   "rollback": "Restore repository .htaccess, frontend-recovered, dist and the frontend CI configuration from Git commit 24c148e for the previous frontend. Keep backend/content rollback receipts separate. Never restore the entire database over concurrent user data."

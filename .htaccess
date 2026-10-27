@@ -22,4 +22,5 @@ RewriteRule ^rss\.xml$ dist/seo.php?kind=rss [L]
 RewriteCond %{DOCUMENT_ROOT}/dist/$1 -f [OR]
 RewriteCond %{DOCUMENT_ROOT}/dist/$1 -d
 RewriteRule ^(.+)$ dist/$1 [L]
+RewriteRule \.(?:avif|css|gif|ico|jpe?g|js|json|map|png|svg|ttf|webmanifest|webp|woff2?)$ - [R=404,L]
 RewriteRule ^ dist/index.html [L]

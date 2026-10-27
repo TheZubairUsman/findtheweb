@@ -20,6 +20,7 @@ async function ready(port){for(let i=0;i<60;i++){try{let r=await fetch(`http://1
   check('server output excludes active article payload',!html.includes('window.unsafe') && !html.includes('onerror='));
   check('raw HTML has a single main heading',(html.match(/<h1\b/g)||[]).length===1);
   check('article schema describes visible content',html.includes('"@type":"BlogPosting"') && html.includes('Safe automation QA guide'));
+  for(const asset of ['editorial-images/missing-qa.webp','assets/missing-qa.js'])check('missing asset is not a successful SPA response: '+asset,(await fetch('http://127.0.0.1:5098/'+asset)).status===404);
   for(const slug of ['seo-private-draft','seo-future-article','missing-seo-article']){
    const r=await fetch('http://127.0.0.1:5098/blog/'+slug);const body=await r.text();
    check('unavailable article returns real 404: '+slug,r.status===404 && !body.includes('PrivateMarker') && !body.includes('FutureMarker'));
@@ -70,6 +71,7 @@ async function ready(port){for(let i=0;i<60;i++){try{let r=await fetch(`http://1
   cp.execFileSync('docker',['rm','-f',containers[0]],{stdio:'ignore'});
   start(containers[0],5098,'http://127.0.0.1:5097',root);await ready(5098);
   const deployed=await fetch(url);check('repository-root hosting renders article HTML',deployed.status===200 && (await deployed.text()).includes('id="seo-article"'));
+  for(const asset of ['editorial-images/missing-qa.webp','assets/missing-qa.js'])check('repository-root missing asset returns 404: '+asset,(await fetch('http://127.0.0.1:5098/'+asset)).status===404);
   for(const feed of ['sitemap.xml','rss.xml']){const r=await fetch('http://127.0.0.1:5098/'+feed);check('repository-root hosting renders '+feed,r.status===200&&(await r.text()).includes(feed==='sitemap.xml'?'<urlset':'<rss'));}
   check('repository-root hosting preserves missing article 404',(await fetch('http://127.0.0.1:5098/blog/missing-seo-article')).status===404);
   for(const internal of ['backend/package.json','content/editorial-release-20261027.json','tools/verify-seo-live.cjs'])check('repository-root hosting denies '+internal,(await fetch('http://127.0.0.1:5098/'+internal)).status===403);
