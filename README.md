@@ -42,7 +42,7 @@ The project combines a maintained React build, published-only PHP article render
 - GitHub Actions checks for backend, browser journeys, and both hosting layouts
 - Deployment artifact for PHP-enabled Apache/LiteSpeed hosting with a persistent Node API
 
-The latest editorial batch adds original, sourced guides to [browser-extension safety](https://findtheweb.zus3cu.tech/blog/what-to-check-before-you-trust-a-browser-extension) and [personal backup planning](https://findtheweb.zus3cu.tech/blog/what-to-keep-in-a-personal-backup-plan), with topic-specific illustrations and optimized reading covers. Publishing includes preview, comparison guards, private backups and rollback protection. See the [release audit](docs/PHASE-EDITORIAL-SAFETY.md) for evidence and remaining scope.
+The latest editorial batch adds original, sourced guides to [password-manager setup](https://findtheweb.zus3cu.tech/blog/a-simple-password-manager-setup-that-actually-works) and [checking phishing pages](https://findtheweb.zus3cu.tech/blog/how-to-spot-a-phishing-page-before-you-sign-in), with topic-specific illustrations and optimized reading covers. Configuration-driven publishing includes preview, comparison guards, private backups and rollback protection. See the [release audit](docs/PHASE-EDITORIAL-SECURITY2.md) for evidence and remaining scope.
 
 ## Technology
 

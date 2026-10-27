@@ -10,9 +10,9 @@ const text=html=>html.replace(/<[^>]*>/g,' ').replace(/&(amp|lt|gt|quot|apos|nbs
  const results=[];
  for(const record of records){
   assert(record.featuredImage.startsWith(site+'/editorial-images/'));
-  const cover=await get(record.featuredImage);assert.equal(cover.status,200,'Cover not deployed');const bytes=Buffer.from(await cover.arrayBuffer());
+  const cover=await get(record.featuredImage);assert.equal(cover.status,200,'Cover not deployed');assert(cover.headers.get('content-type')?.startsWith('image/webp'),'Wrong reading-cover MIME for '+record.featuredImage+': '+cover.headers.get('content-type')+'; cache='+cover.headers.get('x-hcdn-cache-status'));const bytes=Buffer.from(await cover.arrayBuffer());
   const {format,width,height}=imageMetadata(bytes);assert(format==='webp'&&width>=1200&&height>=630&&width/height>1.8&&width/height<2.1,'Landscape optimized cover dimensions');assert(bytes.length<500000,'Reading cover exceeds the reviewed delivery budget');
-  const preview=await get(record.expectedSocialImage);assert.equal(preview.status,200);assert.equal(imageMetadata(Buffer.from(await preview.arrayBuffer())).format,'png');
+  assert(record.expectedSocialImage.startsWith(site+'/editorial-images/'));const preview=await get(record.expectedSocialImage);assert.equal(preview.status,200);assert(preview.headers.get('content-type')?.startsWith('image/png'),'Wrong social-cover MIME');assert.equal(imageMetadata(Buffer.from(await preview.arrayBuffer())).format,'png');
   const result={slug:record.slug,coverStatus:cover.status,width,height,deliveredBytes:bytes.length,socialPreview:true};
   if(mode==='published'){
    const response=await get(api+'/api/v1/seo/articles/'+record.slug);assert.equal(response.status,200);const {data}=await response.json();
@@ -23,5 +23,6 @@ const text=html=>html.replace(/<[^>]*>/g,' ').replace(/&(amp|lt|gt|quot|apos|nbs
   results.push(result);
  }
  const privatePath=await fetch(site+'/backend/editorial-backups/'+releaseId+'/before.json',{method:'HEAD',signal:AbortSignal.timeout(25000)});assert([403,404].includes(privatePath.status));
- console.log(JSON.stringify({checkedAt:new Date().toISOString(),release:releaseId,mode,results,privateBackupStatus:privatePath.status}));
+ const missingAssets=[];for(const file of ['editorial-images/qa-missing-'+releaseId+'.webp','assets/qa-missing-'+releaseId+'.js']){const r=await get(site+'/'+file+'?verify='+releaseId);assert.equal(r.status,404,'Missing assets must not return a successful SPA document');missingAssets.push({file,status:r.status});}
+ console.log(JSON.stringify({checkedAt:new Date().toISOString(),release:releaseId,mode,results,privateBackupStatus:privatePath.status,missingAssets}));
 })().catch(error=>{console.error(error.stack);process.exitCode=1;});
