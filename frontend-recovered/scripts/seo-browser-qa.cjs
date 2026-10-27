@@ -48,12 +48,24 @@ async function ready(port){for(let i=0;i<60;i++){try{let r=await fetch(`http://1
    check('no-JavaScript article does not overflow at '+width+'px',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2));
    await page.screenshot({path:path.join(output,'no-js-'+width+'.png'),fullPage:true});
   }
-  const hydrated=await browser.newContext();
+  const hydrated=await browser.newContext({colorScheme:'light'});
   await hydrated.route('https://api.zus3cu.tech/findtheweb/**',async route=>{const r=await route.fetch({url:route.request().url().replace('https://api.zus3cu.tech/findtheweb','http://127.0.0.1:5097')});await route.fulfill({response:r});});
   const client=await hydrated.newPage();const errors=[];client.on('pageerror',e=>errors.push(e.message));
   await client.goto(url,{waitUntil:'domcontentloaded'});await client.locator('.prose').waitFor();
   check('React takes over server content without duplicate articles',await client.locator('#root h1').count()===1 && await client.locator('.seo-copy').count()===0 && errors.length===0);
   check('React replaces server article schema without duplicate metadata',await client.evaluate(()=>document.querySelectorAll('link[rel="canonical"]').length===1 && document.querySelectorAll('meta[property="og:image"]').length===1 && [...document.querySelectorAll('script[type="application/ld+json"]')].filter(e=>{try{return ['Article','BlogPosting'].includes(JSON.parse(e.textContent)['@type']);}catch(_){return false;}}).length===1));
+  await client.setViewportSize({width:375,height:900});
+  const figure=client.locator('.prose figure').first();await figure.waitFor();
+  await client.addScriptTag({path:require.resolve('axe-core/axe.min.js')});
+  const light=await figure.evaluate(el=>getComputedStyle(el).backgroundColor);
+  for(const theme of ['light','dark']){
+   if(theme==='dark'){await client.getByRole('button',{name:'Toggle dark mode',exact:true}).click();await client.waitForFunction(()=>document.documentElement.classList.contains('dark'));}
+   const violations=await client.evaluate(async()=>{const result=await axe.run(document.querySelector('.prose figure'),{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21aa']}});return result.violations.map(v=>v.id);});
+   check('editorial figure has no detected accessibility violations in '+theme,violations.length===0);
+   check('mobile editorial figure avoids horizontal overflow in '+theme,await client.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2));
+  }
+  check('editorial figure follows the theme toggle',light!==await figure.evaluate(el=>getComputedStyle(el).backgroundColor));
+  await client.screenshot({path:path.join(output,'editorial-dark-mobile.png'),fullPage:true});
   await hydrated.close();await context.close();
   cp.execFileSync('docker',['rm','-f',containers[0]],{stdio:'ignore'});
   start(containers[0],5098,'http://127.0.0.1:5097',root);await ready(5098);

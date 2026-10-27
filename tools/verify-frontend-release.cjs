@@ -16,9 +16,9 @@ const base = (process.env.FINDTHEWEB_PUBLIC_URL || 'https://findtheweb.zus3cu.te
    if(sha256!==record.sha256) {
     // The hosting CDN re-encodes PNG delivery. Keep exact checks for code and
     // text; record image byte differences instead of claiming source equality.
-    const png=file.startsWith('social-covers/')&&file.endsWith('.png');
-    if(!png||bytes.length<24||bytes.subarray(0,8).toString('hex')!=='89504e470d0a1a0a'||bytes.readUInt32BE(16)!==1200||bytes.readUInt32BE(20)!==630)throw Error(`${file}: deployed bytes differ from verified build`);
-    return {file,status:response.status,hashVerified:false,pngHeaderVerified:true,width:1200,height:630,deliveredSha256:sha256,sourceSha256:record.sha256};
+    const png=/^(?:social-covers|editorial-images)\/.+\.png$/.test(file),width=record.width||1200,height=record.height||630;
+    if(!png||bytes.length<24||bytes.subarray(0,8).toString('hex')!=='89504e470d0a1a0a'||bytes.readUInt32BE(16)!==width||bytes.readUInt32BE(20)!==height)throw Error(`${file}: deployed bytes differ from verified build`);
+    return {file,status:response.status,hashVerified:false,pngHeaderVerified:true,width,height,deliveredSha256:sha256,sourceSha256:record.sha256};
    }
    return {file,status:response.status,hashVerified:true};
   }));results.push(...batch);
