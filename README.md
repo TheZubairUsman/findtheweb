@@ -14,7 +14,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/status-deployment--ready-22c55e?style=flat-square" alt="Deployment ready" />
-  <img src="https://img.shields.io/badge/frontend-React%20%2B%20Vite-61dafb?style=flat-square&logo=react&logoColor=20232a" alt="React and Vite" />
+  <img src="https://img.shields.io/badge/frontend-React%2018%20%2B%20esbuild-61dafb?style=flat-square&logo=react&logoColor=20232a" alt="React 18 and esbuild" />
   <img src="https://img.shields.io/badge/backend-Node.js%20%2B%20Express-339933?style=flat-square&logo=node.js&logoColor=white" alt="Node.js and Express" />
   <img src="https://img.shields.io/badge/license-project--defined-64748b?style=flat-square" alt="Project defined license" />
 </p>
@@ -27,7 +27,7 @@
 
 FindTheWeb is a curated website-discovery platform for people who want useful tools without wasting time searching through noisy results. It organizes productivity tools, AI services, creative resources, developer utilities, research links, and other internet discoveries into a focused directory.
 
-The project combines a polished static React build with an Express/Sequelize API and an admin-only content workflow.
+The project combines a maintained React build, published-only PHP article rendering, an Express/Sequelize API, and an admin-only editorial workflow.
 
 ## Highlights
 
@@ -35,23 +35,25 @@ The project combines a polished static React build with an Express/Sequelize API
 - Search, category browsing, regional filters, tier-based discovery, and bookmarks
 - Responsive interface with light/dark mode support
 - Editorial journal layout inspired by modern reading platforms, with featured stories and reading-time cues
-- API-resilient Products and Blog surfaces that remain useful when optional backend content is unavailable
-- Admin dashboard for managing websites, products, categories, and posts
+- Published-only journal with server-rendered articles, sitemap and RSS
+- Admin editorial studio and contact inbox with permission-guarded access
 - Express API with JWT-based admin authentication and rate limiting
 - SEO-ready metadata, structured data, sitemap, robots rules, and social sharing tags
-- GitHub Actions workflow for backend regression tests
-- Deployment artifact prepared for Apache/Nginx/Hostinger static hosting
+- GitHub Actions checks for backend, browser journeys, and both hosting layouts
+- Deployment artifact for PHP-enabled Apache/LiteSpeed hosting with a persistent Node API
+
+The latest editorial batch adds original, sourced guides to [browser-extension safety](https://findtheweb.zus3cu.tech/blog/what-to-check-before-you-trust-a-browser-extension) and [personal backup planning](https://findtheweb.zus3cu.tech/blog/what-to-keep-in-a-personal-backup-plan), with topic-specific illustrations and optimized reading covers. Publishing includes preview, comparison guards, private backups and rollback protection. See the [release audit](docs/PHASE-EDITORIAL-SAFETY.md) for evidence and remaining scope.
 
 ## Technology
 
 | Layer | Technology |
 | --- | --- |
-| Frontend artifact | React, Vite, JavaScript, CSS |
+| Frontend artifact | React 18, esbuild, JavaScript, CSS |
 | Backend | Node.js, Express, Sequelize |
 | Data | Sequelize blog store with JSON exports retained for legacy directory data |
 | Authentication | Server-side admin credentials, bcrypt, JWT |
-| Quality | Jest, Supertest, model and API tests |
-| Hosting shape | Static `dist/` frontend + persistent Node API |
+| Quality | Jest, Supertest, Playwright, Apache/PHP integration checks |
+| Hosting shape | PHP-enabled frontend hosting + persistent Node API |
 
 ## Repository layout
 
