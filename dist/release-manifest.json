@@ -1533,6 +1533,20 @@
       "width": 1730,
       "height": 909
     },
+    "editorial-images/password-manager-recovery-20261028.png": {
+      "sha256": "641800d2a513a2af96fb60c08736b9e330470e38e26209e27e420db4ca143395",
+      "bytes": 2008715,
+      "format": "png",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/password-manager-recovery-20261028.webp": {
+      "sha256": "cb9a21e5e3dcea10e52d40f952e28689761ee0f522a9e39bc9e1d7efb6f60d40",
+      "bytes": 136728,
+      "format": "webp",
+      "width": 1729,
+      "height": 910
+    },
     "editorial-images/personal-backup-recovery-20261027.png": {
       "sha256": "d3395c4fb32f33c11584a42a6a5b1cfbd9ae5d6ccd2b730a5c4284759f0647cb",
       "bytes": 2074818,
@@ -1543,6 +1557,20 @@
     "editorial-images/personal-backup-recovery-20261027.webp": {
       "sha256": "e6d72d8ad4a7c756fc7cf1647012b793f3540c42e2dc7477bfc94a5306e4d412",
       "bytes": 152850,
+      "format": "webp",
+      "width": 1730,
+      "height": 909
+    },
+    "editorial-images/phishing-destination-check-20261028.png": {
+      "sha256": "d246417bad22b7c4a290faf27704d112e8065793042e10ec79f49297b06b5a34",
+      "bytes": 1958967,
+      "format": "png",
+      "width": 1730,
+      "height": 909
+    },
+    "editorial-images/phishing-destination-check-20261028.webp": {
+      "sha256": "389cfb11f7afab496253994f1530103546954964686bbccaf82e8975165b45ea",
+      "bytes": 122718,
       "format": "webp",
       "width": 1730,
       "height": 909

@@ -1,0 +1,9 @@
+{
+  "releaseId": "security2-20261028",
+  "baseline": "tmp/editorial-inspect-security2.json",
+  "output": "content/editorial-security2-20261028.json",
+  "articles": [
+    {"draft":"content/editorial-password-manager-20261028.json","cover":"password-manager-recovery-20261028.png"},
+    {"draft":"content/editorial-phishing-20261028.json","cover":"phishing-destination-check-20261028.png"}
+  ]
+}

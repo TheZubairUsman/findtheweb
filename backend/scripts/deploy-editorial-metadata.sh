@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 app=/opt/findtheweb-backend
-candidate=/opt/findtheweb-editorial-safety1-20261027
-backup=$app/rollback-editorial-tooling-safety1-20261027
-test -d "$backup"
+release_id="${1:-safety1-20261027}"
+[[ "$release_id" =~ ^[a-z0-9][a-z0-9-]{2,71}$ ]]
+candidate=/opt/findtheweb-editorial-$release_id
+backup=$app/rollback-editorial-tooling-$release_id
 test ! -e "$backup/editorialSeo.js"
 test -f "$candidate/editorialSeo.js"
 test -f "$candidate/social-covers.json"
+mkdir -p -m 700 "$backup"
+chmod 700 "$backup"
 cp "$app/src/services/editorialSeo.js" "$backup/editorialSeo.js"
 cp "$app/src/data/social-covers.json" "$backup/social-covers.json"
 restore() {
@@ -25,6 +28,6 @@ for attempt in $(seq 1 40); do
  sleep 1
 done
 docker exec findtheweb-backend node scripts/seo-runtime.cjs verify > "$candidate/runtime.json"
-docker exec findtheweb-backend node scripts/editorial-batch.cjs preview safety1-20261027 > "$candidate/preview.json"
+docker exec findtheweb-backend node scripts/editorial-batch.cjs preview "$release_id" > "$candidate/preview.json"
 trap - ERR
 echo 'Reading/social metadata deployed; integrity, counts and editorial preview verified'
