@@ -928,8 +928,8 @@
   },
   "serverFiles": {
     "seo.php": {
-      "sha256": "6dcbc5182ffd0b873f0ffb9e3c112cab47f0180478f11e56fe0d9f207d6bd74b",
-      "bytes": 6264
+      "sha256": "0d954d9a4346928b676935907480153318f6ed186ec6332d0b17a74921a4d415",
+      "bytes": 6273
     },
     ".htaccess": {
       "sha256": "feff8120e8b47a1d35c2678e95167a5e2ce40c4ed9b90d43be75c9aa8742095e",
@@ -944,5 +944,5 @@
       "bytes": 1161
     }
   },
-  "rollback": "Restore dist from Git commit 24c148e to disable server rendering; retain code/dependency/content rollback receipts separately. Do not restore the entire database over concurrent user data."
+  "rollback": "Restore repository .htaccess, frontend-recovered, dist and the frontend CI configuration from Git commit 24c148e for the previous frontend. Keep backend/content rollback receipts separate. Never restore the entire database over concurrent user data."
 }

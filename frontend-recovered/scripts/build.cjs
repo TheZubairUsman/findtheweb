@@ -41,7 +41,7 @@ const output = path.join(repo, 'dist/assets/frontend');
     }
     const serverFiles={};for(const file of ['seo.php','.htaccess',...(enabled?['seo-ready.flag']:[])]){const bytes=fs.readFileSync(path.join(repo,'dist',file));serverFiles[file]={sha256:crypto.createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length};}
     const rootBytes=fs.readFileSync(path.join(repo,'.htaccess'));serverFiles['repository-root/.htaccess']={sha256:crypto.createHash('sha256').update(rootBytes).digest('hex'),bytes:rootBytes.length};
-    fs.writeFileSync(path.join(repo,'dist/release-manifest.json'),JSON.stringify({release:'seo-content-20261027',files,serverFiles,rollback:'Restore dist from Git commit 24c148e to disable server rendering; retain code/dependency/content rollback receipts separately. Do not restore the entire database over concurrent user data.'},null,2)+'\n');
+    fs.writeFileSync(path.join(repo,'dist/release-manifest.json'),JSON.stringify({release:'seo-content-20261027',files,serverFiles,rollback:'Restore repository .htaccess, frontend-recovered, dist and the frontend CI configuration from Git commit 24c148e for the previous frontend. Keep backend/content rollback receipts separate. Never restore the entire database over concurrent user data.'},null,2)+'\n');
   });
   console.log('Frontend rebuilt from source.');
 })().catch(error => {console.error(error.message);process.exitCode=1;});

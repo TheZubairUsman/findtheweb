@@ -53,6 +53,7 @@ async function ready(port){for(let i=0;i<60;i++){try{let r=await fetch(`http://1
   const client=await hydrated.newPage();const errors=[];client.on('pageerror',e=>errors.push(e.message));
   await client.goto(url,{waitUntil:'domcontentloaded'});await client.locator('.prose').waitFor();
   check('React takes over server content without duplicate articles',await client.locator('#root h1').count()===1 && await client.locator('.seo-copy').count()===0 && errors.length===0);
+  check('React replaces server article schema without duplicate metadata',await client.evaluate(()=>document.querySelectorAll('link[rel="canonical"]').length===1 && document.querySelectorAll('meta[property="og:image"]').length===1 && [...document.querySelectorAll('script[type="application/ld+json"]')].filter(e=>{try{return ['Article','BlogPosting'].includes(JSON.parse(e.textContent)['@type']);}catch(_){return false;}}).length===1));
   await hydrated.close();await context.close();
   cp.execFileSync('docker',['rm','-f',containers[0]],{stdio:'ignore'});
   start(containers[0],5098,'http://127.0.0.1:5097',root);await ready(5098);
