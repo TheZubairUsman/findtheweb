@@ -940,8 +940,8 @@
       "bytes": 8
     },
     "repository-root/.htaccess": {
-      "sha256": "bff7630abe65261636ad45587dbb33d345b30d519864ea9cc428db4255905773",
-      "bytes": 969
+      "sha256": "6511a44cfa11ce5b45f14be8caa5a57f6d11b0cc7c656051a88921d5c54078f4",
+      "bytes": 1161
     }
   },
   "rollback": "Restore dist from Git commit 24c148e to disable server rendering; retain code/dependency/content rollback receipts separately. Do not restore the entire database over concurrent user data."
