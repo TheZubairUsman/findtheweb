@@ -18,8 +18,9 @@ function cleanContent(content){return sanitizeHtml(content||'',{
 });}
 function publicArticle(post){
  const data=post.toJSON?post.toJSON():post;
+ const image=imageUrl(data.featuredImage),socialImage=socialImageFor(data.slug,data.featuredImage);
  return {slug:data.slug,title:data.title,description:data.seoDescription||data.excerpt||'',seoTitle:data.seoTitle||data.title,
-  excerpt:data.excerpt||'',content:cleanContent(data.content),image:imageUrl(data.featuredImage),socialImage:socialImageFor(data.slug,data.featuredImage),
+  excerpt:data.excerpt||'',content:cleanContent(data.content),image,socialImage,readingImage:/\.(?:webp|png|jpe?g)(?:[?#]|$)/i.test(data.featuredImage||'')?image:socialImage,
   publishedAt:data.publishedAt,updatedAt:data.updatedAt,author:{name:data.author?.name||'FindTheWeb Editorial'},
   canonical:siteUrl+'/blog/'+encodeURIComponent(data.slug)};
 }

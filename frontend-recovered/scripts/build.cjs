@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const esbuild = require('esbuild');
 const crypto = require('crypto');
+const {imageMetadata}=require('../../tools/image-metadata.cjs');
 const root = path.resolve(__dirname, '..');
 const repo = path.resolve(root, '..');
 const output = path.join(repo, 'dist/assets/frontend');
@@ -35,11 +36,11 @@ const output = path.join(repo, 'dist/assets/frontend');
       fs.writeFileSync(target,fs.readFileSync(target,'utf8').replace(/\r\n/g,'\n'));
     }
     const social=fs.readdirSync(path.join(repo,'dist/social-covers')).filter(f=>f.endsWith('.png')).sort().map(f=>'social-covers/'+f);
-    const editorial=fs.existsSync(path.join(repo,'dist/editorial-images'))?fs.readdirSync(path.join(repo,'dist/editorial-images')).filter(f=>f.endsWith('.png')).sort().map(f=>'editorial-images/'+f):[];
+    const editorial=fs.existsSync(path.join(repo,'dist/editorial-images'))?fs.readdirSync(path.join(repo,'dist/editorial-images')).filter(f=>/\.(png|webp)$/.test(f)).sort().map(f=>'editorial-images/'+f):[];
     for(const file of ['index.html','frontend-build.json','findtheweb-release.js','findtheweb-release.css','contact-inbox.js','robots.txt','seo-render.css',...assets.map(a=>a.slice(1)),...social,...editorial]) {
       const bytes = fs.readFileSync(path.join(repo,'dist',file));
       files[file] = {sha256:crypto.createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length};
-      if(file.endsWith('.png')){files[file].width=bytes.readUInt32BE(16);files[file].height=bytes.readUInt32BE(20);}
+      if(/\.(png|webp)$/.test(file))Object.assign(files[file],imageMetadata(bytes));
     }
     const serverFiles={};for(const file of ['seo.php','.htaccess',...(enabled?['seo-ready.flag']:[])]){const bytes=fs.readFileSync(path.join(repo,'dist',file));serverFiles[file]={sha256:crypto.createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length};}
     const rootBytes=fs.readFileSync(path.join(repo,'.htaccess'));serverFiles['repository-root/.htaccess']={sha256:crypto.createHash('sha256').update(rootBytes).digest('hex'),bytes:rootBytes.length};

@@ -43,13 +43,14 @@ function render(array $article, int $status): void {
     if ($status===200) {
         $canonical = SITE.'/blog/'.rawurlencode($article['slug']);
         $image = $article['socialImage'];
+        $readingImage = $article['readingImage'] ?? $image;
         $meta .= '<link rel="canonical" href="'.h($canonical).'">';
         foreach (['og:type'=>'article','og:title'=>$title,'og:description'=>$description,'og:url'=>$canonical,'og:image'=>$image,'og:site_name'=>'FindTheWeb'] as $key=>$value) $meta .= '<meta property="'.$key.'" content="'.h($value).'">';
         foreach (['twitter:card'=>'summary_large_image','twitter:title'=>$title,'twitter:description'=>$description,'twitter:image'=>$image] as $key=>$value) $meta .= '<meta name="'.$key.'" content="'.h($value).'">';
         $schema = ['@context'=>'https://schema.org','@type'=>'BlogPosting','headline'=>$article['title'],'description'=>$description,'image'=>[$image],'url'=>$canonical,'mainEntityOfPage'=>$canonical,'datePublished'=>$article['publishedAt'],'dateModified'=>$article['updatedAt'],'author'=>['@type'=>'Person','name'=>$article['author']['name']],'publisher'=>['@type'=>'Organization','name'=>'FindTheWeb','url'=>SITE]];
         $meta .= '<script data-rh="true" type="application/ld+json">'.json_encode($schema, JSON_HEX_TAG|JSON_HEX_AMP|JSON_HEX_APOS|JSON_HEX_QUOT|JSON_UNESCAPED_SLASHES).'</script>';
         // content is sanitized by the dedicated API endpoint before reaching this renderer.
-        $body = '<main id="seo-article" class="seo-copy"><nav><a href="/">FindTheWeb</a> / <a href="/blog">Journal</a></nav><article><h1>'.h($article['title']).'</h1><p>'.h($article['excerpt']).'</p><p>By '.h($article['author']['name']).'</p><img class="seo-cover" src="'.h($image).'" alt="'.h($article['title']).'" width="1200" height="630"><div class="seo-body">'.$article['content'].'</div></article></main>';
+        $body = '<main id="seo-article" class="seo-copy"><nav><a href="/">FindTheWeb</a> / <a href="/blog">Journal</a></nav><article><h1>'.h($article['title']).'</h1><p>'.h($article['excerpt']).'</p><p>By '.h($article['author']['name']).'</p><img class="seo-cover" src="'.h($readingImage).'" alt="'.h($article['title']).'" width="1200" height="630"><div class="seo-body">'.$article['content'].'</div></article></main>';
     }
     $rest = str_replace('<div id="root"></div>', '<div id="root">'.$body.'</div>', $rest);
     echo $head . $meta . $rest;
@@ -73,5 +74,8 @@ foreach (['title','seoTitle','description','excerpt','content','socialImage','pu
 $valid = $valid && is_string($article['author']['name'] ?? null);
 $image = parse_url($article['socialImage'] ?? '');
 $valid = $valid && in_array($image['scheme'] ?? '', ['https','http'], true) && empty($image['user']) && empty($image['pass']);
+$readingUrl = $article['readingImage'] ?? ($article['socialImage'] ?? '');
+$readingUrl = is_string($readingUrl) ? parse_url($readingUrl) : [];
+$valid = $valid && in_array($readingUrl['scheme'] ?? '', ['https','http'], true) && empty($readingUrl['user']) && empty($readingUrl['pass']);
 if (!$valid) { render([],503); exit; }
 render($article,200);

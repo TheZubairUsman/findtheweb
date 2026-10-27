@@ -10,7 +10,8 @@ for(const [name,cover]of [['extensions','browser-extension-permissions-20261027.
  assert(draft.content.includes('<figure>')&&draft.content.includes('<figcaption>'),'A meaningful process figure is required');
  assert(fs.existsSync(path.join(root,'dist/editorial-images',cover)),'Reviewed cover missing');
  const sources=new Set(draft.sources);for(const match of draft.content.matchAll(/href="([^"]+)"/g))assert(sources.has(match[1]),'Undocumented source link: '+match[1]);
- output.push({...draft,...current,featuredImage:'https://findtheweb.zus3cu.tech/editorial-images/'+cover});
+ const optimized=cover.replace(/\.png$/,'.webp');assert(fs.existsSync(path.join(root,'dist/editorial-images',optimized)),'Optimized reading cover missing');
+ output.push({...draft,...current,featuredImage:'https://findtheweb.zus3cu.tech/editorial-images/'+optimized,expectedSocialImage:'https://findtheweb.zus3cu.tech/editorial-images/'+cover});
 }
 fs.writeFileSync(path.join(root,'content/editorial-safety1-20261027.json'),JSON.stringify(output,null,2)+'\n');
 console.log(JSON.stringify(output.map(r=>({slug:r.slug,words:r.content.replace(/<[^>]*>/g,' ').trim().split(/\s+/).length,sources:r.sources.length,cover:r.featuredImage}))));

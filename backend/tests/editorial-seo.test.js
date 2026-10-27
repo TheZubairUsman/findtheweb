@@ -2,6 +2,15 @@ const request=require('supertest');
 const app=require('../src/index');
 const {BlogPost,Admin}=require('../src/models');
 describe('Published HTML renderer data',()=>{
+ it('uses the optimized reading cover with a reviewed PNG social preview, and respects a later cover edit',async()=>{
+  const slug='what-to-check-before-you-trust-a-browser-extension';
+  const image='https://findtheweb.zus3cu.tech/editorial-images/browser-extension-permissions-20261027.webp';
+  const post=await BlogPost.create({title:'Extension permissions',slug,content:'Reviewed article',status:'published',featuredImage:image});
+  const first=await request(app).get('/api/v1/seo/articles/'+slug);
+  expect(first.body.data.readingImage).toBe(image);expect(first.body.data.socialImage).toBe(image.replace(/\.webp$/,'.png'));
+  const changed='https://findtheweb.zus3cu.tech/editorial-images/later-cover.webp';await post.update({featuredImage:changed});
+  const second=await request(app).get('/api/v1/seo/articles/'+slug);expect(second.body.data.socialImage).toBe(changed);expect(second.body.data.readingImage).toBe(changed);
+ });
  it('counts readership without changing the editorial modification date',async()=>{
   const post=await BlogPost.create({title:'Stable modification date',slug:'stable-editorial-date',content:'Editorial text',status:'published',updatedAt:new Date('2025-01-01T00:00:00Z')});
   await post.reload();const modified=+post.updatedAt,before=post.viewCount;

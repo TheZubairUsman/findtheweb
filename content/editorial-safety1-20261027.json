@@ -24,7 +24,8 @@
       "seoDescription": "Learn what to check before you trust a browser extension with a practical guide from FindTheWeb, including trade-offs, safety checks, and next steps."
     },
     "publishedAt": "2026-10-02T12:30:16.120Z",
-    "featuredImage": "https://findtheweb.zus3cu.tech/editorial-images/browser-extension-permissions-20261027.png"
+    "featuredImage": "https://findtheweb.zus3cu.tech/editorial-images/browser-extension-permissions-20261027.webp",
+    "expectedSocialImage": "https://findtheweb.zus3cu.tech/editorial-images/browser-extension-permissions-20261027.png"
   },
   {
     "slug": "what-to-keep-in-a-personal-backup-plan",
@@ -48,6 +49,7 @@
       "seoDescription": "Learn what to keep in a personal backup plan with a practical guide from FindTheWeb, including trade-offs, safety checks, and next steps."
     },
     "publishedAt": "2026-10-11T18:30:16.120Z",
-    "featuredImage": "https://findtheweb.zus3cu.tech/editorial-images/personal-backup-recovery-20261027.png"
+    "featuredImage": "https://findtheweb.zus3cu.tech/editorial-images/personal-backup-recovery-20261027.webp",
+    "expectedSocialImage": "https://findtheweb.zus3cu.tech/editorial-images/personal-backup-recovery-20261027.png"
   }
 ]

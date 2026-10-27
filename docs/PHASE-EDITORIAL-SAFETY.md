@@ -9,7 +9,7 @@ Two existing guides are upgraded while preserving their titles, URLs, and public
 
 Each guide uses primary official sources, a clearly hypothetical example, and an accessible numbered process figure. OS and browser advice is scoped to the documented controls, without claiming a hands-on product test or guaranteed protection. Some CISA source material was available through search-index excerpts when direct retrieval returned 403; that is not recorded as a successful direct fetch.
 
-Two original AI-generated editorial cover illustrations replace the old text-banner covers for these guides. They are conceptual artwork, not screenshots, real customer photographs, or evidence of a tested product. Originals are versioned under `dist/editorial-images/`. Figure styling supports the site's light and dark themes. Cover URLs remain first-party.
+Two original AI-generated editorial cover illustrations replace the old text-banner covers for these guides. They are conceptual artwork, not screenshots, real customer photographs, or evidence of a tested product. Originals are versioned under `dist/editorial-images/`, alongside optimized WebP reading copies. The originals were about 1.9/2.1 MB; the WebP source files are 103,222 and 152,850 bytes. Raw server HTML and React use the lightweight reading image, while metadata retains PNG social previews. The social-image map is tied to the exact reviewed reading URL, so a later cover edit is not replaced by an obsolete preview. Figure styling supports the site's light and dark themes. Cover URLs remain first-party.
 
 ## Publishing safeguards
 
@@ -19,7 +19,7 @@ Inspection projects only public article metadata and comparison hashes. Preview 
 
 Private backups and before/after receipts live in `editorial-backups/<release-id>/` with restricted filesystem permissions. Rollback restores only the fields from that batch, and refuses to overwrite a later edit, changed publication state, or changed publication date. It does not replace the entire database. A receipt cannot guarantee recovery from every filesystem/power failure; inspect database state before manual intervention if a process is interrupted between commit and receipt creation.
 
-New CLI publishing modes require version 2 of the reviewed service; they cannot accidentally use the older service's semantics. Operator tooling is installed separately from the running web process and does not require a web-service restart. The former one-off pilot publisher remains available for its existing receipts.
+New CLI publishing modes require version 2 of the reviewed service; they cannot accidentally use the older service's semantics. Operator tooling alone is installed separately from the running web process without a restart. The updated reading/social-image metadata service and map require one targeted backend restart, with original files backed up and health verified. The former one-off pilot publisher remains available for its existing receipts.
 
 ## Validation and scope limits
 

@@ -136,1208 +136,1422 @@
     "social-covers/a-beginner-friendly-web-security-checklist-for-new-sites.png": {
       "sha256": "5bff42fd4724f7487b98dd563f3b1f39588917b809a49d54b8cbc0e5617f81fc",
       "bytes": 215240,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-beginner-s-guide-to-data-minimization.png": {
       "sha256": "785cb0295a9c1cba7ec95c4fee436b8633c462205ddd151ce766ee3ff20f3316",
       "bytes": 240870,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-beginner-s-guide-to-trigger-based-workflows.png": {
       "sha256": "eb6b0bc288bafec342eee14615d9ffd5208019d81b1e8b00f745f00124321400",
       "bytes": 194873,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-better-async-meeting-replacement-for-small-teams.png": {
       "sha256": "65aea05dae0d255c4bd91bf74048cf1b03ad0689bba4bf0bdc63152dedbaacfd",
       "bytes": 244583,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-better-way-to-organize-useful-links.png": {
       "sha256": "7ba7c5a087da6baa88e7d81cc8b2e8845f02f1ad4ddba045d1b5f26411476b29",
       "bytes": 197312,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-clear-mental-model-for-apis-routes-and-requests.png": {
       "sha256": "6e6d4d5342b50198d04d8961fbc843395414cc810cbbf79b2690ed04fc137c63",
       "bytes": 236568,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-curator-s-method-for-organizing-useful-links.png": {
       "sha256": "7735d13576c1cfe2b16485835304bec253655749bac15cd4c3160355b6cea96b",
       "bytes": 241238,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-developer-checklist-for-responsible-data-handling.png": {
       "sha256": "ef3ee4fdc349f2000b55e5e7901791c5d7caba5cce7c9a878411f2273ac6e5dd",
       "bytes": 229825,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-human-approach-to-learning-with-ai-assistants.png": {
       "sha256": "b76041ad6a38148640f41165212add49171144e857209c0eefb3448afd6c2fb0",
       "bytes": 257352,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-human-workflow-for-checking-ai-generated-code.png": {
       "sha256": "34d39eb61294ff40bf551bcff1c8f099cf51f8ef606d0b2ed9fcadd78c97c5c3",
       "bytes": 252943,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-plain-english-guide-to-sitemaps-and-robots-txt.png": {
       "sha256": "07454360d8ada7f7b4cc51b5a8cd93c76c9c14dc8aaf0d0db5ad4821ed46f2ec",
       "bytes": 231006,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-practical-comparison-of-workflow-orchestration-patterns.png": {
       "sha256": "6dca413b44ea237ca52aba4484ab9eec70709a493471ee2d79370b51e1048230",
       "bytes": 239149,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-practical-evaluation-checklist-for-llm-features.png": {
       "sha256": "f4593bbc6702b44e3920b18674b1e51c9b0a32c62b1bcee5d14df331ba2d70c5",
       "bytes": 211384,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-practical-guide-to-ai-coding-assistants-and-code-review.png": {
       "sha256": "b786f04c22a3a85c006a8e8f0e1e65bc5c4e934d862bd55eaa2215039eecd969",
       "bytes": 218153,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-practical-guide-to-building-a-personal-ai-research-workflow.png": {
       "sha256": "f4984b31538c8c88b7ce273549bedb8dfd985a583da9e24b48dd01e05935dfc8",
       "bytes": 245309,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-practical-guide-to-building-your-own-tool-directory.png": {
       "sha256": "4adbfe23205002709cb4fd03abf9579c4a541723dec44956e24c5682985e2aee",
       "bytes": 261246,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-practical-guide-to-comparing-similar-websites.png": {
       "sha256": "30f89b2636e88091be97fd5b7cec7054b401babf79a0a54a466717023892b4f3",
       "bytes": 203969,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-practical-guide-to-data-minimization.png": {
       "sha256": "489e14f03dd2690233771f397245a5d9216e4347284b3a3079ff7fc36963bcc4",
       "bytes": 216528,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-practical-guide-to-digital-decluttering.png": {
       "sha256": "944ea464b261df376b40a93d823bed2c3ff7b3b3569297f42b51f75926685bfb",
       "bytes": 197869,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-practical-guide-to-environment-variables-and-secrets.png": {
       "sha256": "f68d80d39bdac597a4e50f2cfa13791fe05e3b47e43b90ad63a8f48e11e40b3f",
       "bytes": 208053,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-practical-guide-to-safer-public-wi-fi-use.png": {
       "sha256": "9c7d8f53bbff83c6be5494d2df57c36d552581b05a1eb699833014c6cf31ffb5",
       "bytes": 200930,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-practical-internal-linking-strategy-for-growing-blogs.png": {
       "sha256": "409be2158b09ba07f2c0db7ecc921b276bb2000a4fe67aff2ec842188a21edb4",
       "bytes": 224685,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-practical-introduction-to-containers.png": {
       "sha256": "de4f2f0b728eb7c6194e23139f2e490723b7a4990967235b541677d3002fbcfc",
       "bytes": 228377,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-practical-introduction-to-webhooks.png": {
       "sha256": "0fa806613c2ce0ea8eceef522bb195dbd0bd0a18a4752cc8ae243d8e8279b8b8",
       "bytes": 241698,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-practical-note-taking-system-for-developers.png": {
       "sha256": "d698c45248dbd06fc98b61a556d0942219c7aa1e1270d67c88298a3d8046d274",
       "bytes": 208288,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-practical-note-taking-system-for-technical-projects.png": {
       "sha256": "77a451e8832c9b3ac1e6713271b6366d35edeff578dccee7a42649dae79bf7ac",
       "bytes": 215624,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-practical-remote-team-operating-manual.png": {
       "sha256": "1c47a9f82a6df4adca818279759dac7919e099df57e4290d0923c35438eb717f",
       "bytes": 196827,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-practical-seo-checklist-for-a-new-website.png": {
       "sha256": "abbf4f89d0beace00df07b0fdf8522eee37386f7b541372dbaa32e03db8ed3b7",
       "bytes": 236606,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-production-ready-cloud-deployment-checklist.png": {
       "sha256": "b5991ac61cfa8fb8d24cd3c910d6a3ede0ac07b99b9cff1ec21d401756ecaa6a",
       "bytes": 223008,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-research-workflow-for-comparing-new-developer-tools.png": {
       "sha256": "f2fa6ccddfa179954287a3517dcda91a222ce4e73136ae3595cd0ef889b30cf9",
       "bytes": 240090,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-research-workflow-for-finding-trustworthy-technical-sources.png": {
       "sha256": "e1989408e57eed1ab15411847b1b1266ffc5afd3b2b5501328c25387c9b7dcab",
       "bytes": 220686,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-safe-way-to-automate-email-and-spreadsheet-tasks.png": {
       "sha256": "0733d4ab43f55bfef26a07e185b8a8ac7278d70cced09b0454dac05260155847",
       "bytes": 263489,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-simple-password-manager-setup-that-actually-works.png": {
       "sha256": "5637c659a430aea323b46fbe6062022c27196b5e0b7e399ea5a8a5dfc72749d7",
       "bytes": 242602,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-simple-weekly-review-for-technical-work.png": {
       "sha256": "f9f9e5707e3b28cf17609f296283d5e008d0caddd62dfb51274d34265bf3f4ba",
       "bytes": 205203,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-small-business-incident-response-runbook.png": {
       "sha256": "a644a22abe83998d93f930e7513801b69bb0311febb573a26b49833b1f4532e5",
       "bytes": 225733,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-small-team-guide-to-backups-and-rollback.png": {
       "sha256": "e895eb881f4ae7227f8f30434926caa3b9b86b4b9aca7e4efc497184aa5dd03e",
       "bytes": 229668,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/a-small-team-playbook-for-shipping-ai-features.png": {
       "sha256": "0e147d51654f2b52abd74c93deb765db380b7ba9d77db020e5ecf7696aefd89a",
       "bytes": 216814,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/ai-automation-vs-ai-agents-choosing-the-right-architecture.png": {
       "sha256": "aaac2085bd2b4a54f59b763839a16cb9ce0dced73ed9a77ea3fb2381e61ca756",
       "bytes": 226889,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/api-documentation-that-developers-actually-use.png": {
       "sha256": "b588e8f43102d48cf18332e7c5862b435a7b12fae52fe07c735f2b907738cae2",
       "bytes": 204089,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/api-rate-limiting-that-protects-users-without-breaking-ux.png": {
       "sha256": "eefd0a38c5d064231adfdd506c9c9294a377caa0912666d04516d53d9f57a539",
       "bytes": 235261,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/async-communication-what-to-write-down-and-what-to-meet-about.png": {
       "sha256": "605dc282341b527fa3ae7f14c2eb1068b1cdb220f3b71f3469274d272ac9d47b",
       "bytes": 215763,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/automation-testing-for-non-developers.png": {
       "sha256": "5d52c0f8f923779a35cc5d8a284e72488c32cf621729fc1ee7826c9dfe11548e",
       "bytes": 222570,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/backups-and-rollbacks-for-stateful-web-applications.png": {
       "sha256": "a00f9732e4a08fde94783f1184dc3f7c711c38c7cd86ad2b595148837f972d68",
       "bytes": 227313,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/blue-green-vs-canary-deployments-for-small-teams.png": {
       "sha256": "12acea93172b4142d78cb3bd06a17bbe1ec57f53f0ebde6b53ff6cb31ca7bba9",
       "bytes": 230574,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/bookmarking-for-teams-from-links-to-shared-knowledge.png": {
       "sha256": "48d293c9481b02d20a52107ff983ce22c48c3f2bc67e4821abfdab15287e4136",
       "bytes": 211408,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/building-a-personal-knowledge-base-that-stays-findable.png": {
       "sha256": "9a63e5953efd15655ab1c904843c1dd29e59af25a0cf83aa959eefa843e8e558",
       "bytes": 218186,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/building-trust-when-the-team-rarely-meets-live.png": {
       "sha256": "a606bda8b30578fd84ec530c7fe773f3313d0fd59bea5464cd919e24878e5945",
       "bytes": 197697,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/ci-cd-pipelines-fast-feedback-without-unsafe-releases.png": {
       "sha256": "41cafe7d0d8c34e374bc9f79a87f35d6e793943342218fd2daa07eb85e935801",
       "bytes": 232565,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/containers-explained-for-teams-shipping-their-first-service.png": {
       "sha256": "54a9fbe8b50ab59d55aebd6e5db098201925b0d0ede5ac7573503b2119ca6f59",
       "bytes": 234461,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/cookies-consent-and-honest-product-ux.png": {
       "sha256": "3be28e93cf440052ccafe4882b51688291ad46bc53107459fc28368719609481",
       "bytes": 222021,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/core-web-vitals-explained-for-people-who-build-websites.png": {
       "sha256": "6bc71cf19077b54adeeb348a7747b005eb6e9505080ca71e2693f6dca396da4b",
       "bytes": 240713,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/core-web-vitals-in-practice-lcp-inp-and-cls.png": {
       "sha256": "7eb02ac029629849eda98f2c6a51374a3b29dc28590afd9432eeb9cbe5545cbf",
       "bytes": 218812,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/curating-resources-without-creating-another-link-dump.png": {
       "sha256": "be8cb37b7e286f406d3a3e6fb109fd98689adc857042ced0e79b74ff5db0f9e4",
       "bytes": 206427,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/debugging-javascript-across-browser-and-server.png": {
       "sha256": "9ee58af7c5c2bb30e3f1758b89f81485f6d4572b31ab2206f1d60042a6df92fb",
       "bytes": 206420,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/designing-a-remote-workspace-that-reduces-context-switching.png": {
       "sha256": "5e9a7da34bc2d75705a27a56ac71864e854a6874e888801a57c1a8788277e0e1",
       "bytes": 219292,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/designing-deletion-and-export-workflows-users-can-trust.png": {
       "sha256": "88216e645456e106268c8207e6abae16198a404f2c957f6c90ddf2a07c412ff4",
       "bytes": 238189,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/designing-safe-browser-automation-for-real-work.png": {
       "sha256": "2fbe45fa46742963218d9509d015e8e15eac9e0a998d6e2fa65e94b2b5aae150",
       "bytes": 217277,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/documentation-as-a-remote-team-superpower.png": {
       "sha256": "705eb0f82829c17eb1d61ee7d1812e2b9f7f9f96fac0480b4b586575bc583d00",
       "bytes": 198931,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/encryption-at-rest-and-in-transit-explained.png": {
       "sha256": "90861146015a76a5396d373bc6d1b831c9f41e6238acee7a91634c99003b33a3",
       "bytes": 223095,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/evidence-inference-and-opinion-a-better-research-habit.png": {
       "sha256": "c86243114c79997096a2fc9aa8eda057237161f94c871a15d8ba6afe2259ba23",
       "bytes": 219250,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/fast-python-tooling-reproducible-environments-with-uv.png": {
       "sha256": "23b38a55cbe3c50e552c7b8a3fa6000e5f59740d8db9cbee20fa4292fbcb50c6",
       "bytes": 216068,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/from-manual-task-to-measurable-automation-in-seven-days.png": {
       "sha256": "fae663d983ee17bafcdb81fa6e17313958cfb40e1796a5a116ef33c3848e6390",
       "bytes": 234997,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/git-workflows-that-keep-small-teams-moving.png": {
       "sha256": "c31db6b040b024c916d18f8118f759bfb80cb8c744da5806cc4270bce9e0a529",
       "bytes": 205116,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-dns-connects-a-domain-to-a-website.png": {
       "sha256": "fbaf356f204d436a7b68b19bd7b11ebc73951565a0154bcbecfd485738275c26",
       "bytes": 235257,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-internal-links-help-visitors-and-search-engines.png": {
       "sha256": "ed2588d93518af1c8de4644646a6a518d4960b26a239cdd07b913ea2ba3ea722",
       "bytes": 202180,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-no-code-automation-fits-into-a-real-engineering-workflow.png": {
       "sha256": "d8c565154e27f90841f8380ab24d7a03996aae2962d81c7bfc78fe42400e2385",
       "bytes": 256118,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-add-human-review-to-automated-decisions.png": {
       "sha256": "ecc83bbf1131caafd755f336d3089d81923c12a8413b95b8a73ac21dd024a83f",
       "bytes": 214085,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-ask-better-questions-when-you-are-stuck.png": {
       "sha256": "9fd3992262df0522e15f08d6180dfdcb3b9ddfb70135f4c8be8fd2bfad6d2f60",
       "bytes": 203299,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-audit-a-sitemap-and-robots-file.png": {
       "sha256": "44312f70fd319c7ac1c086f9badd1ce20bc9de5ce5d606c26d06ec9fb2ea3217",
       "bytes": 210537,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-automate-repetitive-research-without-losing-judgment.png": {
       "sha256": "81b3f5299a5b8cdc145e3d9a6d36b2636faef3bb33704d51f2c6a5f70859c2e8",
       "bytes": 264972,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-build-a-personal-command-center-for-online-work.png": {
       "sha256": "e15a9d4c8d8c19dfcdde55f53ca4b1f460beb7e4752c4b4b45eb75d31a739d11",
       "bytes": 247898,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-build-a-personal-knowledge-base-you-will-reuse.png": {
       "sha256": "1cebe13e02d7a0920ae2f1e50368beea3a5886b8666a520553a01f72a647f6c2",
       "bytes": 247640,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-build-a-personal-start-here-page-for-the-web.png": {
       "sha256": "cf9929d20d2fa251616aac2e0cfd17c45b9fc9d13acbbf416f95c511f1af63ed",
       "bytes": 266184,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-build-a-personal-start-here-page.png": {
       "sha256": "8d6e82fe51c859dbc244d29fb934a9eabd4a9101f93996c0115808ff53ae1170",
       "bytes": 196879,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-build-a-reliable-ai-agent-workflow-in-2026.png": {
       "sha256": "d674be7a843d9a709408e4baeffc599422048af53cfd06212b1745fbb085216d",
       "bytes": 214907,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-build-a-safer-public-contact-form.png": {
       "sha256": "671b6fb2060c8eaf65c249b9513c765055a1d57c61b7c8d0e416cf305679976f",
       "bytes": 237832,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-build-approval-steps-into-business-automations.png": {
       "sha256": "0ad71192ca495617e0b60f02b8d6bcb4a2f1b3f34a52c8360183fdf085b2a8d3",
       "bytes": 239308,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-choose-a-code-editor-for-large-projects.png": {
       "sha256": "07d0b65e0f7ea9912b146d9c97163617a19ab15419966f23bdcb8980c857e262",
       "bytes": 203593,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-choose-an-ai-tool-for-a-small-team.png": {
       "sha256": "084180a8a9b40aba701ab42e897c7991103b08a2b82266164e2173df1b6a7b6d",
       "bytes": 201332,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-choose-remote-work-tools-that-reduce-noise.png": {
       "sha256": "185101ed99a3fd7b7f72dd3a29840c395d3ec4caab3718eac102f37309a1308a",
       "bytes": 204889,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-compare-ai-tools-on-privacy-cost-and-output-quality.png": {
       "sha256": "ec348c8218e9297150efea3efeabf21c32d128dbfcbc050c48c7169aa0006aea",
       "bytes": 245622,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-compare-similar-websites-without-wasting-an-hour.png": {
       "sha256": "194d0982e50f849fcccdd421400f616d6c6986665ce0e9d131405211755950b0",
       "bytes": 212300,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-compare-tools-without-falling-for-marketing-claims.png": {
       "sha256": "d6f6afa26de3c54746ddee2c93a70d10a9a7aebe14bb0d9e23dcf0a2515b1c50",
       "bytes": 219239,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-connect-saas-tools-without-leaking-secrets.png": {
       "sha256": "2740ef2e55aaa9844ddae288989204d3865ded723ad1eef4e5976aba5de0f7dc",
       "bytes": 227598,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-create-a-content-cluster-that-users-can-navigate.png": {
       "sha256": "6170eae8e7a3d7286a8c3619cf82874e978f420d979f625adfc60b234bd3775f",
       "bytes": 249637,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-cut-cloud-waste-without-cutting-reliability.png": {
       "sha256": "f95e0dd6791a5c94db00b7320a09dc736d4aeecd9177ea3c12e56f6196f8a023",
       "bytes": 230296,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-debug-a-frontend-error-from-the-first-clue.png": {
       "sha256": "5b40322b4a6b1f2d5894f6f39621c7f04426fccf356f30bae1f8cf2a73d20d1c",
       "bytes": 198626,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-deploy-a-static-website-with-confidence.png": {
       "sha256": "42e000e81ed748385a537d87b9622721bbf6bf55aa0fdc4a06a4c8882be3f21b",
       "bytes": 236777,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-design-a-workday-around-deep-and-shallow-tasks.png": {
       "sha256": "c60ee1a4e995c670fc913775cafabe345ef9e3a557229a912cb4d66397710b87",
       "bytes": 217410,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-design-a-workflow-that-fails-gracefully.png": {
       "sha256": "c64423a87b99025daa25ff301eef2891e6265ff7abcc7ec646ba6a8a35b27074",
       "bytes": 194282,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-design-health-checks-that-find-real-failures.png": {
       "sha256": "8b277e128077fa9c67fa78121e71ab082bdce919e47a399c035b10fe26458ed4",
       "bytes": 226855,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-diagnose-a-slow-image-on-a-website.png": {
       "sha256": "8df54ffc3c6e498f077623d0c200c356ae2641fc9e71acca8e87570b18aa0dc8",
       "bytes": 199829,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-discover-small-tools-that-solve-specific-problems.png": {
       "sha256": "f96bf61d62fad32f75de9221f2d728bd058b9a5bf3147d0ff325a2d30d5d91b6",
       "bytes": 212437,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-document-an-automation-so-someone-else-can-own-it.png": {
       "sha256": "3bd22614f2bef8315c0b3afa29ed9fa90b9b32c64b2eab82121b60a37ff467b3",
       "bytes": 202051,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-evaluate-a-website-before-you-bookmark-it.png": {
       "sha256": "545360cf3b2a309d7ccd18cd6f8d50c42ca6212c415b3ba0e446ea9f0dbf5004",
       "bytes": 202344,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-find-hidden-websites-with-better-search-habits.png": {
       "sha256": "97bcfd027487fc18f0bd940db4375588c5908bc35af9dbdce4fa8ada92da6e0e",
       "bytes": 238311,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-find-useful-ai-tools-without-drowning-in-hype.png": {
       "sha256": "e2b382b15c66f0cbb92edd6ba592624fd27e650b4449186fcc02a7900e5882fb",
       "bytes": 238390,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-judge-whether-a-free-online-tool-is-worth-using.png": {
       "sha256": "e5a70246c3b3472b59283cc13cd1ac75a3aa3fb2ce07539250d6d525a3c49b8c",
       "bytes": 200722,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-learn-a-technical-skill-with-deliberate-practice.png": {
       "sha256": "3b540a0a97374608e9716c260b14abfe777abd59621c0f93b354352107ae49f7",
       "bytes": 212437,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-learn-a-technical-tool-without-memorizing-everything.png": {
       "sha256": "fac9906b81fa101f3d4ff458de62432ab614b975d335e68b47f229b112e32fdf",
       "bytes": 259181,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-make-a-landing-page-load-faster.png": {
       "sha256": "7a8b45c40fad50ce97e4da204c21b739b8a17d150be4c8be35e7c15b055f35f0",
       "bytes": 242289,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-make-a-small-javascript-project-easier-to-maintain.png": {
       "sha256": "efc76db73fd5d6557646c1a9987a06981196598e1f9eee94eeb1017413e7c65d",
       "bytes": 233222,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-make-remote-collaboration-more-inclusive.png": {
       "sha256": "a18f1bf70e48f7ddad708f52fdbf5f00428ac5887566f36da72e6175625351fb",
       "bytes": 244847,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-make-your-digital-footprint-smaller.png": {
       "sha256": "a09be3590738084610ab11e698b71b56a57c05ce82af61c0194adffa7bf7f3c4",
       "bytes": 228899,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-map-a-workflow-before-automating-it.png": {
       "sha256": "8c68bb41673c3c7643b062b279be58856f63ccebe12ab9409ba8009d9fe43fc8",
       "bytes": 225626,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-measure-remote-work-without-surveillance.png": {
       "sha256": "57f369fb1efdaeb3281c04b8e73dec8eddc4fbe95f4957beaededb586de3eacf",
       "bytes": 199131,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-monitor-ai-costs-latency-and-quality.png": {
       "sha256": "94cbaeab8460972ad4c0b94d2ff43dded5708779f423f924933ce491501ac261",
       "bytes": 215802,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-plan-a-feature-before-you-touch-the-code.png": {
       "sha256": "11fc803bba45ad6a4fa98734401e51f11f9467f41e52fe9de2a6791e219da806",
       "bytes": 229613,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-protect-a-small-website-admin-panel.png": {
       "sha256": "45b23800db46c4bb0e3d577caa33453bce065e9bbec90cffe2578deedcee6577",
       "bytes": 259687,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-read-a-security-finding-and-fix-the-root-cause.png": {
       "sha256": "9ead68abbd801950775f54cb307001c90a8f146e9f22df1f91e4f180b37a7be8",
       "bytes": 234855,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-read-a-server-health-check.png": {
       "sha256": "753584c62ab4581f32d3e1d91199a1bcdec27d6625e179cfc51100dc183ea906",
       "bytes": 249997,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-read-a-technical-paper-without-getting-lost.png": {
       "sha256": "33fd15ec73c5b53e7a8231af739a35a258204eb0e202c445f2debd44d954aebb",
       "bytes": 207677,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-read-a-tool-s-permission-screen.png": {
       "sha256": "a48c3a4a6ca6ec8afc3ac7645c8da8609b3e8bf0030fd7e0932fe667981ed276",
       "bytes": 250368,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-read-technical-documentation-efficiently.png": {
       "sha256": "3daae6dd8bbc3031fde6c329644f75a92afda47db539d40ae1e881f3a559a800",
       "bytes": 212964,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-reduce-deployment-risk-with-small-releases.png": {
       "sha256": "9ec458a7648c52f9e00a7f8f9a74140ea89164b497aa35a2f66cbdb61bba8a21",
       "bytes": 193790,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-remove-unnecessary-tracking-from-a-small-site.png": {
       "sha256": "f92f29c16855671384bfb61259c045156bace9d259ae80646c47f19a7402158b",
       "bytes": 266399,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-review-a-saas-tool-s-data-practices.png": {
       "sha256": "08ab5bc06222e1902c7a26469edb1d891ea0860001d16dc8de87f8ed69cb90b1",
       "bytes": 223352,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-review-api-authentication-without-guessing.png": {
       "sha256": "68420a9eac3518a259cf12c5d2f2ef84b9fa81bb5a12ac45d0a5a8bc898adca3",
       "bytes": 193181,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-run-better-technical-meetings.png": {
       "sha256": "a57a45af5534310783afd0a5f8d1c1c2fc93f2341e257ff40f63aec8a8a5adce",
       "bytes": 192388,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-secure-admin-panels-and-privileged-routes.png": {
       "sha256": "d7ed5a5d027cbc605748bd5ece46c49e67e8ae3af88402d8b5f6f7514c1093b7",
       "bytes": 226810,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-separate-work-personal-and-public-accounts.png": {
       "sha256": "3c26820c2771be24374591f3ea349e10bf1f30f00dd174ec14f6dd68536350a0",
       "bytes": 245445,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-share-files-without-losing-control-of-them.png": {
       "sha256": "fef57e080dcda65b435e7b0815cf148f83127bda6ac6b53793bb96682c8e05cc",
       "bytes": 216408,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-spot-a-phishing-page-before-you-sign-in.png": {
       "sha256": "7c4bc38098ad34aeef78f4e7120de2fbd5214bb98155397360ce6b4dbc973f69",
       "bytes": 240396,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-test-whether-a-new-tool-is-worth-your-time.png": {
       "sha256": "36e2d096ecfa0557f7016996e812a439123de5023c6c3a7cf4267a1eaebdd03c",
       "bytes": 230254,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-turn-a-long-article-into-an-action-plan.png": {
       "sha256": "60139cad0adc5059db4a608536a910db75e976f0a06e3271c99c88f129eb9ca3",
       "bytes": 211528,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-turn-a-repetitive-browser-task-into-a-safe-automation.png": {
       "sha256": "1a73b034e5f03a4bcd808573e93c6b6eb5e25f985e62c953aa18778b45b3e477",
       "bytes": 137182,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-turn-a-script-into-a-maintainable-tool.png": {
       "sha256": "d2eb34dce9c37f26cfca8498a985425cd32e419ac97d102833668d94ce02689b",
       "bytes": 200524,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-turn-a-tutorial-into-real-working-skill.png": {
       "sha256": "41463e1b94c0fe83b163e2a20d72192520663456955e5f8d19c20ac36f26f69d",
       "bytes": 202749,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-update-old-articles-without-losing-their-value.png": {
       "sha256": "59f2bcbc80742bd0c7d37dfbb0ba6584fb5f680c89f0784459d6c7d068ad6617",
       "bytes": 217301,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-use-git-branches-without-creating-a-mess.png": {
       "sha256": "835339a5f26b2be636861ddfd7a4e26ece6571e760745a4af20738d1f1766d88",
       "bytes": 253233,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-use-logs-without-getting-lost-in-them.png": {
       "sha256": "75404582963861682ed6e327f9b6ed45ad6a3f25dec3a8f4bdf2c8ad21e2e757",
       "bytes": 205255,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-use-search-intent-before-writing-an-article.png": {
       "sha256": "11b4ea3532002a82a3b6825d9a5bbccf963827c6b36bc524f54fc91050a3c991",
       "bytes": 236883,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-write-a-project-update-people-can-act-on.png": {
       "sha256": "787c0e83ad1df28306a2956d86221ed7e0ed09efc1c9adbca40382f00294f3ab",
       "bytes": 262095,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-write-better-technical-issue-reports.png": {
       "sha256": "e30886acd0db936604c0a0af9d4cda0da584f12b820e118ac3cf68993e1de630",
       "bytes": 260538,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-write-prompts-that-produce-testable-technical-answers.png": {
       "sha256": "46cfad0b32bc06f87bf048da8674d53ea100ae39ff6ecba064320b386b72ad6a",
       "bytes": 248081,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/how-to-write-search-snippets-people-want-to-click.png": {
       "sha256": "35cc6f162cf88dfe3373425fa4e4ac8010de541936d972b75d606d43f4a48ca9",
       "bytes": 224049,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/image-optimization-without-sacrificing-editorial-quality.png": {
       "sha256": "7ef6a15fffc529097f75d90132bf9e5ee513e5d44f94be70b84692e9aca2ac57",
       "bytes": 226434,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/infrastructure-as-code-a-safer-path-from-laptop-to-cloud.png": {
       "sha256": "524b91c75d407fc4b2bcfeb78af02459cfacd2a1ad27d364905f6a5c881a479a",
       "bytes": 232127,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/managing-deep-work-across-time-zones.png": {
       "sha256": "74cf281be50b23dadae09fe0d4acef50398d7a2785a45a2cc24cf5ff401eeb3a",
       "bytes": 196410,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/monorepo-or-multi-repo-a-decision-guide.png": {
       "sha256": "5cf627c258937f586cfe9eafdcc5992acba61f5e6672777143d8984145d69221",
       "bytes": 202412,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/multi-agent-systems-where-coordination-helps-and-hurts.png": {
       "sha256": "602b7a2ec173fc6098f2f8b03b13aeeb137960cd0fb6c3a6dd37e45f5f741c2f",
       "bytes": 228175,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/observability-basics-logs-metrics-and-traces-together.png": {
       "sha256": "b03ae178277aea982bbdadac0ffa47e3bdd8b9773998bbdd073400f6963aac7e",
       "bytes": 235256,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/owasp-top-10-2025-a-developer-friendly-action-plan.png": {
       "sha256": "06767006a201f9316a654aa90205f1cc2cea3d8a448bbe6056c13225ed6e9701",
       "bytes": 238975,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/page-experience-performance-accessibility-and-trust.png": {
       "sha256": "e7990581e43343570c378cdbd0d4c637491bba1afa26c46a453324dfa3cf43fa",
       "bytes": 225332,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/password-reset-and-email-verification-done-safely.png": {
       "sha256": "ffdc42563e46ad63e6ebc02d783388a5bc98c9b0211f6cbd8af75aea4abcc47c",
       "bytes": 227778,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/practical-session-and-token-security-for-javascript-apps.png": {
       "sha256": "ba3a02a03e8c1aadf3cd4d8db7cd12502cebd4a698075581dc35a8b3d8692c3a",
       "bytes": 238861,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/privacy-by-design-for-small-web-products.png": {
       "sha256": "f7377478e8f1d46b4bd950d38c1cb7358b25f9154b0725508768e30f3961ebab",
       "bytes": 222486,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/privacy-risks-in-ai-features-and-rag-pipelines.png": {
       "sha256": "b82b25242a06d6c12a361b48eec13bc1a2794a3564ea8bd1ecdfc8302b8c7af9",
       "bytes": 226572,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/privacy-safe-analytics-for-product-teams.png": {
       "sha256": "f17eaf15ef4b2606020bb3f0e0945be66f9fefbf913a1af50c607f0178bcdc68",
       "bytes": 224140,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/prompt-engineering-for-repeatable-technical-work.png": {
       "sha256": "8a0f12285076f4b4a56322237f3f94786019957b5bdd9e7a8f5efe2caad57f0c",
       "bytes": 217459,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/pseudonymization-vs-anonymization-what-changes.png": {
       "sha256": "cff3fe10360b8b9e3948e3f7b8718e076c954638079d405a45c0b4a7bf04c1e8",
       "bytes": 235919,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/rag-systems-explained-retrieval-that-actually-helps.png": {
       "sha256": "f0fd2006dadd5276c860e9d1457fb7294a273a6999a74846f7e86bca5cd1b511",
       "bytes": 227063,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/reliable-spreadsheet-automation-without-data-chaos.png": {
       "sha256": "9ee44ad2704eab157bf177cdca7ed30da328b05a5d646d84f14a6b584ca7b003",
       "bytes": 237430,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/remote-onboarding-that-does-not-depend-on-tribal-knowledge.png": {
       "sha256": "ad024e7bf367d39daf301fb341f0c101c954cda6e1272192ca7f5ae56bbde670",
       "bytes": 216767,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/research-reproducibility-for-small-engineering-projects.png": {
       "sha256": "f3ab004bb78636cf1d843a55fc6019bd82b945d44bbcd7c3318c36fa804a51b2",
       "bytes": 219115,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/search-intent-mapping-for-a-new-content-library.png": {
       "sha256": "1d9b4fb2cafe37562e94e418c1c9e1a3ec4ec12b9fe2f398ae813609207a1cb3",
       "bytes": 214839,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/search-intent-turning-a-question-into-a-better-result.png": {
       "sha256": "74356e68103d75b69329e11b8b36fdd5a8967e47c06a999e088d9a62e4032c24",
       "bytes": 207160,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/secrets-management-without-putting-keys-in-git.png": {
       "sha256": "80e304dc1f13b569a1c7e8fe77e78f7792e59bba0ccf7cbb0b51b8f4097cddab",
       "bytes": 221024,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/structured-data-for-articles-breadcrumbs-and-organizations.png": {
       "sha256": "2b36594c26495aa8e823fdbb4f606ea8a60fab0ef6bdfe6c840f7d5412d76db5",
       "bytes": 226274,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/supply-chain-security-for-open-source-dependencies.png": {
       "sha256": "f39e5a4902a1cf9630c67e268677e8f0598a6978722ef829788c7cde5f0d4976",
       "bytes": 233225,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/technical-seo-for-a-javascript-website.png": {
       "sha256": "c6effbd81545ec69bf9e1479b6abf683c15d32f07a0f4c38017318af9b655f6c",
       "bytes": 210952,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/testing-generated-code-before-it-reaches-production.png": {
       "sha256": "42e492e3a909b3ae6118cb1ac6b4cf499c3f835f73043cd5c50dc0f8477cdb36",
       "bytes": 214038,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/the-30-day-plan-for-becoming-better-at-technical-writing.png": {
       "sha256": "1ffdcff95c99e0d68dfeceb6e874475c42cee23eaf67e57835dcc16891368898",
       "bytes": 216756,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/the-anatomy-of-a-trustworthy-online-resource.png": {
       "sha256": "49607b10025f61207c12dceb6d7cf8cde1470b0f89963b4ce766d6056874de0a",
       "bytes": 206988,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/the-best-questions-to-ask-before-bookmarking-a-website.png": {
       "sha256": "4b5da14943df50d889d8f374541d5a277d346af0bc62bce78bcd9d3099791860",
       "bytes": 212258,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/the-best-way-to-capture-decisions-in-a-fast-moving-project.png": {
       "sha256": "e1def43c9dfb338c1b74cfc12f0b330fd2cdeb1ea3fc9ee840efad0285acd1d7",
       "bytes": 264916,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/the-best-way-to-organize-ai-experiments-and-results.png": {
       "sha256": "8fb7435e9253423dfe63a8732a42f30f084b97ad5994312a3175d18bd8a31cc2",
       "bytes": 231651,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/the-developer-s-guide-to-fast-local-projects.png": {
       "sha256": "ca8da8a4f5f3a276e772cfa298c843d2d6e92efae68e9f0a5c09e7457a113052",
       "bytes": 212756,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/the-difference-between-a-bug-a-regression-and-a-misunderstanding.png": {
       "sha256": "1469d0317c2bed55654ecbda44aa7b304bbfbc0dad2f56bc4e73ff575810e2a3",
       "bytes": 256989,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/the-difference-between-a-demo-a-prototype-and-a-product.png": {
       "sha256": "da5689eab07d12c19b1383ab3109be881ef6a469b18460deede03bc2dc2841fe",
       "bytes": 247618,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/the-difference-between-a-security-scan-and-a-security-audit.png": {
       "sha256": "613e4dc35ee887061cd24bc26e14517f44a41f84e12dd13385ee568ac6cb6f10",
       "bytes": 244019,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/the-difference-between-a-shortcut-and-a-system.png": {
       "sha256": "eff28cda1282cbe0d0e8ee9f58b8346cacb4542806ba5806f7571c985e6871d8",
       "bytes": 218467,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/the-difference-between-encryption-hashing-and-encoding.png": {
       "sha256": "6dff6fe4a3057b1ed4da387e3b775edd45d33d98101eea0589452fcbb0a6c01d",
       "bytes": 219278,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/the-difference-between-uptime-and-a-healthy-product.png": {
       "sha256": "45c6f0c2881378bc7027ddb77198dbeb531d87c248e0c45e513daed0e5333f63",
       "bytes": 235862,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/the-findtheweb-method-for-searching-less-and-finding-better.png": {
       "sha256": "4747ea048a9c8e097a6583b7674a3b22c10cedadd06239690828146c379fd8c4",
       "bytes": 210974,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/the-no-code-automation-stack-for-a-one-person-team.png": {
       "sha256": "2c7220cf3b0d7eacb014badbb49f7df727620bcf5bae3ce85630f468d991595a",
       "bytes": 231918,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/the-practical-case-for-fewer-notifications.png": {
       "sha256": "de3b3a9646044ac75709e153c3e2185f684b0b4dbf0181b024367484ed805f17",
       "bytes": 264008,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/the-small-model-stack-for-everyday-automation.png": {
       "sha256": "f5f5f5d9437e1ea0a6c0363acc0cc44e3d9ff2cffecb05f06c0106387bf8153d",
       "bytes": 232416,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/the-small-team-toolkit-for-calm-distributed-delivery.png": {
       "sha256": "f4a94ba00575a0fa614f5039c1e86292fb86c8e6df88bb1c2c704bf604c3a48b",
       "bytes": 197828,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/threat-modeling-a-modern-web-application.png": {
       "sha256": "2195ea6ac2ff44bbb53d61b811b1f7f1819e30c69ff8fff815e45e531ad0db4d",
       "bytes": 225520,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/typescript-in-2026-why-types-help-ai-assisted-development.png": {
       "sha256": "8983408dc60fd10c23ae2eee58b7f7ce2b33e88481446d770cd727f57c7b6f97",
       "bytes": 224506,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/understanding-https-certificates-and-the-secure-padlock.png": {
       "sha256": "0578b8d3231b39993a836db43e2596781c574c1231f6860334dba9e89f5021e3",
       "bytes": 263625,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/webhooks-apis-and-triggers-a-clear-beginner-guide.png": {
       "sha256": "7ef5b5c2b1569916535f64ccb46887556684594cae2fc570ebfcc16ef8fc05dc",
       "bytes": 236483,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/what-a-good-readme-should-tell-a-new-contributor.png": {
       "sha256": "8e398ae6875fdbdb40fdfd0a0ddc54c1b3b4d4f73cc407f56f5f08a95ca17079",
       "bytes": 192502,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/what-a-reverse-proxy-does-for-a-website.png": {
       "sha256": "b4e308d35b48fa0ab839acf53dabec135bf05d32c33bce01e9dbff7213b89579",
       "bytes": 198933,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/what-data-should-your-analytics-actually-collect.png": {
       "sha256": "9a0fdf834b6a48747b94e325c40c8738dc4f1e6158adfe772f282ce3c20578d2",
       "bytes": 234048,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/what-makes-a-tutorial-trustworthy.png": {
       "sha256": "04943463855de796bcb2fa83fa56685470a078b704a095c463e5ab2ea10b0d59",
       "bytes": 210409,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/what-makes-a-useful-meta-description.png": {
       "sha256": "587fbcd97afe20ba40670697ea379bdcf0fba0363eaa0285fbf5d71ae55bccb5",
       "bytes": 245255,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/what-makes-an-ai-agent-reliable-in-real-projects.png": {
       "sha256": "83c16ea47e291e63fc02ab35591c1eecc35873eaf4235579179664136ffd9719",
       "bytes": 232966,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/what-makes-an-online-resource-worth-sharing.png": {
       "sha256": "5d08c34b3c2338c5ad95a73228067c4c0dbafdad2ed3441f910c9e06f9aa6392",
       "bytes": 259922,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/what-to-check-before-you-trust-a-browser-extension.png": {
       "sha256": "20415cbf754e19d4d538aea8ff569bfe019519e20743f08dc1d75f00a6f2e66e",
       "bytes": 218603,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/what-to-keep-in-a-personal-backup-plan.png": {
       "sha256": "c77344a90d4513f6412decb91592806f2f4ff38154acf5c36fb1073dace0212f",
       "bytes": 250170,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/what-to-measure-in-an-automation-before-scaling-it.png": {
       "sha256": "52f6ec249541501b6c42b05fd973f5bdb364e71d833b5166460793446fbf8735",
       "bytes": 208292,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/what-to-verify-after-a-production-deployment.png": {
       "sha256": "f7b8867eee43eec985882bd48590335f7404851b9f4de23f7a6acc620fe49294",
       "bytes": 192088,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/what-website-privacy-policies-should-explain-clearly.png": {
       "sha256": "97d9d9692f538b001d7ede1fada8b3c00a7869aaaa9e2b2fba3fe21327d9f924",
       "bytes": 203196,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/when-no-code-automation-becomes-technical-debt.png": {
       "sha256": "6bdc09683d51a223a84be9548b21a32e4c0e8ef68aed67a2e41ac531d4d52c31",
       "bytes": 225027,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/why-mobile-ux-is-a-search-and-conversion-problem.png": {
       "sha256": "18a58c9a8118e08e3256597e6167ecd4d404033d906058c500949e43ce5d8d2f",
       "bytes": 261518,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "social-covers/why-software-updates-matter-more-than-security-theater.png": {
       "sha256": "3f6b58d67421b931eebde1e6ebb12241fe0f80cae5bb6521dd0dd3d0a8ca4f0f",
       "bytes": 215220,
+      "format": "png",
       "width": 1200,
       "height": 630
     },
     "editorial-images/browser-extension-permissions-20261027.png": {
       "sha256": "374855e1a7be7ffa619856bef1a830e4ada302ebb7a4c4f453ed3aa88cb6c5d4",
       "bytes": 1918307,
+      "format": "png",
+      "width": 1730,
+      "height": 909
+    },
+    "editorial-images/browser-extension-permissions-20261027.webp": {
+      "sha256": "9409c6226c030e4f9ac6b571784d2aaca1e6854dea918ea7800415c57e51a2fe",
+      "bytes": 103222,
+      "format": "webp",
       "width": 1730,
       "height": 909
     },
     "editorial-images/personal-backup-recovery-20261027.png": {
       "sha256": "d3395c4fb32f33c11584a42a6a5b1cfbd9ae5d6ccd2b730a5c4284759f0647cb",
       "bytes": 2074818,
+      "format": "png",
+      "width": 1730,
+      "height": 909
+    },
+    "editorial-images/personal-backup-recovery-20261027.webp": {
+      "sha256": "e6d72d8ad4a7c756fc7cf1647012b793f3540c42e2dc7477bfc94a5306e4d412",
+      "bytes": 152850,
+      "format": "webp",
       "width": 1730,
       "height": 909
     }
   },
   "serverFiles": {
     "seo.php": {
-      "sha256": "0d954d9a4346928b676935907480153318f6ed186ec6332d0b17a74921a4d415",
-      "bytes": 6273
+      "sha256": "0f0df1492cbfd6eeafb1e162c66896f6dd549814e5ba7c973687f26a95509d6a",
+      "bytes": 6625
     },
     ".htaccess": {
       "sha256": "feff8120e8b47a1d35c2678e95167a5e2ce40c4ed9b90d43be75c9aa8742095e",
