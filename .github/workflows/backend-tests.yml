@@ -24,7 +24,7 @@ jobs:
       - run: npm ci --prefix ../frontend-recovered
       - run: npm audit --prefix ../frontend-recovered --audit-level=low
       - run: npm run build --prefix ../frontend-recovered
-      - run: git diff --exit-code -- ../dist/index.html ../dist/assets/frontend ../dist/frontend-build.json ../dist/release-manifest.json ../dist/seo.php ../dist/seo-render.css
+      - run: git diff --exit-code -- ../.htaccess ../dist/.htaccess ../dist/index.html ../dist/assets/frontend ../dist/frontend-build.json ../dist/release-manifest.json ../dist/seo.php ../dist/seo-render.css
       - run: npm run build:editor
       - run: git diff --exit-code -- ../dist/assets/js/BlogManager-CgU_iRbw.js ../dist/assets/js/index-BLfo3RSv.js
       - run: node --experimental-vm-modules ../tools/check-bundle-syntax.cjs

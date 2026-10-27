@@ -1,0 +1,21 @@
+Options -MultiViews
+RewriteEngine On
+AddType application/manifest+json .webmanifest
+
+# Never serve repository metadata, debug helpers, backups, or internal docs.
+RewriteRule ^(?:\.git(?:/|$)|\.env(?:\..*)?$|debug-[^/]+|.*\.(?:zip|log|md|markdown))(?:$|/) - [F,L]
+RewriteRule ^(?:debug-login\.js|findtheweb-dist-upload-[^/]+\.zip)$ - [F,L]
+RewriteRule ^(?:backend|frontend-recovered|docs|Doc|node_modules|content|tools|tmp|temp)(?:/|$) - [F,L]
+
+# BEGIN_SEO
+# Hosting deploys the repository root, not the dist document root used locally.
+RewriteRule ^blog/([A-Za-z0-9][A-Za-z0-9_-]{0,254})/?$ dist/seo.php?kind=article&slug=$1 [L]
+RewriteRule ^sitemap\.xml$ dist/seo.php?kind=sitemap [L]
+RewriteRule ^rss\.xml$ dist/seo.php?kind=rss [L]
+# END_SEO
+
+# Serve only verified frontend artifacts from the repository deployment.
+RewriteCond %{DOCUMENT_ROOT}/dist/$1 -f [OR]
+RewriteCond %{DOCUMENT_ROOT}/dist/$1 -d
+RewriteRule ^(.+)$ dist/$1 [L]
+RewriteRule ^ dist/index.html [L]

@@ -6,7 +6,7 @@ const flag=path.join(dist,'seo-ready.flag'),hadFlag=fs.existsSync(flag);
 const containers=['findtheweb-seo-qa','findtheweb-seo-outage'];
 const report={checks:[]};
 function check(name,passed){report.checks.push({name,passed:!!passed});assert(passed,name);}
-function start(name,port,api){cp.execFileSync('docker',['run','--rm','-d','--network','host','--name',name,'-e','SEO_QA_PORT='+port,'-e','FINDTHEWEB_SEO_API_BASE='+api,'--mount',`type=bind,src=${dist},dst=/var/www/html,readonly`,'findtheweb-seo-qa'],{stdio:'pipe'});}
+function start(name,port,api,documentRoot=dist){cp.execFileSync('docker',['run','--rm','-d','--network','host','--name',name,'-e','SEO_QA_PORT='+port,'-e','FINDTHEWEB_SEO_API_BASE='+api,'--mount',`type=bind,src=${documentRoot},dst=/var/www/html,readonly`,'findtheweb-seo-qa'],{stdio:'pipe'});}
 async function ready(port){for(let i=0;i<60;i++){try{let r=await fetch(`http://127.0.0.1:${port}/robots.txt`);if(r.ok)return;}catch(_){}await new Promise(r=>setTimeout(r,250));}throw Error('Apache QA not ready');}
 (async()=>{
  let browser;
@@ -53,6 +53,13 @@ async function ready(port){for(let i=0;i<60;i++){try{let r=await fetch(`http://1
   const client=await hydrated.newPage();const errors=[];client.on('pageerror',e=>errors.push(e.message));
   await client.goto(url,{waitUntil:'domcontentloaded'});await client.locator('.prose').waitFor();
   check('React takes over server content without duplicate articles',await client.locator('#root h1').count()===1 && await client.locator('.seo-copy').count()===0 && errors.length===0);
+  await hydrated.close();await context.close();
+  cp.execFileSync('docker',['rm','-f',containers[0]],{stdio:'ignore'});
+  start(containers[0],5098,'http://127.0.0.1:5097',root);await ready(5098);
+  const deployed=await fetch(url);check('repository-root hosting renders article HTML',deployed.status===200 && (await deployed.text()).includes('id="seo-article"'));
+  for(const feed of ['sitemap.xml','rss.xml']){const r=await fetch('http://127.0.0.1:5098/'+feed);check('repository-root hosting renders '+feed,r.status===200&&(await r.text()).includes(feed==='sitemap.xml'?'<urlset':'<rss'));}
+  check('repository-root hosting preserves missing article 404',(await fetch('http://127.0.0.1:5098/blog/missing-seo-article')).status===404);
+  for(const internal of ['backend/package.json','content/editorial-release-20261027.json','tools/verify-seo-live.cjs'])check('repository-root hosting denies '+internal,(await fetch('http://127.0.0.1:5098/'+internal)).status===403);
  }catch(error){report.failure=error.message;process.exitCode=1;}
  finally{
   if(browser)await browser.close();

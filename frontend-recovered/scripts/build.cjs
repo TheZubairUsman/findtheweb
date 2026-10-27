@@ -14,6 +14,9 @@ const output = path.join(repo, 'dist/assets/frontend');
     let rules=fs.readFileSync(path.join(root,'server/htaccess'),'utf8').replace(/\r\n/g,'\n');
     if(!enabled)rules=rules.replace(/# BEGIN_SEO\n[\s\S]*?# END_SEO\n/,'');
     fs.writeFileSync(path.join(repo,'dist/.htaccess'),rules);
+    let rootRules=fs.readFileSync(path.join(root,'server/root-htaccess'),'utf8').replace(/\r\n/g,'\n');
+    if(!enabled)rootRules=rootRules.replace(/# BEGIN_SEO\n[\s\S]*?# END_SEO\n/,'');
+    fs.writeFileSync(path.join(repo,'.htaccess'),rootRules);
     if(enabled) fs.writeFileSync(path.join(repo,'dist/seo-ready.flag'),fs.readFileSync(path.join(root,'server/seo-ready.flag'),'utf8').replace(/\r\n/g,'\n'));
     else if(fs.existsSync(path.join(repo,'dist/seo-ready.flag'))) fs.unlinkSync(path.join(repo,'dist/seo-ready.flag'));
     const entry = Object.entries(result.metafile.outputs).find(([,v]) => v.entryPoint === 'src/main.jsx');
@@ -37,6 +40,7 @@ const output = path.join(repo, 'dist/assets/frontend');
       files[file] = {sha256:crypto.createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length};
     }
     const serverFiles={};for(const file of ['seo.php','.htaccess',...(enabled?['seo-ready.flag']:[])]){const bytes=fs.readFileSync(path.join(repo,'dist',file));serverFiles[file]={sha256:crypto.createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length};}
+    const rootBytes=fs.readFileSync(path.join(repo,'.htaccess'));serverFiles['repository-root/.htaccess']={sha256:crypto.createHash('sha256').update(rootBytes).digest('hex'),bytes:rootBytes.length};
     fs.writeFileSync(path.join(repo,'dist/release-manifest.json'),JSON.stringify({release:'seo-content-20261027',files,serverFiles,rollback:'Restore dist from Git commit 24c148e to disable server rendering; retain code/dependency/content rollback receipts separately. Do not restore the entire database over concurrent user data.'},null,2)+'\n');
   });
   console.log('Frontend rebuilt from source.');
