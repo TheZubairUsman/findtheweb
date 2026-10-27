@@ -15,5 +15,9 @@ async function get(url){return fetch(url,{signal:AbortSignal.timeout(25000)});}
  const missing=await get(site+(probe?'/seo.php?kind=article&slug=':'/blog/')+'missing-seo-check-20261027');assert.equal(missing.status,404);
  const sitemap=await get(site+(probe?'/seo.php?kind=sitemap':'/sitemap.xml'));assert.equal(sitemap.status,200);const xml=await sitemap.text();assert(xml.includes('<urlset'));for(const slug of slugs)assert(xml.includes('/blog/'+slug));
  const rss=await get(site+(probe?'/seo.php?kind=rss':'/rss.xml'));assert.equal(rss.status,200);assert((await rss.text()).includes('<rss'));
- console.log(JSON.stringify({checkedAt:new Date().toISOString(),mode:probe?'direct-PHP':'canonical-routes',checks,missingStatus:missing.status,sitemapUrls:(xml.match(/<url>/g)||[]).length,rss:true}));
+ const protectedPaths=[];
+ if(!probe)for(const path of ['/.env','/.git/config','/backend/package.json','/content/editorial-release-20261027.json','/tools/verify-seo-live.cjs']){
+  const response=await fetch(site+path,{method:'HEAD',signal:AbortSignal.timeout(25000)});assert([403,404].includes(response.status),'Internal path must be unavailable: '+path);protectedPaths.push({path,status:response.status});
+ }
+ console.log(JSON.stringify({checkedAt:new Date().toISOString(),mode:probe?'direct-PHP':'canonical-routes',checks,missingStatus:missing.status,sitemapUrls:(xml.match(/<url>/g)||[]).length,rss:true,protectedPaths}));
 })().catch(e=>{console.error(e.stack);process.exitCode=1;});
