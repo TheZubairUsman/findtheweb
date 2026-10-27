@@ -2,7 +2,7 @@
   "release": "seo-content-20261027",
   "files": {
     "index.html": {
-      "sha256": "4e25336e23359045c4c319b5c7a394c8895deef496ba4e5420017e1172c2fa3a",
+      "sha256": "65f6cbc745b8f54e2955ade5d91ee57534da467dabffd4faa4d3c0c9f32d760a",
       "bytes": 5754
     },
     "frontend-build.json": {
@@ -26,8 +26,8 @@
       "bytes": 465
     },
     "seo-render.css": {
-      "sha256": "88d315c9f8eac31eaa60c8c52d543197923a89d8e92b56d59da9ccf54c8b201b",
-      "bytes": 1374
+      "sha256": "89c6c3a30044abf49cf4f198aac1cc392c942afdeec713e5f7dc34ed21b6907a",
+      "bytes": 1602
     },
     "assets/frontend/app-2LOC3U7N.js": {
       "sha256": "22e93383dec69afedce203bb235dcd2b3773f655c01c438ce2a8404d50ae2f6b",
