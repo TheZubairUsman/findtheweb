@@ -176,8 +176,8 @@
     "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t6-04-20261028.png"
   },
   "how-to-compare-tools-without-falling-for-marketing-claims": {
-    "sourceSha256": "86298ba0eac16cf7fa8f3463a66e154d3862ad13bc55f4185bd39f305525e7e9",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/how-to-compare-tools-without-falling-for-marketing-claims.png"
+    "sourceSha256": "721d1b050ee1d528cf5a1afd73d2fa94e1dcce8eb88ab97d94e69be0c2fca58a",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t3-14-20261028.png"
   },
   "evidence-inference-and-opinion-a-better-research-habit": {
     "sourceSha256": "f48c222603ab19675b3b815822241eb5c3e7556a2f44e230a1c4239a8f4402b2",
@@ -292,8 +292,8 @@
     "url": "https://findtheweb.zus3cu.tech/social-covers/observability-basics-logs-metrics-and-traces-together.png"
   },
   "how-to-cut-cloud-waste-without-cutting-reliability": {
-    "sourceSha256": "753a2bba494387795b5bcdda5a023778f217d8597768d913ad7f8ce0d84e01d0",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/how-to-cut-cloud-waste-without-cutting-reliability.png"
+    "sourceSha256": "a7c9675a7eea863b92dbc031db8b7bb25e9c8a44864af768e519a2f46f5009dd",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t6-14-20261028.png"
   },
   "secrets-management-without-putting-keys-in-git": {
     "sourceSha256": "13979ecc8558b999e82221ab292bf852e8e3f6b01fb59e4ba8addfd545cae95a",
@@ -308,8 +308,8 @@
     "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t4-08-20261028.png"
   },
   "how-to-design-health-checks-that-find-real-failures": {
-    "sourceSha256": "0b0da332e3a07bebf71c17c6ba18e8c73fdfcfd56b488ca5fd6422ad11f49e07",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/how-to-design-health-checks-that-find-real-failures.png"
+    "sourceSha256": "27340db5a7a39cff60f6d3c1fb8e4008b9499b3fcae41aad1f7642cc07d30595",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t5-15-20261028.png"
   },
   "containers-explained-for-teams-shipping-their-first-service": {
     "sourceSha256": "691397028c37b7960e2597bfe12035c33c0d316c747d836d38340c26328fafc4",
@@ -328,8 +328,8 @@
     "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t5-02-20261028.png"
   },
   "how-to-connect-saas-tools-without-leaking-secrets": {
-    "sourceSha256": "be72b58fe105eee16037ba158ae71fc41f9cb9a7789e32f6bf2188d9dac6697f",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/how-to-connect-saas-tools-without-leaking-secrets.png"
+    "sourceSha256": "46aa93ffcd1aebf37d4be6788d15da789cbd3c8596a8216a074165432c086e6b",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t4-14-20261028.png"
   },
   "automation-testing-for-non-developers": {
     "sourceSha256": "7a1df659aad8677482b42cd026d988b74d77132bf3331467d84bcb7ab6785e8c",
@@ -508,16 +508,16 @@
     "url": "https://findtheweb.zus3cu.tech/social-covers/what-a-reverse-proxy-does-for-a-website.png"
   },
   "how-to-deploy-a-static-website-with-confidence": {
-    "sourceSha256": "9ba8b5c96a280723d630f0829bc061c2bb93d93271c3170962803ee1ef88bc27",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/how-to-deploy-a-static-website-with-confidence.png"
+    "sourceSha256": "24781e85f77fb97f194db8c8552d30eeb7a26e01a5a1273e39d38677f0cca6aa",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t2-15-20261028.png"
   },
   "a-practical-guide-to-digital-decluttering": {
     "sourceSha256": "6ee6d33bc8d91e85e8c7bd0547cd1cab51d3472a8d6625ff1e93fdcccf29844f",
     "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t6-03-20261028.png"
   },
   "how-to-design-a-workday-around-deep-and-shallow-tasks": {
-    "sourceSha256": "228e8a2a20ea8ba84dc33462922441b89b30cf20fcddefb087fcd7206523161d",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/how-to-design-a-workday-around-deep-and-shallow-tasks.png"
+    "sourceSha256": "ff73f4efc5132b03dc4407b861748b9ff4b30fd3cd9cfb16aac42ac0b6ad3b8a",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t3-15-20261028.png"
   },
   "the-best-way-to-capture-decisions-in-a-fast-moving-project": {
     "sourceSha256": "cfd0baf6fa290ba14cce49092a4a2e5719a11a74ff216459af141261f3d8513f",
@@ -580,8 +580,8 @@
     "url": "https://findtheweb.zus3cu.tech/social-covers/the-difference-between-a-shortcut-and-a-system.png"
   },
   "how-to-design-a-workflow-that-fails-gracefully": {
-    "sourceSha256": "add00177186b98253e2b801de323a20fe0d4ef237562fec1e25bfd879ec66998",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/how-to-design-a-workflow-that-fails-gracefully.png"
+    "sourceSha256": "3537bbdfc6d2a0555e90b59ac5dcab9dfc4e7652d3d3e27e525ceabaf18a6930",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t4-15-20261028.png"
   },
   "a-safe-way-to-automate-email-and-spreadsheet-tasks": {
     "sourceSha256": "62a5c9ff2dd6f61ebee77aa9de0ead61b67033cfdf6f9d624bbea2999a445af8",
@@ -632,16 +632,16 @@
     "url": "https://findtheweb.zus3cu.tech/social-covers/how-to-make-your-digital-footprint-smaller.png"
   },
   "how-to-create-a-content-cluster-that-users-can-navigate": {
-    "sourceSha256": "363856f19b93778bd4cf2c6496ca8a3993a1e0c6722b905ef805efc1c5c4b648",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/how-to-create-a-content-cluster-that-users-can-navigate.png"
+    "sourceSha256": "ccb2e8c75aa734c610833670856aea8390a76ed2cec1550d0fd1437f6d16aa2f",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t5-14-20261028.png"
   },
   "a-plain-english-guide-to-sitemaps-and-robots-txt": {
     "sourceSha256": "0293b45e0d70fbefe70a64794ea0ab32ee131bad000ccf6d37ce08ed75592b23",
     "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t4-02-20261028.png"
   },
   "how-to-diagnose-a-slow-image-on-a-website": {
-    "sourceSha256": "f1151c5a35622700c64d727289c4cc1c01ad6ce15b3657fcfd6a4d81c9523eea",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/how-to-diagnose-a-slow-image-on-a-website.png"
+    "sourceSha256": "1a2ba88d181bf29b9f0a7f1decdfa136c4922eede3ddc2b4192cded83eb01090",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t6-15-20261028.png"
   },
   "why-mobile-ux-is-a-search-and-conversion-problem": {
     "sourceSha256": "adcac0b2cb7480cbf9f9ebeee8a96bc4bb466762bc376c9558d14dcd00fca163",
@@ -696,8 +696,8 @@
     "url": "https://findtheweb.zus3cu.tech/social-covers/what-a-good-readme-should-tell-a-new-contributor.png"
   },
   "how-to-debug-a-frontend-error-from-the-first-clue": {
-    "sourceSha256": "f022bbb724356c68f94fc69a23ba3914002e89b545d5fd8da13c1773ff9cbe04",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/how-to-debug-a-frontend-error-from-the-first-clue.png"
+    "sourceSha256": "eb05f39e3ca15697677d96b72de1319b76f3e72aaf5a680103229bf271b96b8e",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t1-15-20261028.png"
   },
   "a-clear-mental-model-for-apis-routes-and-requests": {
     "sourceSha256": "8e4ba93069e0d58355526d4b05922905b4da3437336434f519342ac6847f0afc",

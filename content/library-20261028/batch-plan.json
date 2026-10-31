@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-31T08:59:21.712Z",
+  "checkedAt": "2026-10-31T09:08:34.116Z",
   "total": 198,
   "preserved": 6,
   "assigned": 192,
-  "drafts": 98,
-  "gatePassed": 92,
+  "drafts": 111,
+  "gatePassed": 102,
   "batches": [
     {
       "releaseId": "library-01-20261028",
@@ -172,11 +172,10 @@
         "how-to-design-health-checks-that-find-real-failures",
         "how-to-diagnose-a-slow-image-on-a-website"
       ],
-      "state": "pending",
-      "blocked": [
-        "how-to-cut-cloud-waste-without-cutting-reliability",
-        "how-to-debug-a-frontend-error-from-the-first-clue"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-09.json",
+      "sha256": "860e5109a5e55574d52ba6f3a9d5f45c63c76fa8aaf2f515245ba3dad111dda2"
     },
     {
       "releaseId": "library-10-20261028",
@@ -194,11 +193,8 @@
       ],
       "state": "pending",
       "blocked": [
-        "how-to-discover-small-tools-that-solve-specific-problems",
-        "how-to-judge-whether-a-free-online-tool-is-worth-using",
         "how-to-learn-a-technical-skill-with-deliberate-practice",
         "how-to-learn-a-technical-tool-without-memorizing-everything",
-        "how-to-make-a-landing-page-load-faster",
         "how-to-make-a-small-javascript-project-easier-to-maintain"
       ]
     },
@@ -218,13 +214,10 @@
       ],
       "state": "pending",
       "blocked": [
-        "how-to-make-remote-collaboration-more-inclusive",
-        "how-to-make-your-digital-footprint-smaller",
         "how-to-map-a-workflow-before-automating-it",
         "how-to-measure-remote-work-without-surveillance",
         "how-to-monitor-ai-costs-latency-and-quality",
         "how-to-plan-a-feature-before-you-touch-the-code",
-        "how-to-protect-a-small-website-admin-panel",
         "how-to-read-a-security-finding-and-fix-the-root-cause",
         "how-to-read-a-server-health-check",
         "how-to-read-a-technical-paper-without-getting-lost"
@@ -248,13 +241,11 @@
       "blocked": [
         "how-to-read-a-tool-s-permission-screen",
         "how-to-read-technical-documentation-efficiently",
-        "how-to-reduce-deployment-risk-with-small-releases",
         "how-to-remove-unnecessary-tracking-from-a-small-site",
         "how-to-review-a-saas-tool-s-data-practices",
         "how-to-review-api-authentication-without-guessing",
         "how-to-run-better-technical-meetings",
         "how-to-secure-admin-panels-and-privileged-routes",
-        "how-to-separate-work-personal-and-public-accounts",
         "how-to-share-files-without-losing-control-of-them"
       ]
     },
