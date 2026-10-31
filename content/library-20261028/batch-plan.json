@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-31T15:47:23.114Z",
+  "checkedAt": "2026-10-31T17:22:11.056Z",
   "total": 198,
   "preserved": 6,
   "assigned": 192,
-  "drafts": 134,
-  "gatePassed": 131,
+  "drafts": 136,
+  "gatePassed": 133,
   "batches": [
     {
       "releaseId": "library-01-20261028",
@@ -229,10 +229,10 @@
         "how-to-separate-work-personal-and-public-accounts",
         "how-to-share-files-without-losing-control-of-them"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-12.json",
-      "sha256": "12128538f9d7485f79d02248268f781a4720d5e23c9f9a64a604fb8aa9535b2e"
+      "liveVerifiedAt": "2026-10-31T15:54:45.581Z"
     },
     {
       "releaseId": "library-13-20261028",
@@ -425,11 +425,10 @@
         "why-mobile-ux-is-a-search-and-conversion-problem",
         "why-software-updates-matter-more-than-security-theater"
       ],
-      "state": "pending",
-      "blocked": [
-        "why-mobile-ux-is-a-search-and-conversion-problem",
-        "why-software-updates-matter-more-than-security-theater"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-20.json",
+      "sha256": "9925aa9fbe39b72ea65807f3751ed5ea53a8aca2cb9e6101e9678eddc55ed960"
     }
   ]
 }

@@ -1,0 +1,15 @@
+{
+  "releaseId": "library-20-20261028",
+  "baseline": "tmp/editorial-full-baseline-20261028.json",
+  "output": "content/library-20261028/release-20.json",
+  "articles": [
+    {
+      "draft": "content/library-20261028/team-5/why-mobile-ux-is-a-search-and-conversion-problem.json",
+      "cover": "lib-t5-32-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/why-software-updates-matter-more-than-security-theater.json",
+      "cover": "lib-t6-32-20261028.png"
+    }
+  ]
+}
