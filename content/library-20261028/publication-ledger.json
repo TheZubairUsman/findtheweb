@@ -221,9 +221,29 @@
         "how-to-read-a-server-health-check",
         "how-to-read-a-technical-paper-without-getting-lost"
       ]
+    },
+    {
+      "releaseId": "library-12-20261028",
+      "commit": "26c685a9a50cc3c8527d7ad2739375a287209a12",
+      "ciRun": 41216659729,
+      "releaseSha256": "12128538f9d7485f79d02248268f781a4720d5e23c9f9a64a604fb8aa9535b2e",
+      "liveVerifiedAt": "2026-10-31T15:54:45.581Z",
+      "articleCount": 10,
+      "slugs": [
+        "how-to-read-a-tool-s-permission-screen",
+        "how-to-read-technical-documentation-efficiently",
+        "how-to-reduce-deployment-risk-with-small-releases",
+        "how-to-remove-unnecessary-tracking-from-a-small-site",
+        "how-to-review-a-saas-tool-s-data-practices",
+        "how-to-review-api-authentication-without-guessing",
+        "how-to-run-better-technical-meetings",
+        "how-to-secure-admin-panels-and-privileged-routes",
+        "how-to-separate-work-personal-and-public-accounts",
+        "how-to-share-files-without-losing-control-of-them"
+      ]
     }
   ],
-  "verifiedNewArticles": 110,
-  "totalUpgraded": 116,
-  "remaining": 82
+  "verifiedNewArticles": 120,
+  "totalUpgraded": 126,
+  "remaining": 72
 }
