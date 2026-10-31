@@ -1,0 +1,49 @@
+{
+  "total": 198,
+  "preservedUpgrades": 6,
+  "releases": [
+    {
+      "releaseId": "library-01-20261028",
+      "commit": "5fd14ff59457a156373bab16e80e18703f508d95",
+      "ciRun": 41164284177,
+      "releaseSha256": "98463ad08010d25643dd73112454bb4f80999bf5b6403a8bdea16aea2d65116d",
+      "liveVerifiedAt": "2026-10-31T03:32:06.240Z",
+      "articleCount": 10,
+      "slugs": [
+        "a-beginner-friendly-web-security-checklist-for-new-sites",
+        "a-beginner-s-guide-to-data-minimization",
+        "a-beginner-s-guide-to-trigger-based-workflows",
+        "a-better-async-meeting-replacement-for-small-teams",
+        "a-better-way-to-organize-useful-links",
+        "a-clear-mental-model-for-apis-routes-and-requests",
+        "a-curator-s-method-for-organizing-useful-links",
+        "a-developer-checklist-for-responsible-data-handling",
+        "a-human-approach-to-learning-with-ai-assistants",
+        "a-plain-english-guide-to-sitemaps-and-robots-txt"
+      ]
+    },
+    {
+      "releaseId": "library-02-20261028",
+      "commit": "5fd14ff59457a156373bab16e80e18703f508d95",
+      "ciRun": 41164284177,
+      "releaseSha256": "2e7fbec1e4d9209a025a9e3ef14129a6fbaf1cca6d7066f12977416aabf9360e",
+      "liveVerifiedAt": "2026-10-31T03:32:11.452Z",
+      "articleCount": 10,
+      "slugs": [
+        "a-practical-comparison-of-workflow-orchestration-patterns",
+        "a-practical-evaluation-checklist-for-llm-features",
+        "a-practical-guide-to-ai-coding-assistants-and-code-review",
+        "a-practical-guide-to-building-a-personal-ai-research-workflow",
+        "a-practical-guide-to-building-your-own-tool-directory",
+        "a-practical-guide-to-comparing-similar-websites",
+        "a-practical-guide-to-data-minimization",
+        "a-practical-guide-to-digital-decluttering",
+        "a-practical-guide-to-environment-variables-and-secrets",
+        "a-practical-guide-to-safer-public-wi-fi-use"
+      ]
+    }
+  ],
+  "verifiedNewArticles": 20,
+  "totalUpgraded": 26,
+  "remaining": 172
+}

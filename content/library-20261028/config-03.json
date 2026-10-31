@@ -1,0 +1,47 @@
+{
+  "releaseId": "library-03-20261028",
+  "baseline": "tmp/editorial-full-baseline-20261028.json",
+  "output": "content/library-20261028/release-03.json",
+  "articles": [
+    {
+      "draft": "content/library-20261028/team-3/04-a-practical-internal-linking-strategy-for-growing-blogs.json",
+      "cover": "lib-t3-04-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/04-a-practical-introduction-to-containers.json",
+      "cover": "lib-t4-04-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/a-practical-introduction-to-webhooks.json",
+      "cover": "lib-t5-04-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/04-a-practical-note-taking-system-for-developers.json",
+      "cover": "lib-t6-04-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/05-a-practical-note-taking-system-for-technical-projects.json",
+      "cover": "lib-t1-05-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/a-practical-remote-team-operating-manual.json",
+      "cover": "lib-t2-05-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/05-a-practical-seo-checklist-for-a-new-website.json",
+      "cover": "lib-t3-05-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/05-a-production-ready-cloud-deployment-checklist.json",
+      "cover": "lib-t4-05-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/a-research-workflow-for-comparing-new-developer-tools.json",
+      "cover": "lib-t5-05-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/05-a-research-workflow-for-finding-trustworthy-technical-sources.json",
+      "cover": "lib-t6-05-20261028.png"
+    }
+  ]
+}

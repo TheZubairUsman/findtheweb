@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-31T03:21:47.900Z",
+  "checkedAt": "2026-10-31T03:32:59.784Z",
   "total": 198,
   "preserved": 6,
   "assigned": 192,
-  "drafts": 44,
-  "gatePassed": 29,
+  "drafts": 70,
+  "gatePassed": 53,
   "batches": [
     {
       "releaseId": "library-01-20261028",
@@ -20,10 +20,10 @@
         "a-human-approach-to-learning-with-ai-assistants",
         "a-plain-english-guide-to-sitemaps-and-robots-txt"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-01.json",
-      "sha256": "98463ad08010d25643dd73112454bb4f80999bf5b6403a8bdea16aea2d65116d"
+      "liveVerifiedAt": "2026-10-31T03:32:06.240Z"
     },
     {
       "releaseId": "library-02-20261028",
@@ -39,10 +39,10 @@
         "a-practical-guide-to-environment-variables-and-secrets",
         "a-practical-guide-to-safer-public-wi-fi-use"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-02.json",
-      "sha256": "2e7fbec1e4d9209a025a9e3ef14129a6fbaf1cca6d7066f12977416aabf9360e"
+      "liveVerifiedAt": "2026-10-31T03:32:11.452Z"
     },
     {
       "releaseId": "library-03-20261028",
@@ -58,12 +58,10 @@
         "a-research-workflow-for-comparing-new-developer-tools",
         "a-research-workflow-for-finding-trustworthy-technical-sources"
       ],
-      "state": "pending",
-      "blocked": [
-        "a-practical-remote-team-operating-manual",
-        "a-practical-seo-checklist-for-a-new-website",
-        "a-production-ready-cloud-deployment-checklist"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-03.json",
+      "sha256": "958a6a2b981105a9f298a33fbe80281041f9299be744c3b7800014b7e3a0b0f4"
     },
     {
       "releaseId": "library-04-20261028",
@@ -79,17 +77,10 @@
         "async-communication-what-to-write-down-and-what-to-meet-about",
         "automation-testing-for-non-developers"
       ],
-      "state": "pending",
-      "blocked": [
-        "a-simple-weekly-review-for-technical-work",
-        "a-small-business-incident-response-runbook",
-        "a-small-team-guide-to-backups-and-rollback",
-        "ai-automation-vs-ai-agents-choosing-the-right-architecture",
-        "api-documentation-that-developers-actually-use",
-        "api-rate-limiting-that-protects-users-without-breaking-ux",
-        "async-communication-what-to-write-down-and-what-to-meet-about",
-        "automation-testing-for-non-developers"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-04.json",
+      "sha256": "7858da350a29e33e603515dd986a9d33968f8f5c4e2040d7871fc10848ff69e1"
     },
     {
       "releaseId": "library-05-20261028",
@@ -107,14 +98,6 @@
       ],
       "state": "pending",
       "blocked": [
-        "backups-and-rollbacks-for-stateful-web-applications",
-        "blue-green-vs-canary-deployments-for-small-teams",
-        "bookmarking-for-teams-from-links-to-shared-knowledge",
-        "building-a-personal-knowledge-base-that-stays-findable",
-        "building-trust-when-the-team-rarely-meets-live",
-        "ci-cd-pipelines-fast-feedback-without-unsafe-releases",
-        "containers-explained-for-teams-shipping-their-first-service",
-        "cookies-consent-and-honest-product-ux",
         "core-web-vitals-explained-for-people-who-build-websites",
         "core-web-vitals-in-practice-lcp-inp-and-cls"
       ]
@@ -135,13 +118,10 @@
       ],
       "state": "pending",
       "blocked": [
-        "curating-resources-without-creating-another-link-dump",
         "debugging-javascript-across-browser-and-server",
         "designing-a-remote-workspace-that-reduces-context-switching",
-        "designing-deletion-and-export-workflows-users-can-trust",
         "designing-safe-browser-automation-for-real-work",
         "documentation-as-a-remote-team-superpower",
-        "encryption-at-rest-and-in-transit-explained",
         "evidence-inference-and-opinion-a-better-research-habit",
         "fast-python-tooling-reproducible-environments-with-uv",
         "from-manual-task-to-measurable-automation-in-seven-days"
@@ -165,13 +145,11 @@
       "blocked": [
         "git-workflows-that-keep-small-teams-moving",
         "how-dns-connects-a-domain-to-a-website",
-        "how-internal-links-help-visitors-and-search-engines",
         "how-no-code-automation-fits-into-a-real-engineering-workflow",
         "how-to-add-human-review-to-automated-decisions",
         "how-to-ask-better-questions-when-you-are-stuck",
         "how-to-audit-a-sitemap-and-robots-file",
         "how-to-automate-repetitive-research-without-losing-judgment",
-        "how-to-build-a-personal-command-center-for-online-work",
         "how-to-build-a-personal-knowledge-base-you-will-reuse"
       ]
     },

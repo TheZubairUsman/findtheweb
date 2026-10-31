@@ -1,0 +1,47 @@
+{
+  "releaseId": "library-04-20261028",
+  "baseline": "tmp/editorial-full-baseline-20261028.json",
+  "output": "content/library-20261028/release-04.json",
+  "articles": [
+    {
+      "draft": "content/library-20261028/team-1/06-a-safe-way-to-automate-email-and-spreadsheet-tasks.json",
+      "cover": "lib-t1-06-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/a-simple-weekly-review-for-technical-work.json",
+      "cover": "lib-t2-06-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/06-a-small-business-incident-response-runbook.json",
+      "cover": "lib-t3-06-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/06-a-small-team-guide-to-backups-and-rollback.json",
+      "cover": "lib-t4-06-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/a-small-team-playbook-for-shipping-ai-features.json",
+      "cover": "lib-t5-06-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/06-ai-automation-vs-ai-agents-choosing-the-right-architecture.json",
+      "cover": "lib-t6-06-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/07-api-documentation-that-developers-actually-use.json",
+      "cover": "lib-t1-07-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/api-rate-limiting-that-protects-users-without-breaking-ux.json",
+      "cover": "lib-t2-07-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/07-async-communication-what-to-write-down-and-what-to-meet-about.json",
+      "cover": "lib-t3-07-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/07-automation-testing-for-non-developers.json",
+      "cover": "lib-t4-07-20261028.png"
+    }
+  ]
+}
