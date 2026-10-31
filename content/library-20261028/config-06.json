@@ -1,0 +1,47 @@
+{
+  "releaseId": "library-06-20261028",
+  "baseline": "tmp/editorial-full-baseline-20261028.json",
+  "output": "content/library-20261028/release-06.json",
+  "articles": [
+    {
+      "draft": "content/library-20261028/team-3/09-curating-resources-without-creating-another-link-dump.json",
+      "cover": "lib-t3-09-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/09-debugging-javascript-across-browser-and-server.json",
+      "cover": "lib-t4-09-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/designing-a-remote-workspace-that-reduces-context-switching.json",
+      "cover": "lib-t5-09-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/09-designing-deletion-and-export-workflows-users-can-trust.json",
+      "cover": "lib-t6-09-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/10-designing-safe-browser-automation-for-real-work.json",
+      "cover": "lib-t1-10-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/documentation-as-a-remote-team-superpower.json",
+      "cover": "lib-t2-10-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/10-encryption-at-rest-and-in-transit-explained.json",
+      "cover": "lib-t3-10-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/10-evidence-inference-and-opinion-a-better-research-habit.json",
+      "cover": "lib-t4-10-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/fast-python-tooling-reproducible-environments-with-uv.json",
+      "cover": "lib-t5-10-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/10-from-manual-task-to-measurable-automation-in-seven-days.json",
+      "cover": "lib-t6-10-20261028.png"
+    }
+  ]
+}

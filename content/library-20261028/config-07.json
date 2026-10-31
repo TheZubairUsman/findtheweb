@@ -1,0 +1,47 @@
+{
+  "releaseId": "library-07-20261028",
+  "baseline": "tmp/editorial-full-baseline-20261028.json",
+  "output": "content/library-20261028/release-07.json",
+  "articles": [
+    {
+      "draft": "content/library-20261028/team-1/11-git-workflows-that-keep-small-teams-moving.json",
+      "cover": "lib-t1-11-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/how-dns-connects-a-domain-to-a-website.json",
+      "cover": "lib-t2-11-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/11-how-internal-links-help-visitors-and-search-engines.json",
+      "cover": "lib-t3-11-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/11-how-no-code-automation-fits-into-a-real-engineering-workflow.json",
+      "cover": "lib-t4-11-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/how-to-add-human-review-to-automated-decisions.json",
+      "cover": "lib-t5-11-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/11-how-to-ask-better-questions-when-you-are-stuck.json",
+      "cover": "lib-t6-11-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/12-how-to-audit-a-sitemap-and-robots-file.json",
+      "cover": "lib-t1-12-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/how-to-automate-repetitive-research-without-losing-judgment.json",
+      "cover": "lib-t2-12-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/12-how-to-build-a-personal-command-center-for-online-work.json",
+      "cover": "lib-t3-12-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/12-how-to-build-a-personal-knowledge-base-you-will-reuse.json",
+      "cover": "lib-t4-12-20261028.png"
+    }
+  ]
+}

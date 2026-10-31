@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-31T03:32:59.784Z",
+  "checkedAt": "2026-10-31T03:41:21.567Z",
   "total": 198,
   "preserved": 6,
   "assigned": 192,
-  "drafts": 70,
-  "gatePassed": 53,
+  "drafts": 82,
+  "gatePassed": 73,
   "batches": [
     {
       "releaseId": "library-01-20261028",
@@ -96,11 +96,10 @@
         "core-web-vitals-explained-for-people-who-build-websites",
         "core-web-vitals-in-practice-lcp-inp-and-cls"
       ],
-      "state": "pending",
-      "blocked": [
-        "core-web-vitals-explained-for-people-who-build-websites",
-        "core-web-vitals-in-practice-lcp-inp-and-cls"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-05.json",
+      "sha256": "b60cb741cb4d75ff3be9201048906b8ab41d64c465220f3f977e507dd056feb6"
     },
     {
       "releaseId": "library-06-20261028",
@@ -116,16 +115,10 @@
         "fast-python-tooling-reproducible-environments-with-uv",
         "from-manual-task-to-measurable-automation-in-seven-days"
       ],
-      "state": "pending",
-      "blocked": [
-        "debugging-javascript-across-browser-and-server",
-        "designing-a-remote-workspace-that-reduces-context-switching",
-        "designing-safe-browser-automation-for-real-work",
-        "documentation-as-a-remote-team-superpower",
-        "evidence-inference-and-opinion-a-better-research-habit",
-        "fast-python-tooling-reproducible-environments-with-uv",
-        "from-manual-task-to-measurable-automation-in-seven-days"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-06.json",
+      "sha256": "bcb29a05de3bfb7dff5d7db0a8187566f85d03202d43b1904e6d72c681327da0"
     },
     {
       "releaseId": "library-07-20261028",
@@ -141,17 +134,10 @@
         "how-to-build-a-personal-command-center-for-online-work",
         "how-to-build-a-personal-knowledge-base-you-will-reuse"
       ],
-      "state": "pending",
-      "blocked": [
-        "git-workflows-that-keep-small-teams-moving",
-        "how-dns-connects-a-domain-to-a-website",
-        "how-no-code-automation-fits-into-a-real-engineering-workflow",
-        "how-to-add-human-review-to-automated-decisions",
-        "how-to-ask-better-questions-when-you-are-stuck",
-        "how-to-audit-a-sitemap-and-robots-file",
-        "how-to-automate-repetitive-research-without-losing-judgment",
-        "how-to-build-a-personal-knowledge-base-you-will-reuse"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-07.json",
+      "sha256": "515bb3a9ff54b9deb6d8629f6b67cbdcdf653e4cf5764b08a50db972c293d2fc"
     },
     {
       "releaseId": "library-08-20261028",
@@ -169,14 +155,11 @@
       ],
       "state": "pending",
       "blocked": [
-        "how-to-build-a-personal-start-here-page",
-        "how-to-build-a-personal-start-here-page-for-the-web",
         "how-to-build-a-reliable-ai-agent-workflow-in-2026",
         "how-to-build-a-safer-public-contact-form",
         "how-to-build-approval-steps-into-business-automations",
         "how-to-choose-a-code-editor-for-large-projects",
         "how-to-choose-an-ai-tool-for-a-small-team",
-        "how-to-choose-remote-work-tools-that-reduce-noise",
         "how-to-compare-ai-tools-on-privacy-cost-and-output-quality",
         "how-to-compare-similar-websites-without-wasting-an-hour"
       ]

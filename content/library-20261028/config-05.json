@@ -1,0 +1,47 @@
+{
+  "releaseId": "library-05-20261028",
+  "baseline": "tmp/editorial-full-baseline-20261028.json",
+  "output": "content/library-20261028/release-05.json",
+  "articles": [
+    {
+      "draft": "content/library-20261028/team-5/backups-and-rollbacks-for-stateful-web-applications.json",
+      "cover": "lib-t5-07-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/07-blue-green-vs-canary-deployments-for-small-teams.json",
+      "cover": "lib-t6-07-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/08-bookmarking-for-teams-from-links-to-shared-knowledge.json",
+      "cover": "lib-t1-08-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/building-a-personal-knowledge-base-that-stays-findable.json",
+      "cover": "lib-t2-08-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/08-building-trust-when-the-team-rarely-meets-live.json",
+      "cover": "lib-t3-08-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/08-ci-cd-pipelines-fast-feedback-without-unsafe-releases.json",
+      "cover": "lib-t4-08-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/containers-explained-for-teams-shipping-their-first-service.json",
+      "cover": "lib-t5-08-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/08-cookies-consent-and-honest-product-ux.json",
+      "cover": "lib-t6-08-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/09-core-web-vitals-explained-for-people-who-build-websites.json",
+      "cover": "lib-t1-09-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/core-web-vitals-in-practice-lcp-inp-and-cls.json",
+      "cover": "lib-t2-09-20261028.png"
+    }
+  ]
+}
