@@ -1799,6 +1799,20 @@
       "width": 1729,
       "height": 910
     },
+    "editorial-images/lib-t1-20-20261028.png": {
+      "sha256": "cfbbff5fb8a83563a080aa1687310b067def242180015372a5351d48fa13b535",
+      "bytes": 2079235,
+      "format": "png",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t1-20-20261028.webp": {
+      "sha256": "d553747a19811e303d567adfc2b78240d3fe3ca6784b5158addcc65fb5d79cf4",
+      "bytes": 174348,
+      "format": "webp",
+      "width": 1729,
+      "height": 910
+    },
     "editorial-images/lib-t2-01-20261028.png": {
       "sha256": "16784ae571b28d24ac4503545c152bd6c2db6291fb43f79f6be1362330846837",
       "bytes": 2057757,
@@ -2065,6 +2079,20 @@
       "width": 1728,
       "height": 910
     },
+    "editorial-images/lib-t2-20-20261028.png": {
+      "sha256": "92c5cae74429f7ea05268ef382fb7968574017a33e3dfc533bcf8103cdf137ac",
+      "bytes": 1185700,
+      "format": "png",
+      "width": 1200,
+      "height": 630
+    },
+    "editorial-images/lib-t2-20-20261028.webp": {
+      "sha256": "fcc06602a2136feb3d3643d671240a14a6ecdaecb025e5f2e490451122ff824d",
+      "bytes": 121592,
+      "format": "webp",
+      "width": 1200,
+      "height": 630
+    },
     "editorial-images/lib-t3-01-20261028.png": {
       "sha256": "00558557be81a786a378777e4e18d3d8fbb5b4d22232e81db59f1f00c17088fd",
       "bytes": 2188153,
@@ -2313,6 +2341,34 @@
     "editorial-images/lib-t3-18-20261028.webp": {
       "sha256": "271221edbbf88e2afb64d152da88d96609013fc2bab2757322dcfdb0393ba4c5",
       "bytes": 174826,
+      "format": "webp",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t3-19-20261028.png": {
+      "sha256": "1ba91a17ad901679ced26597c59f2eec647f628dd3aed4bab3375615f0d259d2",
+      "bytes": 2432589,
+      "format": "png",
+      "width": 1727,
+      "height": 910
+    },
+    "editorial-images/lib-t3-19-20261028.webp": {
+      "sha256": "2dff7a75401cbbdc10114660c164428513ba8cf68ac48154e93d596065ccf70b",
+      "bytes": 152884,
+      "format": "webp",
+      "width": 1727,
+      "height": 910
+    },
+    "editorial-images/lib-t3-20-20261028.png": {
+      "sha256": "3f058df2a2e013da0ef6970696296726f9cbbd5b53e77759c5dfff7f2b71c8ff",
+      "bytes": 2203232,
+      "format": "png",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t3-20-20261028.webp": {
+      "sha256": "996e3ec903238149266eea5bcc53f0c4e582fdc162c6e8a4fdd0bb03e0f4c140",
+      "bytes": 150702,
       "format": "webp",
       "width": 1728,
       "height": 910
@@ -2569,6 +2625,34 @@
       "width": 1727,
       "height": 910
     },
+    "editorial-images/lib-t4-19-20261028.png": {
+      "sha256": "bf858fb74c1952346491c9821a4457de115fb66c0e5a55689adb4593bfafb8da",
+      "bytes": 2626852,
+      "format": "png",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t4-19-20261028.webp": {
+      "sha256": "ecafdcbf9d1edfbd49cada18abc95f15589f890c1c938e339a88152e7550f0ef",
+      "bytes": 209704,
+      "format": "webp",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t4-20-20261028.png": {
+      "sha256": "fa1f16795922ad9a6e7235317b5dfbdd5dd99d5010eb18b906e310caa3c66f60",
+      "bytes": 2445573,
+      "format": "png",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t4-20-20261028.webp": {
+      "sha256": "b82b24bdc61e03cb9ad7997e481664e364a04b588f7d8542359f4d15e7c99bc7",
+      "bytes": 242586,
+      "format": "webp",
+      "width": 1728,
+      "height": 910
+    },
     "editorial-images/lib-t5-01-20261028.png": {
       "sha256": "09afc3721f26dbd1d2153932abd365fef8a43a392d5a37c6318537e0319fa31b",
       "bytes": 2706073,
@@ -2821,6 +2905,34 @@
       "width": 1729,
       "height": 910
     },
+    "editorial-images/lib-t5-19-20261028.png": {
+      "sha256": "b02d849274dbee60197b7a67e1f1c4facd5e9229772b20596113198ce18881c2",
+      "bytes": 2885114,
+      "format": "png",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t5-19-20261028.webp": {
+      "sha256": "c243ddb8513f29c6785a58efc80c55170d30c1c8c12da032340c2e32eae8df0a",
+      "bytes": 330246,
+      "format": "webp",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t5-20-20261028.png": {
+      "sha256": "986965ccf99ecc45cd3379c2e88c2f65abf9d658ef8c7c04f842d88275080a8b",
+      "bytes": 2010834,
+      "format": "png",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t5-20-20261028.webp": {
+      "sha256": "28441f2b8b722bc1f30ddc986ddb9adf2206554fc897d0844ba4df3e62c58b65",
+      "bytes": 140270,
+      "format": "webp",
+      "width": 1728,
+      "height": 910
+    },
     "editorial-images/lib-t6-01-20261028.png": {
       "sha256": "d7f09ef69f3d8e5316731ffd90ccc738cb3af236adafbd1aa3ba55393a9254bd",
       "bytes": 2163341,
@@ -3069,6 +3181,34 @@
     "editorial-images/lib-t6-18-20261028.webp": {
       "sha256": "a4792048d77a89b4d66062ddcd0325c864e2cfc6fdbc14f904850ad2984cafec",
       "bytes": 268400,
+      "format": "webp",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t6-19-20261028.png": {
+      "sha256": "a7f65a1f1ef34ce8fab146baf5e4f49e9dfa1bbe09aad7d01698f825d4ab40b7",
+      "bytes": 2197259,
+      "format": "png",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t6-19-20261028.webp": {
+      "sha256": "83db81e6d2bdc1832a4ec30d43c775578718e3ed5739d2a734340b6c4f63f00d",
+      "bytes": 168342,
+      "format": "webp",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t6-20-20261028.png": {
+      "sha256": "7d2532eb7564f3ed943f0ddffd0c344498216fdaf2647a3689c4575a4f52dd8d",
+      "bytes": 2647086,
+      "format": "png",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t6-20-20261028.webp": {
+      "sha256": "9dedaf9a2ea3058babc29d924c1cecd37a9ee87c9f49378620ac0cb9f1f85f0f",
+      "bytes": 209056,
       "format": "webp",
       "width": 1729,
       "height": 910

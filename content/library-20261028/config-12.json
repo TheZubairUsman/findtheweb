@@ -1,0 +1,47 @@
+{
+  "releaseId": "library-12-20261028",
+  "baseline": "tmp/editorial-full-baseline-20261028.json",
+  "output": "content/library-20261028/release-12.json",
+  "articles": [
+    {
+      "draft": "content/library-20261028/team-3/19-how-to-read-a-tool-s-permission-screen.json",
+      "cover": "lib-t3-19-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/19-how-to-read-technical-documentation-efficiently.json",
+      "cover": "lib-t4-19-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/how-to-reduce-deployment-risk-with-small-releases.json",
+      "cover": "lib-t5-19-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/19-how-to-remove-unnecessary-tracking-from-a-small-site.json",
+      "cover": "lib-t6-19-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/20-how-to-review-a-saas-tool-s-data-practices.json",
+      "cover": "lib-t1-20-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/how-to-review-api-authentication-without-guessing.json",
+      "cover": "lib-t2-20-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/20-how-to-run-better-technical-meetings.json",
+      "cover": "lib-t3-20-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/20-how-to-secure-admin-panels-and-privileged-routes.json",
+      "cover": "lib-t4-20-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/how-to-separate-work-personal-and-public-accounts.json",
+      "cover": "lib-t5-20-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/20-how-to-share-files-without-losing-control-of-them.json",
+      "cover": "lib-t6-20-20261028.png"
+    }
+  ]
+}

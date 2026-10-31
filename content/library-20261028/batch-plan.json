@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-31T14:11:08.618Z",
+  "checkedAt": "2026-10-31T15:47:23.114Z",
   "total": 198,
   "preserved": 6,
   "assigned": 192,
-  "drafts": 133,
-  "gatePassed": 130,
+  "drafts": 134,
+  "gatePassed": 131,
   "batches": [
     {
       "releaseId": "library-01-20261028",
@@ -191,10 +191,10 @@
         "how-to-make-a-landing-page-load-faster",
         "how-to-make-a-small-javascript-project-easier-to-maintain"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-10.json",
-      "sha256": "79b4aabaed63129222704e797b385cf95f141529a0f3880cd639b24b4c6badcc"
+      "liveVerifiedAt": "2026-10-31T14:20:59.958Z"
     },
     {
       "releaseId": "library-11-20261028",
@@ -210,10 +210,10 @@
         "how-to-read-a-server-health-check",
         "how-to-read-a-technical-paper-without-getting-lost"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-11.json",
-      "sha256": "c377651575fc57b9f57856e13308dbb12ef3dc62d621140acac9b9e681bfeb77"
+      "liveVerifiedAt": "2026-10-31T14:20:58.786Z"
     },
     {
       "releaseId": "library-12-20261028",
@@ -229,10 +229,10 @@
         "how-to-separate-work-personal-and-public-accounts",
         "how-to-share-files-without-losing-control-of-them"
       ],
-      "state": "pending",
-      "blocked": [
-        "how-to-review-api-authentication-without-guessing"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-12.json",
+      "sha256": "12128538f9d7485f79d02248268f781a4720d5e23c9f9a64a604fb8aa9535b2e"
     },
     {
       "releaseId": "library-13-20261028",
