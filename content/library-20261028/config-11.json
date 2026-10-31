@@ -1,0 +1,47 @@
+{
+  "releaseId": "library-11-20261028",
+  "baseline": "tmp/editorial-full-baseline-20261028.json",
+  "output": "content/library-20261028/release-11.json",
+  "articles": [
+    {
+      "draft": "content/library-20261028/team-5/how-to-make-remote-collaboration-more-inclusive.json",
+      "cover": "lib-t5-17-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/17-how-to-make-your-digital-footprint-smaller.json",
+      "cover": "lib-t6-17-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/18-how-to-map-a-workflow-before-automating-it.json",
+      "cover": "lib-t1-18-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/how-to-measure-remote-work-without-surveillance.json",
+      "cover": "lib-t2-18-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/18-how-to-monitor-ai-costs-latency-and-quality.json",
+      "cover": "lib-t3-18-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/18-how-to-plan-a-feature-before-you-touch-the-code.json",
+      "cover": "lib-t4-18-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/how-to-protect-a-small-website-admin-panel.json",
+      "cover": "lib-t5-18-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/18-how-to-read-a-security-finding-and-fix-the-root-cause.json",
+      "cover": "lib-t6-18-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/19-how-to-read-a-server-health-check.json",
+      "cover": "lib-t1-19-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/how-to-read-a-technical-paper-without-getting-lost.json",
+      "cover": "lib-t2-19-20261028.png"
+    }
+  ]
+}

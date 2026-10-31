@@ -141,9 +141,49 @@
         "how-to-build-a-personal-command-center-for-online-work",
         "how-to-build-a-personal-knowledge-base-you-will-reuse"
       ]
+    },
+    {
+      "releaseId": "library-08-20261028",
+      "commit": "ba9ecc0b45a54a2ae9aefadd3924108f27fe7c02",
+      "ciRun": 41187284596,
+      "releaseSha256": "39af900d91da19ff8318c3e37daea75e6d6567f6f3736695ce58bc13bf1cdf4d",
+      "liveVerifiedAt": "2026-10-31T09:16:13.602Z",
+      "articleCount": 10,
+      "slugs": [
+        "how-to-build-a-personal-start-here-page",
+        "how-to-build-a-personal-start-here-page-for-the-web",
+        "how-to-build-a-reliable-ai-agent-workflow-in-2026",
+        "how-to-build-a-safer-public-contact-form",
+        "how-to-build-approval-steps-into-business-automations",
+        "how-to-choose-a-code-editor-for-large-projects",
+        "how-to-choose-an-ai-tool-for-a-small-team",
+        "how-to-choose-remote-work-tools-that-reduce-noise",
+        "how-to-compare-ai-tools-on-privacy-cost-and-output-quality",
+        "how-to-compare-similar-websites-without-wasting-an-hour"
+      ]
+    },
+    {
+      "releaseId": "library-09-20261028",
+      "commit": "33472c3ca1da3c4fff192fb8681d1933d934827f",
+      "ciRun": 41187820073,
+      "releaseSha256": "860e5109a5e55574d52ba6f3a9d5f45c63c76fa8aaf2f515245ba3dad111dda2",
+      "liveVerifiedAt": "2026-10-31T14:10:24.300Z",
+      "articleCount": 10,
+      "slugs": [
+        "how-to-compare-tools-without-falling-for-marketing-claims",
+        "how-to-connect-saas-tools-without-leaking-secrets",
+        "how-to-create-a-content-cluster-that-users-can-navigate",
+        "how-to-cut-cloud-waste-without-cutting-reliability",
+        "how-to-debug-a-frontend-error-from-the-first-clue",
+        "how-to-deploy-a-static-website-with-confidence",
+        "how-to-design-a-workday-around-deep-and-shallow-tasks",
+        "how-to-design-a-workflow-that-fails-gracefully",
+        "how-to-design-health-checks-that-find-real-failures",
+        "how-to-diagnose-a-slow-image-on-a-website"
+      ]
     }
   ],
-  "verifiedNewArticles": 70,
-  "totalUpgraded": 76,
-  "remaining": 122
+  "verifiedNewArticles": 90,
+  "totalUpgraded": 96,
+  "remaining": 102
 }

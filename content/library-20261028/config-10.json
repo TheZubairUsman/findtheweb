@@ -1,0 +1,47 @@
+{
+  "releaseId": "library-10-20261028",
+  "baseline": "tmp/editorial-full-baseline-20261028.json",
+  "output": "content/library-20261028/release-10.json",
+  "articles": [
+    {
+      "draft": "content/library-20261028/team-1/16-how-to-discover-small-tools-that-solve-specific-problems.json",
+      "cover": "lib-t1-16-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/how-to-document-an-automation-so-someone-else-can-own-it.json",
+      "cover": "lib-t2-16-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/16-how-to-evaluate-a-website-before-you-bookmark-it.json",
+      "cover": "lib-t3-16-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/16-how-to-find-hidden-websites-with-better-search-habits.json",
+      "cover": "lib-t4-16-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/how-to-find-useful-ai-tools-without-drowning-in-hype.json",
+      "cover": "lib-t5-16-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/16-how-to-judge-whether-a-free-online-tool-is-worth-using.json",
+      "cover": "lib-t6-16-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/17-how-to-learn-a-technical-skill-with-deliberate-practice.json",
+      "cover": "lib-t1-17-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/how-to-learn-a-technical-tool-without-memorizing-everything.json",
+      "cover": "lib-t2-17-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/17-how-to-make-a-landing-page-load-faster.json",
+      "cover": "lib-t3-17-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/17-how-to-make-a-small-javascript-project-easier-to-maintain.json",
+      "cover": "lib-t4-17-20261028.png"
+    }
+  ]
+}

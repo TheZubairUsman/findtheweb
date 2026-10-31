@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-31T09:08:34.116Z",
+  "checkedAt": "2026-10-31T14:11:08.618Z",
   "total": 198,
   "preserved": 6,
   "assigned": 192,
-  "drafts": 111,
-  "gatePassed": 102,
+  "drafts": 133,
+  "gatePassed": 130,
   "batches": [
     {
       "releaseId": "library-01-20261028",
@@ -153,10 +153,10 @@
         "how-to-compare-ai-tools-on-privacy-cost-and-output-quality",
         "how-to-compare-similar-websites-without-wasting-an-hour"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-08.json",
-      "sha256": "39af900d91da19ff8318c3e37daea75e6d6567f6f3736695ce58bc13bf1cdf4d"
+      "liveVerifiedAt": "2026-10-31T09:16:13.602Z"
     },
     {
       "releaseId": "library-09-20261028",
@@ -172,10 +172,10 @@
         "how-to-design-health-checks-that-find-real-failures",
         "how-to-diagnose-a-slow-image-on-a-website"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-09.json",
-      "sha256": "860e5109a5e55574d52ba6f3a9d5f45c63c76fa8aaf2f515245ba3dad111dda2"
+      "liveVerifiedAt": "2026-10-31T14:10:24.300Z"
     },
     {
       "releaseId": "library-10-20261028",
@@ -191,12 +191,10 @@
         "how-to-make-a-landing-page-load-faster",
         "how-to-make-a-small-javascript-project-easier-to-maintain"
       ],
-      "state": "pending",
-      "blocked": [
-        "how-to-learn-a-technical-skill-with-deliberate-practice",
-        "how-to-learn-a-technical-tool-without-memorizing-everything",
-        "how-to-make-a-small-javascript-project-easier-to-maintain"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-10.json",
+      "sha256": "79b4aabaed63129222704e797b385cf95f141529a0f3880cd639b24b4c6badcc"
     },
     {
       "releaseId": "library-11-20261028",
@@ -212,16 +210,10 @@
         "how-to-read-a-server-health-check",
         "how-to-read-a-technical-paper-without-getting-lost"
       ],
-      "state": "pending",
-      "blocked": [
-        "how-to-map-a-workflow-before-automating-it",
-        "how-to-measure-remote-work-without-surveillance",
-        "how-to-monitor-ai-costs-latency-and-quality",
-        "how-to-plan-a-feature-before-you-touch-the-code",
-        "how-to-read-a-security-finding-and-fix-the-root-cause",
-        "how-to-read-a-server-health-check",
-        "how-to-read-a-technical-paper-without-getting-lost"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-11.json",
+      "sha256": "c377651575fc57b9f57856e13308dbb12ef3dc62d621140acac9b9e681bfeb77"
     },
     {
       "releaseId": "library-12-20261028",
@@ -239,14 +231,7 @@
       ],
       "state": "pending",
       "blocked": [
-        "how-to-read-a-tool-s-permission-screen",
-        "how-to-read-technical-documentation-efficiently",
-        "how-to-remove-unnecessary-tracking-from-a-small-site",
-        "how-to-review-a-saas-tool-s-data-practices",
-        "how-to-review-api-authentication-without-guessing",
-        "how-to-run-better-technical-meetings",
-        "how-to-secure-admin-panels-and-privileged-routes",
-        "how-to-share-files-without-losing-control-of-them"
+        "how-to-review-api-authentication-without-guessing"
       ]
     },
     {
@@ -267,14 +252,8 @@
       "blocked": [
         "how-to-test-whether-a-new-tool-is-worth-your-time",
         "how-to-turn-a-long-article-into-an-action-plan",
-        "how-to-turn-a-repetitive-browser-task-into-a-safe-automation",
-        "how-to-turn-a-script-into-a-maintainable-tool",
-        "how-to-turn-a-tutorial-into-real-working-skill",
-        "how-to-update-old-articles-without-losing-their-value",
         "how-to-use-git-branches-without-creating-a-mess",
-        "how-to-use-logs-without-getting-lost-in-them",
-        "how-to-use-search-intent-before-writing-an-article",
-        "how-to-write-a-project-update-people-can-act-on"
+        "how-to-use-logs-without-getting-lost-in-them"
       ]
     },
     {
@@ -293,13 +272,10 @@
       ],
       "state": "pending",
       "blocked": [
-        "how-to-write-better-technical-issue-reports",
         "how-to-write-prompts-that-produce-testable-technical-answers",
         "how-to-write-search-snippets-people-want-to-click",
         "image-optimization-without-sacrificing-editorial-quality",
-        "infrastructure-as-code-a-safer-path-from-laptop-to-cloud",
         "managing-deep-work-across-time-zones",
-        "monorepo-or-multi-repo-a-decision-guide",
         "multi-agent-systems-where-coordination-helps-and-hurts",
         "observability-basics-logs-metrics-and-traces-together",
         "owasp-top-10-2025-a-developer-friendly-action-plan"
@@ -321,9 +297,7 @@
       ],
       "state": "pending",
       "blocked": [
-        "page-experience-performance-accessibility-and-trust",
         "password-reset-and-email-verification-done-safely",
-        "practical-session-and-token-security-for-javascript-apps",
         "privacy-by-design-for-small-web-products",
         "privacy-risks-in-ai-features-and-rag-pipelines",
         "privacy-safe-analytics-for-product-teams",
