@@ -181,9 +181,49 @@
         "how-to-design-health-checks-that-find-real-failures",
         "how-to-diagnose-a-slow-image-on-a-website"
       ]
+    },
+    {
+      "releaseId": "library-10-20261028",
+      "commit": "d0b884d6861030ea7da92e3617aae9ff0b01f06e",
+      "ciRun": 41209226919,
+      "releaseSha256": "79b4aabaed63129222704e797b385cf95f141529a0f3880cd639b24b4c6badcc",
+      "liveVerifiedAt": "2026-10-31T14:20:59.958Z",
+      "articleCount": 10,
+      "slugs": [
+        "how-to-discover-small-tools-that-solve-specific-problems",
+        "how-to-document-an-automation-so-someone-else-can-own-it",
+        "how-to-evaluate-a-website-before-you-bookmark-it",
+        "how-to-find-hidden-websites-with-better-search-habits",
+        "how-to-find-useful-ai-tools-without-drowning-in-hype",
+        "how-to-judge-whether-a-free-online-tool-is-worth-using",
+        "how-to-learn-a-technical-skill-with-deliberate-practice",
+        "how-to-learn-a-technical-tool-without-memorizing-everything",
+        "how-to-make-a-landing-page-load-faster",
+        "how-to-make-a-small-javascript-project-easier-to-maintain"
+      ]
+    },
+    {
+      "releaseId": "library-11-20261028",
+      "commit": "d0b884d6861030ea7da92e3617aae9ff0b01f06e",
+      "ciRun": 41209226919,
+      "releaseSha256": "c377651575fc57b9f57856e13308dbb12ef3dc62d621140acac9b9e681bfeb77",
+      "liveVerifiedAt": "2026-10-31T14:20:58.786Z",
+      "articleCount": 10,
+      "slugs": [
+        "how-to-make-remote-collaboration-more-inclusive",
+        "how-to-make-your-digital-footprint-smaller",
+        "how-to-map-a-workflow-before-automating-it",
+        "how-to-measure-remote-work-without-surveillance",
+        "how-to-monitor-ai-costs-latency-and-quality",
+        "how-to-plan-a-feature-before-you-touch-the-code",
+        "how-to-protect-a-small-website-admin-panel",
+        "how-to-read-a-security-finding-and-fix-the-root-cause",
+        "how-to-read-a-server-health-check",
+        "how-to-read-a-technical-paper-without-getting-lost"
+      ]
     }
   ],
-  "verifiedNewArticles": 90,
-  "totalUpgraded": 96,
-  "remaining": 102
+  "verifiedNewArticles": 110,
+  "totalUpgraded": 116,
+  "remaining": 82
 }
