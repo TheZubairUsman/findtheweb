@@ -2,8 +2,8 @@
   "release": "seo-content-20261027",
   "files": {
     "index.html": {
-      "sha256": "b668ccfb45f8553be3a709d7674e763c60a81e3185273afb3027eee0831d9e9b",
-      "bytes": 5756
+      "sha256": "d1fb1fcd74e6b9bdbc52445891c5c0c83f3ebabb70423c4924f3ec373b917871",
+      "bytes": 5754
     },
     "frontend-build.json": {
       "sha256": "041c44511e856f19ac360f83774ea5c21a442138a848817393ca8a3ceeca0df7",
@@ -26,8 +26,8 @@
       "bytes": 465
     },
     "seo-render.css": {
-      "sha256": "0f1cb0ca8db4cba8be000ac1a586c8182c53a61f7346779790e88e7eae38c92d",
-      "bytes": 1673
+      "sha256": "2d4aeea5dfd4af0fc77f158d651ed8070fbabe277a70615b5b4741eed7958191",
+      "bytes": 2001
     },
     "assets/frontend/app-2LOC3U7N.js": {
       "sha256": "22e93383dec69afedce203bb235dcd2b3773f655c01c438ce2a8404d50ae2f6b",
@@ -1532,6 +1532,356 @@
       "format": "webp",
       "width": 1730,
       "height": 909
+    },
+    "editorial-images/lib-t1-01-20261028.png": {
+      "sha256": "bc8eb937883301f83bfec43254d08ce314bd07614e9398fbb409d87e4d9e9990",
+      "bytes": 3024610,
+      "format": "png",
+      "width": 1738,
+      "height": 905
+    },
+    "editorial-images/lib-t1-01-20261028.webp": {
+      "sha256": "7a9a49d16c318d215d4bdf038a1a7bc2a12395ac8e47f31f3656bb1f5bcdb547",
+      "bytes": 311660,
+      "format": "webp",
+      "width": 1738,
+      "height": 905
+    },
+    "editorial-images/lib-t1-02-20261028.png": {
+      "sha256": "a4c2683bc5ee989b47fbb74716f73f2d8494a90578c216301bb5702bb0d2da3f",
+      "bytes": 2554225,
+      "format": "png",
+      "width": 1726,
+      "height": 911
+    },
+    "editorial-images/lib-t1-02-20261028.webp": {
+      "sha256": "977f5ec1015eab77f2f5c969f6efb60f82ce7428522f308da84c93704f7247cc",
+      "bytes": 244012,
+      "format": "webp",
+      "width": 1726,
+      "height": 911
+    },
+    "editorial-images/lib-t1-03-20261028.png": {
+      "sha256": "440e12c389c89bdf9e7b136b1902b7070c3fd918dd6580aae4d94dd55ce10c07",
+      "bytes": 2264794,
+      "format": "png",
+      "width": 1726,
+      "height": 911
+    },
+    "editorial-images/lib-t1-03-20261028.webp": {
+      "sha256": "59c2f369a289f760079423b45b2f7c94156be8fef3d034c92edae52d9ccd94ae",
+      "bytes": 161362,
+      "format": "webp",
+      "width": 1726,
+      "height": 911
+    },
+    "editorial-images/lib-t1-04-20261028.png": {
+      "sha256": "042ef77897d53ca451f5fc52c4b1d1aebc7ccb18a721c4da9baa50fc7ff547ba",
+      "bytes": 2076865,
+      "format": "png",
+      "width": 1724,
+      "height": 912
+    },
+    "editorial-images/lib-t1-04-20261028.webp": {
+      "sha256": "174b50f85b145be99fb31796246b8943f88a2f83801a7ac391616d303d818a63",
+      "bytes": 145214,
+      "format": "webp",
+      "width": 1724,
+      "height": 912
+    },
+    "editorial-images/lib-t2-01-20261028.png": {
+      "sha256": "16784ae571b28d24ac4503545c152bd6c2db6291fb43f79f6be1362330846837",
+      "bytes": 2057757,
+      "format": "png",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t2-01-20261028.webp": {
+      "sha256": "bb3b43f02c5db3b656e9b0d02a8a3e9ac6c9d8656d15bb2d8b9e7a1985715303",
+      "bytes": 135072,
+      "format": "webp",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t2-02-20261028.png": {
+      "sha256": "48c3b5d7de6cd819d6be292ad9488e4ddf496d1880b043573e9f514826346240",
+      "bytes": 2465705,
+      "format": "png",
+      "width": 1727,
+      "height": 911
+    },
+    "editorial-images/lib-t2-02-20261028.webp": {
+      "sha256": "cf2203c6b9482f7f7ff71c7cdd1fde8a31b657facbe59273ba9acb18fe74d909",
+      "bytes": 191482,
+      "format": "webp",
+      "width": 1727,
+      "height": 911
+    },
+    "editorial-images/lib-t2-03-20261028.png": {
+      "sha256": "03739ae450e39b9bef7d857199793d1e3f5e036400c6cdc82c0c6d93875546a9",
+      "bytes": 2125549,
+      "format": "png",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t2-03-20261028.webp": {
+      "sha256": "e711c87b667431c2810f4fb58de0cb3bccf8375262947a165f22b7999c03a7a7",
+      "bytes": 170598,
+      "format": "webp",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t2-04-20261028.png": {
+      "sha256": "9acd57b7dc151d6e5294895c93dfbd9c5b8122891c98b444fb923b241cc3bf04",
+      "bytes": 1936201,
+      "format": "png",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t2-04-20261028.webp": {
+      "sha256": "e918782db6a09a37d2d9a72d258c6b3bd1de1113b64e04408fdd26dd8ad70de4",
+      "bytes": 121948,
+      "format": "webp",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t3-01-20261028.png": {
+      "sha256": "00558557be81a786a378777e4e18d3d8fbb5b4d22232e81db59f1f00c17088fd",
+      "bytes": 2188153,
+      "format": "png",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t3-01-20261028.webp": {
+      "sha256": "e0abe379cd1423415adc8b0f77009b87afc06be8157fe93ec8b969f70da936ed",
+      "bytes": 152282,
+      "format": "webp",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t3-02-20261028.png": {
+      "sha256": "707e509e45ca84ede3625eb6a253416b04f626b57f9d1ecf7f15111fc82fddfd",
+      "bytes": 2675532,
+      "format": "png",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t3-02-20261028.webp": {
+      "sha256": "5507906a5f4cd7764d41d8b7535835734381d6b61cf10a4571ab5525d8aa9385",
+      "bytes": 283440,
+      "format": "webp",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t3-03-20261028.png": {
+      "sha256": "a51b894885bfdc13887ba8138ed4fe56d485e8cc6fb56c44631f7d7d672ebc08",
+      "bytes": 2495583,
+      "format": "png",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t3-03-20261028.webp": {
+      "sha256": "97dc32a2b9469aef3c9dba216282b7f9069584159c450f6b8830230ccfb8b4ba",
+      "bytes": 195556,
+      "format": "webp",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t3-04-20261028.png": {
+      "sha256": "4bd66f7a93a27474f4cfb0bc6ff5271002309158bdc5e60f1bfdc0bbe14cd77b",
+      "bytes": 2852554,
+      "format": "png",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t3-04-20261028.webp": {
+      "sha256": "738c06c4f9063a2356891d1c6d21143e99ebe7248084215c2f00ea68425af73e",
+      "bytes": 332762,
+      "format": "webp",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t4-01-20261028.png": {
+      "sha256": "08d6924e47a1d17bebd1ab3f0f64369d91f40e88f281a39370cff458218095e8",
+      "bytes": 2383542,
+      "format": "png",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t4-01-20261028.webp": {
+      "sha256": "72edcf30cb40536d48905a964cfc03363d3ad1f124476afe243e5cdf742c58e5",
+      "bytes": 215408,
+      "format": "webp",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t4-02-20261028.png": {
+      "sha256": "ea28cd13e56bddc3586e9b48f70044cc211d721ad6c492007c37af61eba01d62",
+      "bytes": 2695618,
+      "format": "png",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t4-02-20261028.webp": {
+      "sha256": "8e48d3bdf9a6be41ca502e1488aeb296f7130b70a4a26fc193b918df0611409b",
+      "bytes": 286056,
+      "format": "webp",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t4-03-20261028.png": {
+      "sha256": "4b368b777c77a9e29245c7eb2cf50cc00afe3568eafe49ea0033dce3d2884803",
+      "bytes": 2694779,
+      "format": "png",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t4-03-20261028.webp": {
+      "sha256": "a91f8670f90da82278c7b9c3e19b17e568e0d3e829ab82efb72a027e68898d15",
+      "bytes": 237508,
+      "format": "webp",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t4-04-20261028.png": {
+      "sha256": "70a95c909c1acb0b89ccd5a539770dfa573bac148fb6aabe1d44b2cb45df46e6",
+      "bytes": 2079564,
+      "format": "png",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t4-04-20261028.webp": {
+      "sha256": "e9b7a6ea8465761ec17b39e76215d2b0f59fc10a8eef766e15f44e1c2915af36",
+      "bytes": 130154,
+      "format": "webp",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t5-01-20261028.png": {
+      "sha256": "09afc3721f26dbd1d2153932abd365fef8a43a392d5a37c6318537e0319fa31b",
+      "bytes": 2706073,
+      "format": "png",
+      "width": 1727,
+      "height": 911
+    },
+    "editorial-images/lib-t5-01-20261028.webp": {
+      "sha256": "5c5659c76fcafe3467bffa4d6e6d5a80b043de9511c6cb91a491ef5143a99df9",
+      "bytes": 251606,
+      "format": "webp",
+      "width": 1727,
+      "height": 911
+    },
+    "editorial-images/lib-t5-02-20261028.png": {
+      "sha256": "7c296a049c4eca70a52a0dd61aa37b556f6207700777a436ae032b18264f98d5",
+      "bytes": 2840621,
+      "format": "png",
+      "width": 1726,
+      "height": 911
+    },
+    "editorial-images/lib-t5-02-20261028.webp": {
+      "sha256": "03a62bc574200b3c0b5090952ead103e9fff3fb2764e327a807229021f332c17",
+      "bytes": 306198,
+      "format": "webp",
+      "width": 1726,
+      "height": 911
+    },
+    "editorial-images/lib-t5-03-20261028.png": {
+      "sha256": "74df681e550045c1452f4d2ef8d2f2096391788be37eb072b7f7ad6e6679b4d6",
+      "bytes": 2022847,
+      "format": "png",
+      "width": 1727,
+      "height": 911
+    },
+    "editorial-images/lib-t5-03-20261028.webp": {
+      "sha256": "248de22f58fe0762ff71be22e62c423616e1c3cce4a913894eca9eb6726413f2",
+      "bytes": 131814,
+      "format": "webp",
+      "width": 1727,
+      "height": 911
+    },
+    "editorial-images/lib-t5-04-20261028.png": {
+      "sha256": "e56d3276a7a82b4cffb2af86acc04ada42eb8609cb3308591f4107ea12e4ef6f",
+      "bytes": 1921441,
+      "format": "png",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t5-04-20261028.webp": {
+      "sha256": "ce795a2870523bcd07a9fa4841852b7325b71e6e03d56d203cad66f8efcfa525",
+      "bytes": 84892,
+      "format": "webp",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t6-01-20261028.png": {
+      "sha256": "d7f09ef69f3d8e5316731ffd90ccc738cb3af236adafbd1aa3ba55393a9254bd",
+      "bytes": 2163341,
+      "format": "png",
+      "width": 1727,
+      "height": 910
+    },
+    "editorial-images/lib-t6-01-20261028.webp": {
+      "sha256": "3315236474932ed3b5f8e7938437a1f56cc607d5db3b69f3410b78a27f08f470",
+      "bytes": 162106,
+      "format": "webp",
+      "width": 1727,
+      "height": 910
+    },
+    "editorial-images/lib-t6-02-20261028.png": {
+      "sha256": "30400b0206a5d0ef9066b4d244c39291bc3b721ada11b50b6f528f6c92a892e0",
+      "bytes": 2871235,
+      "format": "png",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t6-02-20261028.webp": {
+      "sha256": "bd99428caeff84bcbc77e120c0e4e713ff5562feb404ec286a03a4b0d7eaddca",
+      "bytes": 295772,
+      "format": "webp",
+      "width": 1728,
+      "height": 910
+    },
+    "editorial-images/lib-t6-03-20261028.png": {
+      "sha256": "92b93f418e7e8726670df6f1244db7e3679526d19e90ed5c6fabdeffa222bccf",
+      "bytes": 2397988,
+      "format": "png",
+      "width": 1727,
+      "height": 911
+    },
+    "editorial-images/lib-t6-03-20261028.webp": {
+      "sha256": "308729fbbe34e9c3179da691038f65a825e891b7228d6da2f2cde3e170102da7",
+      "bytes": 206054,
+      "format": "webp",
+      "width": 1727,
+      "height": 911
+    },
+    "editorial-images/lib-t6-04-20261028.png": {
+      "sha256": "3c7c13fb46a77244f35d8c47c250bf7fd9f928c699dfbfe2dae1a693d83c73c0",
+      "bytes": 2560895,
+      "format": "png",
+      "width": 1738,
+      "height": 905
+    },
+    "editorial-images/lib-t6-04-20261028.webp": {
+      "sha256": "73d62035100b16d0c45fde2ccd4170b1141f375d520727cc07b07f68c02c7acc",
+      "bytes": 204234,
+      "format": "webp",
+      "width": 1738,
+      "height": 905
+    },
+    "editorial-images/lib-t6-05-20261028.png": {
+      "sha256": "bf49d1c4eff741e0b97b2a6ffcda25bf3b48afe456fad9a0a26c0ed6cd933255",
+      "bytes": 2736024,
+      "format": "png",
+      "width": 1729,
+      "height": 910
+    },
+    "editorial-images/lib-t6-05-20261028.webp": {
+      "sha256": "d643a3173b753bcd1045f583cf79e028b8bdb01b1f948d0196f1ad39b853d100",
+      "bytes": 261130,
+      "format": "webp",
+      "width": 1729,
+      "height": 910
     },
     "editorial-images/password-manager-recovery-20261028.png": {
       "sha256": "641800d2a513a2af96fb60c08736b9e330470e38e26209e27e420db4ca143395",

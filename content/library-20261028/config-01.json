@@ -1,0 +1,47 @@
+{
+  "releaseId": "library-01-20261028",
+  "baseline": "tmp/editorial-full-baseline-20261028.json",
+  "output": "content/library-20261028/release-01.json",
+  "articles": [
+    {
+      "draft": "content/library-20261028/team-1/01-a-beginner-friendly-web-security-checklist-for-new-sites.json",
+      "cover": "lib-t1-01-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/a-beginner-s-guide-to-data-minimization.json",
+      "cover": "lib-t2-01-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/01-a-beginner-s-guide-to-trigger-based-workflows.json",
+      "cover": "lib-t3-01-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/01-a-better-async-meeting-replacement-for-small-teams.json",
+      "cover": "lib-t4-01-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/a-better-way-to-organize-useful-links.json",
+      "cover": "lib-t5-01-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/01-a-clear-mental-model-for-apis-routes-and-requests.json",
+      "cover": "lib-t6-01-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/02-a-curator-s-method-for-organizing-useful-links.json",
+      "cover": "lib-t1-02-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/a-developer-checklist-for-responsible-data-handling.json",
+      "cover": "lib-t2-02-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/02-a-human-approach-to-learning-with-ai-assistants.json",
+      "cover": "lib-t3-02-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/02-a-plain-english-guide-to-sitemaps-and-robots-txt.json",
+      "cover": "lib-t4-02-20261028.png"
+    }
+  ]
+}

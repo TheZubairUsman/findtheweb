@@ -1,0 +1,527 @@
+{
+  "checkedAt": "2026-10-31T03:21:47.900Z",
+  "total": 198,
+  "preserved": 6,
+  "assigned": 192,
+  "drafts": 44,
+  "gatePassed": 29,
+  "batches": [
+    {
+      "releaseId": "library-01-20261028",
+      "slugs": [
+        "a-beginner-friendly-web-security-checklist-for-new-sites",
+        "a-beginner-s-guide-to-data-minimization",
+        "a-beginner-s-guide-to-trigger-based-workflows",
+        "a-better-async-meeting-replacement-for-small-teams",
+        "a-better-way-to-organize-useful-links",
+        "a-clear-mental-model-for-apis-routes-and-requests",
+        "a-curator-s-method-for-organizing-useful-links",
+        "a-developer-checklist-for-responsible-data-handling",
+        "a-human-approach-to-learning-with-ai-assistants",
+        "a-plain-english-guide-to-sitemaps-and-robots-txt"
+      ],
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-01.json",
+      "sha256": "98463ad08010d25643dd73112454bb4f80999bf5b6403a8bdea16aea2d65116d"
+    },
+    {
+      "releaseId": "library-02-20261028",
+      "slugs": [
+        "a-practical-comparison-of-workflow-orchestration-patterns",
+        "a-practical-evaluation-checklist-for-llm-features",
+        "a-practical-guide-to-ai-coding-assistants-and-code-review",
+        "a-practical-guide-to-building-a-personal-ai-research-workflow",
+        "a-practical-guide-to-building-your-own-tool-directory",
+        "a-practical-guide-to-comparing-similar-websites",
+        "a-practical-guide-to-data-minimization",
+        "a-practical-guide-to-digital-decluttering",
+        "a-practical-guide-to-environment-variables-and-secrets",
+        "a-practical-guide-to-safer-public-wi-fi-use"
+      ],
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-02.json",
+      "sha256": "2e7fbec1e4d9209a025a9e3ef14129a6fbaf1cca6d7066f12977416aabf9360e"
+    },
+    {
+      "releaseId": "library-03-20261028",
+      "slugs": [
+        "a-practical-internal-linking-strategy-for-growing-blogs",
+        "a-practical-introduction-to-containers",
+        "a-practical-introduction-to-webhooks",
+        "a-practical-note-taking-system-for-developers",
+        "a-practical-note-taking-system-for-technical-projects",
+        "a-practical-remote-team-operating-manual",
+        "a-practical-seo-checklist-for-a-new-website",
+        "a-production-ready-cloud-deployment-checklist",
+        "a-research-workflow-for-comparing-new-developer-tools",
+        "a-research-workflow-for-finding-trustworthy-technical-sources"
+      ],
+      "state": "pending",
+      "blocked": [
+        "a-practical-remote-team-operating-manual",
+        "a-practical-seo-checklist-for-a-new-website",
+        "a-production-ready-cloud-deployment-checklist"
+      ]
+    },
+    {
+      "releaseId": "library-04-20261028",
+      "slugs": [
+        "a-safe-way-to-automate-email-and-spreadsheet-tasks",
+        "a-simple-weekly-review-for-technical-work",
+        "a-small-business-incident-response-runbook",
+        "a-small-team-guide-to-backups-and-rollback",
+        "a-small-team-playbook-for-shipping-ai-features",
+        "ai-automation-vs-ai-agents-choosing-the-right-architecture",
+        "api-documentation-that-developers-actually-use",
+        "api-rate-limiting-that-protects-users-without-breaking-ux",
+        "async-communication-what-to-write-down-and-what-to-meet-about",
+        "automation-testing-for-non-developers"
+      ],
+      "state": "pending",
+      "blocked": [
+        "a-simple-weekly-review-for-technical-work",
+        "a-small-business-incident-response-runbook",
+        "a-small-team-guide-to-backups-and-rollback",
+        "ai-automation-vs-ai-agents-choosing-the-right-architecture",
+        "api-documentation-that-developers-actually-use",
+        "api-rate-limiting-that-protects-users-without-breaking-ux",
+        "async-communication-what-to-write-down-and-what-to-meet-about",
+        "automation-testing-for-non-developers"
+      ]
+    },
+    {
+      "releaseId": "library-05-20261028",
+      "slugs": [
+        "backups-and-rollbacks-for-stateful-web-applications",
+        "blue-green-vs-canary-deployments-for-small-teams",
+        "bookmarking-for-teams-from-links-to-shared-knowledge",
+        "building-a-personal-knowledge-base-that-stays-findable",
+        "building-trust-when-the-team-rarely-meets-live",
+        "ci-cd-pipelines-fast-feedback-without-unsafe-releases",
+        "containers-explained-for-teams-shipping-their-first-service",
+        "cookies-consent-and-honest-product-ux",
+        "core-web-vitals-explained-for-people-who-build-websites",
+        "core-web-vitals-in-practice-lcp-inp-and-cls"
+      ],
+      "state": "pending",
+      "blocked": [
+        "backups-and-rollbacks-for-stateful-web-applications",
+        "blue-green-vs-canary-deployments-for-small-teams",
+        "bookmarking-for-teams-from-links-to-shared-knowledge",
+        "building-a-personal-knowledge-base-that-stays-findable",
+        "building-trust-when-the-team-rarely-meets-live",
+        "ci-cd-pipelines-fast-feedback-without-unsafe-releases",
+        "containers-explained-for-teams-shipping-their-first-service",
+        "cookies-consent-and-honest-product-ux",
+        "core-web-vitals-explained-for-people-who-build-websites",
+        "core-web-vitals-in-practice-lcp-inp-and-cls"
+      ]
+    },
+    {
+      "releaseId": "library-06-20261028",
+      "slugs": [
+        "curating-resources-without-creating-another-link-dump",
+        "debugging-javascript-across-browser-and-server",
+        "designing-a-remote-workspace-that-reduces-context-switching",
+        "designing-deletion-and-export-workflows-users-can-trust",
+        "designing-safe-browser-automation-for-real-work",
+        "documentation-as-a-remote-team-superpower",
+        "encryption-at-rest-and-in-transit-explained",
+        "evidence-inference-and-opinion-a-better-research-habit",
+        "fast-python-tooling-reproducible-environments-with-uv",
+        "from-manual-task-to-measurable-automation-in-seven-days"
+      ],
+      "state": "pending",
+      "blocked": [
+        "curating-resources-without-creating-another-link-dump",
+        "debugging-javascript-across-browser-and-server",
+        "designing-a-remote-workspace-that-reduces-context-switching",
+        "designing-deletion-and-export-workflows-users-can-trust",
+        "designing-safe-browser-automation-for-real-work",
+        "documentation-as-a-remote-team-superpower",
+        "encryption-at-rest-and-in-transit-explained",
+        "evidence-inference-and-opinion-a-better-research-habit",
+        "fast-python-tooling-reproducible-environments-with-uv",
+        "from-manual-task-to-measurable-automation-in-seven-days"
+      ]
+    },
+    {
+      "releaseId": "library-07-20261028",
+      "slugs": [
+        "git-workflows-that-keep-small-teams-moving",
+        "how-dns-connects-a-domain-to-a-website",
+        "how-internal-links-help-visitors-and-search-engines",
+        "how-no-code-automation-fits-into-a-real-engineering-workflow",
+        "how-to-add-human-review-to-automated-decisions",
+        "how-to-ask-better-questions-when-you-are-stuck",
+        "how-to-audit-a-sitemap-and-robots-file",
+        "how-to-automate-repetitive-research-without-losing-judgment",
+        "how-to-build-a-personal-command-center-for-online-work",
+        "how-to-build-a-personal-knowledge-base-you-will-reuse"
+      ],
+      "state": "pending",
+      "blocked": [
+        "git-workflows-that-keep-small-teams-moving",
+        "how-dns-connects-a-domain-to-a-website",
+        "how-internal-links-help-visitors-and-search-engines",
+        "how-no-code-automation-fits-into-a-real-engineering-workflow",
+        "how-to-add-human-review-to-automated-decisions",
+        "how-to-ask-better-questions-when-you-are-stuck",
+        "how-to-audit-a-sitemap-and-robots-file",
+        "how-to-automate-repetitive-research-without-losing-judgment",
+        "how-to-build-a-personal-command-center-for-online-work",
+        "how-to-build-a-personal-knowledge-base-you-will-reuse"
+      ]
+    },
+    {
+      "releaseId": "library-08-20261028",
+      "slugs": [
+        "how-to-build-a-personal-start-here-page",
+        "how-to-build-a-personal-start-here-page-for-the-web",
+        "how-to-build-a-reliable-ai-agent-workflow-in-2026",
+        "how-to-build-a-safer-public-contact-form",
+        "how-to-build-approval-steps-into-business-automations",
+        "how-to-choose-a-code-editor-for-large-projects",
+        "how-to-choose-an-ai-tool-for-a-small-team",
+        "how-to-choose-remote-work-tools-that-reduce-noise",
+        "how-to-compare-ai-tools-on-privacy-cost-and-output-quality",
+        "how-to-compare-similar-websites-without-wasting-an-hour"
+      ],
+      "state": "pending",
+      "blocked": [
+        "how-to-build-a-personal-start-here-page",
+        "how-to-build-a-personal-start-here-page-for-the-web",
+        "how-to-build-a-reliable-ai-agent-workflow-in-2026",
+        "how-to-build-a-safer-public-contact-form",
+        "how-to-build-approval-steps-into-business-automations",
+        "how-to-choose-a-code-editor-for-large-projects",
+        "how-to-choose-an-ai-tool-for-a-small-team",
+        "how-to-choose-remote-work-tools-that-reduce-noise",
+        "how-to-compare-ai-tools-on-privacy-cost-and-output-quality",
+        "how-to-compare-similar-websites-without-wasting-an-hour"
+      ]
+    },
+    {
+      "releaseId": "library-09-20261028",
+      "slugs": [
+        "how-to-compare-tools-without-falling-for-marketing-claims",
+        "how-to-connect-saas-tools-without-leaking-secrets",
+        "how-to-create-a-content-cluster-that-users-can-navigate",
+        "how-to-cut-cloud-waste-without-cutting-reliability",
+        "how-to-debug-a-frontend-error-from-the-first-clue",
+        "how-to-deploy-a-static-website-with-confidence",
+        "how-to-design-a-workday-around-deep-and-shallow-tasks",
+        "how-to-design-a-workflow-that-fails-gracefully",
+        "how-to-design-health-checks-that-find-real-failures",
+        "how-to-diagnose-a-slow-image-on-a-website"
+      ],
+      "state": "pending",
+      "blocked": [
+        "how-to-compare-tools-without-falling-for-marketing-claims",
+        "how-to-connect-saas-tools-without-leaking-secrets",
+        "how-to-create-a-content-cluster-that-users-can-navigate",
+        "how-to-cut-cloud-waste-without-cutting-reliability",
+        "how-to-debug-a-frontend-error-from-the-first-clue",
+        "how-to-deploy-a-static-website-with-confidence",
+        "how-to-design-a-workday-around-deep-and-shallow-tasks",
+        "how-to-design-a-workflow-that-fails-gracefully",
+        "how-to-design-health-checks-that-find-real-failures",
+        "how-to-diagnose-a-slow-image-on-a-website"
+      ]
+    },
+    {
+      "releaseId": "library-10-20261028",
+      "slugs": [
+        "how-to-discover-small-tools-that-solve-specific-problems",
+        "how-to-document-an-automation-so-someone-else-can-own-it",
+        "how-to-evaluate-a-website-before-you-bookmark-it",
+        "how-to-find-hidden-websites-with-better-search-habits",
+        "how-to-find-useful-ai-tools-without-drowning-in-hype",
+        "how-to-judge-whether-a-free-online-tool-is-worth-using",
+        "how-to-learn-a-technical-skill-with-deliberate-practice",
+        "how-to-learn-a-technical-tool-without-memorizing-everything",
+        "how-to-make-a-landing-page-load-faster",
+        "how-to-make-a-small-javascript-project-easier-to-maintain"
+      ],
+      "state": "pending",
+      "blocked": [
+        "how-to-discover-small-tools-that-solve-specific-problems",
+        "how-to-document-an-automation-so-someone-else-can-own-it",
+        "how-to-evaluate-a-website-before-you-bookmark-it",
+        "how-to-find-hidden-websites-with-better-search-habits",
+        "how-to-find-useful-ai-tools-without-drowning-in-hype",
+        "how-to-judge-whether-a-free-online-tool-is-worth-using",
+        "how-to-learn-a-technical-skill-with-deliberate-practice",
+        "how-to-learn-a-technical-tool-without-memorizing-everything",
+        "how-to-make-a-landing-page-load-faster",
+        "how-to-make-a-small-javascript-project-easier-to-maintain"
+      ]
+    },
+    {
+      "releaseId": "library-11-20261028",
+      "slugs": [
+        "how-to-make-remote-collaboration-more-inclusive",
+        "how-to-make-your-digital-footprint-smaller",
+        "how-to-map-a-workflow-before-automating-it",
+        "how-to-measure-remote-work-without-surveillance",
+        "how-to-monitor-ai-costs-latency-and-quality",
+        "how-to-plan-a-feature-before-you-touch-the-code",
+        "how-to-protect-a-small-website-admin-panel",
+        "how-to-read-a-security-finding-and-fix-the-root-cause",
+        "how-to-read-a-server-health-check",
+        "how-to-read-a-technical-paper-without-getting-lost"
+      ],
+      "state": "pending",
+      "blocked": [
+        "how-to-make-remote-collaboration-more-inclusive",
+        "how-to-make-your-digital-footprint-smaller",
+        "how-to-map-a-workflow-before-automating-it",
+        "how-to-measure-remote-work-without-surveillance",
+        "how-to-monitor-ai-costs-latency-and-quality",
+        "how-to-plan-a-feature-before-you-touch-the-code",
+        "how-to-protect-a-small-website-admin-panel",
+        "how-to-read-a-security-finding-and-fix-the-root-cause",
+        "how-to-read-a-server-health-check",
+        "how-to-read-a-technical-paper-without-getting-lost"
+      ]
+    },
+    {
+      "releaseId": "library-12-20261028",
+      "slugs": [
+        "how-to-read-a-tool-s-permission-screen",
+        "how-to-read-technical-documentation-efficiently",
+        "how-to-reduce-deployment-risk-with-small-releases",
+        "how-to-remove-unnecessary-tracking-from-a-small-site",
+        "how-to-review-a-saas-tool-s-data-practices",
+        "how-to-review-api-authentication-without-guessing",
+        "how-to-run-better-technical-meetings",
+        "how-to-secure-admin-panels-and-privileged-routes",
+        "how-to-separate-work-personal-and-public-accounts",
+        "how-to-share-files-without-losing-control-of-them"
+      ],
+      "state": "pending",
+      "blocked": [
+        "how-to-read-a-tool-s-permission-screen",
+        "how-to-read-technical-documentation-efficiently",
+        "how-to-reduce-deployment-risk-with-small-releases",
+        "how-to-remove-unnecessary-tracking-from-a-small-site",
+        "how-to-review-a-saas-tool-s-data-practices",
+        "how-to-review-api-authentication-without-guessing",
+        "how-to-run-better-technical-meetings",
+        "how-to-secure-admin-panels-and-privileged-routes",
+        "how-to-separate-work-personal-and-public-accounts",
+        "how-to-share-files-without-losing-control-of-them"
+      ]
+    },
+    {
+      "releaseId": "library-13-20261028",
+      "slugs": [
+        "how-to-test-whether-a-new-tool-is-worth-your-time",
+        "how-to-turn-a-long-article-into-an-action-plan",
+        "how-to-turn-a-repetitive-browser-task-into-a-safe-automation",
+        "how-to-turn-a-script-into-a-maintainable-tool",
+        "how-to-turn-a-tutorial-into-real-working-skill",
+        "how-to-update-old-articles-without-losing-their-value",
+        "how-to-use-git-branches-without-creating-a-mess",
+        "how-to-use-logs-without-getting-lost-in-them",
+        "how-to-use-search-intent-before-writing-an-article",
+        "how-to-write-a-project-update-people-can-act-on"
+      ],
+      "state": "pending",
+      "blocked": [
+        "how-to-test-whether-a-new-tool-is-worth-your-time",
+        "how-to-turn-a-long-article-into-an-action-plan",
+        "how-to-turn-a-repetitive-browser-task-into-a-safe-automation",
+        "how-to-turn-a-script-into-a-maintainable-tool",
+        "how-to-turn-a-tutorial-into-real-working-skill",
+        "how-to-update-old-articles-without-losing-their-value",
+        "how-to-use-git-branches-without-creating-a-mess",
+        "how-to-use-logs-without-getting-lost-in-them",
+        "how-to-use-search-intent-before-writing-an-article",
+        "how-to-write-a-project-update-people-can-act-on"
+      ]
+    },
+    {
+      "releaseId": "library-14-20261028",
+      "slugs": [
+        "how-to-write-better-technical-issue-reports",
+        "how-to-write-prompts-that-produce-testable-technical-answers",
+        "how-to-write-search-snippets-people-want-to-click",
+        "image-optimization-without-sacrificing-editorial-quality",
+        "infrastructure-as-code-a-safer-path-from-laptop-to-cloud",
+        "managing-deep-work-across-time-zones",
+        "monorepo-or-multi-repo-a-decision-guide",
+        "multi-agent-systems-where-coordination-helps-and-hurts",
+        "observability-basics-logs-metrics-and-traces-together",
+        "owasp-top-10-2025-a-developer-friendly-action-plan"
+      ],
+      "state": "pending",
+      "blocked": [
+        "how-to-write-better-technical-issue-reports",
+        "how-to-write-prompts-that-produce-testable-technical-answers",
+        "how-to-write-search-snippets-people-want-to-click",
+        "image-optimization-without-sacrificing-editorial-quality",
+        "infrastructure-as-code-a-safer-path-from-laptop-to-cloud",
+        "managing-deep-work-across-time-zones",
+        "monorepo-or-multi-repo-a-decision-guide",
+        "multi-agent-systems-where-coordination-helps-and-hurts",
+        "observability-basics-logs-metrics-and-traces-together",
+        "owasp-top-10-2025-a-developer-friendly-action-plan"
+      ]
+    },
+    {
+      "releaseId": "library-15-20261028",
+      "slugs": [
+        "page-experience-performance-accessibility-and-trust",
+        "password-reset-and-email-verification-done-safely",
+        "practical-session-and-token-security-for-javascript-apps",
+        "privacy-by-design-for-small-web-products",
+        "privacy-risks-in-ai-features-and-rag-pipelines",
+        "privacy-safe-analytics-for-product-teams",
+        "prompt-engineering-for-repeatable-technical-work",
+        "pseudonymization-vs-anonymization-what-changes",
+        "rag-systems-explained-retrieval-that-actually-helps",
+        "reliable-spreadsheet-automation-without-data-chaos"
+      ],
+      "state": "pending",
+      "blocked": [
+        "page-experience-performance-accessibility-and-trust",
+        "password-reset-and-email-verification-done-safely",
+        "practical-session-and-token-security-for-javascript-apps",
+        "privacy-by-design-for-small-web-products",
+        "privacy-risks-in-ai-features-and-rag-pipelines",
+        "privacy-safe-analytics-for-product-teams",
+        "prompt-engineering-for-repeatable-technical-work",
+        "pseudonymization-vs-anonymization-what-changes",
+        "rag-systems-explained-retrieval-that-actually-helps",
+        "reliable-spreadsheet-automation-without-data-chaos"
+      ]
+    },
+    {
+      "releaseId": "library-16-20261028",
+      "slugs": [
+        "remote-onboarding-that-does-not-depend-on-tribal-knowledge",
+        "research-reproducibility-for-small-engineering-projects",
+        "search-intent-mapping-for-a-new-content-library",
+        "search-intent-turning-a-question-into-a-better-result",
+        "secrets-management-without-putting-keys-in-git",
+        "structured-data-for-articles-breadcrumbs-and-organizations",
+        "supply-chain-security-for-open-source-dependencies",
+        "testing-generated-code-before-it-reaches-production",
+        "the-30-day-plan-for-becoming-better-at-technical-writing",
+        "the-anatomy-of-a-trustworthy-online-resource"
+      ],
+      "state": "pending",
+      "blocked": [
+        "remote-onboarding-that-does-not-depend-on-tribal-knowledge",
+        "research-reproducibility-for-small-engineering-projects",
+        "search-intent-mapping-for-a-new-content-library",
+        "search-intent-turning-a-question-into-a-better-result",
+        "secrets-management-without-putting-keys-in-git",
+        "structured-data-for-articles-breadcrumbs-and-organizations",
+        "supply-chain-security-for-open-source-dependencies",
+        "testing-generated-code-before-it-reaches-production",
+        "the-30-day-plan-for-becoming-better-at-technical-writing",
+        "the-anatomy-of-a-trustworthy-online-resource"
+      ]
+    },
+    {
+      "releaseId": "library-17-20261028",
+      "slugs": [
+        "the-best-questions-to-ask-before-bookmarking-a-website",
+        "the-best-way-to-capture-decisions-in-a-fast-moving-project",
+        "the-best-way-to-organize-ai-experiments-and-results",
+        "the-developer-s-guide-to-fast-local-projects",
+        "the-difference-between-a-bug-a-regression-and-a-misunderstanding",
+        "the-difference-between-a-demo-a-prototype-and-a-product",
+        "the-difference-between-a-security-scan-and-a-security-audit",
+        "the-difference-between-a-shortcut-and-a-system",
+        "the-difference-between-encryption-hashing-and-encoding",
+        "the-difference-between-uptime-and-a-healthy-product"
+      ],
+      "state": "pending",
+      "blocked": [
+        "the-best-questions-to-ask-before-bookmarking-a-website",
+        "the-best-way-to-capture-decisions-in-a-fast-moving-project",
+        "the-best-way-to-organize-ai-experiments-and-results",
+        "the-developer-s-guide-to-fast-local-projects",
+        "the-difference-between-a-bug-a-regression-and-a-misunderstanding",
+        "the-difference-between-a-demo-a-prototype-and-a-product",
+        "the-difference-between-a-security-scan-and-a-security-audit",
+        "the-difference-between-a-shortcut-and-a-system",
+        "the-difference-between-encryption-hashing-and-encoding",
+        "the-difference-between-uptime-and-a-healthy-product"
+      ]
+    },
+    {
+      "releaseId": "library-18-20261028",
+      "slugs": [
+        "the-findtheweb-method-for-searching-less-and-finding-better",
+        "the-no-code-automation-stack-for-a-one-person-team",
+        "the-practical-case-for-fewer-notifications",
+        "the-small-model-stack-for-everyday-automation",
+        "the-small-team-toolkit-for-calm-distributed-delivery",
+        "threat-modeling-a-modern-web-application",
+        "typescript-in-2026-why-types-help-ai-assisted-development",
+        "understanding-https-certificates-and-the-secure-padlock",
+        "webhooks-apis-and-triggers-a-clear-beginner-guide",
+        "what-a-good-readme-should-tell-a-new-contributor"
+      ],
+      "state": "pending",
+      "blocked": [
+        "the-findtheweb-method-for-searching-less-and-finding-better",
+        "the-no-code-automation-stack-for-a-one-person-team",
+        "the-practical-case-for-fewer-notifications",
+        "the-small-model-stack-for-everyday-automation",
+        "the-small-team-toolkit-for-calm-distributed-delivery",
+        "threat-modeling-a-modern-web-application",
+        "typescript-in-2026-why-types-help-ai-assisted-development",
+        "understanding-https-certificates-and-the-secure-padlock",
+        "webhooks-apis-and-triggers-a-clear-beginner-guide",
+        "what-a-good-readme-should-tell-a-new-contributor"
+      ]
+    },
+    {
+      "releaseId": "library-19-20261028",
+      "slugs": [
+        "what-a-reverse-proxy-does-for-a-website",
+        "what-data-should-your-analytics-actually-collect",
+        "what-makes-a-tutorial-trustworthy",
+        "what-makes-a-useful-meta-description",
+        "what-makes-an-ai-agent-reliable-in-real-projects",
+        "what-makes-an-online-resource-worth-sharing",
+        "what-to-measure-in-an-automation-before-scaling-it",
+        "what-to-verify-after-a-production-deployment",
+        "what-website-privacy-policies-should-explain-clearly",
+        "when-no-code-automation-becomes-technical-debt"
+      ],
+      "state": "pending",
+      "blocked": [
+        "what-a-reverse-proxy-does-for-a-website",
+        "what-data-should-your-analytics-actually-collect",
+        "what-makes-a-tutorial-trustworthy",
+        "what-makes-a-useful-meta-description",
+        "what-makes-an-ai-agent-reliable-in-real-projects",
+        "what-makes-an-online-resource-worth-sharing",
+        "what-to-measure-in-an-automation-before-scaling-it",
+        "what-to-verify-after-a-production-deployment",
+        "what-website-privacy-policies-should-explain-clearly",
+        "when-no-code-automation-becomes-technical-debt"
+      ]
+    },
+    {
+      "releaseId": "library-20-20261028",
+      "slugs": [
+        "why-mobile-ux-is-a-search-and-conversion-problem",
+        "why-software-updates-matter-more-than-security-theater"
+      ],
+      "state": "pending",
+      "blocked": [
+        "why-mobile-ux-is-a-search-and-conversion-problem",
+        "why-software-updates-matter-more-than-security-theater"
+      ]
+    }
+  ]
+}

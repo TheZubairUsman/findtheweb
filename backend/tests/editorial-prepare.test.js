@@ -27,3 +27,10 @@ it('rejects paths outside the content workspace and refuses to replace an input'
 it('does not silently overwrite a different prepared release',()=>{
  fs.writeFileSync(path.join(folder,'output.json'),'[]\n');expect(()=>prepare(config)).toThrow('Existing release differs');expect(fs.readFileSync(path.join(folder,'output.json'),'utf8')).toBe('[]\n');
 });
+it('cannot replace reviewed copy with old fields from a richer baseline inventory',()=>{
+ const file=path.join(folder,'baseline.json'),baseline=JSON.parse(fs.readFileSync(file));
+ baseline[0].content='Old published body';baseline[0].excerpt='Old excerpt';baseline[0].seoTitle='Old SEO title';
+ fs.writeFileSync(file,JSON.stringify(baseline));const draft=JSON.parse(fs.readFileSync(path.join(folder,'draft.json'))),record=prepare(config)[0];
+ expect(record.content).toBe(draft.content);expect(record.excerpt).toBe(draft.excerpt);expect(record.seoTitle).toBe(draft.seoTitle);
+ expect(record.expectedContentSha256).toBe(baseline[0].expectedContentSha256);
+});

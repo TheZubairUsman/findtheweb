@@ -21,7 +21,9 @@ function prepare(config){
   assert(/^[a-z0-9][a-z0-9-]{2,100}\.png$/.test(item.cover),'Versioned PNG basename required');
   const optimized=item.cover.replace(/\.png$/,'.webp'),png=fs.readFileSync(local('dist/editorial-images/'+item.cover)),webp=fs.readFileSync(local('dist/editorial-images/'+optimized));
   const a=imageMetadata(png),b=imageMetadata(webp);assert(a.format==='png'&&b.format==='webp'&&a.width===b.width&&a.height===b.height&&webp.length<500000,'Review optimized asset dimensions/budget');
-  records.push({...draft,...current,featuredImage:'https://findtheweb.zus3cu.tech/editorial-images/'+optimized,expectedSocialImage:'https://findtheweb.zus3cu.tech/editorial-images/'+item.cover});
+  // A richer inventory may contain the previous body or image. Carry only the
+  // comparison fields across; never replace the reviewed draft with old copy.
+  records.push({...draft,slug:current.slug,expectedTitle:current.expectedTitle,expectedContentSha256:current.expectedContentSha256,expectedFeaturedImageSha256:current.expectedFeaturedImageSha256,expectedFields:current.expectedFields,publishedAt:current.publishedAt,featuredImage:'https://findtheweb.zus3cu.tech/editorial-images/'+optimized,expectedSocialImage:'https://findtheweb.zus3cu.tech/editorial-images/'+item.cover});
  }
  const output=jsonFile(config.output),payload=JSON.stringify(records,null,2)+'\n';
  assert(![config.baseline,...config.articles.map(r=>r.draft)].some(file=>jsonFile(file)===output),'Output cannot replace an input');
