@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-31T03:41:21.567Z",
+  "checkedAt": "2026-10-31T08:59:21.712Z",
   "total": 198,
   "preserved": 6,
   "assigned": 192,
-  "drafts": 82,
-  "gatePassed": 73,
+  "drafts": 98,
+  "gatePassed": 92,
   "batches": [
     {
       "releaseId": "library-01-20261028",
@@ -58,10 +58,10 @@
         "a-research-workflow-for-comparing-new-developer-tools",
         "a-research-workflow-for-finding-trustworthy-technical-sources"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-03.json",
-      "sha256": "958a6a2b981105a9f298a33fbe80281041f9299be744c3b7800014b7e3a0b0f4"
+      "liveVerifiedAt": "2026-10-31T08:42:07.252Z"
     },
     {
       "releaseId": "library-04-20261028",
@@ -77,10 +77,10 @@
         "async-communication-what-to-write-down-and-what-to-meet-about",
         "automation-testing-for-non-developers"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-04.json",
-      "sha256": "7858da350a29e33e603515dd986a9d33968f8f5c4e2040d7871fc10848ff69e1"
+      "liveVerifiedAt": "2026-10-31T08:42:07.097Z"
     },
     {
       "releaseId": "library-05-20261028",
@@ -96,10 +96,10 @@
         "core-web-vitals-explained-for-people-who-build-websites",
         "core-web-vitals-in-practice-lcp-inp-and-cls"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-05.json",
-      "sha256": "b60cb741cb4d75ff3be9201048906b8ab41d64c465220f3f977e507dd056feb6"
+      "liveVerifiedAt": "2026-10-31T08:48:36.822Z"
     },
     {
       "releaseId": "library-06-20261028",
@@ -115,10 +115,10 @@
         "fast-python-tooling-reproducible-environments-with-uv",
         "from-manual-task-to-measurable-automation-in-seven-days"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-06.json",
-      "sha256": "bcb29a05de3bfb7dff5d7db0a8187566f85d03202d43b1904e6d72c681327da0"
+      "liveVerifiedAt": "2026-10-31T08:48:37.482Z"
     },
     {
       "releaseId": "library-07-20261028",
@@ -134,10 +134,10 @@
         "how-to-build-a-personal-command-center-for-online-work",
         "how-to-build-a-personal-knowledge-base-you-will-reuse"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-07.json",
-      "sha256": "515bb3a9ff54b9deb6d8629f6b67cbdcdf653e4cf5764b08a50db972c293d2fc"
+      "liveVerifiedAt": "2026-10-31T08:48:37.065Z"
     },
     {
       "releaseId": "library-08-20261028",
@@ -153,16 +153,10 @@
         "how-to-compare-ai-tools-on-privacy-cost-and-output-quality",
         "how-to-compare-similar-websites-without-wasting-an-hour"
       ],
-      "state": "pending",
-      "blocked": [
-        "how-to-build-a-reliable-ai-agent-workflow-in-2026",
-        "how-to-build-a-safer-public-contact-form",
-        "how-to-build-approval-steps-into-business-automations",
-        "how-to-choose-a-code-editor-for-large-projects",
-        "how-to-choose-an-ai-tool-for-a-small-team",
-        "how-to-compare-ai-tools-on-privacy-cost-and-output-quality",
-        "how-to-compare-similar-websites-without-wasting-an-hour"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-08.json",
+      "sha256": "39af900d91da19ff8318c3e37daea75e6d6567f6f3736695ce58bc13bf1cdf4d"
     },
     {
       "releaseId": "library-09-20261028",
@@ -180,16 +174,8 @@
       ],
       "state": "pending",
       "blocked": [
-        "how-to-compare-tools-without-falling-for-marketing-claims",
-        "how-to-connect-saas-tools-without-leaking-secrets",
-        "how-to-create-a-content-cluster-that-users-can-navigate",
         "how-to-cut-cloud-waste-without-cutting-reliability",
-        "how-to-debug-a-frontend-error-from-the-first-clue",
-        "how-to-deploy-a-static-website-with-confidence",
-        "how-to-design-a-workday-around-deep-and-shallow-tasks",
-        "how-to-design-a-workflow-that-fails-gracefully",
-        "how-to-design-health-checks-that-find-real-failures",
-        "how-to-diagnose-a-slow-image-on-a-website"
+        "how-to-debug-a-frontend-error-from-the-first-clue"
       ]
     },
     {
@@ -209,10 +195,6 @@
       "state": "pending",
       "blocked": [
         "how-to-discover-small-tools-that-solve-specific-problems",
-        "how-to-document-an-automation-so-someone-else-can-own-it",
-        "how-to-evaluate-a-website-before-you-bookmark-it",
-        "how-to-find-hidden-websites-with-better-search-habits",
-        "how-to-find-useful-ai-tools-without-drowning-in-hype",
         "how-to-judge-whether-a-free-online-tool-is-worth-using",
         "how-to-learn-a-technical-skill-with-deliberate-practice",
         "how-to-learn-a-technical-tool-without-memorizing-everything",

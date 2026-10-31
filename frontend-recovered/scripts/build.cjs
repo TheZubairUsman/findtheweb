@@ -36,7 +36,15 @@ const output = path.join(repo, 'dist/assets/frontend');
       fs.writeFileSync(target,fs.readFileSync(target,'utf8').replace(/\r\n/g,'\n'));
     }
     const social=fs.readdirSync(path.join(repo,'dist/social-covers')).filter(f=>f.endsWith('.png')).sort().map(f=>'social-covers/'+f);
-    const editorial=fs.existsSync(path.join(repo,'dist/editorial-images'))?fs.readdirSync(path.join(repo,'dist/editorial-images')).filter(f=>/\.(png|webp)$/.test(f)).sort().map(f=>'editorial-images/'+f):[];
+    // Only release covers whose reviewed article has a social-cover mapping.
+    // Draft art may exist locally while its article is still awaiting review.
+    const coverMap=JSON.parse(fs.readFileSync(path.join(repo,'backend/src/data/social-covers.json'),'utf8'));
+    const approvedEditorial=new Set(Object.values(coverMap).map(record=>record.url).filter(url=>typeof url==='string'&&url.startsWith('https://findtheweb.zus3cu.tech/editorial-images/')).flatMap(url=>{
+      const png=path.posix.basename(new URL(url).pathname);
+      if(!/^[-a-z0-9]+\.png$/.test(png))throw Error('Invalid editorial cover path');
+      return [png,png.replace(/\.png$/,'.webp')];
+    }));
+    const editorial=[...approvedEditorial].sort().map(f=>'editorial-images/'+f);
     for(const file of ['index.html','frontend-build.json','findtheweb-release.js','findtheweb-release.css','contact-inbox.js','robots.txt','seo-render.css',...assets.map(a=>a.slice(1)),...social,...editorial]) {
       const bytes = fs.readFileSync(path.join(repo,'dist',file));
       files[file] = {sha256:crypto.createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length};

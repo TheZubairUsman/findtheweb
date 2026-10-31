@@ -1,0 +1,47 @@
+{
+  "releaseId": "library-08-20261028",
+  "baseline": "tmp/editorial-full-baseline-20261028.json",
+  "output": "content/library-20261028/release-08.json",
+  "articles": [
+    {
+      "draft": "content/library-20261028/team-5/how-to-build-a-personal-start-here-page.json",
+      "cover": "lib-t5-12-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/12-how-to-build-a-personal-start-here-page-for-the-web.json",
+      "cover": "lib-t6-12-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/13-how-to-build-a-reliable-ai-agent-workflow-in-2026.json",
+      "cover": "lib-t1-13-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/how-to-build-a-safer-public-contact-form.json",
+      "cover": "lib-t2-13-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/13-how-to-build-approval-steps-into-business-automations.json",
+      "cover": "lib-t3-13-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/13-how-to-choose-a-code-editor-for-large-projects.json",
+      "cover": "lib-t4-13-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/how-to-choose-an-ai-tool-for-a-small-team.json",
+      "cover": "lib-t5-13-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/13-how-to-choose-remote-work-tools-that-reduce-noise.json",
+      "cover": "lib-t6-13-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/14-how-to-compare-ai-tools-on-privacy-cost-and-output-quality.json",
+      "cover": "lib-t1-14-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/how-to-compare-similar-websites-without-wasting-an-hour.json",
+      "cover": "lib-t2-14-20261028.png"
+    }
+  ]
+}
