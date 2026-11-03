@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-10-31T17:22:11.056Z",
+  "checkedAt": "2026-11-03T10:29:10.597Z",
   "total": 198,
   "preserved": 6,
   "assigned": 192,
-  "drafts": 136,
-  "gatePassed": 133,
+  "drafts": 140,
+  "gatePassed": 140,
   "batches": [
     {
       "releaseId": "library-01-20261028",
@@ -248,13 +248,10 @@
         "how-to-use-search-intent-before-writing-an-article",
         "how-to-write-a-project-update-people-can-act-on"
       ],
-      "state": "pending",
-      "blocked": [
-        "how-to-test-whether-a-new-tool-is-worth-your-time",
-        "how-to-turn-a-long-article-into-an-action-plan",
-        "how-to-use-git-branches-without-creating-a-mess",
-        "how-to-use-logs-without-getting-lost-in-them"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-13.json",
+      "sha256": "7d874cae9dee83ea492a04e2df419772e03a244f472d55c1442a8fc7cf9b9521"
     },
     {
       "releaseId": "library-14-20261028",
@@ -275,7 +272,6 @@
         "how-to-write-prompts-that-produce-testable-technical-answers",
         "how-to-write-search-snippets-people-want-to-click",
         "image-optimization-without-sacrificing-editorial-quality",
-        "managing-deep-work-across-time-zones",
         "multi-agent-systems-where-coordination-helps-and-hurts",
         "observability-basics-logs-metrics-and-traces-together",
         "owasp-top-10-2025-a-developer-friendly-action-plan"
@@ -297,12 +293,10 @@
       ],
       "state": "pending",
       "blocked": [
-        "password-reset-and-email-verification-done-safely",
         "privacy-by-design-for-small-web-products",
         "privacy-risks-in-ai-features-and-rag-pipelines",
         "privacy-safe-analytics-for-product-teams",
         "prompt-engineering-for-repeatable-technical-work",
-        "pseudonymization-vs-anonymization-what-changes",
         "rag-systems-explained-retrieval-that-actually-helps",
         "reliable-spreadsheet-automation-without-data-chaos"
       ]
@@ -425,10 +419,10 @@
         "why-mobile-ux-is-a-search-and-conversion-problem",
         "why-software-updates-matter-more-than-security-theater"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-20.json",
-      "sha256": "9925aa9fbe39b72ea65807f3751ed5ea53a8aca2cb9e6101e9678eddc55ed960"
+      "liveVerifiedAt": "2026-10-31T17:28:46.218Z"
     }
   ]
 }

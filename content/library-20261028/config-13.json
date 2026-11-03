@@ -1,0 +1,47 @@
+{
+  "releaseId": "library-13-20261028",
+  "baseline": "tmp/editorial-full-baseline-20261028.json",
+  "output": "content/library-20261028/release-13.json",
+  "articles": [
+    {
+      "draft": "content/library-20261028/team-1/how-to-test-whether-a-new-tool-is-worth-your-time.json",
+      "cover": "lib-t1-21-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/how-to-turn-a-long-article-into-an-action-plan.json",
+      "cover": "lib-t2-21-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/21-how-to-turn-a-repetitive-browser-task-into-a-safe-automation.json",
+      "cover": "lib-t3-21-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/21-how-to-turn-a-script-into-a-maintainable-tool.json",
+      "cover": "lib-t4-21-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/how-to-turn-a-tutorial-into-real-working-skill.json",
+      "cover": "lib-t5-21-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/21-how-to-update-old-articles-without-losing-their-value.json",
+      "cover": "lib-t6-21-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/how-to-use-git-branches-without-creating-a-mess.json",
+      "cover": "lib-t1-22-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/how-to-use-logs-without-getting-lost-in-them.json",
+      "cover": "lib-t2-22-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/22-how-to-use-search-intent-before-writing-an-article.json",
+      "cover": "lib-t3-22-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/22-how-to-write-a-project-update-people-can-act-on.json",
+      "cover": "lib-t4-22-20261028.png"
+    }
+  ]
+}
