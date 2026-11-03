@@ -253,9 +253,29 @@
         "why-mobile-ux-is-a-search-and-conversion-problem",
         "why-software-updates-matter-more-than-security-theater"
       ]
+    },
+    {
+      "releaseId": "library-13-20261028",
+      "commit": "e2503434e45296a52711fbf928533c89c39f1b76",
+      "ciRun": 41619868201,
+      "releaseSha256": "7d874cae9dee83ea492a04e2df419772e03a244f472d55c1442a8fc7cf9b9521",
+      "liveVerifiedAt": "2026-11-03T10:36:40.998Z",
+      "articleCount": 10,
+      "slugs": [
+        "how-to-test-whether-a-new-tool-is-worth-your-time",
+        "how-to-turn-a-long-article-into-an-action-plan",
+        "how-to-turn-a-repetitive-browser-task-into-a-safe-automation",
+        "how-to-turn-a-script-into-a-maintainable-tool",
+        "how-to-turn-a-tutorial-into-real-working-skill",
+        "how-to-update-old-articles-without-losing-their-value",
+        "how-to-use-git-branches-without-creating-a-mess",
+        "how-to-use-logs-without-getting-lost-in-them",
+        "how-to-use-search-intent-before-writing-an-article",
+        "how-to-write-a-project-update-people-can-act-on"
+      ]
     }
   ],
-  "verifiedNewArticles": 122,
-  "totalUpgraded": 128,
-  "remaining": 70
+  "verifiedNewArticles": 132,
+  "totalUpgraded": 138,
+  "remaining": 60
 }
