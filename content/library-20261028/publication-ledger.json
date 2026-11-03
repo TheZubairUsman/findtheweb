@@ -273,9 +273,29 @@
         "how-to-use-search-intent-before-writing-an-article",
         "how-to-write-a-project-update-people-can-act-on"
       ]
+    },
+    {
+      "releaseId": "library-14-20261028",
+      "commit": "4dd0afb2a53f01efa8a431e97dcf39928720a92a",
+      "ciRun": 41626559877,
+      "releaseSha256": "84e0f95363c767f5ecb8c5d79f7750e647c9d0fac84b62a2372a5b1593e8c43e",
+      "liveVerifiedAt": "2026-11-03T11:28:16.194Z",
+      "articleCount": 10,
+      "slugs": [
+        "how-to-write-better-technical-issue-reports",
+        "how-to-write-prompts-that-produce-testable-technical-answers",
+        "how-to-write-search-snippets-people-want-to-click",
+        "image-optimization-without-sacrificing-editorial-quality",
+        "infrastructure-as-code-a-safer-path-from-laptop-to-cloud",
+        "managing-deep-work-across-time-zones",
+        "monorepo-or-multi-repo-a-decision-guide",
+        "multi-agent-systems-where-coordination-helps-and-hurts",
+        "observability-basics-logs-metrics-and-traces-together",
+        "owasp-top-10-2025-a-developer-friendly-action-plan"
+      ]
     }
   ],
-  "verifiedNewArticles": 132,
-  "totalUpgraded": 138,
-  "remaining": 60
+  "verifiedNewArticles": 142,
+  "totalUpgraded": 148,
+  "remaining": 50
 }
