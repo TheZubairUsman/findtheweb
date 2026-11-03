@@ -1,0 +1,47 @@
+{
+  "releaseId": "library-19-20261028",
+  "baseline": "tmp/editorial-full-baseline-20261028.json",
+  "output": "content/library-20261028/release-19.json",
+  "articles": [
+    {
+      "draft": "content/library-20261028/team-1/31-what-a-reverse-proxy-does-for-a-website.json",
+      "cover": "lib-t1-31-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/what-data-should-your-analytics-actually-collect.json",
+      "cover": "lib-t2-31-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/31-what-makes-a-tutorial-trustworthy.json",
+      "cover": "lib-t3-31-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/31-what-makes-a-useful-meta-description.json",
+      "cover": "lib-t4-31-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/what-makes-an-ai-agent-reliable-in-real-projects.json",
+      "cover": "lib-t5-31-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/31-what-makes-an-online-resource-worth-sharing.json",
+      "cover": "lib-t6-31-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/32-what-to-measure-in-an-automation-before-scaling-it.json",
+      "cover": "lib-t1-32-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/what-to-verify-after-a-production-deployment.json",
+      "cover": "lib-t2-32-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/32-what-website-privacy-policies-should-explain-clearly.json",
+      "cover": "lib-t3-32-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/32-when-no-code-automation-becomes-technical-debt.json",
+      "cover": "lib-t4-32-20261028.png"
+    }
+  ]
+}

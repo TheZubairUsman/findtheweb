@@ -1,0 +1,47 @@
+{
+  "releaseId": "library-17-20261028",
+  "baseline": "tmp/editorial-full-baseline-20261028.json",
+  "output": "content/library-20261028/release-17.json",
+  "articles": [
+    {
+      "draft": "content/library-20261028/team-5/the-best-questions-to-ask-before-bookmarking-a-website.json",
+      "cover": "lib-t5-27-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/27-the-best-way-to-capture-decisions-in-a-fast-moving-project.json",
+      "cover": "lib-t6-27-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/28-the-best-way-to-organize-ai-experiments-and-results.json",
+      "cover": "lib-t1-28-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/the-developer-s-guide-to-fast-local-projects.json",
+      "cover": "lib-t2-28-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/28-the-difference-between-a-bug-a-regression-and-a-misunderstanding.json",
+      "cover": "lib-t3-28-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/28-the-difference-between-a-demo-a-prototype-and-a-product.json",
+      "cover": "lib-t4-28-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/the-difference-between-a-security-scan-and-a-security-audit.json",
+      "cover": "lib-t5-28-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/28-the-difference-between-a-shortcut-and-a-system.json",
+      "cover": "lib-t6-28-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/29-the-difference-between-encryption-hashing-and-encoding.json",
+      "cover": "lib-t1-29-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/the-difference-between-uptime-and-a-healthy-product.json",
+      "cover": "lib-t2-29-20261028.png"
+    }
+  ]
+}

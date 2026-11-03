@@ -313,9 +313,29 @@
         "rag-systems-explained-retrieval-that-actually-helps",
         "reliable-spreadsheet-automation-without-data-chaos"
       ]
+    },
+    {
+      "releaseId": "library-16-20261028",
+      "commit": "25246f7d86b50b0df9d125691f32ca8c653cf999",
+      "ciRun": 41668289857,
+      "releaseSha256": "e26a2e82b95d267e77b1c2fae68efe9d8749df772ed3007bca819dbf9e7887d8",
+      "liveVerifiedAt": "2026-11-03T16:09:13.504Z",
+      "articleCount": 10,
+      "slugs": [
+        "remote-onboarding-that-does-not-depend-on-tribal-knowledge",
+        "research-reproducibility-for-small-engineering-projects",
+        "search-intent-mapping-for-a-new-content-library",
+        "search-intent-turning-a-question-into-a-better-result",
+        "secrets-management-without-putting-keys-in-git",
+        "structured-data-for-articles-breadcrumbs-and-organizations",
+        "supply-chain-security-for-open-source-dependencies",
+        "testing-generated-code-before-it-reaches-production",
+        "the-30-day-plan-for-becoming-better-at-technical-writing",
+        "the-anatomy-of-a-trustworthy-online-resource"
+      ]
     }
   ],
-  "verifiedNewArticles": 152,
-  "totalUpgraded": 158,
-  "remaining": 40
+  "verifiedNewArticles": 162,
+  "totalUpgraded": 168,
+  "remaining": 30
 }

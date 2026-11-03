@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-11-03T15:45:48.071Z",
+  "checkedAt": "2026-11-03T16:11:31.944Z",
   "total": 198,
   "preserved": 6,
   "assigned": 192,
-  "drafts": 183,
-  "gatePassed": 183,
+  "drafts": 192,
+  "gatePassed": 192,
   "batches": [
     {
       "releaseId": "library-01-20261028",
@@ -305,10 +305,10 @@
         "the-30-day-plan-for-becoming-better-at-technical-writing",
         "the-anatomy-of-a-trustworthy-online-resource"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-16.json",
-      "sha256": "e26a2e82b95d267e77b1c2fae68efe9d8749df772ed3007bca819dbf9e7887d8"
+      "liveVerifiedAt": "2026-11-03T16:09:13.504Z"
     },
     {
       "releaseId": "library-17-20261028",
@@ -324,12 +324,10 @@
         "the-difference-between-encryption-hashing-and-encoding",
         "the-difference-between-uptime-and-a-healthy-product"
       ],
-      "state": "pending",
-      "blocked": [
-        "the-best-way-to-organize-ai-experiments-and-results",
-        "the-difference-between-a-shortcut-and-a-system",
-        "the-difference-between-encryption-hashing-and-encoding"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-17.json",
+      "sha256": "79d8b20acf1988ab3e243700c6de22641c314695e0cd92b06954ccd0d15a6a93"
     },
     {
       "releaseId": "library-18-20261028",
@@ -345,12 +343,10 @@
         "webhooks-apis-and-triggers-a-clear-beginner-guide",
         "what-a-good-readme-should-tell-a-new-contributor"
       ],
-      "state": "pending",
-      "blocked": [
-        "the-small-model-stack-for-everyday-automation",
-        "the-small-team-toolkit-for-calm-distributed-delivery",
-        "what-a-good-readme-should-tell-a-new-contributor"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-18.json",
+      "sha256": "14e91f3f423192ba951e7d644a8982d1510ecadf25772a1e617680dd98f9bc2a"
     },
     {
       "releaseId": "library-19-20261028",
@@ -366,12 +362,10 @@
         "what-website-privacy-policies-should-explain-clearly",
         "when-no-code-automation-becomes-technical-debt"
       ],
-      "state": "pending",
-      "blocked": [
-        "what-a-reverse-proxy-does-for-a-website",
-        "what-makes-an-online-resource-worth-sharing",
-        "what-to-measure-in-an-automation-before-scaling-it"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-19.json",
+      "sha256": "e1f0288f216e5344e550144aa1f7368bbc53088288b1f90af9b116001328f51d"
     },
     {
       "releaseId": "library-20-20261028",
