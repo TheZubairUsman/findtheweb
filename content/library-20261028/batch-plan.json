@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-11-03T12:46:15.056Z",
+  "checkedAt": "2026-11-03T15:45:48.071Z",
   "total": 198,
   "preserved": 6,
   "assigned": 192,
-  "drafts": 157,
-  "gatePassed": 157,
+  "drafts": 183,
+  "gatePassed": 183,
   "batches": [
     {
       "releaseId": "library-01-20261028",
@@ -305,15 +305,10 @@
         "the-30-day-plan-for-becoming-better-at-technical-writing",
         "the-anatomy-of-a-trustworthy-online-resource"
       ],
-      "state": "pending",
-      "blocked": [
-        "remote-onboarding-that-does-not-depend-on-tribal-knowledge",
-        "research-reproducibility-for-small-engineering-projects",
-        "secrets-management-without-putting-keys-in-git",
-        "structured-data-for-articles-breadcrumbs-and-organizations",
-        "supply-chain-security-for-open-source-dependencies",
-        "testing-generated-code-before-it-reaches-production"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-16.json",
+      "sha256": "e26a2e82b95d267e77b1c2fae68efe9d8749df772ed3007bca819dbf9e7887d8"
     },
     {
       "releaseId": "library-17-20261028",
@@ -331,15 +326,9 @@
       ],
       "state": "pending",
       "blocked": [
-        "the-best-questions-to-ask-before-bookmarking-a-website",
-        "the-best-way-to-capture-decisions-in-a-fast-moving-project",
         "the-best-way-to-organize-ai-experiments-and-results",
-        "the-developer-s-guide-to-fast-local-projects",
-        "the-difference-between-a-bug-a-regression-and-a-misunderstanding",
-        "the-difference-between-a-security-scan-and-a-security-audit",
         "the-difference-between-a-shortcut-and-a-system",
-        "the-difference-between-encryption-hashing-and-encoding",
-        "the-difference-between-uptime-and-a-healthy-product"
+        "the-difference-between-encryption-hashing-and-encoding"
       ]
     },
     {
@@ -358,15 +347,8 @@
       ],
       "state": "pending",
       "blocked": [
-        "the-findtheweb-method-for-searching-less-and-finding-better",
-        "the-no-code-automation-stack-for-a-one-person-team",
-        "the-practical-case-for-fewer-notifications",
         "the-small-model-stack-for-everyday-automation",
         "the-small-team-toolkit-for-calm-distributed-delivery",
-        "threat-modeling-a-modern-web-application",
-        "typescript-in-2026-why-types-help-ai-assisted-development",
-        "understanding-https-certificates-and-the-secure-padlock",
-        "webhooks-apis-and-triggers-a-clear-beginner-guide",
         "what-a-good-readme-should-tell-a-new-contributor"
       ]
     },
@@ -387,15 +369,8 @@
       "state": "pending",
       "blocked": [
         "what-a-reverse-proxy-does-for-a-website",
-        "what-data-should-your-analytics-actually-collect",
-        "what-makes-a-tutorial-trustworthy",
-        "what-makes-a-useful-meta-description",
-        "what-makes-an-ai-agent-reliable-in-real-projects",
         "what-makes-an-online-resource-worth-sharing",
-        "what-to-measure-in-an-automation-before-scaling-it",
-        "what-to-verify-after-a-production-deployment",
-        "what-website-privacy-policies-should-explain-clearly",
-        "when-no-code-automation-becomes-technical-debt"
+        "what-to-measure-in-an-automation-before-scaling-it"
       ]
     },
     {

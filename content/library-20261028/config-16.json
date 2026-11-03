@@ -1,0 +1,47 @@
+{
+  "releaseId": "library-16-20261028",
+  "baseline": "tmp/editorial-full-baseline-20261028.json",
+  "output": "content/library-20261028/release-16.json",
+  "articles": [
+    {
+      "draft": "content/library-20261028/team-1/remote-onboarding-that-does-not-depend-on-tribal-knowledge.json",
+      "cover": "lib-t1-26-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/research-reproducibility-for-small-engineering-projects.json",
+      "cover": "lib-t2-26-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/26-search-intent-mapping-for-a-new-content-library.json",
+      "cover": "lib-t3-26-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/26-search-intent-turning-a-question-into-a-better-result.json",
+      "cover": "lib-t4-26-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/secrets-management-without-putting-keys-in-git.json",
+      "cover": "lib-t5-26-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/26-structured-data-for-articles-breadcrumbs-and-organizations.json",
+      "cover": "lib-t6-26-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/27-supply-chain-security-for-open-source-dependencies.json",
+      "cover": "lib-t1-27-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/testing-generated-code-before-it-reaches-production.json",
+      "cover": "lib-t2-27-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/27-the-30-day-plan-for-becoming-better-at-technical-writing.json",
+      "cover": "lib-t3-27-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/27-the-anatomy-of-a-trustworthy-online-resource.json",
+      "cover": "lib-t4-27-20261028.png"
+    }
+  ]
+}
