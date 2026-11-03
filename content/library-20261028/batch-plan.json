@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-11-03T11:17:19.216Z",
+  "checkedAt": "2026-11-03T12:31:39.939Z",
   "total": 198,
   "preserved": 6,
   "assigned": 192,
-  "drafts": 153,
-  "gatePassed": 152,
+  "drafts": 157,
+  "gatePassed": 157,
   "batches": [
     {
       "releaseId": "library-01-20261028",
@@ -267,10 +267,10 @@
         "observability-basics-logs-metrics-and-traces-together",
         "owasp-top-10-2025-a-developer-friendly-action-plan"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-14.json",
-      "sha256": "84e0f95363c767f5ecb8c5d79f7750e647c9d0fac84b62a2372a5b1593e8c43e"
+      "liveVerifiedAt": "2026-11-03T11:28:16.194Z"
     },
     {
       "releaseId": "library-15-20261028",
@@ -286,13 +286,10 @@
         "rag-systems-explained-retrieval-that-actually-helps",
         "reliable-spreadsheet-automation-without-data-chaos"
       ],
-      "state": "pending",
-      "blocked": [
-        "privacy-by-design-for-small-web-products",
-        "privacy-risks-in-ai-features-and-rag-pipelines",
-        "privacy-safe-analytics-for-product-teams",
-        "reliable-spreadsheet-automation-without-data-chaos"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-15.json",
+      "sha256": "d1e4e7d6a09f914281dc88c22bec7bee210c998192acf5edef6f963be88d2029"
     },
     {
       "releaseId": "library-16-20261028",
@@ -339,7 +336,6 @@
         "the-best-way-to-organize-ai-experiments-and-results",
         "the-developer-s-guide-to-fast-local-projects",
         "the-difference-between-a-bug-a-regression-and-a-misunderstanding",
-        "the-difference-between-a-demo-a-prototype-and-a-product",
         "the-difference-between-a-security-scan-and-a-security-audit",
         "the-difference-between-a-shortcut-and-a-system",
         "the-difference-between-encryption-hashing-and-encoding",

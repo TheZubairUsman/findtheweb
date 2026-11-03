@@ -1,0 +1,47 @@
+{
+  "releaseId": "library-15-20261028",
+  "baseline": "tmp/editorial-full-baseline-20261028.json",
+  "output": "content/library-20261028/release-15.json",
+  "articles": [
+    {
+      "draft": "content/library-20261028/team-3/24-page-experience-performance-accessibility-and-trust.json",
+      "cover": "lib-t3-24-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/24-password-reset-and-email-verification-done-safely.json",
+      "cover": "lib-t4-24-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/practical-session-and-token-security-for-javascript-apps.json",
+      "cover": "lib-t5-24-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/privacy-by-design-for-small-web-products.json",
+      "cover": "lib-t6-24-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/privacy-risks-in-ai-features-and-rag-pipelines.json",
+      "cover": "lib-t1-25-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/privacy-safe-analytics-for-product-teams.json",
+      "cover": "lib-t2-25-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/25-prompt-engineering-for-repeatable-technical-work.json",
+      "cover": "lib-t3-25-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/25-pseudonymization-vs-anonymization-what-changes.json",
+      "cover": "lib-t4-25-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/rag-systems-explained-retrieval-that-actually-helps.json",
+      "cover": "lib-t5-25-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/reliable-spreadsheet-automation-without-data-chaos.json",
+      "cover": "lib-t6-25-20261028.png"
+    }
+  ]
+}
