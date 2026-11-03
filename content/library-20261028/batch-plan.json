@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-03T12:31:39.939Z",
+  "checkedAt": "2026-11-03T12:46:15.056Z",
   "total": 198,
   "preserved": 6,
   "assigned": 192,
@@ -286,10 +286,10 @@
         "rag-systems-explained-retrieval-that-actually-helps",
         "reliable-spreadsheet-automation-without-data-chaos"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-15.json",
-      "sha256": "d1e4e7d6a09f914281dc88c22bec7bee210c998192acf5edef6f963be88d2029"
+      "liveVerifiedAt": "2026-11-03T12:44:49.665Z"
     },
     {
       "releaseId": "library-16-20261028",

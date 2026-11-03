@@ -293,9 +293,29 @@
         "observability-basics-logs-metrics-and-traces-together",
         "owasp-top-10-2025-a-developer-friendly-action-plan"
       ]
+    },
+    {
+      "releaseId": "library-15-20261028",
+      "commit": "315742b84cd9b4f014e14c0905adcef4a542b601",
+      "ciRun": 41636985389,
+      "releaseSha256": "d1e4e7d6a09f914281dc88c22bec7bee210c998192acf5edef6f963be88d2029",
+      "liveVerifiedAt": "2026-11-03T12:44:49.665Z",
+      "articleCount": 10,
+      "slugs": [
+        "page-experience-performance-accessibility-and-trust",
+        "password-reset-and-email-verification-done-safely",
+        "practical-session-and-token-security-for-javascript-apps",
+        "privacy-by-design-for-small-web-products",
+        "privacy-risks-in-ai-features-and-rag-pipelines",
+        "privacy-safe-analytics-for-product-teams",
+        "prompt-engineering-for-repeatable-technical-work",
+        "pseudonymization-vs-anonymization-what-changes",
+        "rag-systems-explained-retrieval-that-actually-helps",
+        "reliable-spreadsheet-automation-without-data-chaos"
+      ]
     }
   ],
-  "verifiedNewArticles": 142,
-  "totalUpgraded": 148,
-  "remaining": 50
+  "verifiedNewArticles": 152,
+  "totalUpgraded": 158,
+  "remaining": 40
 }
