@@ -16,8 +16,8 @@
     "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t1-12-20261028.png"
   },
   "image-optimization-without-sacrificing-editorial-quality": {
-    "sourceSha256": "eeb2fb0da153704b079499a3e11c9f2f4917947921d7630ac416cbc077b862b9",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/image-optimization-without-sacrificing-editorial-quality.png"
+    "sourceSha256": "43e66304b169cee65e5b2d54da55e8ecaa2085786c4f2941b7657317efbaf16c",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t2-23-20261028.png"
   },
   "a-practical-internal-linking-strategy-for-growing-blogs": {
     "sourceSha256": "46c4fb703a4adb843c71698a93daac2dd3d59b9738f207b7b47d2c406b529a3e",
@@ -28,8 +28,8 @@
     "url": "https://findtheweb.zus3cu.tech/social-covers/structured-data-for-articles-breadcrumbs-and-organizations.png"
   },
   "how-to-write-search-snippets-people-want-to-click": {
-    "sourceSha256": "3aad30cd7bcc18aed98bd5fdec04b31ca1d87d5fc749d1865bbf68acb545e79c",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/how-to-write-search-snippets-people-want-to-click.png"
+    "sourceSha256": "75ffc23e492352b5d4a9e802f9f9d8e1efa50ca228c81b5112615879966e0b92",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t1-23-20261028.png"
   },
   "technical-seo-for-a-javascript-website": {
     "sourceSha256": "2d6e7f5d3d62fecec20f7683171331d8a681a1c4cac8180c9b2b7ffe13351f52",
@@ -96,8 +96,8 @@
     "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t2-10-20261028.png"
   },
   "managing-deep-work-across-time-zones": {
-    "sourceSha256": "1c78ecb4f9e763945ed04db3e15e48dcb7477786b777a1de6e550299be19144e",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/managing-deep-work-across-time-zones.png"
+    "sourceSha256": "fbaa870e1b382888ad21303bcfa1436ad0ffe282e0dacec51200fd98ed6b4547",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t4-23-20261028.png"
   },
   "remote-onboarding-that-does-not-depend-on-tribal-knowledge": {
     "sourceSha256": "c62915fd7d3c656bc50573f7810adf9639a5dc1893db12654968ff5d987f9843",
@@ -204,8 +204,8 @@
     "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t4-21-20261028.png"
   },
   "monorepo-or-multi-repo-a-decision-guide": {
-    "sourceSha256": "33f1829d776fbc5c8732f21d2a4e25d890f07278b5b98c89a7964e83dad28aa1",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/monorepo-or-multi-repo-a-decision-guide.png"
+    "sourceSha256": "9335f1e196a9a114c9891418eb5af29f9d154bac2ec50cdde147812aba627ea2",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t5-23-20261028.png"
   },
   "debugging-javascript-across-browser-and-server": {
     "sourceSha256": "902c530ffefd2af8e4193db0fb9a7917fb253f8deccf1030ae9a6c678a9b9609",
@@ -276,20 +276,20 @@
     "url": "https://findtheweb.zus3cu.tech/social-covers/threat-modeling-a-modern-web-application.png"
   },
   "owasp-top-10-2025-a-developer-friendly-action-plan": {
-    "sourceSha256": "c3455f1095668324192d8cafa489a284cff374522edbd65f9eef3e8b2ad77c4e",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/owasp-top-10-2025-a-developer-friendly-action-plan.png"
+    "sourceSha256": "d9f3f6bcba1408c610ea790b34e603b09c5efc985c5fab8f482b192ef1aa64f1",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t2-24-20261028.png"
   },
   "infrastructure-as-code-a-safer-path-from-laptop-to-cloud": {
-    "sourceSha256": "d2830a14fa19499643032cc01ae5d870aa3c50149dbc85ec438b4b4b14f6e9de",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/infrastructure-as-code-a-safer-path-from-laptop-to-cloud.png"
+    "sourceSha256": "08328d55a8dfa9e622bc85b5568becba3f37b267b8bfec7ea0f3366005ff4286",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t3-23-20261028.png"
   },
   "backups-and-rollbacks-for-stateful-web-applications": {
     "sourceSha256": "548bc1b751e00f151168342bde56a464e493ebdf2b711abe3cb1a96ee1c58d2a",
     "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t5-07-20261028.png"
   },
   "observability-basics-logs-metrics-and-traces-together": {
-    "sourceSha256": "13fad52853054039c5b0ae600885ef5e51fd2247c007cd88d5ab0ba804907c97",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/observability-basics-logs-metrics-and-traces-together.png"
+    "sourceSha256": "99be4d929c01c6e78ca83c3ede3a53e2c746547b4f14209623b4debb9475a847",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t1-24-20261028.png"
   },
   "how-to-cut-cloud-waste-without-cutting-reliability": {
     "sourceSha256": "a7c9675a7eea863b92dbc031db8b7bb25e9c8a44864af768e519a2f46f5009dd",
@@ -364,8 +364,8 @@
     "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t5-06-20261028.png"
   },
   "multi-agent-systems-where-coordination-helps-and-hurts": {
-    "sourceSha256": "4be600416ed3ef7f4d6f63a1ed43abafb130c64bd21723dc723aca2bf9601e16",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/multi-agent-systems-where-coordination-helps-and-hurts.png"
+    "sourceSha256": "c16a075b7cec6348fb808f3aacadf61682b2e8f9bb5b25f840a553375f184e4f",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t6-23-20261028.png"
   },
   "designing-safe-browser-automation-for-real-work": {
     "sourceSha256": "f1f918955cd29d3c2af836f94d668f07d31e090b8c2327aae8aedd3e15db43b2",
@@ -672,8 +672,8 @@
     "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t1-09-20261028.png"
   },
   "how-to-write-better-technical-issue-reports": {
-    "sourceSha256": "2720a5daa782ce18bafdbabc48f1919130e17690755694e16d4aa7c739202243",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/how-to-write-better-technical-issue-reports.png"
+    "sourceSha256": "a643942a297b3206b68514640d20d7626b5f2439fc7d6a9ddc7f0e80e2f8fca7",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t5-22-20261028.png"
   },
   "the-difference-between-a-bug-a-regression-and-a-misunderstanding": {
     "sourceSha256": "ac5cc8e6bfe15d9810c72cd9eed32fed7de086de908c4a6c4cefd10e983463c6",
@@ -768,8 +768,8 @@
     "url": "https://findtheweb.zus3cu.tech/social-covers/a-human-workflow-for-checking-ai-generated-code.png"
   },
   "how-to-write-prompts-that-produce-testable-technical-answers": {
-    "sourceSha256": "90446fcaed12666e4ce788a2c77f6776460096ea8a7b66eddc7b454d397b56fa",
-    "url": "https://findtheweb.zus3cu.tech/social-covers/how-to-write-prompts-that-produce-testable-technical-answers.png"
+    "sourceSha256": "ccfceed9d6f5a43a9569a25f6375d9ee12b415b74dfd9f590597c86cfa7ae850",
+    "url": "https://findtheweb.zus3cu.tech/editorial-images/lib-t6-22-20261028.png"
   },
   "the-small-model-stack-for-everyday-automation": {
     "sourceSha256": "2f2f90d4d626e9b86414d40785c1a4c01c5d969b353f3fcc0be25df632f4141d",

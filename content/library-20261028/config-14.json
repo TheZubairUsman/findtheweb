@@ -1,0 +1,47 @@
+{
+  "releaseId": "library-14-20261028",
+  "baseline": "tmp/editorial-full-baseline-20261028.json",
+  "output": "content/library-20261028/release-14.json",
+  "articles": [
+    {
+      "draft": "content/library-20261028/team-5/how-to-write-better-technical-issue-reports.json",
+      "cover": "lib-t5-22-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/22-how-to-write-prompts-that-produce-testable-technical-answers.json",
+      "cover": "lib-t6-22-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/23-how-to-write-search-snippets-people-want-to-click.json",
+      "cover": "lib-t1-23-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/image-optimization-without-sacrificing-editorial-quality.json",
+      "cover": "lib-t2-23-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-3/23-infrastructure-as-code-a-safer-path-from-laptop-to-cloud.json",
+      "cover": "lib-t3-23-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-4/23-managing-deep-work-across-time-zones.json",
+      "cover": "lib-t4-23-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-5/monorepo-or-multi-repo-a-decision-guide.json",
+      "cover": "lib-t5-23-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-6/multi-agent-systems-where-coordination-helps-and-hurts.json",
+      "cover": "lib-t6-23-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-1/observability-basics-logs-metrics-and-traces-together.json",
+      "cover": "lib-t1-24-20261028.png"
+    },
+    {
+      "draft": "content/library-20261028/team-2/owasp-top-10-2025-a-developer-friendly-action-plan.json",
+      "cover": "lib-t2-24-20261028.png"
+    }
+  ]
+}

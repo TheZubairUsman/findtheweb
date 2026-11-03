@@ -1,10 +1,10 @@
 {
-  "checkedAt": "2026-11-03T10:29:10.597Z",
+  "checkedAt": "2026-11-03T11:17:19.216Z",
   "total": 198,
   "preserved": 6,
   "assigned": 192,
-  "drafts": 140,
-  "gatePassed": 140,
+  "drafts": 153,
+  "gatePassed": 152,
   "batches": [
     {
       "releaseId": "library-01-20261028",
@@ -248,10 +248,10 @@
         "how-to-use-search-intent-before-writing-an-article",
         "how-to-write-a-project-update-people-can-act-on"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-13.json",
-      "sha256": "7d874cae9dee83ea492a04e2df419772e03a244f472d55c1442a8fc7cf9b9521"
+      "liveVerifiedAt": "2026-11-03T10:36:40.998Z"
     },
     {
       "releaseId": "library-14-20261028",
@@ -267,15 +267,10 @@
         "observability-basics-logs-metrics-and-traces-together",
         "owasp-top-10-2025-a-developer-friendly-action-plan"
       ],
-      "state": "pending",
-      "blocked": [
-        "how-to-write-prompts-that-produce-testable-technical-answers",
-        "how-to-write-search-snippets-people-want-to-click",
-        "image-optimization-without-sacrificing-editorial-quality",
-        "multi-agent-systems-where-coordination-helps-and-hurts",
-        "observability-basics-logs-metrics-and-traces-together",
-        "owasp-top-10-2025-a-developer-friendly-action-plan"
-      ]
+      "state": "prepared",
+      "blocked": [],
+      "file": "content/library-20261028/release-14.json",
+      "sha256": "84e0f95363c767f5ecb8c5d79f7750e647c9d0fac84b62a2372a5b1593e8c43e"
     },
     {
       "releaseId": "library-15-20261028",
@@ -296,8 +291,6 @@
         "privacy-by-design-for-small-web-products",
         "privacy-risks-in-ai-features-and-rag-pipelines",
         "privacy-safe-analytics-for-product-teams",
-        "prompt-engineering-for-repeatable-technical-work",
-        "rag-systems-explained-retrieval-that-actually-helps",
         "reliable-spreadsheet-automation-without-data-chaos"
       ]
     },
@@ -319,14 +312,10 @@
       "blocked": [
         "remote-onboarding-that-does-not-depend-on-tribal-knowledge",
         "research-reproducibility-for-small-engineering-projects",
-        "search-intent-mapping-for-a-new-content-library",
-        "search-intent-turning-a-question-into-a-better-result",
         "secrets-management-without-putting-keys-in-git",
         "structured-data-for-articles-breadcrumbs-and-organizations",
         "supply-chain-security-for-open-source-dependencies",
-        "testing-generated-code-before-it-reaches-production",
-        "the-30-day-plan-for-becoming-better-at-technical-writing",
-        "the-anatomy-of-a-trustworthy-online-resource"
+        "testing-generated-code-before-it-reaches-production"
       ]
     },
     {
