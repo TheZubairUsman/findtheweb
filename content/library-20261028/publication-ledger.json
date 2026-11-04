@@ -333,9 +333,69 @@
         "the-30-day-plan-for-becoming-better-at-technical-writing",
         "the-anatomy-of-a-trustworthy-online-resource"
       ]
+    },
+    {
+      "releaseId": "library-17-20261028",
+      "commit": "79947f38d44cd86a3c8f2e716eb1397d8b1cd82e",
+      "ciRun": 41761559326,
+      "releaseSha256": "79d8b20acf1988ab3e243700c6de22641c314695e0cd92b06954ccd0d15a6a93",
+      "liveVerifiedAt": "2026-11-04T02:39:19.338Z",
+      "articleCount": 10,
+      "slugs": [
+        "the-best-questions-to-ask-before-bookmarking-a-website",
+        "the-best-way-to-capture-decisions-in-a-fast-moving-project",
+        "the-best-way-to-organize-ai-experiments-and-results",
+        "the-developer-s-guide-to-fast-local-projects",
+        "the-difference-between-a-bug-a-regression-and-a-misunderstanding",
+        "the-difference-between-a-demo-a-prototype-and-a-product",
+        "the-difference-between-a-security-scan-and-a-security-audit",
+        "the-difference-between-a-shortcut-and-a-system",
+        "the-difference-between-encryption-hashing-and-encoding",
+        "the-difference-between-uptime-and-a-healthy-product"
+      ]
+    },
+    {
+      "releaseId": "library-18-20261028",
+      "commit": "79947f38d44cd86a3c8f2e716eb1397d8b1cd82e",
+      "ciRun": 41761559326,
+      "releaseSha256": "14e91f3f423192ba951e7d644a8982d1510ecadf25772a1e617680dd98f9bc2a",
+      "liveVerifiedAt": "2026-11-04T02:40:48.365Z",
+      "articleCount": 10,
+      "slugs": [
+        "the-findtheweb-method-for-searching-less-and-finding-better",
+        "the-no-code-automation-stack-for-a-one-person-team",
+        "the-practical-case-for-fewer-notifications",
+        "the-small-model-stack-for-everyday-automation",
+        "the-small-team-toolkit-for-calm-distributed-delivery",
+        "threat-modeling-a-modern-web-application",
+        "typescript-in-2026-why-types-help-ai-assisted-development",
+        "understanding-https-certificates-and-the-secure-padlock",
+        "webhooks-apis-and-triggers-a-clear-beginner-guide",
+        "what-a-good-readme-should-tell-a-new-contributor"
+      ]
+    },
+    {
+      "releaseId": "library-19-20261028",
+      "commit": "79947f38d44cd86a3c8f2e716eb1397d8b1cd82e",
+      "ciRun": 41761559326,
+      "releaseSha256": "e1f0288f216e5344e550144aa1f7368bbc53088288b1f90af9b116001328f51d",
+      "liveVerifiedAt": "2026-11-04T02:41:58.661Z",
+      "articleCount": 10,
+      "slugs": [
+        "what-a-reverse-proxy-does-for-a-website",
+        "what-data-should-your-analytics-actually-collect",
+        "what-makes-a-tutorial-trustworthy",
+        "what-makes-a-useful-meta-description",
+        "what-makes-an-ai-agent-reliable-in-real-projects",
+        "what-makes-an-online-resource-worth-sharing",
+        "what-to-measure-in-an-automation-before-scaling-it",
+        "what-to-verify-after-a-production-deployment",
+        "what-website-privacy-policies-should-explain-clearly",
+        "when-no-code-automation-becomes-technical-debt"
+      ]
     }
   ],
-  "verifiedNewArticles": 162,
-  "totalUpgraded": 168,
-  "remaining": 30
+  "verifiedNewArticles": 192,
+  "totalUpgraded": 198,
+  "remaining": 0
 }

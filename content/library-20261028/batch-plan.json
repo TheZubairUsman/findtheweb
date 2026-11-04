@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-03T16:11:31.944Z",
+  "checkedAt": "2026-11-04T02:43:08.403Z",
   "total": 198,
   "preserved": 6,
   "assigned": 192,
@@ -324,10 +324,10 @@
         "the-difference-between-encryption-hashing-and-encoding",
         "the-difference-between-uptime-and-a-healthy-product"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-17.json",
-      "sha256": "79d8b20acf1988ab3e243700c6de22641c314695e0cd92b06954ccd0d15a6a93"
+      "liveVerifiedAt": "2026-11-04T02:39:19.338Z"
     },
     {
       "releaseId": "library-18-20261028",
@@ -343,10 +343,10 @@
         "webhooks-apis-and-triggers-a-clear-beginner-guide",
         "what-a-good-readme-should-tell-a-new-contributor"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-18.json",
-      "sha256": "14e91f3f423192ba951e7d644a8982d1510ecadf25772a1e617680dd98f9bc2a"
+      "liveVerifiedAt": "2026-11-04T02:40:48.365Z"
     },
     {
       "releaseId": "library-19-20261028",
@@ -362,10 +362,10 @@
         "what-website-privacy-policies-should-explain-clearly",
         "when-no-code-automation-becomes-technical-debt"
       ],
-      "state": "prepared",
+      "state": "published-verified",
       "blocked": [],
       "file": "content/library-20261028/release-19.json",
-      "sha256": "e1f0288f216e5344e550144aa1f7368bbc53088288b1f90af9b116001328f51d"
+      "liveVerifiedAt": "2026-11-04T02:41:58.661Z"
     },
     {
       "releaseId": "library-20-20261028",
