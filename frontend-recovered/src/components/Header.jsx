@@ -34,6 +34,7 @@ const Header = () => {
   const navigationItems = [
     { name: 'Home', href: '/', current: location.pathname === '/' },
     { name: 'Categories', href: '/categories', current: location.pathname === '/categories' },
+    { name: 'Discover', href: '/discover', current: location.pathname.startsWith('/discover') },
     { name: 'Blog', href: '/blog', current: location.pathname.startsWith('/blog') },
     { name: 'About', href: '/about', current: location.pathname === '/about' },
     { name: 'Contact', href: '/contact', current: location.pathname === '/contact' }

@@ -33,6 +33,15 @@ describe('Discovery MVP routes', () => {
     expect(response.body.pagination.total).toBe(1);
   });
 
+  it('does not expose incomplete legacy export records', async () => {
+    await Website.update({ status: 'inactive' }, { where: { status: 'active' } });
+    const response = await request(app).get('/api/v1/discover?sort=newest&limit=30');
+    expect(response.status).toBe(200);
+    expect(response.body.data.every(item => item.name && /^https?:\/\//.test(item.url))).toBe(true);
+    const incomplete = await request(app).get('/api/v1/discover/1792918074478');
+    expect(incomplete.status).toBe(404);
+  });
+
   it('queues a community submission as pending', async () => {
     const response = await request(app)
       .post('/api/v1/discover/submissions')

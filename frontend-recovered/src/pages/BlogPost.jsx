@@ -3,6 +3,7 @@ import DOMPurify from 'dompurify';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import SEOHead from '../components/SEO/SEOHead';
+import { apiUrl } from '../utils/apiUrl';
 import { ArticleSchema } from '../components/SEO/StructuredData';
 import { 
   FiCalendar, FiUser, FiClock, FiEye, FiArrowLeft,
@@ -26,7 +27,7 @@ const BlogPost = () => {
       setRelatedPosts([]);
       try {
         if (!slug) throw new Error('Post not found');
-        const response = await fetch(`/api/v1/blog/posts/${encodeURIComponent(slug)}`, {
+        const response = await fetch(apiUrl(`/api/v1/blog/posts/${encodeURIComponent(slug)}`), {
           signal: controller.signal,
         });
         const data = await response.json();

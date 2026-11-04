@@ -25,6 +25,8 @@ const About = lazy(() => import('./pages/About'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
+const Discover = lazy(() => import('./pages/Discover'));
+const DiscoveryItem = lazy(() => import('./pages/DiscoveryItem'));
 const AdminLogin = lazy(() => import('./pages/AdminLogin'));
 const AdminDashboard = lazy(() => import('./components/admin/AdminDashboard'));
 const WebsiteManager = lazy(() => import('./components/admin/WebsiteManager'));
@@ -104,7 +106,8 @@ function App() {
 
                       {/* Categories Routes */}
                       <Route path="/categories" element={<Categories />} />
-                      <Route path="/discover" element={<Navigate to="/categories" replace />} />
+                      <Route path="/discover" element={<Discover />} />
+                      <Route path="/discover/:id" element={<DiscoveryItem />} />
                       <Route path="/category/:slug" element={<Category />} />
 
                       {/* Blog Routes */}

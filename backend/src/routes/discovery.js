@@ -99,7 +99,10 @@ const toPublicWebsite = (website) => {
 const readLegacyWebsites = () => {
   try {
     const parsed = JSON.parse(fs.readFileSync(legacyWebsitesFile, 'utf8'));
-    return Array.isArray(parsed) ? parsed : [];
+    return Array.isArray(parsed) ? parsed.filter((item) => {
+      if (!item || !item.id || typeof item.name !== 'string' || !item.name.trim() || typeof item.url !== 'string') return false;
+      try { return ['http:', 'https:'].includes(new URL(item.url).protocol); } catch (_) { return false; }
+    }) : [];
   } catch (_) {
     return [];
   }

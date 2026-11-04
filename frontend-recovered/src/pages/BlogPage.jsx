@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import Header from '../components/Header';
 import SEOHead from '../components/SEO/SEOHead';
+import { apiUrl } from '../utils/apiUrl';
 import { CollectionPageSchema } from '../components/SEO/StructuredData';
 import { 
   FiCalendar, FiUser, FiClock, FiEye, FiSearch,
@@ -40,7 +41,7 @@ const BlogPage = () => {
           ...(selectedTag && { tag: selectedTag }),
           ...(searchTerm && { search: searchTerm }),
         });
-        const response = await fetch(`/api/v1/blog/posts?${params}`, { signal: controller.signal });
+        const response = await fetch(apiUrl(`/api/v1/blog/posts?${params}`), { signal: controller.signal });
         const data = await response.json();
         if (!response.ok || !data.success || !Array.isArray(data.data)) {
           throw new Error(data.message || 'Failed to load blog posts');
@@ -77,9 +78,9 @@ const BlogPage = () => {
         if (!controller.signal.aborted) console.error('Error fetching blog metadata:', error);
       }
     };
-    fetchList('/api/v1/blog/posts?featured=true&limit=3', setFeaturedPosts);
-    fetchList('/api/v1/blog/categories', setCategories);
-    fetchList('/api/v1/blog/tags', setTags);
+    fetchList(apiUrl('/api/v1/blog/posts?featured=true&limit=3'), setFeaturedPosts);
+    fetchList(apiUrl('/api/v1/blog/categories'), setCategories);
+    fetchList(apiUrl('/api/v1/blog/tags'), setTags);
     return () => controller.abort();
   }, []);
 

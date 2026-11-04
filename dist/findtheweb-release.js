@@ -434,7 +434,6 @@
     });
 
     renderRecoveryPage();
-    renderDiscoveryPage();
     renderSubmissionPage();
     renderAdminSubmissions();
     renderCommunityWorkspace();
