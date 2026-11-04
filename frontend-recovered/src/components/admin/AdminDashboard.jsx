@@ -5,6 +5,7 @@ import {
   FiSettings, FiLogOut, FiShield
 } from 'react-icons/fi';
 import { useAuth } from '../../hooks/useAuth';
+import { apiUrl } from '../../utils/apiUrl';
 import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
@@ -19,7 +20,7 @@ const AdminDashboard = () => {
 
   const fetchDashboardData = async () => {
     try {
-      const response = await fetch('/api/v1/admin/stats', {
+      const response = await fetch(apiUrl('/api/v1/admin/stats'), {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('adminToken')}`,
         },

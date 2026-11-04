@@ -5,6 +5,7 @@ import {
   FiCheck, FiX, FiStar, FiTrendingUp, FiArrowLeft
 } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import { apiUrl } from '../../utils/apiUrl';
 
 const WebsiteManager = () => {
   const [websites, setWebsites] = useState([]);
@@ -34,7 +35,7 @@ const WebsiteManager = () => {
         ...(filterStatus && { status: filterStatus }),
       });
 
-      const response = await fetch(`/api/v1/websites?${params}`, {
+      const response = await fetch(apiUrl(`/api/v1/websites?${params}`), {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('adminToken')}`,
         },
@@ -54,7 +55,7 @@ const WebsiteManager = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('/api/v1/categories');
+      const response = await fetch(apiUrl('/api/v1/categories'));
       const data = await response.json();
       if (data.success) {
         setCategories(data.data || []);
@@ -76,7 +77,7 @@ const WebsiteManager = () => {
     if (!confirm('Are you sure you want to delete this website?')) return;
 
     try {
-      const response = await fetch(`/api/v1/websites/${websiteId}`, {
+      const response = await fetch(apiUrl(`/api/v1/websites/${websiteId}`), {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('adminToken')}`,
@@ -116,7 +117,7 @@ const WebsiteManager = () => {
         
         const method = website ? 'PUT' : 'POST';
         
-        const response = await fetch(url, {
+        const response = await fetch(apiUrl(url), {
           method,
           headers: {
             'Content-Type': 'application/json',

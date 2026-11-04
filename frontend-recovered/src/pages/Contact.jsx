@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi';
 import Header from '../components/Header';
 import SEOHead from '../components/SEO/SEOHead';
+import { apiUrl } from '../utils/apiUrl';
 import { OrganizationStructuredData, BreadcrumbStructuredData } from '../components/SEO/StructuredData';
 
 const Contact = () => {
@@ -46,7 +47,7 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmissionStatus('Saving your message…');
     try {
-      const response = await fetch('/api/v1/contact', {
+      const response = await fetch(apiUrl('/api/v1/contact'), {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...formData, _honey: new FormData(e.target).get('_honey') || '' }),
       });

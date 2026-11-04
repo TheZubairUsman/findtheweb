@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../hooks/useAuth';
+import { apiUrl } from '../../utils/apiUrl';
 import { 
   FiPlus, FiEdit, FiTrash2, FiEye, FiSave, FiX,
   FiSearch, FiFilter, FiCalendar, FiTag, FiImage
@@ -64,7 +65,7 @@ const BlogManager = () => {
         limit: 50
       });
 
-      const response = await fetch(`/api/v1/admin/posts?${params}`, {
+      const response = await fetch(apiUrl(`/api/v1/admin/posts?${params}`), {
         headers: {
           'Authorization': `Bearer ${adminToken}`,
           'Content-Type': 'application/json'
@@ -147,7 +148,7 @@ const BlogManager = () => {
       
       const method = editingPost ? 'PUT' : 'POST';
 
-      const response = await fetch(url, {
+      const response = await fetch(apiUrl(url), {
         method,
         headers: {
           'Authorization': `Bearer ${adminToken}`,
@@ -175,7 +176,7 @@ const BlogManager = () => {
     if (!confirm('Are you sure you want to delete this post?')) return;
 
     try {
-      const response = await fetch(`/api/v1/blog/posts/${postId}`, {
+      const response = await fetch(apiUrl(`/api/v1/blog/posts/${postId}`), {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${adminToken}`

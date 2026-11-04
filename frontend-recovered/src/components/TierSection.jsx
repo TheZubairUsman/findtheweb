@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FiStar, FiTrendingUp, FiExternalLink, FiEye, FiAward, FiZap } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import { apiUrl } from '../utils/apiUrl';
 
 const TierSection = () => {
   const [websites, setWebsites] = useState({
@@ -19,7 +20,7 @@ const TierSection = () => {
     try {
       const tiers = ['enterprise', 'premium', 'standard'];
       const promises = tiers.map(async (tier) => {
-        const response = await fetch(`/api/v1/websites/tier/${tier}?limit=6&sort=-weeklyHits`);
+        const response = await fetch(apiUrl(`/api/v1/websites/tier/${tier}?limit=6&sort=-weeklyHits`));
         const data = await response.json();
         return { tier, websites: data.success ? data.data : [] };
       });
@@ -41,7 +42,7 @@ const TierSection = () => {
 
   const handleWebsiteClick = async (websiteId) => {
     try {
-      await fetch(`/api/v1/websites/${websiteId}/hit`, {
+      await fetch(apiUrl(`/api/v1/websites/${websiteId}/hit`), {
         method: 'POST',
       });
     } catch (error) {

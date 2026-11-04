@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, createContext, useContext } from 'react';
+import { apiUrl } from '../utils/apiUrl';
 
 const readStorage = key => { try { return window.localStorage.getItem(key); } catch (_) { return null; } };
 
@@ -54,7 +55,7 @@ export const AuthProvider = ({ children }) => {
         throw new Error('Please enter a valid email address');
       }
 
-      const response = await fetch('/api/v1/auth/admin/login', {
+      const response = await fetch(apiUrl('/api/v1/auth/admin/login'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -130,7 +131,7 @@ export const AuthProvider = ({ children }) => {
       
       // Call logout endpoint if token exists
       if (token) {
-        await fetch('/api/v1/auth/admin/logout', {
+        await fetch(apiUrl('/api/v1/auth/admin/logout'), {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -157,7 +158,7 @@ export const AuthProvider = ({ children }) => {
         return null;
       }
 
-      const response = await fetch('/api/v1/auth/admin/refresh', {
+      const response = await fetch(apiUrl('/api/v1/auth/admin/refresh'), {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -208,7 +209,7 @@ export const AuthProvider = ({ children }) => {
         throw new Error('New password must be at least 8 characters long');
       }
 
-      const response = await fetch('/api/v1/auth/admin/change-password', {
+      const response = await fetch(apiUrl('/api/v1/auth/admin/change-password'), {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

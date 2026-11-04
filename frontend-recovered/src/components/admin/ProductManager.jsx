@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../hooks/useAuth';
+import { apiUrl } from '../../utils/apiUrl';
 import { 
   FiPlus, FiEdit, FiTrash2, FiEye, FiSave, FiX,
   FiSearch, FiFilter, FiUpload, FiDownload, FiExternalLink,
@@ -53,7 +54,7 @@ const ProductManager = () => {
         ...(statusFilter !== 'all' && { status: statusFilter }),
       });
 
-      const response = await fetch(`/api/v1/websites?${params}`, {
+      const response = await fetch(apiUrl(`/api/v1/websites?${params}`), {
         headers: {
           'Authorization': `Bearer ${adminToken}`,
           'Content-Type': 'application/json'
@@ -132,7 +133,7 @@ const ProductManager = () => {
       
       const method = editingProduct ? 'PUT' : 'POST';
 
-      const response = await fetch(url, {
+      const response = await fetch(apiUrl(url), {
         method,
         headers: {
           'Authorization': `Bearer ${adminToken}`,
@@ -158,7 +159,7 @@ const ProductManager = () => {
     if (!confirm('Are you sure you want to delete this product?')) return;
 
     try {
-      const response = await fetch(`/api/v1/websites/${productId}`, {
+      const response = await fetch(apiUrl(`/api/v1/websites/${productId}`), {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${adminToken}`

@@ -8,6 +8,8 @@ Give readers a public path from a problem to a useful website profile. This rele
 
 The published frontend is on `findtheweb.zus3cu.tech`; its API is on `api.zus3cu.tech/findtheweb`. Production calls from the new discovery pages and the existing blog pages now use the API host directly. Local browser QA keeps relative `/api/v1/` calls. The production API has a scoped CORS allowance for the site origin. Never turn an HTML SPA response into a successful API result.
 
+Follow-up verification found the same stale relative path in contact, admin authentication and management, and homepage website sections. These callers now share the production API URL helper while keeping the isolated browser QA host unchanged. The API's CORS preflight accepts the site origin and the required `Authorization` and `Content-Type` headers. Live admin and contact writes still require a separate authorized identity or a scoped test submission; do not infer success from a public GET alone.
+
 The directory still falls back to its legacy export while the Website database has no active rows. The fallback now excludes records without an ID, nonempty name and HTTP(S) URL. Product details only render safe external URLs. The listing's `verified` badge reflects the stored field; absence of the badge must not imply a fresh manual review.
 
 ## Verification and deployment

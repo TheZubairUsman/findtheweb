@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { apiUrl } from '../utils/apiUrl';
 import { FiTrendingUp, FiExternalLink, FiEye, FiStar, FiClock, FiBarChart } from 'react-icons/fi';
 
 const TopHitsSection = () => {
@@ -12,7 +13,7 @@ const TopHitsSection = () => {
 
   const fetchTopWebsites = async () => {
     try {
-      const response = await fetch(`/api/v1/websites?sort=-weeklyHits&limit=12&status=active`);
+      const response = await fetch(apiUrl(`/api/v1/websites?sort=-weeklyHits&limit=12&status=active`));
       const data = await response.json();
       
       if (data.success) {
@@ -27,7 +28,7 @@ const TopHitsSection = () => {
 
   const handleWebsiteClick = async (websiteId) => {
     try {
-      await fetch(`/api/v1/websites/${websiteId}/hit`, {
+      await fetch(apiUrl(`/api/v1/websites/${websiteId}/hit`), {
         method: 'POST',
       });
     } catch (error) {

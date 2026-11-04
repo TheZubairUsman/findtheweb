@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { apiUrl } from '../utils/apiUrl';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import SEOHead from '../components/SEO/SEOHead';
@@ -35,7 +36,7 @@ const Blog = () => {
         sort: sortBy === 'trending' ? '-votesUp' : sortBy === 'newest' ? '-createdAt' : '-viewCount'
       });
 
-      const response = await fetch(`/api/v1/posts?${params}`);
+      const response = await fetch(apiUrl(`/api/v1/posts?${params}`));
       const data = await response.json();
       
       if (data.success) {
@@ -50,7 +51,7 @@ const Blog = () => {
 
   const fetchFeaturedPosts = async () => {
     try {
-      const response = await fetch('/api/v1/posts/featured?limit=3');
+      const response = await fetch(apiUrl('/api/v1/posts/featured?limit=3'));
       const data = await response.json();
       
       if (data.success) {
@@ -63,7 +64,7 @@ const Blog = () => {
 
   const fetchTopPosts = async () => {
     try {
-      const response = await fetch('/api/v1/posts/top?limit=5');
+      const response = await fetch(apiUrl('/api/v1/posts/top?limit=5'));
       const data = await response.json();
       
       if (data.success) {
@@ -76,7 +77,7 @@ const Blog = () => {
 
   const handleVote = async (postId, voteType) => {
     try {
-      const response = await fetch(`/api/v1/posts/${postId}/vote`, {
+      const response = await fetch(apiUrl(`/api/v1/posts/${postId}/vote`), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
