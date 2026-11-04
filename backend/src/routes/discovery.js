@@ -1,12 +1,12 @@
 const express = require('express');
 const rateLimit = require('express-rate-limit');
-const { Op } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const { Website, Category, WebsiteFeedback } = require('../models');
 
 const router = express.Router();
 const legacyWebsitesFile = path.join(__dirname, '../../data/websites.json');
+const legacyCategoriesFile = path.join(__dirname, '../../data/categories.json');
 const productKnowledgeFile = path.join(__dirname, '../../data/product-knowledge.json');
 
 const submissionLimit = rateLimit({
@@ -92,6 +92,10 @@ const toPublicWebsite = (website) => {
     if (value[field] !== undefined) output[field] = value[field];
     return output;
   }, {});
+  if (!result.categoryId && value.metadata?.submittedCategory) {
+    result.categoryId = value.metadata.submittedCategory.id;
+    result.category = value.metadata.submittedCategory.name;
+  }
   result.product = toProductKnowledge(value.metadata, value.id);
   return result;
 };
@@ -108,6 +112,15 @@ const readLegacyWebsites = () => {
   }
 };
 
+const readLegacyCategories = () => {
+  try {
+    const parsed = JSON.parse(fs.readFileSync(legacyCategoriesFile, 'utf8'));
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (_) {
+    return [];
+  }
+};
+
 // Read-only discovery feed. Only moderated, active directory entries are public.
 router.get('/', async (req, res) => {
   try {
@@ -118,67 +131,38 @@ router.get('/', async (req, res) => {
     const categoryId = typeof req.query.categoryId === 'string' ? req.query.categoryId.trim().slice(0, 80) : '';
     const sort = ['newest', 'trending', 'popular'].includes(req.query.sort) ? req.query.sort : 'newest';
 
-    const where = { status: 'active' };
-    if (tier) where.tier = tier;
-    if (categoryId) where.categoryId = categoryId;
-    if (search) {
-      where[Op.or] = [
-        { name: { [Op.like]: `%${search}%` } },
-        { description: { [Op.like]: `%${search}%` } },
-      ];
+    // The database and export coexist until the directory backfill is done.
+    // A first approved submission must not make the old directory disappear.
+    const db = await Website.findAll({ where: { status: 'active' }, attributes: [...publicFields, 'metadata'] });
+    const items = new Map();
+    for (const legacy of readLegacyWebsites()) {
+      if (!legacy.status || legacy.status === 'active') items.set(legacy.url.toLowerCase(), legacy);
     }
-
-    const order = sort === 'trending'
-      ? [['weeklyHits', 'DESC'], ['totalHits', 'DESC']]
-      : sort === 'popular'
-        ? [['totalHits', 'DESC'], ['weeklyHits', 'DESC']]
-        : [['createdAt', 'DESC']];
-
-    const result = await Website.findAndCountAll({
-      where,
-      attributes: publicFields,
-      include: [{ model: Category, as: 'category', attributes: ['id', 'name', 'slug'], required: false }],
-      limit,
-      offset: (page - 1) * limit,
-      order,
-    });
-
-    // Directory content is still being migrated separately from the blog store.
-    // Keep discovery useful without making legacy JSON a blog-content fallback.
-    if (result.count === 0) {
-      let legacy = readLegacyWebsites().filter((item) => item.status === 'active' || !item.status);
-      if (tier) legacy = legacy.filter((item) => item.tier === tier);
-      if (categoryId) legacy = legacy.filter((item) => String(item.categoryId) === categoryId);
-      if (search) {
-        const needle = search.toLowerCase();
-        legacy = legacy.filter((item) => `${item.name || ''} ${item.description || ''}`.toLowerCase().includes(needle));
-      }
-      legacy.sort((a, b) => {
-        const aValue = sort === 'trending' ? (a.weeklyHits || 0) : sort === 'popular' ? (a.totalHits || 0) : new Date(a.createdAt || 0).getTime();
-        const bValue = sort === 'trending' ? (b.weeklyHits || 0) : sort === 'popular' ? (b.totalHits || 0) : new Date(b.createdAt || 0).getTime();
-        return bValue - aValue;
-      });
-      const total = legacy.length;
-      const data = legacy.slice((page - 1) * limit, page * limit).map(toPublicWebsite);
-      return res.json({
-        success: true,
-        data,
-        pagination: { page, limit, total, pages: Math.max(1, Math.ceil(total / limit)) },
-        discovery: { sort, source: 'legacy-directory-export', filters: { q: search || null, tier: tier || null, categoryId: categoryId || null } },
-      });
+    for (const row of db) {
+      const value = row.toJSON();
+      if (value.url) items.set(value.url.toLowerCase(), value);
     }
-
+    const needle = search.toLowerCase();
+    const matches = [...items.values()].filter((item) =>
+      (!tier || item.tier === tier)
+      && (!categoryId || String(item.categoryId ?? item.metadata?.submittedCategory?.id) === categoryId)
+      && (!needle || `${item.name || ''} ${item.description || ''}`.toLowerCase().includes(needle)));
+    const score = (item) => sort === 'trending' ? Number(item.weeklyHits || 0)
+      : sort === 'popular' ? Number(item.totalHits || 0) : new Date(item.createdAt || 0).getTime() || 0;
+    matches.sort((a, b) => score(b) - score(a) || String(a.name).localeCompare(String(b.name)));
+    const total = matches.length;
     res.json({
       success: true,
-      data: result.rows.map(toPublicWebsite),
+      data: matches.slice((page - 1) * limit, page * limit).map(toPublicWebsite),
       pagination: {
         page,
         limit,
-        total: result.count,
-        pages: Math.max(1, Math.ceil(result.count / limit)),
+        total,
+        pages: Math.max(1, Math.ceil(total / limit)),
       },
       discovery: {
         sort,
+        source: db.length ? 'combined-directory' : 'legacy-directory-export',
         filters: { q: search || null, tier: tier || null, categoryId: categoryId || null },
       },
     });
@@ -288,11 +272,24 @@ router.post('/submissions', submissionLimit, async (req, res) => {
       return res.status(400).json({ success: false, message: 'submitterEmail must be a valid email' });
     }
 
+    // The public category selector currently uses the directory export's
+    // numeric IDs. The database Category table uses UUIDs and may be empty.
+    // Preserve the selected category in private metadata for moderation;
+    // never put a numeric export ID into the database foreign key.
+    const legacyCategory = readLegacyCategories().find((item) => String(item.id) === String(categoryId));
+    const dbCategory = legacyCategory ? null : await Category.findByPk(String(categoryId));
+    if (!legacyCategory && !dbCategory) {
+      return res.status(400).json({ success: false, message: 'Choose a valid category' });
+    }
+
     const website = await Website.create({
       name: String(name).trim(),
       url: websiteUrl,
       description: String(description).trim(),
-      categoryId: String(categoryId).trim(),
+      categoryId: dbCategory ? dbCategory.id : null,
+      metadata: legacyCategory ? { submittedCategory: {
+        id: legacyCategory.id, name: legacyCategory.name, slug: legacyCategory.slug,
+      } } : {},
       status: 'pending',
       tier: 'standard',
       submittedBy: 'community',

@@ -26,7 +26,7 @@ describe('Discovery MVP routes', () => {
   });
 
   it('returns only active items in the public feed', async () => {
-    const response = await request(app).get('/api/v1/discover?sort=trending');
+    const response = await request(app).get('/api/v1/discover?sort=trending&q=Published%20Discovery%20Tool');
     expect(response.status).toBe(200);
     expect(response.body.data).toHaveLength(1);
     expect(response.body.data[0].name).toBe('Published Discovery Tool');
@@ -56,6 +56,35 @@ describe('Discovery MVP routes', () => {
     expect(response.body.data.status).toBe('pending');
     const saved = await Website.findByPk(response.body.data.id);
     expect(saved.status).toBe('pending');
+  });
+
+  it('queues a legacy category selection without an invalid database foreign key', async () => {
+    const response = await request(app).post('/api/v1/discover/submissions').send({
+      name: 'Legacy Category Tool',
+      url: 'https://legacy-category.example.com',
+      description: 'A useful resource waiting for editorial review.',
+      categoryId: 1,
+    });
+    expect(response.status).toBe(202);
+    const saved = await Website.findByPk(response.body.data.id);
+    expect(saved.status).toBe('pending');
+    expect(saved.categoryId).toBeNull();
+    expect(saved.metadata.submittedCategory.name).toBe('Technology');
+
+    await saved.update({ status: 'active' });
+    const search = await request(app).get('/api/v1/discover?q=Legacy%20Category%20Tool');
+    expect(search.body.data).toHaveLength(1);
+    expect(search.body.data[0].categoryId).toBe(1);
+    const directory = await request(app).get('/api/v1/discover?limit=1');
+    expect(directory.body.pagination.total).toBeGreaterThan(100);
+
+    const invalid = await request(app).post('/api/v1/discover/submissions').send({
+      name: 'Unknown Category Tool',
+      url: 'https://unknown-category.example.com',
+      description: 'This should not enter the moderation queue.',
+      categoryId: 999999,
+    });
+    expect(invalid.status).toBe(400);
   });
 
   it('rejects malformed URLs and honeypot submissions', async () => {

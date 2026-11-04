@@ -2,16 +2,16 @@
   "release": "seo-content-20261027",
   "files": {
     "index.html": {
-      "sha256": "481b456dd3824ffd4bcf24762179fa570c8569b9139b3dee540e6d9b36c1280d",
-      "bytes": 5755
+      "sha256": "748f4e37e7a77d3c956ed41073c5ae4fcf2f5cdd4ec77f9269506884fef2094e",
+      "bytes": 5756
     },
     "frontend-build.json": {
       "sha256": "aa64dc7e869fb33dbf661660defcee6cfcbcd5a7a9a6a484668f9309f8c8ae6a",
       "bytes": 1629
     },
     "findtheweb-release.js": {
-      "sha256": "01a5629053ab89b6dd2eb01e7888d91f2f03cbf43a96bf39e22735d9bfb4fa22",
-      "bytes": 50587
+      "sha256": "51804fc41331bd95035308b818ec3f23ee2907a6ed03b3ac2308c21a34a23aa5",
+      "bytes": 50648
     },
     "findtheweb-release.css": {
       "sha256": "5854ad396f0bda3216e65b8ef8ffb2877b8376086bddacdf477dd41a70cef1f6",

@@ -14,6 +14,15 @@ The directory still falls back to its legacy export while the Website database h
 
 Run backend tests, production dependency audit, a frontend build, browser QA at mobile/tablet/desktop widths, and GitHub CI before publishing. Verify the exact static manifest at the live domain. Back up the production backend route before copying the filtered legacy reader; restart only the FindTheWeb backend container; verify the container health, public JSON API, blog API, and SQLite integrity. Record rollback file paths and hashes. Do not publish a release whose CI or live checks fail.
 
-## Remaining Phase 2 work
+### Release result, 2026-11-04
 
-The submission form, maker claims, review moderation, alternatives ranking, and article-to-product discovery links still need a separate guarded release. The existing API submission route requires a database-backed category and is not ready to expose while production has no Category rows. Keep the public submission flow closed until category identity, moderation visibility, and spam safeguards are verified end to end.
+- Application commit `b6a714a7b1a238965ac57b886429e70a3c246b37` passed CI run `41765611873`. Cache version fix commit `7efe1667719a0bf43edf544c6dadfc22672e4e98` passed CI run `41767003075`; both reached `master`.
+- Local backend suite passed 20 suites and 106 tests before the added legacy-record regression test; that focused test file then passed all five tests. Full browser QA passed 60 route/viewport states, all interactions, and zero listed accessibility findings. Production dependency audit reported zero high or critical findings.
+- Public frontend release manifest matched local bytes exactly. Headless Chrome loaded `/discover`, opened a real product profile, saved it, and loaded `/blog` with no page errors. Public API responses for the discovery feed, product detail, and blog list were valid JSON with the allowed site origin.
+- Backend route SHA-256 after deployment: `a162a87b45b4ea7811adb2c111b1f83dbe3e79d27694e4eb779ee11c5fe900b8`. Scoped rollback copy: `/opt/findtheweb-discovery-backups/20261104-b6a714a-discovery.js`, SHA-256 `64f93f2019275a1a4dd733b37e7e7a1ea2e1730935aa8c9a2f50a3c1ffcc6d55`. Postrestart SQLite integrity was `ok` with 198 BlogPost rows and zero Website rows; discovery still uses its filtered legacy export.
+
+## Submission release boundary
+
+The public submission form and private moderation queue existed before this release, but the form selected numeric categories from the directory export while the database expected category foreign keys. A follow-up change accepts a valid export category, stores its name and ID in the private submission metadata, and leaves the database foreign key null until categories are backfilled. Pending records stay hidden. Approval adds a listing to the combined discovery feed without hiding the thousands of legacy directory entries. The moderator sees the chosen category name. Publish this change only after its own CI, isolated submission-to-moderation browser test, scoped backend backup, and live verification.
+
+Maker claims, structured reviews, alternatives ranking, article-to-product discovery links, and the category database backfill remain Phase 2 work. The later backfill should replace the temporary combined feed with a paginated database query after counts and URLs match.
