@@ -47,10 +47,12 @@ const readProductKnowledge = () => {
     return {};
   }
 };
+const productKnowledgeCatalog = readProductKnowledge();
 
-const toProductKnowledge = (metadata, websiteId) => {
-  const catalog = readProductKnowledge();
-  const curated = catalog[String(websiteId)] || {};
+const toProductKnowledge = (metadata, websiteId, websiteUrl) => {
+  const catalog = productKnowledgeCatalog;
+  const legacyId = legacyIdByUrl.get(String(websiteUrl || '').toLowerCase());
+  const curated = catalog[String(websiteId)] || catalog[String(legacyId)] || {};
   const product = metadata && typeof metadata === 'object' && metadata.product && typeof metadata.product === 'object'
     ? { ...curated, ...metadata.product }
     : curated;
@@ -82,7 +84,8 @@ const toProductKnowledge = (metadata, websiteId) => {
     alternatives,
     lastVerifiedAt: asCleanString(product.lastVerifiedAt, 40),
     verificationSources: asStringList(product.verificationSources, 5, 500),
-    articleSlugs: asStringList(product.articleSlugs, 8, 160),
+    articleSlugs: asStringList(Array.isArray(product.articleSlugs) && product.articleSlugs.length
+      ? product.articleSlugs : curated.articleSlugs, 8, 160),
   };
 };
 
@@ -96,7 +99,7 @@ const toPublicWebsite = (website) => {
     result.categoryId = value.metadata.submittedCategory.id;
     result.category = value.metadata.submittedCategory.name;
   }
-  result.product = toProductKnowledge(value.metadata, value.id);
+  result.product = toProductKnowledge(value.metadata, value.id, value.url);
   return result;
 };
 
@@ -120,6 +123,40 @@ const readLegacyCategories = () => {
     return [];
   }
 };
+const legacyIdByUrl = new Map();
+const curatedIds = productKnowledgeCatalog;
+for (const item of readLegacyWebsites()) {
+  const url = item.url.toLowerCase();
+  if (!legacyIdByUrl.has(url) && curatedIds[String(item.id)]) legacyIdByUrl.set(url, item.id);
+}
+
+// Editorial links are explicit, not inferred from article keywords. Never
+// return a pending listing or expose arbitrary metadata from the catalog.
+router.get('/related/articles/:slug', async (req, res) => {
+  try {
+    const slug = String(req.params.slug || '').slice(0, 160);
+    if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+      return res.status(400).json({ success: false, message: 'Invalid article slug' });
+    }
+    const db = await Website.findAll({ where: { status: 'active' }, attributes: [...publicFields, 'metadata'] });
+    const listed = new Map();
+    for (const item of readLegacyWebsites()) {
+      if (!item.status || item.status === 'active') listed.set(item.url.toLowerCase(), item);
+    }
+    for (const row of db) {
+      const item = row.toJSON();
+      if (item.url) listed.set(item.url.toLowerCase(), item);
+    }
+    const matches = [...listed.values()]
+      .filter((item) => toProductKnowledge(item.metadata, item.id, item.url).articleSlugs.includes(slug))
+      .slice(0, 6)
+      .map((item) => ({ id: item.id, name: item.name, description: asCleanString(item.description, 240) }));
+    return res.json({ success: true, data: matches });
+  } catch (error) {
+    console.error('Related discovery error:', error);
+    return res.status(500).json({ success: false, message: 'Unable to load related websites' });
+  }
+});
 
 // Read-only discovery feed. Only moderated, active directory entries are public.
 router.get('/', async (req, res) => {

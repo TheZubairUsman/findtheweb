@@ -133,4 +133,15 @@ describe('Discovery MVP routes', () => {
     expect(response.body.data.product.alternatives[0].name).toBe('Alternative Tool');
     expect(response.body.data.metadata).toBeUndefined();
   });
+
+  it('links an article only to curated active websites', async () => {
+    const linked = await request(app).get('/api/v1/discover/related/articles/a-human-workflow-for-checking-ai-generated-code');
+    expect(linked.status).toBe(200);
+    expect(linked.body.data.some(item => item.name === 'GitHub' || item.id === 'github')).toBe(true);
+    expect(linked.body.data.every(item => item.id && item.name && !item.metadata && !item.submitterEmail)).toBe(true);
+    const profile = await request(app).get(`/api/v1/discover/${linked.body.data[0].id}`);
+    expect(profile.body.data.product.articleSlugs).toContain('a-human-workflow-for-checking-ai-generated-code');
+    const invalid = await request(app).get('/api/v1/discover/related/articles/not%20a%20slug');
+    expect(invalid.status).toBe(400);
+  });
 });

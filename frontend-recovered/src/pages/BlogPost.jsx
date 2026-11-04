@@ -15,6 +15,7 @@ const BlogPost = () => {
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
   const [relatedPosts, setRelatedPosts] = useState([]);
+  const [relatedWebsites, setRelatedWebsites] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -25,6 +26,7 @@ const BlogPost = () => {
       setError(null);
       setPost(null);
       setRelatedPosts([]);
+      setRelatedWebsites([]);
       try {
         if (!slug) throw new Error('Post not found');
         const response = await fetch(apiUrl(`/api/v1/blog/posts/${encodeURIComponent(slug)}`), {
@@ -37,6 +39,10 @@ const BlogPost = () => {
         if (controller.signal.aborted) return;
         setPost(data.data);
         setRelatedPosts(Array.isArray(data.data.relatedPosts) ? data.data.relatedPosts : []);
+        fetch(apiUrl(`/api/v1/discover/related/articles/${encodeURIComponent(slug)}`), { signal: controller.signal })
+          .then(response => response.ok ? response.json() : null)
+          .then(result => { if (!controller.signal.aborted && result?.success) setRelatedWebsites(result.data || []); })
+          .catch(() => {});
       } catch (error) {
         if (controller.signal.aborted) return;
         console.error('Error fetching blog post:', error);
@@ -303,6 +309,19 @@ const BlogPost = () => {
               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content || '', { USE_PROFILES: { html: true } }) }}
             />
           </article>
+
+          {relatedWebsites.length > 0 && (
+            <section className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8" aria-label="Websites related to this article">
+              <h2 className="text-xl font-bold text-gray-900 mb-2">Explore related websites</h2>
+              <p className="text-sm text-gray-600 mb-5">Curated tools connected to this article. Check each provider’s current details before using it.</p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {relatedWebsites.map(site => <Link key={site.id} to={`/discover/${encodeURIComponent(site.id)}`} className="block rounded-lg border border-gray-200 p-4 hover:border-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-500">
+                  <h3 className="font-semibold text-blue-700">{site.name}</h3>
+                  <p className="mt-1 text-sm text-gray-600 line-clamp-2">{site.description}</p>
+                </Link>)}
+              </div>
+            </section>
+          )}
 
           {/* Tags */}
           {post.tags && post.tags.length > 0 && (
