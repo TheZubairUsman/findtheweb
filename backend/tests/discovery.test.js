@@ -87,6 +87,21 @@ describe('Discovery MVP routes', () => {
     expect(invalid.status).toBe(400);
   });
 
+  it('maps a legacy selection to an existing database category while preserving the public filter', async () => {
+    const mapped = await Category.create({ name: 'Technology' });
+    const response = await request(app).post('/api/v1/discover/submissions').send({
+      name: 'Mapped Category Tool', url: 'https://mapped-category.example.com',
+      description: 'A useful resource awaiting review.', categoryId: 1,
+    });
+    expect(response.status).toBe(202);
+    const saved = await Website.findByPk(response.body.data.id);
+    expect(saved.categoryId).toBe(mapped.id);
+    await saved.update({ status: 'active' });
+    const feed = await request(app).get('/api/v1/discover?categoryId=1&q=Mapped%20Category%20Tool');
+    expect(feed.body.data).toHaveLength(1);
+    expect(feed.body.data[0].categoryId).toBe(1);
+  });
+
   it('rejects malformed URLs and honeypot submissions', async () => {
     const malformed = await request(app)
       .post('/api/v1/discover/submissions')

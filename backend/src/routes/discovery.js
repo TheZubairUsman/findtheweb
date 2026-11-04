@@ -95,7 +95,7 @@ const toPublicWebsite = (website) => {
     if (value[field] !== undefined) output[field] = value[field];
     return output;
   }, {});
-  if (!result.categoryId && value.metadata?.submittedCategory) {
+  if (value.metadata?.submittedCategory) {
     result.categoryId = value.metadata.submittedCategory.id;
     result.category = value.metadata.submittedCategory.name;
   }
@@ -182,7 +182,7 @@ router.get('/', async (req, res) => {
     const needle = search.toLowerCase();
     const matches = [...items.values()].filter((item) =>
       (!tier || item.tier === tier)
-      && (!categoryId || String(item.categoryId ?? item.metadata?.submittedCategory?.id) === categoryId)
+      && (!categoryId || String(item.metadata?.submittedCategory?.id ?? item.categoryId) === categoryId)
       && (!needle || `${item.name || ''} ${item.description || ''}`.toLowerCase().includes(needle)));
     const score = (item) => sort === 'trending' ? Number(item.weeklyHits || 0)
       : sort === 'popular' ? Number(item.totalHits || 0) : new Date(item.createdAt || 0).getTime() || 0;
@@ -310,11 +310,12 @@ router.post('/submissions', submissionLimit, async (req, res) => {
     }
 
     // The public category selector currently uses the directory export's
-    // numeric IDs. The database Category table uses UUIDs and may be empty.
-    // Preserve the selected category in private metadata for moderation;
-    // never put a numeric export ID into the database foreign key.
+    // numeric IDs. Resolve them to the corresponding database UUID if the
+    // category has been backfilled, while preserving the export ID for filters.
     const legacyCategory = readLegacyCategories().find((item) => String(item.id) === String(categoryId));
-    const dbCategory = legacyCategory ? null : await Category.findByPk(String(categoryId));
+    const dbCategory = legacyCategory
+      ? await Category.findOne({ where: { slug: legacyCategory.slug } })
+      : await Category.findByPk(String(categoryId));
     if (!legacyCategory && !dbCategory) {
       return res.status(400).json({ success: false, message: 'Choose a valid category' });
     }
