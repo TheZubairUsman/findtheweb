@@ -172,8 +172,16 @@ router.get('/', async (req, res) => {
     // A first approved submission must not make the old directory disappear.
     const db = await Website.findAll({ where: { status: 'active' }, attributes: [...publicFields, 'metadata'] });
     const items = new Map();
+    const categoriesByUrl = new Map();
     for (const legacy of readLegacyWebsites()) {
-      if (!legacy.status || legacy.status === 'active') items.set(legacy.url.toLowerCase(), legacy);
+      if (!legacy.status || legacy.status === 'active') {
+        const url = legacy.url.toLowerCase();
+        items.set(url, legacy);
+        if (legacy.categoryId != null) {
+          if (!categoriesByUrl.has(url)) categoriesByUrl.set(url, new Set());
+          categoriesByUrl.get(url).add(String(legacy.categoryId));
+        }
+      }
     }
     for (const row of db) {
       const value = row.toJSON();
@@ -182,7 +190,8 @@ router.get('/', async (req, res) => {
     const needle = search.toLowerCase();
     const matches = [...items.values()].filter((item) =>
       (!tier || item.tier === tier)
-      && (!categoryId || String(item.metadata?.submittedCategory?.id ?? item.categoryId) === categoryId)
+      && (!categoryId || String(item.metadata?.submittedCategory?.id ?? item.categoryId) === categoryId
+        || categoriesByUrl.get(String(item.url || '').toLowerCase())?.has(categoryId))
       && (!needle || `${item.name || ''} ${item.description || ''}`.toLowerCase().includes(needle)));
     const score = (item) => sort === 'trending' ? Number(item.weeklyHits || 0)
       : sort === 'popular' ? Number(item.totalHits || 0) : new Date(item.createdAt || 0).getTime() || 0;

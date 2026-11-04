@@ -42,6 +42,17 @@ describe('Discovery MVP routes', () => {
     expect(incomplete.status).toBe(404);
   });
 
+  it('retains all existing category memberships when duplicate URLs are merged', async () => {
+    for (const categoryId of ['1', 'collaboration-tools', 'version-control']) {
+      const response = await request(app).get('/api/v1/discover').query({ categoryId, q: 'GitHub', limit: 30 });
+      expect(response.status).toBe(200);
+      expect(response.body.data.some(item => item.url === 'https://github.com')).toBe(true);
+      expect(response.body.data.filter(item => item.url === 'https://github.com')).toHaveLength(1);
+    }
+    const unrelated = await request(app).get('/api/v1/discover').query({ categoryId: 'unrelated-category', q: 'GitHub' });
+    expect(unrelated.body.data).toHaveLength(0);
+  });
+
   it('queues a community submission as pending', async () => {
     const response = await request(app)
       .post('/api/v1/discover/submissions')
