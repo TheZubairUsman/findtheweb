@@ -41,4 +41,12 @@ The article page now requests an explicit, curated list of related websites from
 
 The legacy export contains duplicate URLs with different IDs. The active database listing can therefore mask the original catalog ID during feed merging. Product knowledge now resolves a known catalog entry by matching its URL when the active listing has a different ID; this also restores the reciprocal article links on those profiles. Empty metadata article lists no longer erase a curated relationship.
 
-Local verification: 20 backend suites and 109 tests passed; the full browser sweep passed 60 route/viewport states, interaction checks, and listed accessibility checks. A targeted Chrome check verified that the GitHub profile shows its curated GitLab alternative. Production dependency audits reported zero high/critical findings. The release manifest had 626 files with zero local hash mismatches. GitHub CI, deployment, and live copy verification are still required before calling this update published.
+Local verification: 20 backend suites and 109 tests passed; the full browser sweep passed 60 route/viewport states, interaction checks, and listed accessibility checks. A targeted Chrome check verified that the GitHub profile shows its curated GitLab alternative. Production dependency audits reported zero high/critical findings. The release manifest had 626 files with zero local hash mismatches.
+
+### Publication receipt
+
+- Commit `bf92e40c521db3c94ccf5c8580aacd47497042c7` reached `master`; GitHub Actions run `41813316719` passed both backend and frontend browser jobs.
+- The exact static manifest is live: local and public SHA-256 `dcccf6998d1cf0ae4dd083c12f79db202cbf97e8e47f963df834615f01551622`.
+- Production route SHA-256 is `132c0768d9108f2e24ab2b28ef699668e9c59fdf67c0bc6a114c33aa6328f6fd`. The prior route is backed up at `/opt/findtheweb-discovery-backups/20261104-pre-bf92e40-discovery.js`, SHA-256 `73d5a9658c49b871470894ec4f67b50936642331f8aabd0e92ad8a82cd71c7d5`.
+- Public API health, related website endpoint, GitHub discovery profile, and linked article returned HTTP 200 with JSON and the expected site origin. The related endpoint returned one active listing. Live Chrome rendered the article's related websites section and the GitHub profile alternatives with zero page errors. The hosting layer initially challenged one automated Chrome request with HTTP 403; a subsequent request returned 200 and rendered the section.
+- Production SQLite integrity remained `ok`, with 198 BlogPost rows and zero Website rows. The directory remains backed by its legacy export; no admin identity or public write was used in this release.
